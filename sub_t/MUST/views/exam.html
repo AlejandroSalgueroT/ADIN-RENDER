@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MUST QUEST: Examen Final</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Poppins:wght@400;700&family=Press+Start+2P&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+</head>
+
+<body>
+    <!-- Sonidos del juego -->
+    <audio id="clickSound" src="https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3"
+        preload="auto"></audio>
+    <audio id="correctSound" src="https://assets.mixkit.co/active_storage/sfx/270/270-preview.mp3"
+        preload="auto"></audio>
+    <audio id="wrongSound" src="https://assets.mixkit.co/active_storage/sfx/131/131-preview.mp3" preload="auto"></audio>
+    <audio id="completionSound" src="https://assets.mixkit.co/active_storage/sfx/2013/2013-preview.mp3"
+        preload="auto"></audio>
+    <audio id="backgroundMusic" src="https://assets.mixkit.co/active_storage/sfx/2000/2000-preview.mp3" loop
+        preload="auto"></audio>
+
+    <!-- Estrellas de fondo -->
+    <div class="stars-container">
+        <div id="stars"></div>
+        <div id="stars2"></div>
+        <div id="stars3"></div>
+    </div>
+
+    <div class="game-container">
+        <div class="game-header">
+            <div class="logo-container">
+                <h1 class="game-logo animate__animated animate__bounceIn">MUST<span>QUEST</span></h1>
+                <p class="game-subtitle">Examen Final - ¡El Desafío Supremo!</p>
+            </div>
+
+            <div class="game-stats">
+                <div class="stats-item">
+                    <div class="stats-icon stars-icon">★</div>
+                    <div class="stats-value" id="stars-count">0</div>
+                </div>
+                <div class="stats-item">
+                    <div class="stats-icon timer-icon"><i class="fas fa-clock"></i></div>
+                    <div class="stats-value" id="timer">5:00</div>
+                </div>
+                <div class="stats-item">
+                    <button id="sound-toggle" class="sound-btn"><i class="fas fa-volume-up"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="level-container">
+            <div class="level-sidebar">
+                <div class="sidebar-section">
+                    <h3>Examen Final</h3>
+                    <ul class="sidebar-nav">
+                        <li><a href="#" class="active" data-section="instructions">Instrucciones</a></li>
+                        <li><a href="#" data-section="questions">Preguntas (10)</a></li>
+                        <li><a href="#" data-section="results">Resultados</a></li>
+                    </ul>
+                </div>
+                <div class="sidebar-character">
+                    <div class="character-section">
+                        <div id="character-avatar-button"
+                            class="character-avatar-button animate__animated animate__pulse animate__infinite">
+                            <div id="character-display">
+                                <img src="https://i.imgur.com/0MbrTTX.png" alt="Wizard Musty" id="character-img">
+                            </div>
+                        </div>
+                        <div class="speech-bubble" id="speech-bubble">
+                            <p id="character-speech">¡Has llegado al Desafío Final! Demuestra tu dominio de MUST en todos los tiempos verbales. Tienes 5 minutos para completar las 10 preguntas. ¡Buena suerte!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="level-content">
+                <!-- SECCIÓN DE INSTRUCCIONES -->
+                <div id="instructions-section" class="level-section active">
+                    <h2 class="section-title">Instrucciones del Examen</h2>
+                    <div class="section-content">
+                        <div class="instructions-container">
+                            <p>¡Bienvenido al examen final de MUST Quest! En este desafío, pondrás a prueba todo lo que has aprendido sobre el uso de MUST en inglés. Aquí están las reglas:</p>
+                            
+                            <ul>
+                                <li>El examen consta de 10 preguntas de opción múltiple.</li>
+                                <li>Tienes 5 minutos para completar todas las preguntas.</li>
+                                <li>Cada respuesta correcta te otorgará puntos y estrellas.</li>
+                                <li>Al finalizar, recibirás un puntaje y podrás ver tus resultados.</li>
+                            </ul>
+                            
+                            <p>¡Prepárate para demostrar tu dominio de MUST!</p>
+                            
+                            <div class="button-container">
+                                <button class="control-btn" onclick="goBack()">
+                                    <i class="fas fa-map-marked-alt"></i> Volver al Mapa
+                                </button>
+                                <button class="control-btn primary" onclick="startExam()">
+                                    Comenzar Examen
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- SECCIÓN DE PREGUNTAS -->
+                <div id="questions-section" class="level-section">
+                    <h2 class="section-title">Examen Final - Dominio de MUST</h2>
+                    <div class="section-content">
+                        <div class="exam-container">
+                            <div class="exam-progress">
+                                <div class="progress-bar exam-progress-bar">
+                                    <div class="progress" id="exam-progress-bar"></div>
+                                </div>
+                                <p class="progress-text">Progreso: <span id="exam-progress-text">0/10</span></p>
+                            </div>
+                            
+                            <div class="exam-content">
+                                <!-- Las preguntas se cargarán dinámicamente aquí -->
+                                <div id="question-container"></div>
+                                
+                                <div class="quiz-navigation">
+                                    <button id="prev-question-btn" class="quiz-nav-btn" disabled>
+                                        <i class="fas fa-arrow-left"></i> Anterior
+                                    </button>
+                                    <button id="next-question-btn" class="quiz-nav-btn">
+                                        Siguiente <i class="fas fa-arrow-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="button-container text-center">
+                                <button id="submit-exam-btn" class="control-btn primary" onclick="submitExam()" disabled>
+                                    Terminar Examen
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- SECCIÓN DE RESULTADOS -->
+                <div id="results-section" class="level-section">
+                    <h2 class="section-title">Resultados del Examen</h2>
+                    <div class="section-content">
+                        <div class="results-container">
+                            <h3 class="results-title">¡Examen Completado!</h3>
+                            <div class="results-score">
+                                <div class="score-circle">
+                                    <span id="final-score">0/10</span>
+                                </div>
+                                <p id="score-message">¡Inténtalo de nuevo para mejorar!</p>
+                            </div>
+                            
+                            <div class="results-stars" id="results-stars">
+                                <div class="star" id="star1">★</div>
+                                <div class="star" id="star2">★</div>
+                                <div class="star" id="star3">★</div>
+                            </div>
+                            
+                            <div class="results-actions">
+                                <button id="retry-btn" class="action-btn" onclick="retryExam()">
+                                    Intentar de nuevo
+                                </button>
+                                <button id="home-btn" class="action-btn primary" onclick="goBack()">
+                                    Volver al Mapa
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../scripts/exam.js"></script>
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/levels.js"></script>
+    <script>
+        // Variables para controlar las secciones
+        let currentSection = 'instructions';
+        
+        // Función para cambiar entre secciones
+        function changeSection(sectionId) {
+            // Ocultar todas las secciones
+            document.querySelectorAll('.level-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            // Mostrar la sección seleccionada
+            document.getElementById(sectionId + '-section').classList.add('active');
+            // Actualizar la navegación
+            document.querySelectorAll('.sidebar-nav a').forEach(link => {
+                link.classList.remove('active');
+            });
+            document.querySelector(`.sidebar-nav a[data-section="${sectionId}"]`).classList.add('active');
+            // Actualizar la sección actual
+            currentSection = sectionId;
+            // Actualizar el mensaje del personaje según la sección
+            const characterSpeech = document.getElementById('character-speech');
+            switch(sectionId) {
+                case 'instructions':
+                    characterSpeech.textContent = '¡Has llegado al Desafío Final! Demuestra tu dominio de MUST en todos los tiempos verbales. Tienes 5 minutos para completar las 10 preguntas. ¡Buena suerte!';
+                    break;
+                case 'questions':
+                    characterSpeech.textContent = 'Lee cada pregunta cuidadosamente y selecciona la opción correcta. ¡Concéntrate y responde con calma!';
+                    // Reiniciar el examen solo si no está iniciado
+                    if (typeof examState !== 'undefined' && examState.completed) {
+                        window.location.reload(); // Si ya terminó, recarga para reiniciar
+                    } else if (typeof showQuestion === 'function') {
+                        showQuestion(examState.currentQuestion || 0);
+                    }
+                    break;
+                case 'results':
+                    characterSpeech.textContent = '¡Has terminado el examen! Veamos cómo te ha ido y cuánto has aprendido sobre MUST.';
+                    break;
+            }
+        }
+        
+        // Función para iniciar el examen
+        function startExam() {
+            changeSection('questions');
+            if (typeof showQuestion === 'function') {
+                showQuestion(0);
+            }
+            if (typeof startTimer === 'function') {
+                startTimer();
+            }
+        }
+        
+        // Función para intentar el examen de nuevo
+        function retryExam() {
+            changeSection('questions');
+            // Reiniciar el examen
+        }
+        
+        // Función para volver al mapa
+        function goBack() {
+            window.location.href = "../index.html";
+        }
+
+        // Inicializar navegación en la barra lateral
+        document.addEventListener('DOMContentLoaded', function() {
+            // Configurar navegación entre secciones
+            document.querySelectorAll('.sidebar-nav a').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    changeSection(this.getAttribute('data-section'));
+                });
+            });
+            
+            // Configurar toggle de sonido
+            const soundToggle = document.getElementById('sound-toggle');
+            const backgroundMusic = document.getElementById('backgroundMusic');
+            
+            if (soundToggle) {
+                soundToggle.addEventListener('click', function() {
+                    if (backgroundMusic.paused) {
+                        backgroundMusic.volume = 0.3;
+                        backgroundMusic.play();
+                        soundToggle.innerHTML = '<i class="fas fa-volume-up"></i>';
+                    } else {
+                        backgroundMusic.pause();
+                        soundToggle.innerHTML = '<i class="fas fa-volume-mute"></i>';
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

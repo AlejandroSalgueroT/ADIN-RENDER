@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MUST QUEST: Tiempo Futuro</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Poppins:wght@400;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+</head>
+<body>
+    <!-- Sonidos del juego -->
+    <audio id="clickSound" src="https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3" preload="auto"></audio>
+    <audio id="correctSound" src="https://assets.mixkit.co/active_storage/sfx/270/270-preview.mp3" preload="auto"></audio>
+    <audio id="wrongSound" src="https://assets.mixkit.co/active_storage/sfx/131/131-preview.mp3" preload="auto"></audio>
+    <audio id="levelUpSound" src="https://assets.mixkit.co/active_storage/sfx/2020/2020-preview.mp3" preload="auto"></audio>
+    <audio id="backgroundMusic" src="https://assets.mixkit.co/active_storage/sfx/2000/2000-preview.mp3" loop preload="auto"></audio>
+    
+    <!-- Estrellas de fondo -->
+    <div class="stars-container">
+        <div id="stars"></div>
+        <div id="stars2"></div>
+        <div id="stars3"></div>
+    </div>
+    
+    <div class="game-container">
+        <div class="game-header">
+            <div class="logo-container">
+                <h1 class="game-logo animate__animated animate__bounceIn">MUST<span>QUEST</span></h1>
+                <p class="game-subtitle">Reino del Tiempo Futuro - Nivel 5</p>
+            </div>
+            
+            <div class="game-stats">
+                <div class="stats-item">
+                    <div class="stats-icon stars-icon">★</div>
+                    <div class="stats-value" id="stars-count">0</div>
+                </div>
+                <div class="stats-item">
+                    <div class="stats-icon progress-icon"><i class="fas fa-tasks"></i></div>
+                    <div class="stats-value" id="progress-count">0/5</div>
+                </div>
+                <div class="stats-item">
+                    <button id="sound-toggle" class="sound-btn"><i class="fas fa-volume-up"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="level-container">
+            <div class="level-sidebar">
+                <div class="sidebar-section">
+                    <h3>Contenido</h3>
+                    <ul class="sidebar-nav">
+                        <li><a href="#intro" class="active">Introducción</a></li>
+                        <li><a href="#theory">Teoría</a></li>
+                        <li><a href="#examples">Ejemplos</a></li>
+                        <li><a href="#practice">Práctica</a></li>
+                        <li><a href="#challenge">Desafío</a></li>
+                    </ul>
+                </div>
+                
+                <div class="sidebar-character">
+                    <div class="character-section">
+                        <div id="character-avatar-button"
+                            class="character-avatar-button animate__animated animate__pulse animate__infinite"
+                            onclick="goToAvatarSelection()">
+                            <div id="character-display">
+                                <!-- Avatar se cargará aquí -->
+                                <img src="https://i.imgur.com/0MbrTTX.png" alt="Haz clic para personalizar tu avatar"
+                                    id="character-img">
+                            </div>
+                            <div class="avatar-overlay">
+                                <i class="fas fa-edit"></i>
+                                <span>Personalizar</span>
+                            </div>
+                        </div>
+                        <div class="speech-bubble" id="speech-bubble">
+                                <p>¡Recuerda! MUST para futuro indica obligaciones inmediatas y WILL HAVE TO es para obligaciones futuras más distantes.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="level-content">
+                <div id="intro" class="level-section active">
+                    <h2 class="section-title">Bienvenido al Reino del Tiempo Futuro</h2>
+                    <div class="section-content">
+                        <div class="character-dialogue">
+                            <div class="dialogue-bubble">
+                                <p>¡Bienvenido al Reino del Tiempo Futuro! Aquí aprenderás cómo MUST puede expresar obligaciones inmediatas con implicación futura, y cómo usamos WILL HAVE TO para hablar de obligaciones en el futuro más distante.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="intro-summary">
+                            <h3>En este nivel aprenderás:</h3>
+                            <ul>
+                                <li>Cómo usar MUST para obligaciones inmediatas con efecto futuro</li>
+                                <li>Cuándo y cómo usar WILL HAVE TO para obligaciones futuras</li>
+                                <li>La diferencia entre MUST y WILL HAVE TO en contextos futuros</li>
+                                <li>Expresiones y situaciones comunes con obligaciones futuras</li>
+                            </ul>
+                            
+                            <div class="intro-action">
+                                <button class="action-btn" onclick="navigateToSection('theory')">¡Comencemos! <i class="fas fa-arrow-right"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="theory" class="level-section">
+                    <h2 class="section-title">Teoría: MUST en Tiempo Futuro</h2>
+                    <div class="section-content">
+                        <div class="theory-explanation">
+                            <h3>MUST y el futuro</h3>
+                            <p>Aunque MUST normalmente se usa para el presente, también puede implicar obligaciones inmediatas que tendrán efecto en el futuro cercano. Para obligaciones claramente futuras, especialmente a largo plazo, usamos WILL HAVE TO.</p>
+                            
+                            <div class="theory-card">
+                                <div class="card-icon"><i class="fas fa-exclamation-circle"></i></div>
+                                <div class="card-content">
+                                    <h4>Obligación Inmediata con Efecto Futuro (MUST)</h4>
+                                    <p>Para obligaciones decididas en el presente que deben cumplirse pronto.</p>
+                                    <div class="card-example">
+                                        <p>I <strong>must leave</strong> now or I'll miss the train.</p>
+                                        <p>You <strong>must finish</strong> this report by tomorrow morning.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="theory-card">
+                                <div class="card-icon"><i class="fas fa-calendar-alt"></i></div>
+                                <div class="card-content">
+                                    <h4>Obligación Futura (WILL HAVE TO)</h4>
+                                    <p>Para obligaciones que ocurrirán en un punto más distante en el futuro.</p>
+                                    <div class="card-example">
+                                        <p>Next year, students <strong>will have to take</strong> a new exam.</p>
+                                        <p>When you graduate, you <strong>will have to find</strong> a job.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="theory-card">
+                                <div class="card-icon"><i class="fas fa-ban"></i></div>
+                                <div class="card-content">
+                                    <h4>Prohibiciones Futuras</h4>
+                                    <p>Para expresar lo que no estará permitido en el futuro.</p>
+                                    <div class="card-example">
+                                        <p>You <strong>must not be late</strong> for the interview tomorrow.</p>
+                                        <p>Visitors <strong>will not have to register</strong> at the reception next month.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <h3>Estructuras Gramaticales</h3>
+                            <div class="grammar-structure">
+                                <div class="structure-item">
+                                    <h4>Obligación Inmediata (MUST)</h4>
+                                    <p class="formula">Sujeto + must + verbo (forma base) + complemento</p>
+                                </div>
+                                
+                                <div class="structure-item">
+                                    <h4>Obligación Futura (WILL HAVE TO)</h4>
+                                    <p class="formula">Sujeto + will + have to + verbo (forma base) + complemento</p>
+                                </div>
+                                
+                                <div class="structure-item">
+                                    <h4>Prohibición Futura (MUST NOT)</h4>
+                                    <p class="formula">Sujeto + must not (mustn't) + verbo (forma base) + complemento</p>
+                                </div>
+                                
+                                <div class="structure-item">
+                                    <h4>Ausencia de Obligación Futura (WON'T HAVE TO)</h4>
+                                    <p class="formula">Sujeto + will not (won't) + have to + verbo (forma base) + complemento</p>
+                                </div>
+                            </div>
+                            
+                            <div class="theory-note">
+                                <h4><i class="fas fa-info-circle"></i> Importante</h4>
+                                <p>La elección entre MUST y WILL HAVE TO en contextos futuros depende principalmente de la inmediatez y la distancia temporal de la obligación, no de su importancia.</p>
+                            </div>
+                            
+                            <div class="section-navigation">
+                                <button class="nav-btn" onclick="navigateToSection('intro')"><i class="fas fa-arrow-left"></i> Anterior</button>
+                                <button class="nav-btn" onclick="navigateToSection('examples')">Siguiente <i class="fas fa-arrow-right"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="examples" class="level-section">
+                    <h2 class="section-title">Ejemplos en Contexto</h2>
+                    <div class="section-content">
+                        <div class="examples-container">
+                            <div class="example-scenario">
+                                <h3>Escenario 1: Planes de Viaje</h3>
+                                <div class="scenario-illustration travel-bg">
+                                    <div class="scenario-bubble person1">
+                                        <p>We <strong>must book</strong> the tickets today or the prices will increase.</p>
+                                    </div>
+                                    <div class="scenario-bubble person2">
+                                        <p>And we <strong>will have to apply</strong> for visas next month before our trip.</p>
+                                    </div>
+                                    <div class="scenario-bubble person1">
+                                        <p>You <strong>must not forget</strong> to pack your passport on the day of the trip.</p>
+                                    </div>
+                                </div>
+                                <div class="scenario-explanation">
+                                    <p>En este escenario, "must book" expresa una obligación inmediata, "will have to apply" una obligación futura, y "must not forget" una prohibición para un momento futuro.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="example-scenario">
+                                <h3>Escenario 2: Cambios en el Trabajo</h3>
+                                <div class="scenario-illustration office-bg">
+                                    <div class="scenario-bubble boss">
+                                        <p>Everyone <strong>must submit</strong> their reports by the end of today.</p>
+                                    </div>
+                                    <div class="scenario-bubble employee1">
+                                        <p>And <strong>will we have to</strong> use the new software starting next week?</p>
+                                    </div>
+                                    <div class="scenario-bubble boss">
+                                        <p>Yes, and you <strong>will have to attend</strong> training sessions next month.</p>
+                                    </div>
+                                </div>
+                                <div class="scenario-explanation">
+                                    <p>El jefe usa "must submit" para una obligación inmediata, mientras que "will have to use" y "will have to attend" se refieren a obligaciones en el futuro.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="example-scenario">
+                                <h3>Escenario 3: Nuevas Reglas Escolares</h3>
+                                <div class="scenario-illustration school-bg">
+                                    <div class="scenario-bubble teacher">
+                                        <p>Students <strong>must turn in</strong> their assignments by tomorrow.</p>
+                                    </div>
+                                    <div class="scenario-bubble student">
+                                        <p>I heard that next semester we <strong>will have to wear</strong> new uniforms.</p>
+                                    </div>
+                                    <div class="scenario-bubble teacher">
+                                        <p>That's right, but you <strong>won't have to buy</strong> them yourselves. The school will provide them.</p>
+                                    </div>
+                                </div>
+                                <div class="scenario-explanation">
+                                    <p>La profesora usa "must turn in" para una obligación inmediata, mientras que "will have to wear" y "won't have to buy" se refieren a obligaciones y ausencia de obligaciones futuras.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="section-navigation">
+                                <button class="nav-btn" onclick="navigateToSection('theory')"><i class="fas fa-arrow-left"></i> Anterior</button>
+                                <button class="nav-btn" onclick="navigateToSection('practice')">Siguiente <i class="fas fa-arrow-right"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="practice" class="level-section">
+                    <h2 class="section-title">Práctica Interactiva</h2>
+                    <div class="section-content">
+                        <div class="practice-container">
+                            <div class="practice-intro">
+                                <p>Ahora es tu turno de practicar. Completa los siguientes ejercicios para reforzar tu conocimiento sobre MUST y WILL HAVE TO en contextos futuros.</p>
+                            </div>
+                            
+                            <div class="exercise-set">
+                                <h3>Ejercicio 1: Completar las Oraciones</h3>
+                                <p>Selecciona la opción correcta para completar cada oración:</p>
+                                
+                                <div class="exercise" data-num="1">
+                                    <p class="question-text">You __________ finish this assignment today or you'll get a zero.</p>
+                                    <div class="options">
+                                        <button class="option" data-correct="true">must</button>
+                                        <button class="option">will have to</button>
+                                        <button class="option">had to</button>
+                                    </div>
+                                    <div class="feedback"></div>
+                                </div>
+                                
+                                <div class="exercise" data-num="2">
+                                    <p class="question-text">When you move to the new city next year, you __________ find a new school for your children.</p>
+                                    <div class="options">
+                                        <button class="option">must</button>
+                                        <button class="option" data-correct="true">will have to</button>
+                                        <button class="option">have must</button>
+                                    </div>
+                                    <div class="feedback"></div>
+                                </div>
+                                
+                                <div class="exercise" data-num="3">
+                                    <p class="question-text">You __________ be late for the interview tomorrow.</p>
+                                    <div class="options">
+                                        <button class="option" data-correct="true">must not</button>
+                                        <button class="option">will have not to</button>
+                                        <button class="option">won't must</button>
+                                    </div>
+                                    <div class="feedback"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="exercise-set">
+                                <h3>Ejercicio 2: Transformar Oraciones</h3>
+                                <p>Transforma las siguientes oraciones según se indica:</p>
+                                
+                                <div class="transform-exercise" data-num="4">
+                                    <p class="original">You will have to wake up early tomorrow. (Hacer negativa)</p>
+                                    <div class="answer-input">
+                                        <input type="text" class="transform-input" data-answer="You will not have to wake up early tomorrow,You won't have to wake up early tomorrow">
+                                        <button class="check-btn">Comprobar</button>
+                                    </div>
+                                    <div class="feedback"></div>
+                                </div>
+                                
+                                <div class="transform-exercise" data-num="5">
+                                    <p class="original">We must submit the application today. (Cambiar a obligación futura)</p>
+                                    <div class="answer-input">
+                                        <input type="text" class="transform-input" data-answer="We will have to submit the application next week,We will have to submit the application tomorrow,We will have to submit the application later">
+                                        <button class="check-btn">Comprobar</button>
+                                    </div>
+                                    <div class="feedback"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="section-navigation">
+                                <button class="nav-btn" onclick="navigateToSection('examples')"><i class="fas fa-arrow-left"></i> Anterior</button>
+                                <button class="nav-btn" onclick="navigateToSection('challenge')">Siguiente <i class="fas fa-arrow-right"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="challenge" class="level-section">
+                    <h2 class="section-title">Desafío Final</h2>
+                    <div class="section-content">
+                        <div class="challenge-container">
+                            <div class="challenge-intro">
+                                <div class="character-dialogue">
+                                    <div class="dialogue-bubble">
+                                        <p>¡Ha llegado el momento del Desafío Final! Demuestra tu dominio de MUST y WILL HAVE TO en contextos futuros completando este quiz. ¡Necesitas al menos 7 respuestas correctas para superar el nivel!</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="challenge-quiz">
+                                <div class="quiz-progress">
+                                    <div class="progress-bar">
+                                        <div class="progress" id="quiz-progress-bar" style="width: 0%"></div>
+                                    </div>
+                                    <p class="progress-text"><span id="current-question">0</span>/<span id="total-questions">10</span></p>
+                                </div>
+                                
+                                <div id="quiz-container">
+                                    <!-- Las preguntas se cargarán dinámicamente mediante JavaScript -->
+                                </div>
+                                
+                                <div class="quiz-navigation">
+                                    <button id="prev-question" class="quiz-nav-btn" disabled><i class="fas fa-arrow-left"></i> Anterior</button>
+                                    <button id="next-question" class="quiz-nav-btn">Siguiente <i class="fas fa-arrow-right"></i></button>
+                                </div>
+                            </div>
+                            
+                            <div id="results-container" class="results-container" style="display: none;">
+                                <h3 class="results-title">Resultados del Desafío</h3>
+                                <div class="results-score">
+                                    <div class="score-circle">
+                                        <span id="final-score">0/10</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="results-message" id="results-message">
+                                    <!-- El mensaje se cargará dinámicamente según la puntuación -->
+                                </div>
+                                
+                                <div class="results-stars" id="results-stars">
+                                    <!-- Las estrellas se mostrarán según la puntuación -->
+                                </div>
+                                
+                                <div class="results-actions">
+                                    <button id="retry-quiz" class="action-btn">Intentar de nuevo</button>
+                                    <button id="complete-level" class="action-btn primary">Completar Nivel</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="game-controls">
+            <button id="back-to-map" class="control-btn" onclick="goToMap()"><i class="fas fa-map-marked-alt"></i> Volver al Mapa</button>
+            <button id="check-progress" class="control-btn primary" onclick="checkProgress()"><i class="fas fa-trophy"></i> Ver Progreso</button>
+        </div>
+    </div>
+
+    <script src="../scripts/levels.js"></script>
+    <script src="../scripts/future.js"></script>
+    <script src="../scripts/main.js"></script>
+</body>
+</html>

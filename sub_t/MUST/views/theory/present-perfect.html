@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MUST - Presente Perfecto | MUST QUEST</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Poppins:wght@400;700&family=Press+Start+2P&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+    
+    <style>
+        .theory-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            min-height: 100vh;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .theory-header {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: rgba(255,255,255,0.8);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .theory-title {
+            font-family: 'Crimson Text', serif;
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .theory-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.8;
+            color: #34495e;
+        }
+
+        .content-section {
+            background: rgba(255,255,255,0.95);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .content-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .section-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #e056fd;
+            padding-bottom: 10px;
+        }
+
+        .formula-box {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-align: center;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(102,126,234,0.4);
+        }
+
+        .examples-grid {
+            display: grid;
+            Grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .example-box {
+            background: linear-gradient(135deg, #ff9a9e, #fecfef);
+            color: #2c3e50;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid #667eea;
+        }
+
+        .example-box h4 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .example-sentence {
+            font-size: 1rem;
+            margin: 8px 0;
+            font-style: italic;
+            font-weight: 600;
+        }
+
+        .translation {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: 5px;
+        }
+
+        .usage-note {
+            background: linear-gradient(135deg, #ff6b6b, #feca57);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid #e17055;
+            font-style: italic;
+        }
+
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1rem;
+            box-shadow: 0 5px 15px rgba(102,126,234,0.4);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(102,126,234,0.6);
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .comparison-table th {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+
+        .comparison-table td {
+            padding: 15px;
+            border-bottom: 1px solid #ecf0f1;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .time-indicator {
+            background: linear-gradient(45deg, #feca57, #ff9ff3);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 20px;
+            display: inline-block;
+            font-weight: bold;
+            margin: 10px 0;
+            box-shadow: 0 3px 10px rgba(254,202,87,0.4);
+        }
+
+        .perfect-concept {
+            background: linear-gradient(135deg, #a8edea, #fed6e3);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            border: 2px solid #667eea;
+        }
+
+        .perfect-concept h3 {
+            color: #2c3e50;
+            margin-top: 0;
+        }
+
+        @media (max-width: 768px) {
+            .examples-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .theory-title {
+                font-size: 2rem;
+            }
+            
+            .theory-container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sonidos del juego -->
+    <audio id="clickSound" src="https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3" preload="auto"></audio>
+    
+    <!-- Estrellas de fondo -->
+    <div class="stars-container">
+        <div id="stars"></div>
+        <div id="stars2"></div>
+        <div id="stars3"></div>
+    </div>
+
+    <button class="back-button" onclick="goBack()">
+        <i class="fas fa-arrow-left"></i> Volver
+    </button>
+
+    <div class="theory-container animate__animated animate__fadeIn">
+        <div class="theory-header">
+            <h1 class="theory-title">MUST en Presente Perfecto</h1>
+            <p class="theory-subtitle">Explora las deducciones sobre el pasado con conexión al presente</p>
+        </div>
+
+        <!-- Concepto del Presente Perfecto -->
+        <div class="content-section">
+            <h2 class="section-title"><i class="fas fa-puzzle-piece"></i> ¿Qué es el Presente Perfecto?</h2>
+            <div class="perfect-concept">
+                <h3>Concepto Clave</h3>
+                <p>El presente perfecto conecta el <strong>pasado</strong> con el <strong>presente</strong>. Hablamos de acciones que ocurrieron en el pasado pero que tienen relevancia o efecto en el momento actual.</p>
+                <div class="time-indicator">
+                    <i class="fas fa-clock"></i> Pasado ➜ Presente (Conexión)
+                </div>
+            </div>
+        </div>
+
+        <!-- Estructura Básica -->
+        <div class="content-section">
+            <h2 class="section-title"><i class="fas fa-cogs"></i> Estructura Básica</h2>
+            <div class="formula-box">
+                Sujeto + MUST + HAVE + Participio Pasado + Complemento
+            </div>
+            <p><strong>Importante:</strong> Con MUST + HAVE + Participio Pasado, principalmente hacemos <strong>deducciones lógicas</strong> sobre algo que probablemente ocurrió en el pasado y tiene efecto en el presente.</p>
+            
+            <div class="usage-note">
+                <strong>Nota clave:</strong> MUST + HAVE + PP se usa principalmente para deducciones, NO para obligaciones pasadas (para eso usamos "had to").
+            </div>
+        </div>
+
+        <!-- Deducción Lógica Positiva -->
+        <div class="content-section">
+            <h2 class="section-title"><i class="fas fa-brain"></i> Forma Positiva - Deducción Lógica</h2>
+            <p>Usamos MUST + HAVE + Participio Pasado cuando estamos casi seguros de que algo ocurrió en el pasado, basándonos en evidencia presente.</p>
+            
+            <div class="examples-grid">
+                <div class="example-box">
+                    <h4>Deducciones Basadas en Evidencia</h4>
+                    <div class="example-sentence">She looks tired. She must have worked all night.</div>
+                    <div class="translation">Se ve cansada. Debe haber trabajado toda la noche.</div>
+                    
+                    <div class="example-sentence">The grass is wet. It must have rained.</div>
+                    <div class="translation">El césped está mojado. Debe haber llovido.</div>
+                </div>
+                
+                <div class="example-box">
+                    <h4>Conclusiones Lógicas</h4>
+                    <div class="example-sentence">He's not here. He must have left early.</div>
+                    <div class="translation">No está aquí. Debe haberse ido temprano.</div>
+                    
+                    <div class="example-sentence">The door is open. Someone must have forgotten to lock it.</div>
+                    <div class="translation">La puerta está abierta. Alguien debe haber olvidado cerrarla con llave.</div>
+                </div>
+            </div>
+
+            <div class="usage-note">
+                <strong>Estructura mental:</strong> Veo algo en el presente → Deduzco qué pasó en el pasado para causar esto.
+            </div>
+        </div>
+
+        <!-- Forma Negativa -->
+        <div class="content-section">
+            <h2 class="section-title"><i class="fas fa-times-circle"></i> Forma Negativa - Deducción Negativa</h2>
+            <div class="formula-box">
+                Sujeto + MUST NOT + HAVE + Participio Pasado + Complemento
+            </div>
+            <p>MUST NOT + HAVE + PP expresa una deducción de que algo probablemente NO ocurrió en el pasado.</p>
+            
+            <div class="examples-grid">
+                <div class="example-box">
+                    <h4>Deducciones Negativas</h4>
+                    <div class="example-sentence">He still looks confused. He must not have understood the instructions.</div>
+                    <div class="translation">Todavía se ve confundido. No debe haber entendido las instrucciones.</div>
+                    
+                    <div class="example-sentence">The plants are dying. You must not have watered them.</div>
+                    <div class="translation">Las plantas se están muriendo. No debes haberlas regado.</div>
+                </div>
+                
+                <div class="example-box">
+                    <h4>Conclusiones sobre lo que NO pasó</h4>
+                    <div class="example-sentence">She's still waiting. The bus must not have arrived yet.</div>
+                    <div class="translation">Todavía está esperando. El autobús no debe haber llegado aún.</div>
+                    
+                    <div class="example-sentence">The house is dark. They must not have come home.</div>
+                    <div class="translation">La casa está oscura. No deben haber llegado a casa.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Forma Interrogativa -->
+        <div class="content-section">
+            <h2 class="section-title"><i class="fas fa-question-circle"></i> Forma Interrogativa</h2>
+            <div class="formula-box">
+                MUST + Sujeto + HAVE + Participio Pasado + Complemento + ?
+            </div>
+            <p>Las preguntas con MUST + HAVE + PP son poco comunes, pero se usan para preguntar sobre deducciones del pasado.</p>
+            
+            <div class="examples-grid">
+                <div class="example-box">
+                    <h4>Preguntas de Deducción</h4>
+                    <div class="example-sentence">Must she have left already?</div>
+                    <div class="translation">¿Debe haberse ido ya?</div>
+                    
+                    <div class="example-sentence">Must they have finished the project?</div>
+                    <div class="translation">¿Deben haber terminado el proyecto?</div>
+                </div>
+                
+                <div class="example-box">
+                    <h4>Preguntas Reflexivas</h4>
+                    <div class="example-sentence">Must I have made a mistake?</div>
+                    <div class="translation">¿Debo haber cometido un error?</div>
+                    
+                    <div class="example-sentence">Must we have missed something important?</div>
+                    <div class="translation">¿Debemos haber perdido algo importante?</div>
+                </div>
+            </div>
+
+            <div class="usage-note">
+                <strong>Más natural:</strong> En lugar de "Must she have...?", es más común usar "She must have..., mustn't she?" (question tag).
+            </div>
+        </div>
+
+        <!-- Participios Pasados Comunes -->
+        <div class="content-section">
+            <h2 class="section-title"><i class="fas fa-list"></i> Participios Pasados Comunes</h2>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Verbo</th>
+                        <th>Participio Pasado</th>
+                        <th>Ejemplo con MUST HAVE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>go</strong></td>
+                        <td>gone</td>
+                        <td>He must have <strong>gone</strong> home.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>do</strong></td>
+                        <td>done</td>
+                        <td>She must have <strong>done</strong> her homework.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>see</strong></td>
+                        <td>seen</td>
+                        <td>They must have <strong>seen</strong> the movie.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>eat</strong></td>
+                        <td>eaten</td>
+                        <td>He must have <strong>eaten</strong> already.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>work</strong></td>
+                        <td>worked</td>
+                        <td>She must have <strong>worked</strong> late.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>study</strong></td>
+                        <td>studied</td>
+                        <td>He must have <strong>studied</strong> hard.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Situaciones Específicas -->
+        <div class="content-section">
+            <h2 class="section-title"><i class="fas fa-lightbulb"></i> Situaciones Específicas de Uso</h2>
+            
+            <div class="examples-grid">
+                <div class="example-box">
+                    <h4>Deduciendo sobre Experiencias</h4>
+                    <div class="example-sentence">You speak English so well. You must have lived abroad.</div>
+                    <div class="translation">Hablas inglés muy bien. Debes haber vivido en el extranjero.</div>
+                    
+                    <div class="example-sentence">She knows all the answers. She must have studied this before.</div>
+                    <div class="translation">Sabe todas las respuestas. Debe haber estudiado esto antes.</div>
+                </div>
+                
+                <div class="example-box">
+                    <h4>Deduciendo sobre Acciones Recientes</h4>
+                    <div class="example-sentence">The cookies are gone. The children must have eaten them.</div>
+                    <div class="translation">Las galletas se acabaron. Los niños deben habérselas comido.</div>
+                    
+                    <div class="example-sentence">I can't find my keys. I must have lost them.</div>
+                    <div class="translation">No encuentro mis llaves. Debo haberlas perdido.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Diferencias Importantes -->
+        <div class="content-section">
+            <h2 class="section-title"><i class="fas fa-balance-scale"></i> Diferencias Importantes</h2>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Estructura</th>
+                        <th>Uso</th>
+                        <th>Ejemplo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>MUST + infinitivo</strong></td>
+                        <td>Obligación presente</td>
+                        <td>You must study now.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>MUST HAVE + PP</strong></td>
+                        <td>Deducción sobre el pasado</td>
+                        <td>You must have studied hard.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>HAD TO + infinitivo</strong></td>
+                        <td>Obligación pasada</td>
+                        <td>I had to study yesterday.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>SHOULD HAVE + PP</strong></td>
+                        <td>Obligación no cumplida</td>
+                        <td>You should have studied.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        // Función para volver atrás
+        function goBack() {
+            document.getElementById('clickSound').play();
+            
+            // Efecto de fade out
+            document.body.style.transition = 'opacity 0.5s ease';
+            document.body.style.opacity = '0';
+            
+            setTimeout(() => {
+                window.location.href = '../theory.html';
+            }, 500);
+        }
+
+        // Efectos de animación al cargar
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach((section, index) => {
+                section.style.animationDelay = `${index * 0.2}s`;
+                section.classList.add('animate__animated', 'animate__fadeInUp');
+            });
+        });
+
+        // Efecto de partículas
+        function createParticles() {
+            const colors = ['#667eea', '#764ba2', '#ff9a9e', '#fecfef'];
+            
+            for (let i = 0; i < 8; i++) {
+                const particle = document.createElement('div');
+                particle.style.cssText = `
+                    position: fixed;
+                    width: 5px;
+                    height: 5px;
+                    background: ${colors[Math.floor(Math.random() * colors.length)]};
+                    border-radius: 50%;
+                    pointer-events: none;
+                    z-index: 1000;
+                    opacity: 0.6;
+                `;
+                
+                particle.style.left = Math.random() * window.innerWidth + 'px';
+                particle.style.top = Math.random() * window.innerHeight + 'px';
+                
+                document.body.appendChild(particle);
+                
+                // Animar la partícula
+                particle.animate([
+                    { transform: 'translateY(0) scale(1)', opacity: 0.6 },
+                    { transform: 'translateY(-120px) scale(0)', opacity: 0 }
+                ], {
+                    duration: 4000 + Math.random() * 2000,
+                    easing: 'ease-out'
+                }).onfinish = () => particle.remove();
+            }
+        }
+
+        // Crear partículas cada 4 segundos
+        setInterval(createParticles, 4000);
+    </script>
+</body>
+</html>

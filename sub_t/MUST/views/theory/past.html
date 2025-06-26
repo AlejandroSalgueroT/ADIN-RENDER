@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MUST - Pasado | MUST QUEST</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Poppins:wght@400;700&family=Press+Start+2P&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+    
+    <style>
+        .theory-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #8360c3 0%, #2ebf91 100%);
+            min-height: 100vh;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .theory-header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .theory-title {
+            font-family: 'Crimson Text', serif;
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .theory-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .content-section {
+            background: rgba(255,255,255,0.95);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .content-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .section-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #8360c3;
+            padding-bottom: 10px;
+        }
+
+        .formula-box {
+            background: linear-gradient(135deg, #fd79a8, #fdcb6e);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-align: center;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(253,121,168,0.4);
+        }
+
+        .examples-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .example-box {
+            background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid #fdcb6e;
+        }
+
+        .example-box h4 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: #fdcb6e;
+        }
+
+        .example-sentence {
+            font-size: 1rem;
+            margin: 8px 0;
+            font-style: italic;
+        }
+
+        .translation {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: 5px;
+        }
+
+        .usage-note {
+            background: linear-gradient(135deg, #fd79a8, #fdcb6e);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid #e17055;
+            font-style: italic;
+        }
+
+        .important-note {
+            background: linear-gradient(135deg, #ff7675, #fd79a8);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            border: 2px solid #d63031;
+            text-align: center;
+        }
+
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: linear-gradient(45deg, #8360c3, #2ebf91);
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1rem;
+            box-shadow: 0 5px 15px rgba(131,96,195,0.4);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(131,96,195,0.6);
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .comparison-table th {
+            background: linear-gradient(135deg, #8360c3, #2ebf91);
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+
+        .comparison-table td {
+            padding: 15px;
+            border-bottom: 1px solid #ecf0f1;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .time-indicator {
+            background: linear-gradient(45deg, #fdcb6e, #fd79a8);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 20px;
+            display: inline-block;
+            font-weight: bold;
+            margin: 10px 0;
+            box-shadow: 0 3px 10px rgba(253,203,110,0.4);
+        }
+
+        .past-concept {
+            background: linear-gradient(135deg, #ddd6fe, #fce7f3);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            border: 2px solid #8360c3;
+        }
+
+        .past-concept h3 {
+            color: #2c3e50;
+            margin-top: 0;
+        }
+
+        @media (max-width: 768px) {
+            .examples-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .theory-title {
+                font-size: 2rem;
+            }
+            
+            .theory-container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sonidos del juego -->
+    <audio id="clickSound" src="https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3" preload="auto"></audio>
+    
+    <!-- Estrellas de fondo -->
+    <div class="stars-container">
+        <div id="stars"></div>
+        <div id="stars2"></div>
+        <div id="stars3"></div>
+    </div>
+
+    <button class="back-button" onclick="goBack()">
+        <i class="fas fa-arrow-left"></i> Volver
+    </button>
+
+    <div class="theory-container animate__animated animate__fadeIn">
+        <div class="theory-header">
+            <h1 class="theory-title">MUST en el Pasado</h1>
+            <p class="theory-subtitle">Descubre cómo expresar obligaciones y deducciones en tiempo pasado</p>
+        </div>
+
+        <!-- Concepto Principal -->
+        <div class="content-section">
+            <h2 class="section-title"><i class="fas fa-history"></i> Concepto Importante</h2>
+            <div class="important-note">
+                <h3><i class="fas fa-exclamation-triangle"></i> ¡MUST no tiene forma pasada!</h3>
+                <p>MUST es un verbo modal que NO se conjuga en pasado. Para expresar obligaciones y deducciones en pasado, usamos otras estructuras.</p>
+            </div>
+            
+            <div class="past-concept">
+                <h3>¿Cómo expresamos el pasado entonces?</h3>
+                <ul>
+                    <li><strong>Para obligaciones pasadas:</strong> HAD TO</li>
+                    <li><strong>Para deducciones sobre el pasado:</strong> MUST HAVE + Participio Pasado</li>
+                    <li><strong>Para prohibiciones pasadas:</strong> COULDN'T / WASN'T/WEREN'T ALLOWED TO</li>
+                </ul>
+                <div class="time-indicator">
+                    <i class="fas fa-clock"></i> Pasado = Estructuras alternativas
+                </div>
+            </div>
+        </div>
+
+        <!-- HAD TO - Obligación Pasada -->
+        <div class="content-section">
+            <h2 class="section-title"><i class="fas fa-plus-circle"></i> HAD TO - Obligación Pasada (Positiva)</h2>
+            <div class="formula-box">
+                Sujeto + HAD TO + Verbo en infinitivo + Complemento
+            </div>
+            <p>Usamos <strong>HAD TO</strong> para expresar obligaciones que existieron en el pasado (equivale a MUST en pasado).</p>
+            
+            <div class="examples-grid">
+                <div class="example-box">
+                    <h4>Obligaciones Personales del Pasado</h4>
+                    <div class="example-sentence">I had to study all night for the exam.</div>
+                    <div class="translation">Tuve que estudiar toda la noche para el examen.</div>
+                    
+                    <div class="example-sentence">She had to work overtime yesterday.</div>
+                    <div class="translation">Ella tuvo que trabajar horas extra ayer.</div>
+                </div>
+                
+                <div class="example-box">
+                    <h4>Reglas y Normas del Pasado</h4>
+                    <div class="example-sentence">Students had to wear uniforms in my old school.</div>
+                    <div class="translation">Los estudiantes tenían que usar uniformes en mi antigua escuela.</div>
+                    
+                    <div class="example-sentence">We had to follow strict rules during the lockdown.</div>
+                    <div class="translation">Tuvimos que seguir reglas estrictas durante el confinamiento.</div>
+                </div>
+            </div>
+
+            <div class="usage-note">
+                <strong>Equivalencia:</strong> "I had to study" = "I was obliged to study" = "It was necessary for me to study"
+            </div>
+        </div>
+
+        <!-- Forma Negativa - Pasado -->
+        <div class="content-section">
+            <h2 class="section-title"><i class="fas fa-times-circle"></i> Forma Negativa - No era necesario</h2>
+            <div class="formula-box">
+                Sujeto + DIDN'T HAVE TO + Verbo en infinitivo + Complemento
+            </div>
+            <p><strong>DIDN'T HAVE TO</strong> significa que no era necesario hacer algo (no había obligación).</p>
+            
+            <div class="examples-grid">
+                <div class="example-box">
+                    <h4>No era Necesario</h4>
+                    <div class="example-sentence">I didn't have to work yesterday.</div>
+                    <div class="translation">No tuve que trabajar ayer. (No era necesario)</div>
+                    
+                    <div class="example-sentence">She didn't have to cook dinner.</div>
+                    <div class="translation">Ella no tuvo que cocinar la cena.</div>
+                </div>
+                
+                <div class="example-box">
+                    <h4>Sin Obligación</h4>
+                    <div class="example-sentence">We didn't have to attend the meeting.</div>
+                    <div class="translation">No tuvimos que asistir a la reunión.</div>
+                    
+                    <div class="example-sentence">They didn't have to pay the fee.</div>
+                    <div class="translation">Ellos no tuvieron que pagar la tarifa.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Prohibición en Pasado -->
+        <div class="content-section">
+            <h2 class="section-title"><i class="fas fa-ban"></i> Prohibición en Pasado</h2>
+            <div class="formula-box">
+                Sujeto + COULDN'T / WASN'T-WEREN'T ALLOWED TO + Verbo
+            </div>
+            <p>Para expresar prohibiciones en pasado (equivalente a MUST NOT), usamos <strong>COULDN'T</strong> o <strong>WASN'T/WEREN'T ALLOWED TO</strong>.</p>
+            
+            <div class="examples-grid">
+                <div class="example-box">
+                    <h4>Prohibiciones con COULDN'T</h4>
+                    <div class="example-sentence">We couldn't smoke in the building.</div>
+                    <div class="translation">No podíamos fumar en el edificio.</div>
+                    
+                    <div class="example-sentence">Children couldn't play in that area.</div>
+                    <div class="translation">Los niños no podían jugar en esa área.</div>
+                </div>
+                
+                <div class="example-box">
+                    <h4>Prohibiciones con WASN'T/WEREN'T ALLOWED TO</h4>
+                    <div class="example-sentence">I wasn't allowed to use my phone.</div>
+                    <div class="translation">No me permitían usar mi teléfono.</div>
+                    
+                    <div class="example-sentence">They weren't allowed to leave early.</div>
+                    <div class="translation">No les permitían irse temprano.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Forma Interrogativa -->
+        <div class="content-section">
+            <h2 class="section-title"><i class="fas fa-question-circle"></i> Forma Interrogativa en Pasado</h2>
+            <div class="formula-box">
+                DID + Sujeto + HAVE TO + Verbo en infinitivo + ?
+            </div>
+            <p>Para hacer preguntas sobre obligaciones pasadas, usamos <strong>DID + HAVE TO</strong>.</p>
+            
+            <div class="examples-grid">
+                <div class="example-box">
+                    <h4>Preguntas sobre Obligaciones Pasadas</h4>
+                    <div class="example-sentence">Did you have to work late yesterday?</div>
+                    <div class="translation">¿Tuviste que trabajar tarde ayer?</div>
+                    
+                    <div class="example-sentence">Did she have to take the exam?</div>
+                    <div class="translation">¿Tuvo que tomar el examen?</div>
+                </div>
+                
+                <div class="example-box">
+                    <h4>Preguntas sobre Permisos Pasados</h4>
+                    <div class="example-sentence">Were you allowed to leave early?</div>
+                    <div class="translation">¿Te permitieron irte temprano?</div>
+                    
+                    <div class="example-sentence">Could they use their phones?</div>
+                    <div class="translation">¿Podían usar sus teléfonos?</div>
+                </div>
+            </div>
+
+            <div class="usage-note">
+                <strong>Respuestas cortas:</strong> "Yes, I did" / "No, I didn't" para preguntas con "Did you have to..."
+            </div>
+        </div>
+
+        <!-- MUST HAVE - Deducción sobre el Pasado -->
+        <div class="content-section">
+            <h2 class="section-title"><i class="fas fa-brain"></i> MUST HAVE - Deducción sobre el Pasado</h2>
+            <div class="formula-box">
+                Sujeto + MUST HAVE + Participio Pasado + Complemento
+            </div>
+            <p>Para deducciones sobre acciones pasadas (basadas en evidencia presente), SÍ usamos MUST HAVE.</p>
+            
+            <div class="examples-grid">
+                <div class="example-box">
+                    <h4>Deducciones Positivas</h4>
+                    <div class="example-sentence">She looks tired. She must have worked all night.</div>
+                    <div class="translation">Se ve cansada. Debe haber trabajado toda la noche.</div>
+                    
+                    <div class="example-sentence">The ground is wet. It must have rained.</div>
+                    <div class="translation">El suelo está mojado. Debe haber llovido.</div>
+                </div>
+                
+                <div class="example-box">
+                    <h4>Deducciones Negativas</h4>
+                    <div class="example-sentence">He's still here. He must not have left yet.</div>
+                    <div class="translation">Todavía está aquí. No debe haberse ido aún.</div>
+                    
+                    <div class="example-sentence">The plants died. You must not have watered them.</div>
+                    <div class="translation">Las plantas murieron. No debes haberlas regado.</div>
+                </div>
+            </div>
+
+            <div class="usage-note">
+                <strong>Nota:</strong> Esta estructura se explica en detalle en la sección de Presente Perfecto.
+            </div>
+        </div>
+
+        <!-- Tabla Comparativa -->
+        <div class="content-section">
+            <h2 class="section-title"><i class="fas fa-balance-scale"></i> Comparación: Presente vs Pasado</h2>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Función</th>
+                        <th>Presente</th>
+                        <th>Pasado</th>
+                        <th>Ejemplo Pasado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Obligación</strong></td>
+                        <td>must do</td>
+                        <td>had to do</td>
+                        <td>I had to study yesterday.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Prohibición</strong></td>
+                        <td>must not do</td>
+                        <td>couldn't do</td>
+                        <td>We couldn't smoke there.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Sin obligación</strong></td>
+                        <td>don't have to</td>
+                        <td>didn't have to</td>
+                        <td>She didn't have to come.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Deducción</strong></td>
+                        <td>must be</td>
+                        <td>must have been</td>
+                        <td>It must have been difficult.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Situaciones Específicas -->
+        <div class="content-section">
+            <h2 class="section-title"><i class="fas fa-lightbulb"></i> Situaciones Específicas</h2>
+            
+            <div class="examples-grid">
+                <div class="example-box">
+                    <h4>En la Escuela (Pasado)</h4>
+                    <div class="example-sentence">We had to arrive at 8 AM every day.</div>
+                    <div class="translation">Teníamos que llegar a las 8 AM todos los días.</div>
+                    
+                    <div class="example-sentence">Students couldn't leave during class.</div>
+                    <div class="translation">Los estudiantes no podían salir durante la clase.</div>
+                </div>
+                
+                <div class="example-box">
+                    <h4>En el Trabajo (Pasado)</h4>
+                    <div class="example-sentence">I had to finish the report by Friday.</div>
+                    <div class="translation">Tuve que terminar el informe para el viernes.</div>
+                    
+                    <div class="example-sentence">We weren't allowed to use personal computers.</div>
+                    <div class="translation">No nos permitían usar computadoras personales.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Función para volver atrás
+        function goBack() {
+            document.getElementById('clickSound').play();
+            
+            // Efecto de fade out
+            document.body.style.transition = 'opacity 0.5s ease';
+            document.body.style.opacity = '0';
+            
+            setTimeout(() => {
+                window.location.href = '../theory.html';
+            }, 500);
+        }
+
+        // Efectos de animación al cargar
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach((section, index) => {
+                section.style.animationDelay = `${index * 0.2}s`;
+                section.classList.add('animate__animated', 'animate__fadeInUp');
+            });
+        });
+
+        // Efecto de partículas
+        function createParticles() {
+            const colors = ['#8360c3', '#2ebf91', '#fd79a8', '#fdcb6e'];
+            
+            for (let i = 0; i < 12; i++) {
+                const particle = document.createElement('div');
+                particle.style.cssText = `
+                    position: fixed;
+                    width: 4px;
+                    height: 4px;
+                    background: ${colors[Math.floor(Math.random() * colors.length)]};
+                    border-radius: 50%;
+                    pointer-events: none;
+                    z-index: 1000;
+                    opacity: 0.7;
+                `;
+                
+                particle.style.left = Math.random() * window.innerWidth + 'px';
+                particle.style.top = Math.random() * window.innerHeight + 'px';
+                
+                document.body.appendChild(particle);
+                
+                // Animar la partícula
+                particle.animate([
+                    { transform: 'translateY(0) scale(1)', opacity: 0.7 },
+                    { transform: 'translateY(-100px) scale(0)', opacity: 0 }
+                ], {
+                    duration: 3000 + Math.random() * 2000,
+                    easing: 'ease-out'
+                }).onfinish = () => particle.remove();
+            }
+        }
+
+        // Crear partículas cada 3 segundos
+        setInterval(createParticles, 3000);
+    </script>
+</body>
+</html>

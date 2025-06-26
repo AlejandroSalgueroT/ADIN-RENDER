@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MUST QUEST: Introducción</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Poppins:wght@400;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+</head>
+<body>
+    <!-- Sonidos del juego -->
+    <audio id="clickSound" src="https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3" preload="auto"></audio>
+    <audio id="backgroundMusic" src="https://assets.mixkit.co/active_storage/sfx/1993/1993-preview.mp3" loop preload="auto"></audio>
+    
+    <!-- Estrellas de fondo -->
+    <div class="stars-container">
+        <div id="stars"></div>
+        <div id="stars2"></div>
+        <div id="stars3"></div>
+    </div>
+    
+    <div class="intro-container">
+        <div class="intro-content animate__animated animate__fadeIn">
+            <h1 class="intro-title">MUST<span>QUEST</span></h1>
+            <p class="intro-subtitle">Una aventura mágica para dominar MUST en inglés</p>
+            
+            <div class="character-intro">
+                <img src="https://i.imgur.com/0MbrTTX.png" alt="Wizard Musty" class="intro-character animate__animated animate__pulse animate__infinite">
+                <div class="intro-speech-bubble">
+                    <p>¡Saludos, joven aprendiz! Soy el Mago Musty y te guiaré en esta aventura mágica para dominar el poder de MUST en inglés. ¡Prepárate para desafiar tu conocimiento y conquistar nuevos reinos gramaticales!</p>
+                </div>
+            </div>
+            
+            <div class="intro-features">
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fas fa-magic"></i></div>
+                    <div class="feature-text">
+                        <h3>5 Reinos Gramaticales</h3>
+                        <p>Explora el uso de MUST en diferentes tiempos verbales</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fas fa-gamepad"></i></div>
+                    <div class="feature-text">
+                        <h3>Ejercicios Interactivos</h3>
+                        <p>Pon a prueba tus conocimientos con desafíos divertidos</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fas fa-trophy"></i></div>
+                    <div class="feature-text">
+                        <h3>Recompensas y Niveles</h3>
+                        <p>Gana estrellas y sube de nivel mientras aprendes</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="intro-buttons">
+                <button id="start-btn" class="intro-btn primary-btn" onclick="startAdventure()">¡COMENZAR AVENTURA!</button>
+                <button id="sound-toggle" class="intro-btn secondary-btn" onclick="toggleSound()"><i class="fas fa-volume-up"></i></button>
+            </div>
+            
+            <div class="intro-footer">
+                <p>© 2025 MUST QUEST - Creado para aprender inglés de forma divertida</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Funciones específicas de la introducción
+        function startAdventure() {
+            document.getElementById('clickSound').play();
+            setTimeout(() => {
+                window.location.href = '../index.html';
+            }, 500);
+        }
+        
+        function toggleSound() {
+            const soundBtn = document.getElementById('sound-toggle');
+            const backgroundMusic = document.getElementById('backgroundMusic');
+            
+            if (backgroundMusic.paused) {
+                backgroundMusic.play();
+                soundBtn.innerHTML = '<i class="fas fa-volume-up"></i>';
+            } else {
+                backgroundMusic.pause();
+                soundBtn.innerHTML = '<i class="fas fa-volume-mute"></i>';
+            }
+        }
+        
+        // Iniciar la música de fondo con volumen bajo cuando se carga la página
+        window.addEventListener('DOMContentLoaded', () => {
+            const backgroundMusic = document.getElementById('backgroundMusic');
+            backgroundMusic.volume = 0.3;
+            // No reproducimos automáticamente para evitar problemas con políticas de navegador
+        });
+    </script>
+</body>
+</html>

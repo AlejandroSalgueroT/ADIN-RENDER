@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MUST QUEST: Presente Simple</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Poppins:wght@400;700&family=Press+Start+2P&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+</head>
+
+<body>
+    <!-- Sonidos del juego -->
+    <audio id="clickSound" src="https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3"
+        preload="auto"></audio>
+    <audio id="correctSound" src="https://assets.mixkit.co/active_storage/sfx/270/270-preview.mp3"
+        preload="auto"></audio>
+    <audio id="wrongSound" src="https://assets.mixkit.co/active_storage/sfx/131/131-preview.mp3" preload="auto"></audio>
+    <audio id="levelUpSound" src="https://assets.mixkit.co/active_storage/sfx/2020/2020-preview.mp3"
+        preload="auto"></audio>
+    <audio id="backgroundMusic" src="https://assets.mixkit.co/active_storage/sfx/2000/2000-preview.mp3" loop
+        preload="auto"></audio>
+
+    <!-- Estrellas de fondo -->
+    <div class="stars-container">
+        <div id="stars"></div>
+        <div id="stars2"></div>
+        <div id="stars3"></div>
+    </div>
+
+    <div class="game-container">
+        <div class="game-header">
+            <div class="logo-container">
+                <h1 class="game-logo animate__animated animate__bounceIn">MUST<span>QUEST</span></h1>
+                <p class="game-subtitle">Reino del Presente Simple - Nivel 1</p>
+            </div>
+
+            <div class="game-stats">
+                <div class="stats-item">
+                    <div class="stats-icon stars-icon">★</div>
+                    <div class="stats-value" id="stars-count">0</div>
+                </div>
+                <div class="stats-item">
+                    <div class="stats-icon progress-icon"><i class="fas fa-tasks"></i></div>
+                    <div class="stats-value" id="progress-count">0/5</div>
+                </div>
+                <div class="stats-item">
+                    <button id="sound-toggle" class="sound-btn"><i class="fas fa-volume-up"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="level-container">
+            <div class="level-sidebar">
+                <div class="sidebar-section">
+                    <h3>Contenido</h3>
+                    <ul class="sidebar-nav">
+                        <li><a href="#intro" class="active">Introducción</a></li>
+                        <li><a href="#theory">Teoría</a></li>
+                        <li><a href="#examples">Ejemplos</a></li>
+                        <li><a href="#practice">Práctica</a></li>
+                        <li><a href="#challenge">Desafío</a></li>
+                    </ul>
+                </div>
+
+
+                <div class="sidebar-character">
+                    <div class="character-section">
+                        <div id="character-avatar-button"
+                            class="character-avatar-button animate__animated animate__pulse animate__infinite"
+                            onclick="goToAvatarSelection()">
+                            <div id="character-display">
+                                <!-- Avatar se cargará aquí -->
+                                <img src="https://i.imgur.com/0MbrTTX.png" alt="Haz clic para personalizar tu avatar"
+                                    id="character-img">
+                            </div>
+                            <div class="avatar-overlay">
+                                <i class="fas fa-edit"></i>
+                                <span>Personalizar</span>
+                            </div>
+                        </div>
+                        <div class="speech-bubble" id="speech-bubble">
+                            <p>¡Recuerda! MUST en presente simple expresa obligación y necesidad en el presente.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="level-content">
+                <div id="intro" class="level-section active">
+                    <h2 class="section-title">Bienvenido al Reino del Presente Simple</h2>
+                    <div class="section-content">
+                        <div class="character-dialogue">
+
+                            <div class="dialogue-bubble">
+                                <p>¡Bienvenido al Reino del Presente Simple! Aquí aprenderás a usar MUST para expresar
+                                    obligaciones y necesidades en el presente. Sigue mis instrucciones y dominarás este
+                                    poder gramatical.</p>
+                            </div>
+                        </div>
+
+                        <div class="intro-summary">
+                            <h3>En este nivel aprenderás:</h3>
+                            <ul>
+                                <li>Cómo usar MUST para expresar obligación</li>
+                                <li>Cómo usar MUST NOT para expresar prohibición</li>
+                                <li>La estructura básica de MUST en presente simple</li>
+                                <li>Cuándo y cómo usar MUST en situaciones cotidianas</li>
+                            </ul>
+
+                            <div class="intro-action">
+                                <button class="action-btn" onclick="navigateToSection('theory')">¡Comencemos! <i
+                                        class="fas fa-arrow-right"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="theory" class="level-section">
+                    <h2 class="section-title">Teoría: MUST en Presente Simple</h2>
+                    <div class="section-content">
+                        <div class="theory-explanation">
+                            <h3>¿Qué es MUST?</h3>
+                            <p>MUST es un verbo modal que usamos para expresar:</p>
+
+                            <div class="theory-card">
+                                <div class="card-icon"><i class="fas fa-exclamation-circle"></i></div>
+                                <div class="card-content">
+                                    <h4>Obligación</h4>
+                                    <p>Algo que es necesario o requerido hacer.</p>
+                                    <div class="card-example">
+                                        <p><strong>You must finish</strong> your homework.</p>
+                                        <p><strong>We must arrive</strong> on time.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="theory-card">
+                                <div class="card-icon"><i class="fas fa-ban"></i></div>
+                                <div class="card-content">
+                                    <h4>Prohibición (forma negativa)</h4>
+                                    <p>Algo que no está permitido o no se debe hacer.</p>
+                                    <div class="card-example">
+                                        <p><strong>You must not touch</strong> that button.</p>
+                                        <p><strong>Students mustn't talk</strong> during the exam.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="theory-card">
+                                <div class="card-icon"><i class="fas fa-lightbulb"></i></div>
+                                <div class="card-content">
+                                    <h4>Deducción Lógica</h4>
+                                    <p>Una conclusión basada en evidencia disponible.</p>
+                                    <div class="card-example">
+                                        <p>You look tired. <strong>You must work</strong> too hard.</p>
+                                        <p>It's very cold. <strong>It must be</strong> below freezing.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h3>Estructura Gramatical</h3>
+                            <div class="grammar-structure">
+                                <div class="structure-item">
+                                    <h4>Afirmativo</h4>
+                                    <p class="formula">Sujeto + must + verbo (forma base) + complemento</p>
+                                </div>
+
+                                <div class="structure-item">
+                                    <h4>Negativo</h4>
+                                    <p class="formula">Sujeto + must not (mustn't) + verbo (forma base) + complemento
+                                    </p>
+                                </div>
+
+                                <div class="structure-item">
+                                    <h4>Interrogativo</h4>
+                                    <p class="formula">Must + sujeto + verbo (forma base) + complemento + ?</p>
+                                </div>
+                            </div>
+
+                            <div class="theory-note">
+                                <h4><i class="fas fa-info-circle"></i> Importante</h4>
+                                <p>MUST no cambia su forma. No tiene -s en tercera persona ni terminaciones como -ing o
+                                    -ed.</p>
+                            </div>
+
+                            <div class="section-navigation">
+                                <button class="nav-btn" onclick="navigateToSection('intro')"><i
+                                        class="fas fa-arrow-left"></i> Anterior</button>
+                                <button class="nav-btn" onclick="navigateToSection('examples')">Siguiente <i
+                                        class="fas fa-arrow-right"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="examples" class="level-section">
+                    <h2 class="section-title">Ejemplos en Contexto</h2>
+                    <div class="section-content">
+                        <div class="examples-container">
+                            <div class="example-scenario">
+                                <h3>Escenario 1: En la Escuela</h3>
+                                <div class="scenario-illustration school-bg">
+                                    <div class="scenario-bubble teacher">
+                                        <p>Students, you <strong>must complete</strong> your projects by Friday.</p>
+                                    </div>
+                                    <div class="scenario-bubble student">
+                                        <p>We <strong>must work</strong> together to finish on time!</p>
+                                    </div>
+                                    <div class="scenario-bubble teacher">
+                                        <p>You <strong>must not copy</strong> from the internet. That's plagiarism.</p>
+                                    </div>
+                                </div>
+                                <div class="scenario-explanation">
+                                    <p>En este escenario, el profesor usa "must complete" para expresar una obligación
+                                        con fecha límite, y "must not copy" para establecer una prohibición clara.</p>
+                                </div>
+                            </div>
+
+                            <div class="example-scenario">
+                                <h3>Escenario 2: En el Hospital</h3>
+                                <div class="scenario-illustration hospital-bg">
+                                    <div class="scenario-bubble doctor">
+                                        <p>You <strong>must take</strong> this medicine twice a day.</p>
+                                    </div>
+                                    <div class="scenario-bubble patient">
+                                        <p><strong>Must I avoid</strong> any specific foods?</p>
+                                    </div>
+                                    <div class="scenario-bubble doctor">
+                                        <p>Yes, you <strong>must not drink</strong> alcohol while taking this
+                                            medication.</p>
+                                    </div>
+                                </div>
+                                <div class="scenario-explanation">
+                                    <p>El doctor usa "must take" para dar instrucciones médicas importantes, mientras
+                                        que "must not drink" indica una prohibición por razones de salud.</p>
+                                </div>
+                            </div>
+
+                            <div class="example-scenario">
+                                <h3>Escenario 3: Deducción Lógica</h3>
+                                <div class="scenario-illustration deduction-bg">
+                                    <div class="scenario-bubble person1">
+                                        <p>Look at those dark clouds. It <strong>must be</strong> going to rain soon.
+                                        </p>
+                                    </div>
+                                    <div class="scenario-bubble person2">
+                                        <p>John isn't answering his phone. He <strong>must be</strong> in a meeting.</p>
+                                    </div>
+                                    <div class="scenario-bubble person1">
+                                        <p>This restaurant is always full. The food <strong>must be</strong> delicious!
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="scenario-explanation">
+                                    <p>En estos ejemplos, "must be" se usa para expresar deducciones lógicas basadas en
+                                        la evidencia disponible.</p>
+                                </div>
+                            </div>
+
+                            <div class="section-navigation">
+                                <button class="nav-btn" onclick="navigateToSection('theory')"><i
+                                        class="fas fa-arrow-left"></i> Anterior</button>
+                                <button class="nav-btn" onclick="navigateToSection('practice')">Siguiente <i
+                                        class="fas fa-arrow-right"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="practice" class="level-section">
+                    <h2 class="section-title">Práctica Interactiva</h2>
+                    <div class="section-content">
+                        <div class="practice-container">
+                            <div class="practice-intro">
+                                <p>Ahora es tu turno de practicar. Completa los siguientes ejercicios para reforzar tu
+                                    conocimiento sobre MUST en presente simple.</p>
+                            </div>
+
+                            <div class="exercise-set">
+                                <h3>Ejercicio 1: Completar las Oraciones</h3>
+                                <p>Selecciona la opción correcta para completar cada oración:</p>
+
+                                <div class="exercise" data-num="1">
+                                    <p class="question-text">Students __________ their homework every day.</p>
+                                    <div class="options">
+                                        <button class="option" data-correct="true">must do</button>
+                                        <button class="option">must doing</button>
+                                        <button class="option">must to do</button>
+                                    </div>
+                                    <div class="feedback"></div>
+                                </div>
+
+                                <div class="exercise" data-num="2">
+                                    <p class="question-text">You __________ the rules of the game before playing.</p>
+                                    <div class="options">
+                                        <button class="option">must knowing</button>
+                                        <button class="option" data-correct="true">must know</button>
+                                        <button class="option">must knows</button>
+                                    </div>
+                                    <div class="feedback"></div>
+                                </div>
+
+                                <div class="exercise" data-num="3">
+                                    <p class="question-text">Passengers __________ while the plane is taking off.</p>
+                                    <div class="options">
+                                        <button class="option">must not talking</button>
+                                        <button class="option">must not talks</button>
+                                        <button class="option" data-correct="true">must not talk</button>
+                                    </div>
+                                    <div class="feedback"></div>
+                                </div>
+                            </div>
+
+                            <div class="exercise-set">
+                                <h3>Ejercicio 2: Transformar Oraciones</h3>
+                                <p>Transforma las siguientes oraciones según se indica:</p>
+
+                                <div class="transform-exercise" data-num="4">
+                                    <p class="original">You must finish this report. (Hacer negativa)</p>
+                                    <div class="answer-input">
+                                        <input type="text" class="transform-input"
+                                            data-answer="You must not finish this report,You mustn't finish this report">
+                                        <button class="check-btn">Comprobar</button>
+                                    </div>
+                                    <div class="feedback"></div>
+                                </div>
+
+                                <div class="transform-exercise" data-num="5">
+                                    <p class="original">They must arrive on time. (Hacer interrogativa)</p>
+                                    <div class="answer-input">
+                                        <input type="text" class="transform-input"
+                                            data-answer="Must they arrive on time?">
+                                        <button class="check-btn">Comprobar</button>
+                                    </div>
+                                    <div class="feedback"></div>
+                                </div>
+                            </div>
+
+                            <div class="section-navigation">
+                                <button class="nav-btn" onclick="navigateToSection('examples')"><i
+                                        class="fas fa-arrow-left"></i> Anterior</button>
+                                <button class="nav-btn" onclick="navigateToSection('challenge')">Siguiente <i
+                                        class="fas fa-arrow-right"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="challenge" class="level-section">
+                    <h2 class="section-title">Desafío Final</h2>
+                    <div class="section-content">
+                        <div class="challenge-container">
+                            <div class="challenge-intro">
+                                <div class="character-dialogue">
+                                    <img src="https://i.imgur.com/0MbrTTX.png" alt="Wizard Musty" class="dialogue-img">
+                                    <div class="dialogue-bubble">
+                                        <p>¡Ha llegado el momento del Desafío Final! Demuestra tu dominio de MUST en
+                                            presente simple completando este quiz. ¡Necesitas al menos 7 respuestas
+                                            correctas para superar el nivel!</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="challenge-quiz">
+                                <div class="quiz-progress">
+                                    <div class="progress-bar">
+                                        <div class="progress" id="quiz-progress-bar" style="width: 0%"></div>
+                                    </div>
+                                    <p class="progress-text"><span id="current-question">0</span>/<span
+                                            id="total-questions">10</span></p>
+                                </div>
+
+                                <div id="quiz-container">
+                                    <!-- Las preguntas se cargarán dinámicamente mediante JavaScript -->
+                                </div>
+
+                                <div class="quiz-navigation">
+                                    <button id="prev-question" class="quiz-nav-btn" disabled><i
+                                            class="fas fa-arrow-left"></i> Anterior</button>
+                                    <button id="next-question" class="quiz-nav-btn">Siguiente <i
+                                            class="fas fa-arrow-right"></i></button>
+                                </div>
+                            </div>
+
+                            <div id="results-container" class="results-container" style="display: none;">
+                                <h3 class="results-title">Resultados del Desafío</h3>
+                                <div class="results-score">
+                                    <div class="score-circle">
+                                        <span id="final-score">0/10</span>
+                                    </div>
+                                </div>
+
+                                <div class="results-message" id="results-message">
+                                    <!-- El mensaje se cargará dinámicamente según la puntuación -->
+                                </div>
+
+                                <div class="results-stars" id="results-stars">
+                                    <!-- Las estrellas se mostrarán según la puntuación -->
+                                </div>
+
+                                <div class="results-actions">
+                                    <button id="retry-quiz" class="action-btn">Intentar de nuevo</button>
+                                    <button id="complete-level" class="action-btn primary">Completar Nivel</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="game-controls">
+            <button id="back-to-map" class="control-btn" onclick="goToMap()"><i class="fas fa-map-marked-alt"></i>
+                Volver al Mapa</button>
+            <button id="check-progress" class="control-btn primary" onclick="checkProgress()"><i
+                    class="fas fa-trophy"></i> Ver Progreso</button>
+        </div>
+    </div>
+
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/levels.js"></script>
+    <script src="../scripts/present-continuous.js"></script>
+</body>
+
+</html>

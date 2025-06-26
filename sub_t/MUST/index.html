@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MUST QUEST: Aventura de Inglés</title>
+    <link rel="stylesheet" href="index-styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Poppins:wght@400;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+</head>
+<body>
+    <!-- Sonidos del juego -->
+    <audio id="clickSound" src="https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3" preload="auto"></audio>
+    <audio id="correctSound" src="https://assets.mixkit.co/active_storage/sfx/270/270-preview.mp3" preload="auto"></audio>
+    <audio id="wrongSound" src="https://assets.mixkit.co/active_storage/sfx/131/131-preview.mp3" preload="auto"></audio>
+    <audio id="levelUpSound" src="https://assets.mixkit.co/active_storage/sfx/2020/2020-preview.mp3" preload="auto"></audio>
+    <audio id="backgroundMusic" src="https://assets.mixkit.co/active_storage/sfx/2005/2005-preview.mp3" loop preload="auto"></audio>
+    
+    <!-- Estrellas de fondo -->
+    <div class="stars-container">
+        <div id="stars"></div>
+        <div id="stars2"></div>
+        <div id="stars3"></div>
+    </div>
+    
+    <div class="game-container">
+        <div class="game-header">
+            <div class="logo-container">
+                <h1 class="game-logo animate__animated animate__bounceIn">MUST<span>QUEST</span></h1>
+                <p class="game-subtitle">Una aventura mágica para dominar MUST en inglés</p>
+            </div>
+            
+            <div class="game-stats">
+                <div class="stats-item">
+                    <div class="stats-icon stars-icon">★</div>
+                    <div class="stats-value" id="stars-count">0</div>
+                </div>
+                <div class="stats-item">
+                    <div class="stats-icon level-icon">🏆</div>
+                    <div class="stats-value" id="level-count">1</div>                </div>                <div class="stats-item">
+                    <button id="sound-toggle" class="sound-btn"><i class="fas fa-volume-up"></i></button>
+                </div>
+            </div>
+        </div>        
+        <div class="character-scene">
+            <div class="scene-background"></div>
+            <div class="character-container">
+
+                <div id="character-avatar-button" class="character-avatar-button animate__animated animate__pulse animate__infinite" onclick="goToAvatarSelection()">
+                    <div id="character-display">
+                        <!-- Avatar se cargará aquí -->
+                        <img src="https://i.imgur.com/0MbrTTX.png" alt="Haz clic para personalizar tu avatar" id="character-img">
+                    </div>
+                    <div class="avatar-overlay">
+                        <i class="fas fa-edit"></i>
+                        <span>Personalizar</span>
+                    </div>
+                </div>
+                
+                <div class="speech-bubble" id="speech-bubble">
+                    <p id="character-speech">¡Bienvenido al mapa de nuestra aventura! Haz clic en mí para personalizarme, o selecciona un reino gramatical para comenzar tu viaje.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="game-world">
+            <div class="world-nav">
+                <button class="world-nav-btn active" data-view="map" onclick="changeView('map')">
+                    <i class="fas fa-map-marked-alt"></i> Mapa
+                </button>
+
+                
+            </div>
+            
+            <!-- Vista del Mapa -->
+            <div id="map-view" class="world-view active">
+                <h2 class="view-title">Mapa de Reinos Gramaticales</h2>
+                <div class="world-map">
+                    <div class="level-node" data-level="1" data-section="present-simple" onclick="goToLevel('present-simple')">
+                        <div class="node-icon">1</div>
+                        <div class="node-tooltip">Reino del Presente Simple</div>
+                        <div class="node-status unlocked"><i class="fas fa-unlock"></i></div>
+                    </div>
+                    
+                    <div class="level-path"></div>
+                    
+                    <div class="level-node" data-level="2" data-section="present-continuous" onclick="goToLevel('present-continuous')">
+                        <div class="node-icon">2</div>
+                        <div class="node-tooltip">Reino del Presente Continuo</div>
+                        <div class="node-status locked"><i class="fas fa-lock"></i></div>
+                    </div>
+                    
+                    <div class="level-path"></div>
+                    
+                    <div class="level-node" data-level="3" data-section="present-perfect" onclick="goToLevel('present-perfect')">
+                        <div class="node-icon">3</div>
+                        <div class="node-tooltip">Reino del Presente Perfecto</div>
+                        <div class="node-status locked"><i class="fas fa-lock"></i></div>
+                    </div>
+                    
+                    <div class="level-path"></div>
+                    
+                    <div class="level-node" data-level="4" data-section="past" onclick="goToLevel('past')">
+                        <div class="node-icon">4</div>
+                        <div class="node-tooltip">Reino del presente perfecto continuo</div>
+                        <div class="node-status locked"><i class="fas fa-lock"></i></div>
+                    </div>
+
+                    <div class="level-path"></div>
+                    
+                    <div class="level-node" data-level="5" data-section="future" onclick="goToLevel('future')">
+                        <div class="node-icon">5</div>
+                        <div class="node-tooltip">Reino del Tiempo Futuro</div>
+                        <div class="node-status locked"><i class="fas fa-lock"></i></div>
+                    </div>
+                    
+                    
+                    <div class="level-path final-path"></div>
+                    
+                    <div class="level-node final-node" data-level="final" data-section="exam" onclick="goToLevel('exam')">
+                        <div class="node-icon"><i class="fas fa-crown"></i></div>
+                        <div class="node-tooltip">Castillo Final: Examen de Maestría</div>
+                        <div class="node-status locked"><i class="fas fa-lock"></i></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Vista de Recursos -->
+            <div id="resources-view" class="world-view">
+                <h2 class="view-title">Recursos de Aprendizaje</h2>
+                <div class="resources-grid">
+                    <div class="resource-card" onclick="goToResource('theory')">
+                        <div class="resource-icon"><i class="fas fa-book"></i></div>
+                        <div class="resource-info">
+                            <h3>Libro de Teoría</h3>
+                            <p>Una guía completa sobre el uso de MUST</p>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            
+        </div>
+
+        <footer class="game-footer">
+            <p>© 2025 MUST QUEST - Creado para aprender inglés de forma divertida</p>
+        </footer>
+    </div>
+    <script src="scripts/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MUST QUEST: Teoría</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Poppins:wght@400;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+</head>
+<body>
+    <!-- Sonidos del juego -->
+    <audio id="clickSound" src="https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3" preload="auto"></audio>
+    <audio id="correctSound" src="https://assets.mixkit.co/active_storage/sfx/270/270-preview.mp3" preload="auto"></audio>
+    <audio id="wrongSound" src="https://assets.mixkit.co/active_storage/sfx/131/131-preview.mp3" preload="auto"></audio>
+    <audio id="levelUpSound" src="https://assets.mixkit.co/active_storage/sfx/2020/2020-preview.mp3" preload="auto"></audio>
+    <audio id="backgroundMusic" src="https://assets.mixkit.co/active_storage/sfx/2005/2005-preview.mp3" loop preload="auto"></audio>
+
+    <div class="game-container">
+        <!-- Header con navegación -->
+        <div class="game-header">
+            <div class="logo-container">
+                <h1 class="game-logo animate__animated animate__bounceIn">MUST<span>QUEST</span></h1>
+                <p class="game-subtitle">Libro de Teoría</p>
+            </div>
+            
+            <div class="game-stats">
+                <div class="stats-item">
+                    <button class="nav-btn" onclick="goBack()">
+                        <i class="fas fa-arrow-left"></i> Volver
+                    </button>
+                </div>
+                <div class="stats-item">
+                    <button class="nav-btn" onclick="goToHome()">
+                        <i class="fas fa-home"></i> Inicio
+                    </button>
+                </div>
+                <div class="stats-item">
+                    <button id="sound-toggle" class="sound-btn"><i class="fas fa-volume-up"></i></button>
+                </div>
+            </div>
+        </div>        <!-- Contenido principal -->
+        <div class="theory-content">
+            <!-- Avatar del personaje -->
+            <div class="character-section">
+                <div id="character-avatar-button" class="character-avatar-button animate__animated animate__pulse animate__infinite" onclick="goToAvatarSelection()">
+                    <div id="character-display">
+                        <!-- Avatar se cargará aquí -->
+                        <img src="https://i.imgur.com/0MbrTTX.png" alt="Haz clic para personalizar tu avatar" id="character-img">
+                    </div>
+                    <div class="avatar-overlay">
+                        <i class="fas fa-edit"></i>
+                        <span>Personalizar</span>
+                    </div>
+                </div>
+                <div class="speech-bubble" id="speech-bubble">
+                    <p id="character-speech">¡Hola! Te acompañaré en este viaje de aprendizaje sobre MUST. ¡Explora cada sección para dominar este verbo modal!</p>
+                </div>
+            </div>
+
+            <!-- Introducción -->
+            <div class="intro-section animate__animated animate__fadeInUp">
+                <div class="intro-card">
+                    <div class="intro-icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <h2>Bienvenido al Libro de Teoría</h2>
+                    <p>Aquí encontrarás todo lo que necesitas saber sobre el verbo modal MUST en inglés. Explora cada sección para dominar completamente su uso.</p>
+                </div>
+            </div>
+
+            <!-- Grid de temas -->
+            <div class="theory-grid">
+                <div class="theory-card animate__animated animate__fadeInUp" onclick="goToTheorySection('present-simple')" data-delay="0.1s">
+                    <div class="card-icon">
+                        <i class="fas fa-play"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Presente Simple</h3>
+                        <p>Aprende cómo usar MUST en presente simple para expresar obligaciones y deducciones.</p>
+                        <div class="card-features">
+                            <span><i class="fas fa-check"></i> Obligaciones</span>
+                            <span><i class="fas fa-check"></i> Deducciones</span>
+                            <span><i class="fas fa-check"></i> Ejemplos prácticos</span>
+                        </div>
+                    </div>
+                    <div class="card-arrow">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </div>
+
+                <div class="theory-card animate__animated animate__fadeInUp" onclick="goToTheorySection('present-continuous')" data-delay="0.2s">
+                    <div class="card-icon">
+                        <i class="fas fa-spinner"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Presente Continuo</h3>
+                        <p>Descubre cómo MUST se combina con el presente continuo para situaciones específicas.</p>
+                        <div class="card-features">
+                            <span><i class="fas fa-check"></i> Acciones en progreso</span>
+                            <span><i class="fas fa-check"></i> Situaciones actuales</span>
+                            <span><i class="fas fa-check"></i> Contexto temporal</span>
+                        </div>
+                    </div>
+                    <div class="card-arrow">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </div>
+
+                <div class="theory-card animate__animated animate__fadeInUp" onclick="goToTheorySection('present-perfect')" data-delay="0.3s">
+                    <div class="card-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Presente Perfecto</h3>
+                        <p>Explora el uso de MUST con presente perfecto y su significado especial.</p>
+                        <div class="card-features">
+                            <span><i class="fas fa-check"></i> Experiencias</span>
+                            <span><i class="fas fa-check"></i> Resultados</span>
+                            <span><i class="fas fa-check"></i> Tiempo indefinido</span>
+                        </div>
+                    </div>
+                    <div class="card-arrow">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </div>
+
+                <div class="theory-card animate__animated animate__fadeInUp" onclick="goToTheorySection('past')" data-delay="0.4s">
+                    <div class="card-icon">
+                        <i class="fas fa-history"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Pasado</h3>
+                        <p>Aprende las formas alternativas para expresar obligaciones y deducciones en pasado.</p>
+                        <div class="card-features">
+                            <span><i class="fas fa-check"></i> Must have + participio</span>
+                            <span><i class="fas fa-check"></i> Had to</span>
+                            <span><i class="fas fa-check"></i> Deducciones pasadas</span>
+                        </div>
+                    </div>
+                    <div class="card-arrow">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </div>
+
+                <div class="theory-card animate__animated animate__fadeInUp" onclick="goToTheorySection('future')" data-delay="0.5s">
+                    <div class="card-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Futuro</h3>
+                        <p>Descubre cómo expresar obligaciones y deducciones futuras relacionadas con MUST.</p>
+                        <div class="card-features">
+                            <span><i class="fas fa-check"></i> Will have to</span>
+                            <span><i class="fas fa-check"></i> Planificación</span>
+                            <span><i class="fas fa-check"></i> Predicciones</span>
+                        </div>
+                    </div>
+                    <div class="card-arrow">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </div>
+            </div>
+
+
+        <footer class="game-footer">
+            <p>© 2025 MUST QUEST - Creado para aprender inglés de forma divertida</p>
+        </footer>
+    </div>
+    <script src="../scripts/main.js"></script>
+    <style>
+        /* Estilos específicos para la página de teoría */        .theory-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Estilos para el avatar */
+        .character-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .character-avatar-button {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid var(--quaternary);
+            cursor: pointer;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            background: var(--gradient-card);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-md), var(--shadow-glow-primary);
+        }
+
+        .character-avatar-button:hover {
+            transform: scale(1.1);
+            box-shadow: var(--shadow-lg), var(--shadow-glow-primary);
+            border-color: var(--quaternary-light);
+        }
+
+        #character-display {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        #character-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .avatar-overlay {
+            position: absolute;
+            bottom: -5px;
+            right: -5px;
+            background: var(--gradient-accent);
+            color: white;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            opacity: 0;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-md);
+        }
+
+        .character-avatar-button:hover .avatar-overlay {
+            opacity: 1;
+        }
+
+        .avatar-overlay span {
+            display: none;
+        }
+
+        .speech-bubble {
+            background: var(--gradient-card);
+            border-radius: var(--border-radius-lg);
+            padding: 1.5rem;
+            max-width: 300px;
+            position: relative;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: var(--shadow-md);
+        }
+
+        .speech-bubble::before {
+            content: '';
+            position: absolute;
+            left: -15px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-top: 15px solid transparent;
+            border-bottom: 15px solid transparent;
+            border-right: 15px solid rgba(54, 59, 77, 0.8);
+        }
+
+        .speech-bubble p {
+            color: var(--secondary);
+            margin: 0;
+            line-height: 1.5;
+            font-size: 0.95rem;
+        }
+
+        .intro-section {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .intro-card {
+            background: var(--gradient-card);
+            border-radius: var(--border-radius-lg);
+            padding: 3rem 2rem;
+            box-shadow: var(--shadow-lg);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .intro-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-accent);
+            border-radius: var(--border-radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 2rem;
+            color: white;
+            box-shadow: var(--shadow-glow-primary);
+        }
+
+        .intro-card h2 {
+            color: var(--secondary);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .intro-card p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.1rem;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .theory-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .theory-card {
+            background: var(--gradient-card);
+            border-radius: var(--border-radius-lg);
+            padding: 2rem;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .theory-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-accent);
+        }
+
+        .theory-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg), var(--shadow-glow-primary);
+            background: linear-gradient(135deg, rgba(54, 59, 77, 0.9) 0%, rgba(26, 30, 41, 0.95) 100%);
+        }
+
+        .theory-card .card-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-accent);
+            border-radius: var(--border-radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            flex-shrink: 0;
+            box-shadow: var(--shadow-glow-secondary);
+        }
+
+        .theory-card .card-content {
+            flex-grow: 1;
+        }
+
+        .theory-card h3 {
+            color: var(--secondary);
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .theory-card p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .card-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .card-features span {
+            background: rgba(130, 72, 246, 0.2);
+            color: var(--quaternary-light);
+            padding: 0.25rem 0.5rem;
+            border-radius: var(--border-radius-sm);
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .card-arrow {
+            color: var(--quaternary);
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .theory-card:hover .card-arrow {
+            transform: translateX(5px);
+        }
+
+        .resources-section {
+            text-align: center;
+        }
+
+        .resources-section h2 {
+            color: var(--secondary);
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            font-weight: 600;
+        }
+
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .resource-item {
+            background: var(--gradient-card);
+            border-radius: var(--border-radius-md);
+            padding: 2rem 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .resource-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md), var(--shadow-glow-secondary);
+        }
+
+        .resource-item i {
+            font-size: 2rem;
+            color: var(--tertiary);
+        }
+
+        .resource-item span {
+            color: var(--secondary);
+            font-weight: 500;
+        }
+
+        .nav-btn {
+            background: var(--gradient-accent);
+            border: none;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius-md);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-glow-primary);
+        }        /* Responsive design */
+        @media (max-width: 768px) {
+            .theory-content {
+                padding: 1rem;
+            }
+
+            .character-section {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .character-avatar-button {
+                width: 100px;
+                height: 100px;
+            }
+
+            .speech-bubble {
+                max-width: 100%;
+                text-align: center;
+            }
+
+            .speech-bubble::before {
+                display: none;
+            }
+
+            .theory-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .theory-card {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+
+            .intro-card {
+                padding: 2rem 1rem;
+            }
+
+            .intro-card h2 {
+                font-size: 1.5rem;
+            }
+
+            .resources-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+        }
+    </style>
+</body>
+</html>

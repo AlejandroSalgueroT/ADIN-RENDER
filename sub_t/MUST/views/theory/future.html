@@ -1,0 +1,625 @@
+    <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MUST - Futuro | MUST QUEST</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Poppins:wght@400;700&family=Press+Start+2P&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+    
+    <style>
+        .theory-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .theory-header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .theory-title {
+            font-family: 'Crimson Text', serif;
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .theory-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .content-section {
+            background: rgba(255,255,255,0.95);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .content-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .section-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .formula-box {
+            background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-align: center;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(255,107,107,0.4);
+        }
+
+        .examples-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .example-box {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid #4ecdc4;
+        }
+
+        .example-box h4 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: #4ecdc4;
+        }
+
+        .example-sentence {
+            font-size: 1rem;
+            margin: 8px 0;
+            font-style: italic;
+        }
+
+        .translation {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: 5px;
+        }
+
+        .usage-note {
+            background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid #e17055;
+            font-style: italic;
+        }
+
+        .important-note {
+            background: linear-gradient(135deg, #ff7675, #fd79a8);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            border: 2px solid #d63031;
+            text-align: center;
+        }
+
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1rem;
+            box-shadow: 0 5px 15px rgba(102,126,234,0.4);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(102,126,234,0.6);
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .comparison-table th {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+
+        .comparison-table td {
+            padding: 15px;
+            border-bottom: 1px solid #ecf0f1;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .time-indicator {
+            background: linear-gradient(45deg, #4ecdc4, #ff6b6b);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 20px;
+            display: inline-block;
+            font-weight: bold;
+            margin: 10px 0;
+            box-shadow: 0 3px 10px rgba(78,205,196,0.4);
+        }
+
+        .future-concept {
+            background: linear-gradient(135deg, #ddd6fe, #fce7f3);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            border: 2px solid #667eea;
+        }
+
+        .future-concept h3 {
+            color: #2c3e50;
+            margin-top: 0;
+        }
+
+        .timeline {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            color: white;
+        }
+
+        .timeline-item {
+            text-align: center;
+            flex: 1;
+        }
+
+        .timeline-arrow {
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .examples-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .theory-title {
+                font-size: 2rem;
+            }
+            
+            .theory-container {
+                padding: 10px;
+            }
+            
+            .timeline {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .timeline-arrow {
+                transform: rotate(90deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sonidos del juego -->
+    <audio id="clickSound" src="https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3" preload="auto"></audio>
+    
+    <!-- Estrellas de fondo -->
+    <div class="stars-container">
+        <div id="stars"></div>
+        <div id="stars2"></div>
+        <div id="stars3"></div>
+    </div>
+
+    <button class="back-button" onclick="goBack()">
+        <i class="fas fa-arrow-left"></i> Volver
+    </button>
+
+    <div class="theory-container animate__animated animate__fadeIn">
+        <div class="theory-header">
+            <h1 class="theory-title">MUST en el Futuro</h1>
+            <p class="theory-subtitle">Aprende a expresar obligaciones y deducciones futuras</p>
+        </div>
+
+        <!-- Concepto Principal -->
+        <div class="content-section">
+            <h2 class="section-title"><i class="fas fa-rocket"></i> Concepto del Futuro</h2>
+            <div class="important-note">
+                <h3><i class="fas fa-info-circle"></i> MUST tampoco tiene forma futura directa</h3>
+                <p>Al igual que en el pasado, MUST no se conjuga en futuro. Usamos estructuras alternativas para expresar obligaciones y deducciones futuras.</p>
+            </div>
+            
+            <div class="future-concept">
+                <h3>¿Cómo expresamos el futuro?</h3>
+                <ul>
+                    <li><strong>Para obligaciones futuras:</strong> WILL HAVE TO</li>
+                    <li><strong>Para planes obligatorios:</strong> MUST (contexto futuro)</li>
+                    <li><strong>Para deducciones futuras:</strong> MUST + BE GOING TO</li>
+                    <li><strong>Para prohibiciones futuras:</strong> WON'T BE ALLOWED TO</li>
+                </ul>
+                <div class="time-indicator">
+                    <i class="fas fa-clock"></i> Futuro = Estructuras alternativas
+                </div>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <strong>PASADO</strong><br>
+                    had to
+                </div>
+                <div class="timeline-arrow">→</div>
+                <div class="timeline-item">
+                    <strong>PRESENTE</strong><br>
+                    must
+                </div>
+                <div class="timeline-arrow">→</div>
+                <div class="timeline-item">
+                    <strong>FUTURO</strong><br>
+                    will have to
+                </div>
+            </div>
+        </div>
+
+        <!-- WILL HAVE TO - Obligación Futura -->
+        <div class="content-section">
+            <h2 class="section-title"><i class="fas fa-plus-circle"></i> WILL HAVE TO - Obligación Futura (Positiva)</h2>
+            <div class="formula-box">
+                Sujeto + WILL HAVE TO + Verbo en infinitivo + Complemento
+            </div>
+            <p>Usamos <strong>WILL HAVE TO</strong> para expresar obligaciones que existirán en el futuro.</p>
+            
+            <div class="examples-grid">
+                <div class="example-box">
+                    <h4>Obligaciones Futuras Personales</h4>
+                    <div class="example-sentence">I will have to study harder next semester.</div>
+                    <div class="translation">Tendré que estudiar más duro el próximo semestre.</div>
+                    
+                    <div class="example-sentence">She will have to work overtime tomorrow.</div>
+                    <div class="translation">Ella tendrá que trabajar horas extra mañana.</div>
+                </div>
+                
+                <div class="example-box">
+                    <h4>Reglas y Normas Futuras</h4>
+                    <div class="example-sentence">Students will have to wear masks next year.</div>
+                    <div class="translation">Los estudiantes tendrán que usar mascarillas el próximo año.</div>
+                    
+                    <div class="example-sentence">We will have to follow new procedures.</div>
+                    <div class="translation">Tendremos que seguir nuevos procedimientos.</div>
+                </div>
+            </div>
+
+            <div class="usage-note">
+                <strong>Contracción:</strong> "will have to" a menudo se contrae como "I'll have to", "you'll have to", etc.
+            </div>
+        </div>
+
+        <!-- MUST con Contexto Futuro -->
+        <div class="content-section">
+            <h2 class="section-title"><i class="fas fa-calendar-alt"></i> MUST con Contexto Futuro</h2>
+            <div class="formula-box">
+                Sujeto + MUST + Verbo en infinitivo + (indicador de tiempo futuro)
+            </div>
+            <p>Podemos usar <strong>MUST</strong> para obligaciones futuras cuando el contexto o los indicadores de tiempo lo indican claramente.</p>
+            
+            <div class="examples-grid">
+                <div class="example-box">
+                    <h4>Planes Obligatorios</h4>
+                    <div class="example-sentence">I must finish this project by Friday.</div>
+                    <div class="translation">Debo terminar este proyecto para el viernes.</div>
+                    
+                    <div class="example-sentence">You must call me tomorrow.</div>
+                    <div class="translation">Debes llamarme mañana.</div>
+                </div>
+                
+                <div class="example-box">
+                    <h4>Obligaciones Programadas</h4>
+                    <div class="example-sentence">We must attend the meeting next week.</div>
+                    <div class="translation">Debemos asistir a la reunión la próxima semana.</div>
+                    
+                    <div class="example-sentence">She must submit her application soon.</div>
+                    <div class="translation">Ella debe enviar su solicitud pronto.</div>
+                </div>
+            </div>
+
+            <div class="usage-note">
+                <strong>Diferencia sutil:</strong> MUST (futuro inmediato/programado) vs WILL HAVE TO (futuro general/obligación externa)
+            </div>
+        </div>
+
+        <!-- Forma Negativa - Futuro -->
+        <div class="content-section">
+            <h2 class="section-title"><i class="fas fa-times-circle"></i> Forma Negativa - No será necesario</h2>
+            <div class="formula-box">
+                Sujeto + WON'T HAVE TO + Verbo en infinitivo + Complemento
+            </div>
+            <p><strong>WON'T HAVE TO</strong> significa que no será necesario hacer algo en el futuro.</p>
+            
+            <div class="examples-grid">
+                <div class="example-box">
+                    <h4>No será Necesario</h4>
+                    <div class="example-sentence">You won't have to work this weekend.</div>
+                    <div class="translation">No tendrás que trabajar este fin de semana.</div>
+                    
+                    <div class="example-sentence">She won't have to take the test again.</div>
+                    <div class="translation">Ella no tendrá que tomar el examen otra vez.</div>
+                </div>
+                
+                <div class="example-box">
+                    <h4>Sin Obligación Futura</h4>
+                    <div class="example-sentence">We won't have to attend every meeting.</div>
+                    <div class="translation">No tendremos que asistir a cada reunión.</div>
+                    
+                    <div class="example-sentence">They won't have to pay the extra fee.</div>
+                    <div class="translation">Ellos no tendrán que pagar la tarifa extra.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Prohibición Futura -->
+        <div class="content-section">
+            <h2 class="section-title"><i class="fas fa-ban"></i> Prohibición Futura</h2>
+            <div class="formula-box">
+                Sujeto + WON'T BE ALLOWED TO + Verbo en infinitivo
+            </div>
+            <p>Para expresar prohibiciones futuras (equivalente a MUST NOT en futuro), usamos <strong>WON'T BE ALLOWED TO</strong>.</p>
+            
+            <div class="examples-grid">
+                <div class="example-box">
+                    <h4>Prohibiciones Futuras</h4>
+                    <div class="example-sentence">Students won't be allowed to use phones during exams.</div>
+                    <div class="translation">Los estudiantes no podrán usar teléfonos durante los exámenes.</div>
+                    
+                    <div class="example-sentence">We won't be allowed to park here next month.</div>
+                    <div class="translation">No podremos estacionar aquí el próximo mes.</div>
+                </div>
+                
+                <div class="example-box">
+                    <h4>Reglas Futuras</h4>
+                    <div class="example-sentence">You won't be allowed to enter without ID.</div>
+                    <div class="translation">No podrás entrar sin identificación.</div>
+                    
+                    <div class="example-sentence">Children won't be allowed to swim alone.</div>
+                    <div class="translation">Los niños no podrán nadar solos.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Forma Interrogativa -->
+        <div class="content-section">
+            <h2 class="section-title"><i class="fas fa-question-circle"></i> Forma Interrogativa en Futuro</h2>
+            <div class="formula-box">
+                WILL + Sujeto + HAVE TO + Verbo en infinitivo + ?
+            </div>
+            <p>Para hacer preguntas sobre obligaciones futuras, usamos <strong>WILL + HAVE TO</strong>.</p>
+            
+            <div class="examples-grid">
+                <div class="example-box">
+                    <h4>Preguntas sobre Obligaciones Futuras</h4>
+                    <div class="example-sentence">Will you have to work overtime next week?</div>
+                    <div class="translation">¿Tendrás que trabajar horas extra la próxima semana?</div>
+                    
+                    <div class="example-sentence">Will she have to take the exam again?</div>
+                    <div class="translation">¿Tendrá que tomar el examen otra vez?</div>
+                </div>
+                
+                <div class="example-box">
+                    <h4>Preguntas con MUST (Futuro)</h4>
+                    <div class="example-sentence">Must I call you tomorrow?</div>
+                    <div class="translation">¿Debo llamarte mañana?</div>
+                    
+                    <div class="example-sentence">Must we finish this by Friday?</div>
+                    <div class="translation">¿Debemos terminar esto para el viernes?</div>
+                </div>
+            </div>
+
+            <div class="usage-note">
+                <strong>Respuestas cortas:</strong> "Yes, you will" / "No, you won't" para preguntas con "Will you have to..."
+            </div>
+        </div>
+
+        <!-- Deducciones Futuras -->
+        <div class="content-section">
+            <h2 class="section-title"><i class="fas fa-brain"></i> Deducciones Futuras</h2>
+            <div class="formula-box">
+                Sujeto + MUST + BE GOING TO + Verbo en infinitivo
+            </div>
+            <p>Para deducciones sobre el futuro basadas en evidencia presente, combinamos MUST con BE GOING TO.</p>
+            
+            <div class="examples-grid">
+                <div class="example-box">
+                    <h4>Deducciones sobre el Futuro</h4>
+                    <div class="example-sentence">Look at those clouds! It must be going to rain.</div>
+                    <div class="translation">¡Mira esas nubes! Debe estar por llover.</div>
+                    
+                    <div class="example-sentence">She's studying so hard. She must be going to pass.</div>
+                    <div class="translation">Está estudiando tanto. Debe estar por aprobar.</div>
+                </div>
+                
+                <div class="example-box">
+                    <h4>Predicciones Lógicas</h4>
+                    <div class="example-sentence">The traffic is terrible. We must be going to be late.</div>
+                    <div class="translation">El tráfico está terrible. Debemos estar por llegar tarde.</div>
+                    
+                    <div class="example-sentence">He's saving money. He must be going to buy something expensive.</div>
+                    <div class="translation">Está ahorrando dinero. Debe estar por comprar algo caro.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabla Comparativa Completa -->
+        <div class="content-section">
+            <h2 class="section-title"><i class="fas fa-balance-scale"></i> Comparación: Presente, Pasado y Futuro</h2>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Función</th>
+                        <th>Presente</th>
+                        <th>Pasado</th>
+                        <th>Futuro</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Obligación</strong></td>
+                        <td>must do</td>
+                        <td>had to do</td>
+                        <td>will have to do</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Prohibición</strong></td>
+                        <td>must not do</td>
+                        <td>couldn't do</td>
+                        <td>won't be allowed to</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Sin obligación</strong></td>
+                        <td>don't have to</td>
+                        <td>didn't have to</td>
+                        <td>won't have to</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Deducción</strong></td>
+                        <td>must be</td>
+                        <td>must have been</td>
+                        <td>must be going to</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Situaciones Específicas -->
+        <div class="content-section">
+            <h2 class="section-title"><i class="fas fa-lightbulb"></i> Situaciones Específicas Futuras</h2>
+            
+            <div class="examples-grid">
+                <div class="example-box">
+                    <h4>Planificación Educativa</h4>
+                    <div class="example-sentence">Next year, students will have to take online classes.</div>
+                    <div class="translation">El próximo año, los estudiantes tendrán que tomar clases en línea.</div>
+                    
+                    <div class="example-sentence">I must register for courses before Monday.</div>
+                    <div class="translation">Debo registrarme para los cursos antes del lunes.</div>
+                </div>
+                
+                <div class="example-box">
+                    <h4>Cambios Laborales</h4>
+                    <div class="example-sentence">Employees will have to adapt to new technology.</div>
+                    <div class="translation">Los empleados tendrán que adaptarse a la nueva tecnología.</div>
+                    
+                    <div class="example-sentence">We won't be allowed to work from home anymore.</div>
+                    <div class="translation">Ya no podremos trabajar desde casa.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Función para volver atrás
+        function goBack() {
+            document.getElementById('clickSound').play();
+            
+            // Efecto de fade out
+            document.body.style.transition = 'opacity 0.5s ease';
+            document.body.style.opacity = '0';
+            
+            setTimeout(() => {
+                window.location.href = '../theory.html';
+            }, 500);
+        }
+
+        // Efectos de animación al cargar
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach((section, index) => {
+                section.style.animationDelay = `${index * 0.2}s`;
+                section.classList.add('animate__animated', 'animate__fadeInUp');
+            });
+        });
+
+        // Efecto de partículas
+        function createParticles() {
+            const colors = ['#667eea', '#764ba2', '#4ecdc4', '#ff6b6b'];
+            
+            for (let i = 0; i < 15; i++) {
+                const particle = document.createElement('div');
+                particle.style.cssText = `
+                    position: fixed;
+                    width: 3px;
+                    height: 3px;
+                    background: ${colors[Math.floor(Math.random() * colors.length)]};
+                    border-radius: 50%;
+                    pointer-events: none;
+                    z-index: 1000;
+                    opacity: 0.8;
+                `;
+                
+                particle.style.left = Math.random() * window.innerWidth + 'px';
+                particle.style.top = Math.random() * window.innerHeight + 'px';
+                
+                document.body.appendChild(particle);
+                
+                // Animar la partícula con movimiento hacia el futuro (diagonal)
+                particle.animate([
+                    { transform: 'translate(0, 0) scale(1)', opacity: 0.8 },
+                    { transform: 'translate(100px, -100px) scale(0)', opacity: 0 }
+                ], {
+                    duration: 2500 + Math.random() * 1500,
+                    easing: 'ease-out'
+                }).onfinish = () => particle.remove();
+            }
+        }
+
+        // Crear partículas cada 2.5 segundos
+        setInterval(createParticles, 2500);
+    </script>
+</body>
+</html>
