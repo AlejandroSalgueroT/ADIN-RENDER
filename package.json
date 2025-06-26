@@ -1,0 +1,14 @@
+{
+  "name": "adin-render",
+  "version": "1.0.0",
+  "description": "English Learning Platform - ADIN",
+  "main": "app.py",
+  "scripts": {
+    "start": "python app.py",
+    "dev": "python app.py"
+  },
+  "dependencies": {},
+  "engines": {
+    "node": "18.x"
+  }
+}
