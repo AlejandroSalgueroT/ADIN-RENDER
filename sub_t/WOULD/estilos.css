@@ -1,0 +1,282 @@
+/* Reset básico */
+* {
+  box-sizing: border-box;
+}
+body {
+  background: #fff;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  color: #252934;
+}
+
+/* Encabezado */
+header {
+  background: #252934;
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+}
+header h1 {
+  margin: 0;
+  font-size: 32px;
+}
+
+/* Contenedor principal */
+.container {
+  max-width: 900px;
+  margin: 30px auto;
+  background: #fff;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+/* Títulos y subtítulos centrados */
+h2, h3, h4 {
+  color: #6a0dad;
+  margin-bottom: 15px;
+  text-align: center;
+}
+.highlight {
+  color: #6a0dad;
+}
+
+/* Imagen centrada */
+img.centered-image {
+  display: block;
+  margin: 20px auto;
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
+/* Listados */
+ul {
+  list-style: none;
+  padding: 0;
+}
+ul li {
+  margin-bottom: 10px;
+  font-size: 16px;
+  line-height: 1.6;
+  padding-left: 10px;
+}
+
+/* Botones de ejemplo */
+.play-example {
+  margin-left: 10px;
+  background: #382744;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s;
+}
+.play-example:hover {
+  background: #4a345b;
+}
+
+/* Pronunciaciones */
+ul.pronunciaciones li button {
+  margin-left: 10px;
+  background: #3388ff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Formularios y botones */
+form {
+  margin-top: 30px;
+}
+button {
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 100%;
+}
+button.toggle-btn {
+  background: #6a0dad;
+  color: #fff;
+  padding: 12px 20px;
+  margin: 10px 0;
+}
+button.submit-btn {
+  background: #252934;
+  color: #fff;
+  padding: 14px 25px;
+  margin: 20px auto 0;
+  display: block;
+}
+
+/* Contenido colapsable */
+.content {
+  display: none;
+  margin: 15px 0;
+  padding: 15px;
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+/* Preguntas y resultados */
+.question {
+  margin-bottom: 20px;
+}
+.resultado {
+  background: #e8e8e8;
+  padding: 15px;
+  margin-top: 20px;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* Navegación */
+.nav-buttons {
+  margin-top: 30px;
+  text-align: center;
+}
+.nav-buttons a {
+  background: #6a0dad;
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  margin: 0 10px;
+  font-weight: bold;
+  display: inline-block;
+}
+
+/* Chatbot */
+#bot-container {
+  position: fixed;
+  bottom: 80px;
+  left: 30px;
+  z-index: 1000;
+  user-select: none;
+}
+#bot-avatar {
+  width: 150px;
+  cursor: grab;
+  animation: float 3s ease-in-out infinite;
+  text-align: center;
+  position: relative;
+  transition: transform 0.3s ease-in-out;
+}
+#bot-avatar img {
+  width: 200px;
+  height: 200px;
+  border-radius: 40%;
+  object-fit: cover;
+  cursor: grab;
+}
+#bot-text-box {
+  opacity: 0;
+  transition: opacity .3s;
+  margin-top: 5px;
+  max-width: 250px;
+  padding: 10px 15px;
+  font-size: 14px;
+  color: #000;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+#bot-container:hover #bot-text-box {
+  opacity: 1;
+}
+
+/* Controles del bot */
+#bot-controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 5px;
+  max-width: 150px;
+}
+#bot-controls button {
+  background: #3388ff;
+  color: #fff;
+  padding: 6px 8px;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+  flex: 1 1 auto;
+  max-width: 45%;
+}
+#bot-controls button#btn-es,
+#bot-controls button#btn-en {
+  background: #6a0dad;
+  padding: 6px 10px;
+  margin: 2px;
+  border-radius: 15px;
+}
+#bot-controls button#btn-es:hover,
+#bot-controls button#btn-en:hover {
+  background: #5a0c99;
+}
+
+/* Selector de voz */
+#voice-select {
+  padding: 6px 8px;
+  font-size: 13px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  margin-top: 5px;
+  max-width: 150px;
+  background: #fff;
+  font-family: inherit;
+}
+
+/* Boca animada */
+#boca-bot {
+  position: absolute;
+  bottom: 45px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 22px;
+  height: 6px;
+  background: #3c3c3c;
+  border-radius: 50% / 100%;
+  display: none;
+  animation: hablarAnim 0.25s infinite;
+  z-index: 10;
+  opacity: 0.9;
+}
+
+/* Animación boca */
+@keyframes hablarAnim {
+  0%, 100% {
+    height: 6px;
+    transform: translateX(-50%) scaleY(1);
+  }
+  50% {
+    height: 18px;
+    transform: translateX(-50%) scaleY(1.6);
+  }
+}
+
+/* Imagen avatar */
+#avatar-img {
+  width: 100%;
+  max-width: 150px;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Animación flotación */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}

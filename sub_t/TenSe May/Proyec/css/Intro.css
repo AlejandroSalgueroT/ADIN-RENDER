@@ -1,0 +1,131 @@
+/* Mejora para centrar y destacar la introducción ocupando toda la pantalla */
+.intro-may {
+  background: #23272e;
+  border: 3px solid #00ffc8;
+  border-radius: 24px;
+  box-shadow: 0 8px 32px #00ffc822, 0 2px 8px #000a;
+  width: 100vw;
+  min-height: 100vh;
+  margin: 0;
+  padding: 3.5rem 2rem 2.5rem 2rem;
+  color: #fff;
+  text-align: center;
+  font-size: 1.15rem;
+  animation: card-in 0.7s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes card-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.intro-may h1 {
+  color: #00ffc8;
+  font-size: 2.3rem;
+  margin-bottom: 1.2rem;
+  text-shadow: 2px 2px 0 #000, 0 0 16px #00ffc8;
+  letter-spacing: 2px;
+}
+.intro-may p {
+  color: #fff;
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+.intro-may ul {
+  text-align: left;
+  margin: 1.5rem auto 1.5rem auto;
+  max-width: 480px;
+  padding-left: 0;
+  list-style-position: inside;
+}
+.intro-may ul li::before {
+  content: "•";
+  color: #00ffc8;
+  font-weight: bold;
+  margin-right: 0.5rem;
+}
+
+.intro-may ul li {
+  color: #fff;
+  margin-bottom: 0.8rem;
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+.intro-may li {
+  margin-bottom: 1rem;
+  font-size: 1.08rem;
+  line-height: 1.6;
+  padding-left: 0.5rem;
+}
+
+.intro-may strong {
+  color: #00ffc8;
+  font-weight: bold;
+}
+
+.intro-may em {
+  color: #fff;
+  background: #00ffc822;
+  padding: 0.1rem 0.5rem;
+  border-radius: 8px;
+  font-style: normal;
+  margin-left: 0.3rem;
+}
+
+.intro-ejemplos {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.intro-ejemplos h2 {
+  color: #00ffc8;
+  font-size: 1.3rem;
+  margin-bottom: 0.7rem;
+  text-shadow: 1px 1px 0 #000;
+  letter-spacing: 1px;
+}
+
+.resalta {
+  color: #00ffc8;
+  font-weight: bold;
+  text-shadow: 0 0 8px #00ffc8;
+}
+
+.traduccion {
+  color: #fff;
+  font-size: 0.98em;
+  margin-left: 0.5em;
+  opacity: 0.8;
+  font-style: italic;
+  background: none;
+}
+
+@media (max-width: 700px) {
+  .intro-may {
+    padding: 1.2rem 0.7rem;
+    font-size: 1rem;
+  }
+  .intro-may h1 {
+    font-size: 1.5rem;
+  }
+  .intro-may ul {
+    margin: 1rem auto;
+    max-width: 98vw;
+  }
+}

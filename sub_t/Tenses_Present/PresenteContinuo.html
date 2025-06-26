@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Presente Continuo</title>
+    <link rel="stylesheet" href="PresenteContinuo.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+<header>
+    <img src="logo.png" class="logo" alt="Logo" />
+    <i class="user-icon">👤</i>
+    <h1 class="title">Presente Continuo</h1>
+</header>
+
+<main class="exercise-container">
+
+    <!-- Nivel Fácil -->
+    <section class="level" id="facil">
+        <h2>Fácil</h2>
+        <div class="exercise-card">
+        <h3>Ejercicio 1</h3>
+        <p>He <input type="text" id="input1" placeholder="verbo en presente continuo" /> (play) soccer right now.</p>
+        <button onclick="checkInput('input1', 'is playing', 'result1', 'He is playing soccer right now.')">Verificar</button>
+        <p id="result1"></p>
+        <p class="grammar-note">[Presente continuo: "He" + is + verbo con -ing]</p>
+        </div>
+
+        <div class="exercise-card">
+        <h3>Ejercicio 2</h3>
+            <p>
+                <select id="select2">
+                    <option>She is reading</option>
+                    <option>She is read</option>
+                    <option>She reading</option>
+                </select> (read) a book at the moment.
+            </p>
+            <button onclick="checkSelect('select2', 'She is reading', 'result2', 'She is reading a book at the moment.')">Verificar</button>
+            <p id="result2"></p>
+            <p class="grammar-note">[Presente continuo: "She" + is + verbo con -ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 3</h3>
+            <p>They <input type="text" id="input3" placeholder="verbo en presente continuo" /> (watch) TV now.</p>
+            <button onclick="checkInput('input3', 'are watching', 'result3', 'They are watching TV now.')">Verificar</button>
+            <p id="result3"></p>
+            <p class="grammar-note">[Presente continuo: "They" + are + verbo con -ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 4</h3>
+            <select id="select4">
+                <option>are buying</option>
+                <option>is buying</option>
+                <option>buying</option>
+            </select>
+            <p>She _____ (buy) a new dress right now.</p>
+            <button onclick="checkSelect('select4', 'is buying', 'result4', 'She is buying a new dress right now.')">Verificar</button>
+            <p id="result4"></p>
+            <p class="grammar-note">[Presente continuo: "She" + is + verbo con -ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 5</h3>
+            <p>I <input type="text" id="input5" placeholder="verbo en presente continuo" /> (write) an email at this moment.</p>
+            <button onclick="checkInput('input5', 'am writing', 'result5', 'I am writing an email at this moment.')">Verificar</button>
+            <p id="result5"></p>
+            <p class="grammar-note">[Presente continuo: "I" + am + verbo con -ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 6</h3>
+            <select id="select6">
+                <option>dancing</option>
+                <option>are dancing</option>
+                <option>is dancing</option>
+            </select>
+            <p>We _____ (dance) at the party right now.</p>
+            <button onclick="checkSelect('select6', 'are dancing', 'result6', 'We are dancing at the party right now.')">Verificar</button>
+            <p id="result6"></p>
+            <p class="grammar-note">[Presente continuo: "We" + are + verbo con -ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 7</h3>
+            <p>My dad <input type="text" id="input7" placeholder="verbo en presente continuo" /> (cook) dinner now.</p>
+            <button onclick="checkInput('input7', 'is cooking', 'result7', 'My dad is cooking dinner now.')">Verificar</button>
+            <p id="result7"></p>
+            <p class="grammar-note">[Presente continuo: "My dad" + is + verbo con -ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 8</h3>
+            <select id="select8">
+                <option>running</option>
+                <option>is running</option>
+                <option>are running</option>
+            </select>
+            <p>The dog _____ (run) in the park at this moment.</p>
+            <button onclick="checkSelect('select8', 'is running', 'result8', 'The dog is running in the park at this moment.')">Verificar</button>
+            <p id="result8"></p>
+            <p class="grammar-note">[Presente continuo: "The dog" + is + verbo con -ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 9</h3>
+            <p>He <input type="text" id="input9" placeholder="verbo en presente continuo" /> (study) for his exam right now.</p>
+            <button onclick="checkInput('input9', 'is studying', 'result9', 'He is studying for his exam right now.')">Verificar</button>
+            <p id="result9"></p>
+            <p class="grammar-note">[Presente continuo: "He" + is + verbo con -ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 10</h3>
+            <select id="select10">
+                <option>drinking</option>
+                <option>am drinking</option>
+                <option>is drinking</option>
+            </select>
+            <p>I _____ (drink) coffee at the moment.</p>
+            <button onclick="checkSelect('select10', 'am drinking', 'result10', 'I am drinking coffee at the moment.')">Verificar</button>
+            <p id="result10"></p>
+            <p class="grammar-note">[Presente continuo: "I" + am + verbo con -ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 11</h3>
+            <p>We <input type="text" id="input11" placeholder="verbo en presente continuo" /> (play) soccer this afternoon.</p>
+            <button onclick="checkInput('input11', 'are playing', 'result11', 'We are playing soccer this afternoon.')">Verificar</button>
+            <p id="result11"></p>
+            <p class="grammar-note">[Presente continuo: "We" + are + verbo con -ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 12</h3>
+            <select id="select12">
+                <option>singing</option>
+                <option>is singing</option>
+                <option>are singing</option>
+            </select>
+            <p>She _____ (sing) a song right now.</p>
+            <button onclick="checkSelect('select12', 'is singing', 'result12', 'She is singing a song right now.')">Verificar</button>
+            <p id="result12"></p>
+            <p class="grammar-note">[Presente continuo: "She" + is + verbo con -ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 13</h3>
+            <p>They <input type="text" id="input13" placeholder="verbo en presente continuo" /> (do) their homework now.</p>
+            <button onclick="checkInput('input13', 'are doing', 'result13', 'They are doing their homework now.')">Verificar</button>
+            <p id="result13"></p>
+            <p class="grammar-note">[Presente continuo: "They" + are + verbo con -ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 14</h3>
+            <select id="select14">
+                <option>taking</option>
+                <option>is taking</option>
+                <option>are taking</option>
+            </select>
+            <p>He _____ (take) a shower at the moment.</p>
+            <button onclick="checkSelect('select14', 'is taking', 'result14', 'He is taking a shower at the moment.')">Verificar</button>
+            <p id="result14"></p>
+            <p class="grammar-note">[Presente continuo: "He" + is + verbo con -ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 15</h3>
+            <p>She <input type="text" id="input15" placeholder="verbo en presente continuo" /> (listen) to music now.</p>
+            <button onclick="checkInput('input15', 'is listening', 'result15', 'She is listening to music now.')">Verificar</button>
+            <p id="result15"></p>
+            <p class="grammar-note">[Presente continuo: "She" + is + verbo con -ing (listen → listening)]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 16</h3>
+            <select id="select16">
+                <option>leaving</option>
+                <option>are leaving</option>
+                <option>is leaving</option>
+            </select>
+            <p>We _____ (leave) the house right now.</p>
+            <button onclick="checkSelect('select16', 'are leaving', 'result16', 'We are leaving the house right now.')">Verificar</button>
+            <p id="result16"></p>
+            <p class="grammar-note">[Presente continuo: "We" + are + verbo con -ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 17</h3>
+            <p>He <input type="text" id="input17" placeholder="verbo en presente continuo" /> (lose) his keys right now.</p>
+            <button onclick="checkInput('input17', 'is losing', 'result17', 'He is losing his keys right now.')">Verificar</button>
+            <p id="result17"></p>
+            <p class="grammar-note">[Presente continuo: "He" + is + verbo con -ing (lose → losing)]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 18</h3>
+            <select id="select18">
+                <option>knowing</option>
+                <option>am knowing</option>
+                <option>is knowing</option>
+            </select>
+            <p>I _____ (know) the answer now.</p>
+            <button onclick="checkSelect('select18', 'know', 'result18', 'I know the answer now.')">Verificar</button>
+            <p id="result18"></p>
+            <p class="grammar-note">[El verbo "know" no se usa normalmente en continuo]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 19</h3>
+            <p>We <input type="text" id="input19" placeholder="verbo en presente continuo" /> (stay) at home this weekend.</p>
+            <button onclick="checkInput('input19', 'are staying', 'result19', 'We are staying at home this weekend.')">Verificar</button>
+            <p id="result19"></p>
+            <p class="grammar-note">[Presente continuo: "We" + are + verbo con -ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 20</h3>
+            <select id="select20">
+                <option>making</option>
+                <option>are making</option>
+                <option>is making</option>
+            </select>
+            <p>They _____ (make) dinner at the moment.</p>
+            <button onclick="checkSelect('select20', 'are making', 'result20', 'They are making dinner at the moment.')">Verificar</button>
+            <p id="result20"></p>
+            <p class="grammar-note">[Presente continuo: "They" + are + verbo con -ing]</p>
+        </div>
+    </section>
+
+    <!-- Nivel Medio (inicialmente bloqueado) -->
+    <section class="level locked" id="medio">
+        <div class="lock-overlay">
+            <div class="lock-icon">🔒</div>
+            <p>Completa el nivel Fácil para desbloquear</p>
+        </div>
+        <h2>Medio</h2>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 1</h3>
+            <p>I <input type="text" id="medio-input1" placeholder="am not / isn't / aren't"/> (not like) the movie right now.</p>
+            <button onclick="checkInput('medio-input1', 'am not liking', 'medio-result1', 'I am not liking the movie right now.')">Verificar</button>
+            <p id="medio-result1"></p>
+            <p class="grammar-note">[Negativo presente continuo: "I" + am not + verbo con -ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 2</h3>
+            <p>She <input type="text" id="medio-input2" placeholder="isn't / aren't / am not"/> (not go) to the gym today.</p>
+            <button onclick="checkInput('medio-input2', 'isn\'t going', 'medio-result2', 'She isn\'t going to the gym today.')">Verificar</button>
+            <p id="medio-result2"></p>
+            <p class="grammar-note">[Negativo presente continuo: "She" + isn't + verbo con -ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 3</h3>
+            <p>Are they <input type="text" id="medio-input3" placeholder="verbo con -ing"/> (watch) TV now?</p>
+            <button onclick="checkInput('medio-input3', 'watching', 'medio-result3', 'Are they watching TV now?')">Verificar</button>
+            <p id="medio-result3"></p>
+            <p class="grammar-note">[Interrogativo presente continuo: Are + "they" + verbo con -ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 4</h3>
+            <p>Is he <input type="text" id="medio-input4" placeholder="verbo con -ing"/> (play) tennis at the moment?</p>
+            <button onclick="checkInput('medio-input4', 'playing', 'medio-result4', 'Is he playing tennis at the moment?')">Verificar</button>
+            <p id="medio-result4"></p>
+            <p class="grammar-note">[Interrogativo presente continuo: Is + "he" + verbo con -ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 5</h3>
+            <p>We <input type="text" id="medio-input5" placeholder="aren't / isn't / am not"/> (not watch) TV right now.</p>
+            <button onclick="checkInput('medio-input5', 'aren\'t watching', 'medio-result5', 'We aren\'t watching TV right now.')">Verificar</button>
+            <p id="medio-result5"></p>
+            <p class="grammar-note">[Negativo presente continuo: "We" + aren't + verbo con -ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 6</h3>
+            <p>Are you <input type="text" id="medio-input6" placeholder="verbo con -ing"/> (speak) English now?</p>
+            <button onclick="checkInput('medio-input6', 'speaking', 'medio-result6', 'Are you speaking English now?')">Verificar</button>
+            <p id="medio-result6"></p>
+            <p class="grammar-note">[Interrogativo presente continuo: Are + "you" + verbo con -ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 7</h3>
+            <p>It <input type="text" id="medio-input7" placeholder="isn't / aren't / am not"/> (not rain) at the moment.</p>
+            <button onclick="checkInput('medio-input7', 'isn\'t raining', 'medio-result7', 'It isn\'t raining at the moment.')">Verificar</button>
+            <p id="medio-result7"></p>
+            <p class="grammar-note">[Negativo presente continuo: "It" + isn't + verbo con -ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 8</h3>
+            <p>My parents <input type="text" id="medio-input8" placeholder="aren't / isn't / am not"/> (not work) today.</p>
+            <button onclick="checkInput('medio-input8', 'aren\'t working', 'medio-result8', 'My parents aren\'t working today.')">Verificar</button>
+            <p id="medio-result8"></p>
+            <p class="grammar-note">[Negativo presente continuo: "My parents" + aren't + verbo con -ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 9</h3>
+            <p>Is she <input type="text" id="medio-input9" placeholder="verbo con -ing"/> (study) right now?</p>
+            <button onclick="checkInput('medio-input9', 'studying', 'medio-result9', 'Is she studying right now?')">Verificar</button>
+            <p id="medio-result9"></p>
+            <p class="grammar-note">[Interrogativo presente continuo: Is + "she" + verbo con -ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 10</h3>
+            <p>They <input type="text" id="medio-input10" placeholder="aren't / isn't / am not"/> (not understand) the lesson now.</p>
+            <button onclick="checkInput('medio-input10', 'aren\'t understanding', 'medio-result10', 'They aren\'t understanding the lesson now.')">Verificar</button>
+            <p id="medio-result10"></p>
+            <p class="grammar-note">[Negativo presente continuo: "They" + aren't + verbo con -ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 11</h3>
+            <p>Are we <input type="text" id="medio-input11" placeholder="verbo con -ing"/> (have) a test today?</p>
+            <button onclick="checkInput('medio-input11', 'having', 'medio-result11', 'Are we having a test today?')">Verificar</button>
+            <p id="medio-result11"></p>
+            <p class="grammar-note">[Interrogativo presente continuo: Are + "we" + verbo con -ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 12</h3>
+            <p>Is your brother <input type="text" id="medio-input12" placeholder="verbo con -ing"/> (sleep) now?</p>
+            <button onclick="checkInput('medio-input12', 'sleeping', 'medio-result12', 'Is your brother sleeping now?')">Verificar</button>
+            <p id="medio-result12"></p>
+            <p class="grammar-note">[Interrogativo presente continuo: Is + "your brother" + verbo con -ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 13</h3>
+            <p>My cat <input type="text" id="medio-input13" placeholder="isn't / aren't / am not"/> (not eat) right now.</p>
+            <button onclick="checkInput('medio-input13', 'isn\'t eating', 'medio-result13', 'My cat isn\'t eating right now.')">Verificar</button>
+            <p id="medio-result13"></p>
+            <p class="grammar-note">[Negativo presente continuo: "My cat" + isn't + verbo con -ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 14</h3>
+            <p>Are the students <input type="text" id="medio-input14" placeholder="verbo con -ing"/> (do) their homework now?</p>
+            <button onclick="checkInput('medio-input14', 'doing', 'medio-result14', 'Are the students doing their homework now?')">Verificar</button>
+            <p id="medio-result14"></p>
+            <p class="grammar-note">[Interrogativo presente continuo: Are + "the students" + verbo con -ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 15</h3>
+            <p>This computer <input type="text" id="medio-input15" placeholder="isn't / aren't / am not"/> (not work) properly right now.</p>
+            <button onclick="checkInput('medio-input15', 'isn\'t working', 'medio-result15', 'This computer isn\'t working properly right now.')">Verificar</button>
+            <p id="medio-result15"></p>
+            <p class="grammar-note">[Negativo presente continuo: "This computer" + isn't + verbo con -ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 16</h3>
+            <p>Is your mother <input type="text" id="medio-input16" placeholder="verbo con -ing"/> (cook) dinner now?</p>
+            <button onclick="checkInput('medio-input16', 'cooking', 'medio-result16', 'Is your mother cooking dinner now?')">Verificar</button>
+            <p id="medio-result16"></p>
+            <p class="grammar-note">[Interrogativo presente continuo: Is + "your mother" + verbo con -ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 17</h3>
+            <p>Those birds <input type="text" id="medio-input17" placeholder="aren't / isn't / am not"/> (not sing) at the moment.</p>
+            <button onclick="checkInput('medio-input17', 'aren\'t singing', 'medio-result17', 'Those birds aren\'t singing at the moment.')">Verificar</button>
+            <p id="medio-result17"></p>
+            <p class="grammar-note">[Negativo presente continuo: "Those birds" + aren't + verbo con -ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 18</h3>
+            <p>Are you <input type="text" id="medio-input18" placeholder="verbo con -ing"/> (listen) to me now?</p>
+            <button onclick="checkInput('medio-input18', 'listening', 'medio-result18', 'Are you listening to me now?')">Verificar</button>
+            <p id="medio-result18"></p>
+            <p class="grammar-note">[Interrogativo presente continuo: Are + "you" + verbo con -ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 19</h3>
+            <p>His son <input type="text" id="medio-input19" placeholder="isn't / aren't / am not"/> (not eat) vegetables today.</p>
+            <button onclick="checkInput('medio-input19', 'isn\'t eating', 'medio-result19', 'His son isn\'t eating vegetables today.')">Verificar</button>
+            <p id="medio-result19"></p>
+            <p class="grammar-note">[Negativo presente continuo: "His son" + isn't + verbo con -ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 20</h3>
+            <p>Is the store <input type="text" id="medio-input20" placeholder="verbo con -ing"/> (close) now?</p>
+            <button onclick="checkInput('medio-input20', 'closing', 'medio-result20', 'Is the store closing now?')">Verificar</button>
+            <p id="medio-result20"></p>
+            <p class="grammar-note">[Interrogativo presente continuo: Is + "the store" + verbo con -ing]</p>
+        </div>
+    </section>
+
+    <!-- Nivel Difícil (inicialmente bloqueado) -->
+    <section class="level locked" id="dificil">
+        <div class="lock-overlay">
+            <div class="lock-icon">🔒</div>
+            <p>Completa el nivel Medio para desbloquear</p>
+        </div>
+        <h2>Difícil</h2>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 1</h3>
+            <p>Where <input type="text" id="dificil-input1" placeholder="am/is/are"/> you (go) right now?</p>
+            <button onclick="checkInput('dificil-input1', 'are you going', 'dificil-result1', 'Where are you going right now?')">Verificar</button>
+            <p id="dificil-result1"></p>
+            <p class="grammar-note">[Interrogativo con wh-: Where + are + "you" + verbo con -ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 2</h3>
+            <p>What time <input type="text" id="dificil-input2" placeholder="am/is/are"/> the train (arrive) today?</p>
+            <button onclick="checkInput('dificil-input2', 'is the train arriving', 'dificil-result2', 'What time is the train arriving today?')">Verificar</button>
+            <p id="dificil-result2"></p>
+            <p class="grammar-note">[Interrogativo con wh-: What time + is + "the train" + verbo con -ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 3</h3>
+            <p>Why <input type="text" id="dificil-input3" placeholder="am/is/are"/> she (cry) now?</p>
+            <button onclick="checkInput('dificil-input3', 'is she crying', 'dificil-result3', 'Why is she crying now?')">Verificar</button>
+            <p id="dificil-result3"></p>
+            <p class="grammar-note">[Interrogativo con wh-: Why + is + "she" + verbo con -ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 4</h3>
+            <p>How often <input type="text" id="dificil-input4" placeholder="am/is/are"/> they (visit) their grandparents this month?</p>
+            <button onclick="checkInput('dificil-input4', 'are they visiting', 'dificil-result4', 'How often are they visiting their grandparents this month?')">Verificar</button>
+            <p id="dificil-result4"></p>
+            <p class="grammar-note">[Interrogativo con wh-: How often + are + "they" + verbo con -ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 5</h3>
+            <select id="dificil-select5">
+                <option>What are your father doing?</option>
+                <option>What is your father doing?</option>
+                <option>What your father is doing?</option>
+            </select>
+            <button onclick="checkSelect('dificil-select5', 'What is your father doing?', 'dificil-result5', 'What is your father doing?')">Verificar</button>
+            <p id="dificil-result5"></p>
+            <p class="grammar-note">[Interrogativo con wh-: What + is + "your father" + verbo con -ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 6</h3>
+            <p>Who <input type="text" id="dificil-input6" placeholder="verbo en presente continuo"/> (teach) the class today?</p>
+            <button onclick="checkInput('dificil-input6', 'is teaching', 'dificil-result6', 'Who is teaching the class today?')">Verificar</button>
+            <p id="dificil-result6"></p>
+            <p class="grammar-note">[Interrogativo con who como sujeto: Who + is + verbo con -ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 7</h3>
+            <p>Which book <input type="text" id="dificil-input7" placeholder="am/is/are"/> you (read) now?</p>
+            <button onclick="checkInput('dificil-input7', 'are you reading', 'dificil-result7', 'Which book are you reading now?')">Verificar</button>
+            <p id="dificil-result7"></p>
+            <p class="grammar-note">[Interrogativo con wh-: Which book + are + "you" + verbo con -ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 8</h3>
+            <p>When <input type="text" id="dificil-input8" placeholder="am/is/are"/> the shop (close) today?</p>
+            <button onclick="checkInput('dificil-input8', 'is the shop closing', 'dificil-result8', 'When is the shop closing today?')">Verificar</button>
+            <p id="dificil-result8"></p>
+            <p class="grammar-note">[Interrogativo con wh-: When + is + "the shop" + verbo con -ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 9</h3>
+            <p>How many languages <input type="text" id="dificil-input9" placeholder="am/is/are"/> your sister (learn) this year?</p>
+            <button onclick="checkInput('dificil-input9', 'is your sister learning', 'dificil-result9', 'How many languages is your sister learning this year?')">Verificar</button>
+            <p id="dificil-result9"></p>
+            <p class="grammar-note">[Interrogativo con wh-: How many languages + is + "your sister" + verbo con -ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 10</h3>
+            <p>What <input type="text" id="dificil-input10" placeholder="am/is/are"/> this word (mean) in this context?</p>
+            <button onclick="checkInput('dificil-input10', 'is this word meaning', 'dificil-result10', 'What is this word meaning in this context?')">Verificar</button>
+            <p id="dificil-result10"></p>
+            <p class="grammar-note">[Interrogativo con wh-: What + is + "this word" + verbo con -ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 11</h3>
+            <select id="dificil-select11">
+                <option>Where you are staying?</option>
+                <option>Where are you staying?</option>
+                <option>Where is you staying?</option>
+            </select>
+            <button onclick="checkSelect('dificil-select11', 'Where are you staying?', 'dificil-result11', 'Where are you staying?')">Verificar</button>
+            <p id="dificil-result11"></p>
+            <p class="grammar-note">[Interrogativo con wh-: Where + are + "you" + verbo con -ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 12</h3>
+            <p>Why <input type="text" id="dificil-input12" placeholder="isn't / aren't"/> he (come) to the party?</p>
+            <button onclick="checkInput('dificil-input12', 'isn\'t he coming', 'dificil-result12', 'Why isn\'t he coming to the party?')">Verificar</button>
+            <p id="dificil-result12"></p>
+            <p class="grammar-note">[Interrogativo negativo con wh-: Why + isn't + "he" + verbo con -ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 13</h3>
+            <p>How <input type="text" id="dificil-input13" placeholder="am/is/are"/> your parents (travel) this week?</p>
+            <button onclick="checkInput('dificil-input13', 'are your parents traveling', 'dificil-result13', 'How are your parents traveling this week?')">Verificar</button>
+            <p id="dificil-result13"></p>
+            <p class="grammar-note">[Interrogativo con wh-: How + are + "your parents" + verbo con -ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 14</h3>
+            <select id="dificil-select14">
+                <option>What you are doing this weekend?</option>
+                <option>What are you doing this weekend?</option>
+                <option>What is you doing this weekend?</option>
+            </select>
+            <button onclick="checkSelect('dificil-select14', 'What are you doing this weekend?', 'dificil-result14', 'What are you doing this weekend?')">Verificar</button>
+            <p id="dificil-result14"></p>
+            <p class="grammar-note">[Interrogativo con wh-: What + are + "you" + verbo con -ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 15</h3>
+            <p>Who <input type="text" id="dificil-input15" placeholder="verbo en presente continuo"/> (help) you with the project now?</p>
+            <button onclick="checkInput('dificil-input15', 'is helping', 'dificil-result15', 'Who is helping you with the project now?')">Verificar</button>
+            <p id="dificil-result15"></p>
+            <p class="grammar-note">[Interrogativo con who como sujeto: Who + is + verbo con -ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 16</h3>
+            <p>What kind of music <input type="text" id="dificil-input16" placeholder="am/is/are"/> your brother (listen) to now?</p>
+            <button onclick="checkInput('dificil-input16', 'is your brother listening', 'dificil-result16', 'What kind of music is your brother listening to now?')">Verificar</button>
+            <p id="dificil-result16"></p>
+            <p class="grammar-note">[Interrogativo con wh-: What kind of music + is + "your brother" + verbo con -ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 17</h3>
+            <p>Where <input type="text" id="dificil-input17" placeholder="am/is/are"/> these buses (go) today?</p>
+            <button onclick="checkInput('dificil-input17', 'are these buses going', 'dificil-result17', 'Where are these buses going today?')">Verificar</button>
+            <p id="dificil-result17"></p>
+            <p class="grammar-note">[Interrogativo con wh-: Where + are + "these buses" + verbo con -ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 18</h3>
+            <select id="dificil-select18">
+                <option>How she is getting to school today?</option>
+                <option>How is she getting to school today?</option>
+                <option>How are she getting to school today?</option>
+            </select>
+            <button onclick="checkSelect('dificil-select18', 'How is she getting to school today?', 'dificil-result18', 'How is she getting to school today?')">Verificar</button>
+            <p id="dificil-result18"></p>
+            <p class="grammar-note">[Interrogativo con wh-: How + is + "she" + verbo con -ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 19</h3>
+            <p>Why <input type="text" id="dificil-input19" placeholder="isn't / aren't"/> it (work) properly?</p>
+            <button onclick="checkInput('dificil-input19', 'isn\'t it working', 'dificil-result19', 'Why isn\'t it working properly?')">Verificar</button>
+            <p id="dificil-result19"></p>
+            <p class="grammar-note">[Interrogativo negativo con wh-: Why + isn't + "it" + verbo con -ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 20</h3>
+            <p>What <input type="text" id="dificil-input20" placeholder="am/is/are"/> the teacher (explain) now?</p>
+            <button onclick="checkInput('dificil-input20', 'is the teacher explaining', 'dificil-result20', 'What is the teacher explaining now?')">Verificar</button>
+            <p id="dificil-result20"></p>
+            <p class="grammar-note">[Interrogativo con wh-: What + is + "the teacher" + verbo con -ing]</p>
+        </div>
+    </section>
+
+</main>
+
+<!-- Chatbot modificado (sin campo de búsqueda) -->
+<div id="chat-toggle" onclick="toggleChatbot()">💬</div>
+<div id="chatbot-box" class="chatbot-container hidden">
+    <div class="chatbot-header">
+        <span>Chatbot - Aprende el Presente Continuo</span>
+        <button class="close-btn" onclick="toggleChatbot()">×</button>
+    </div>
+
+    <div class="quick-questions">
+        <p class="questions-title">Preguntas frecuentes:</p>
+        <button class="question-btn" onclick="askQuestion('¿Qué es el presente continuo?')">¿Qué es el presente continuo?</button>
+        <button class="question-btn" onclick="askQuestion('¿Cómo se conjuga el presente continuo?')">¿Cómo se conjuga?</button>
+        <button class="question-btn" onclick="askQuestion('¿Cuándo se usa el presente continuo?')">¿Cuándo se usa?</button>
+        <button class="question-btn" onclick="askQuestion('¿Cuál es la estructura del presente continuo?')">¿Cuál es la estructura?</button>
+    </div>
+
+    <div class="chatbot-body" id="chatbot-body">
+        <div class="bot-message welcome-message">
+            ¡Hola! 👋 Soy tu asistente para aprender el Presente Continuo. Usa las preguntas sugeridas arriba.
+        </div>
+    </div>
+</div>
+
+<script>
+    // Variables para rastrear el progreso
+    let ejerciciosFacilesCompletados = 0;
+    const totalEjerciciosFaciles = 20; // Todos los ejercicios fáciles
+    let ejerciciosMediosCompletados = 0;
+    const totalEjerciciosMedios = 20; // Todos los ejercicios medios
+
+    // Función para mezclar opciones al cargar la página
+    function shuffleOptions() {
+        const selects = document.querySelectorAll('select');
+        selects.forEach(select => {
+            const options = Array.from(select.options);
+            // Mezclar las opciones excepto la primera (si es un placeholder)
+            const toShuffle = options.slice(0);
+            for (let i = toShuffle.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [toShuffle[i], toShuffle[j]] = [toShuffle[j], toShuffle[i]];
+            }
+            // Reemplazar las opciones
+            select.innerHTML = '';
+            toShuffle.forEach(option => {
+                select.add(option);
+            });
+        });
+    }
+
+    // Llamar a la función al cargar la página
+    window.onload = shuffleOptions;
+
+    // Función genérica para verificar inputs
+    function checkInput(inputId, correctAnswer, resultId, fullSentence) {
+        const val = document.getElementById(inputId).value.toLowerCase().trim();
+        const resultElement = document.getElementById(resultId);
+        
+        if (val === correctAnswer.toLowerCase()) {
+            resultElement.textContent = "✅ ¡Correcto!";
+            resultElement.style.color = "#48bb78";
+            
+            // Agregar icono de sonido
+            addSoundIcon(resultElement, fullSentence);
+            
+            // Verificar si es un ejercicio del nivel fácil
+            if (inputId.startsWith('input')) {
+                if (!resultElement.dataset.completed) {
+                    ejerciciosFacilesCompletados++;
+                    resultElement.dataset.completed = "true";
+                    checkUnlockMedium();
+                }
+            }
+            // Verificar si es un ejercicio del nivel medio
+            else if (inputId.startsWith('medio-input')) {
+                if (!resultElement.dataset.completed) {
+                    ejerciciosMediosCompletados++;
+                    resultElement.dataset.completed = "true";
+                    checkUnlockHard();
+                }
+            }
+        } else {
+            resultElement.textContent = "❌ Intenta de nuevo.";
+            resultElement.style.color = "#e53e3e";
+        }
+    }
+
+    // Función genérica para verificar selects
+    function checkSelect(selectId, correctAnswer, resultId, fullSentence) {
+        const val = document.getElementById(selectId).value;
+        const resultElement = document.getElementById(resultId);
+        
+        if (val === correctAnswer) {
+            resultElement.textContent = "✅ ¡Correcto!";
+            resultElement.style.color = "#48bb78";
+            
+            // Agregar icono de sonido
+            addSoundIcon(resultElement, fullSentence);
+            
+            // Verificar si es un ejercicio del nivel fácil
+            if (selectId.startsWith('select')) {
+                if (!resultElement.dataset.completed) {
+                    ejerciciosFacilesCompletados++;
+                    resultElement.dataset.completed = "true";
+                    checkUnlockMedium();
+                }
+            }
+            // Verificar si es un ejercicio del nivel difícil
+            else if (selectId.startsWith('dificil-select')) {
+                if (!resultElement.dataset.completed) {
+                    resultElement.dataset.completed = "true";
+                }
+            }
+        } else {
+            resultElement.textContent = "❌ Esa no es la forma correcta.";
+            resultElement.style.color = "#e53e3e";
+        }
+    }
+
+    // Función para agregar icono de sonido
+    function addSoundIcon(resultElement, sentence) {
+        // Verificar si ya existe un icono de sonido
+        if (resultElement.querySelector('.sound-icon')) {
+            return;
+        }
+        
+        // Crear contenedor para el icono
+        const soundContainer = document.createElement('div');
+        soundContainer.className = 'sound-icon-container';
+        
+        // Crear icono de sonido
+        const soundIcon = document.createElement('i');
+        soundIcon.className = 'fas fa-volume-up sound-icon';
+        soundIcon.title = 'Escuchar pronunciación';
+        soundIcon.onclick = function() {
+            speakText(sentence);
+        };
+        
+        // Agregar texto e icono al contenedor
+        soundContainer.appendChild(document.createTextNode('Escuchar: '));
+        soundContainer.appendChild(soundIcon);
+        
+        // Agregar el contenedor después del mensaje de resultado
+        resultElement.appendChild(document.createElement('br'));
+        resultElement.appendChild(soundContainer);
+    }
+
+    // Función para leer el texto en voz alta
+    function speakText(text) {
+        if ('speechSynthesis' in window) {
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'en-US'; // Configurar el idioma a inglés
+            utterance.rate = 0.9; // Velocidad un poco más lenta
+            speechSynthesis.speak(utterance);
+        } else {
+            alert('Tu navegador no soporta la síntesis de voz. Prueba con Chrome o Edge.');
+        }
+    }
+
+    // Función para verificar si se debe desbloquear el nivel medio
+    function checkUnlockMedium() {
+        if (ejerciciosFacilesCompletados >= totalEjerciciosFaciles) {
+            const medioSection = document.getElementById('medio');
+            medioSection.classList.remove('locked');
+            medioSection.querySelector('.lock-overlay').style.display = 'none';
+            
+            // Mostrar notificación
+            alert('¡Felicidades! Has completado el nivel Fácil. El nivel Medio ha sido desbloqueado.');
+        }
+    }
+
+    // Función para verificar si se debe desbloquear el nivel difícil
+    function checkUnlockHard() {
+        if (ejerciciosMediosCompletados >= totalEjerciciosMedios) {
+            const dificilSection = document.getElementById('dificil');
+            dificilSection.classList.remove('locked');
+            dificilSection.querySelector('.lock-overlay').style.display = 'none';
+            
+            // Mostrar notificación
+            alert('¡Excelente! Has completado el nivel Medio. El nivel Difícil ha sido desbloqueado.');
+        }
+    }
+
+    // Chatbot básico
+    const chatbot = document.getElementById("chatbot-box");
+    const chatbotBody = document.getElementById("chatbot-body");
+
+    const answers = {
+        "¿Qué es el presente continuo?": "✅ El presente continuo se usa para describir acciones que están ocurriendo en el momento del habla o alrededor de ese momento. Ejemplo: I am studying now. She is working at the moment.",
+        "¿Cómo se conjuga el presente continuo?": "✅ Estructura: sujeto + am/is/are + verbo con -ing. Ejemplos: I am eating. She is reading. We are playing. Para la forma negativa se añade 'not' después del verbo to be: He is not working.",
+        "¿Cuándo se usa el presente continuo?": "✅ Para: 1) Acciones en progreso ahora (I'm talking to you). 2) Situaciones temporales (She's staying with friends this week). 3) Planes futuros (We're leaving tomorrow). 4) Acciones repetidas que molestan (You're always interrupting me).",
+        "¿Cuál es la estructura del presente continuo?": "✅ Afirmativa: Sujeto + am/is/are + verbo con -ing. Negativa: Sujeto + am/is/are + not + verbo con -ing. Interrogativa: Am/Is/Are + sujeto + verbo con -ing. Ej: She isn't sleeping. Are they coming?"
+    };
+
+    function askQuestion(question) {
+        addMessage(question, 'user');
+        setTimeout(() => {
+            addMessage(answers[question], 'bot');
+        }, 300);
+    }
+
+    function addMessage(message, sender) {
+        const messageDiv = document.createElement('div');
+        messageDiv.className = sender === 'user' ? 'user-message' : 'bot-message';
+        messageDiv.innerHTML = message.replace(/\n/g, '<br>');
+        chatbotBody.appendChild(messageDiv);
+        chatbotBody.scrollTop = chatbotBody.scrollHeight;
+    }
+
+    function toggleChatbot() {
+        chatbot.classList.toggle("hidden");
+    }
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const avatarWalking = document.getElementById("avatarWalking");
+    const avatarStatic = document.getElementById("avatarStatic");
+    const bubble = document.getElementById("bubble");
+
+    const mensajesIniciales = [
+    "¡Bienvenido a este sitio web que te ayudará a aprender inglés de forma didáctica y divertida! 🇬🇧🎉",
+    "Empecemos con el Presente Continuo... ¡vas a ver qué fácil es! 💡📚",
+    "¡Tú puedes! Disfruta los ejercicios, verás cuánto mejoras. 🚀💪",
+    "Estaré aquí para apoyarte y darte consejos siempre que lo necesites. 🤝👨‍🏫"
+    ];
+
+    const mensajesPermanentes = [
+    "¿Listo para tu próxima lección? 📝",
+    "Sigue así, vas por buen camino. ✅",
+    "Estoy aquí si tienes dudas. 💬"
+    ];
+
+    let index = 0;
+
+    // Ocultar el avatar estático y la burbuja al cargar
+    avatarStatic.style.display = "none";
+    bubble.style.display = "none";
+
+    // Paso 1: animación camina al centro
+    avatarWalking.addEventListener("animationend", () => {
+    avatarWalking.style.display = "none";
+    avatarStatic.style.display = "flex";
+    bubble.style.display = "block";
+    mostrarMensajesIniciales();
+    });
+
+    // Paso 2: mostrar los mensajes uno por uno
+    function mostrarMensajesIniciales() {
+    if (index < mensajesIniciales.length) {
+        bubble.textContent = mensajesIniciales[index];
+        index++;
+        setTimeout(mostrarMensajesIniciales, 6000); // Cada 10 segundos
+    } else {
+        iniciarSalida();
+    }
+    }
+
+    // Paso 3: ocultar avatar del centro y caminar a la izquierda
+    function iniciarSalida() {
+    avatarStatic.style.display = "none";
+    avatarWalking.style.display = "flex";
+    avatarWalking.classList.add("walk-out");
+
+    avatarWalking.addEventListener("animationend", finalSalida);
+    }
+
+    // Paso 4: finalizar caminata y mostrar avatar en la izquierda
+    function finalSalida() {
+    avatarWalking.style.display = "none";
+    avatarWalking.removeEventListener("animationend", finalSalida);
+    mostrarAvatarIzquierda();
+    }
+
+    // Paso 5: Mostrar el avatar estático a la izquierda con mensajes permanentes
+    function mostrarAvatarIzquierda() {
+    avatarStatic.style.display = "flex";
+    avatarStatic.style.left = "0"; // Cambia posición
+    avatarStatic.style.top = "50%";
+    avatarStatic.style.transform = "translateY(-50%)";
+    bubble.style.display = "block";
+
+    let i = 0;
+    bubble.textContent = mensajesPermanentes[i];
+    setInterval(() => {
+        i = (i + 1) % mensajesPermanentes.length;
+        bubble.textContent = mensajesPermanentes[i];
+    }, 10000);
+    }
+});
+</script>
+
+<div class="avatar-walking" id="avatarWalking">
+    <div class="sprite-avatar"></div>
+</div>
+
+<div class="avatar-static" id="avatarStatic">
+    <div class="bubble" id="bubble">¡Hola!</div>
+    <img src='img/avatar_pixel_art_128x128.png' alt="Avatar" class="avatar-img">
+</div>
+    
+</body>
+</html>

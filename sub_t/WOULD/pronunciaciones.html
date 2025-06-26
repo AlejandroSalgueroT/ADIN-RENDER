@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es" data-vista="vista5">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejemplos del verbo "Would" en los Condicionales</title>
+  <link rel="stylesheet" href="estilos.css">
+  <script defer src="bot.js"></script>
+</head>
+<body data-vista="vista5">
+
+<header>
+  <h1>Ejemplos con el Verbo Modal <span class="highlight">"WOULD"</span></h1>
+</header>
+
+<div class="container">
+  <section class="explicacion">
+    <h2>Ejemplos por Tiempos Condicionales</h2>
+
+    <h3>1. Simple Conditional</h3>
+    <ul class="ejemplos ejemplo">
+      <li data-en="I would eat pizza." data-es="Yo comería pizza.">I would eat pizza. — Yo comería pizza. <button class="play-example">🔊</button></li>
+      <li data-en="She would dance at the party." data-es="Ella bailaría en la fiesta.">She would dance at the party. — Ella bailaría en la fiesta. <button class="play-example">🔊</button></li>
+      <li data-en="They would travel next summer." data-es="Ellos viajarían el próximo verano.">They would travel next summer. — Ellos viajarían el próximo verano. <button class="play-example">🔊</button></li>
+    </ul>
+
+    <h3>2. Conditional Continuous</h3>
+    <ul class="ejemplos ejemplo">
+      <li data-en="I would be working now." data-es="Yo estaría trabajando ahora.">I would be working now. — Yo estaría trabajando ahora. <button class="play-example">🔊</button></li>
+      <li data-en="He would be sleeping during the meeting." data-es="Él estaría durmiendo durante la reunión.">He would be sleeping during the meeting. — Él estaría durmiendo durante la reunión. <button class="play-example">🔊</button></li>
+      <li data-en="We would be studying for the test." data-es="Estaríamos estudiando para el examen.">We would be studying for the test. — Estaríamos estudiando para el examen. <button class="play-example">🔊</button></li>
+    </ul>
+
+    <h3>3. Perfect Conditional</h3>
+    <ul class="ejemplos ejemplo">
+      <li data-en="I would have finished the project." data-es="Yo habría terminado el proyecto.">I would have finished the project. — Yo habría terminado el proyecto. <button class="play-example">🔊</button></li>
+      <li data-en="She would have called you." data-es="Ella te habría llamado.">She would have called you. — Ella te habría llamado. <button class="play-example">🔊</button></li>
+      <li data-en="They would have gone to the concert." data-es="Ellos habrían ido al concierto.">They would have gone to the concert. — Ellos habrían ido al concierto. <button class="play-example">🔊</button></li>
+    </ul>
+
+    <h3>4. Perfect Conditional Continuous</h3>
+    <ul class="ejemplos ejemplo">
+      <li data-en="I would have been studying all night." data-es="Habría estado estudiando toda la noche.">I would have been studying all night. — Habría estado estudiando toda la noche. <button class="play-example">🔊</button></li>
+      <li data-en="He would have been working for hours." data-es="Él habría estado trabajando durante horas.">He would have been working for hours. — Él habría estado trabajando durante horas. <button class="play-example">🔊</button></li>
+      <li data-en="They would have been traveling since morning." data-es="Ellos habrían estado viajando desde la mañana.">They would have been traveling since morning. — Ellos habrían estado viajando desde la mañana. <button class="play-example">🔊</button></li>
+    </ul>
+  </section>
+
+  <div class="nav-buttons">
+    <a href="index.html">⟵ Volver al inicio</a>
+  </div>
+</div>
+
+<!-- Bot interactivo -->
+<div id="bot-container">
+  <div id="bot-avatar">
+    <img id="avatar-img" src="avatar.png" alt="Avatar César Bot" draggable="false">
+    <div id="boca-bot"></div>
+  </div>
+  <div id="bot-text-box">¡Hola! Estoy listo para ayudarte.</div>
+  <div id="bot-controls">
+    <button id="btn-es">ES</button>
+    <button id="btn-en">EN</button>
+    <select id="voice-select"><option value="">Voz predeterminada</option></select>
+    <button id="toggle-sound">🔊</button>
+    <button id="toggle-visibility">🔽</button>
+  </div>
+</div>
+
+<script>
+const buttons = document.querySelectorAll('.play-example');
+buttons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const li = btn.closest('li');
+    const lang = document.body.getAttribute('data-idioma') || 'es';
+    const text = li.getAttribute(lang === 'en' ? 'data-en' : 'data-es');
+    const utterance = new SpeechSynthesisUtterance(text);
+    speechSynthesis.speak(utterance);
+  });
+});
+</script>
+
+</body>
+</html>

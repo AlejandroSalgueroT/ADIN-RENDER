@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presente Perfecto</title>
+    <link rel="stylesheet" href="PresentePerfecto.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+<header>
+    <img src="logo.png" class="logo" alt="Logo" />
+    <i class="user-icon">👤</i>
+    <h1 class="title">Presente Perfecto</h1>
+</header>
+
+<main class="exercise-container">
+
+    <!-- Nivel Fácil -->
+    <section class="level" id="facil">
+        <h2>Fácil</h2>
+        <div class="exercise-card">
+        <h3>Ejercicio 1</h3>
+        <p>I <input type="text" id="input1" placeholder="verbo en presente perfecto" /> (finish) my homework.</p>
+        <button onclick="checkInput('input1', 'have finished', 'result1', 'I have finished my homework.')">Verificar</button>
+        <div class="result-container">
+            <p id="result1"></p>
+            <span id="sound1" class="sound-icon hidden" onclick="speakText('I have finished my homework.')">🔊</span>
+        </div>
+        <p class="grammar-note">[Presente perfecto: "I" + have + participio pasado]</p>
+        </div>
+
+        <div class="exercise-card">
+        <h3>Ejercicio 2</h3>
+            <p>
+                <select id="select2">
+                    <option>She have visited</option>
+                    <option>She has visited</option>
+                    <option>She has visit</option>
+                </select> (visit) Paris three times.
+            </p>
+            <button onclick="checkSelect('select2', 'She has visited', 'result2', 'She has visited Paris three times.')">Verificar</button>
+            <div class="result-container">
+                <p id="result2"></p>
+                <span id="sound2" class="sound-icon hidden" onclick="speakText('She has visited Paris three times.')">🔊</span>
+            </div>
+            <p class="grammar-note">[Presente perfecto: "She" + has + participio pasado]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 3</h3>
+            <p>They <input type="text" id="input3" placeholder="verbo en presente perfecto" /> (travel) to Japan twice.</p>
+            <button onclick="checkInput('input3', 'have traveled', 'result3', 'They have traveled to Japan twice.')">Verificar</button>
+            <div class="result-container">
+                <p id="result3"></p>
+                <span id="sound3" class="sound-icon hidden" onclick="speakText('They have traveled to Japan twice.')">🔊</span>
+            </div>
+            <p class="grammar-note">[Presente perfecto: "They" + have + participio pasado]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 4</h3>
+            <select id="select4">
+                <option>have eaten</option>
+                <option>has eaten</option>
+                <option>has ate</option>
+            </select>
+            <p>He _____ (eat) sushi before.</p>
+            <button onclick="checkSelect('select4', 'has eaten', 'result4', 'He has eaten sushi before.')">Verificar</button>
+            <div class="result-container">
+                <p id="result4"></p>
+                <span id="sound4" class="sound-icon hidden" onclick="speakText('He has eaten sushi before.')">🔊</span>
+            </div>
+            <p class="grammar-note">[Presente perfecto: "He" + has + participio pasado (eat → eaten)]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 5</h3>
+            <p>We <input type="text" id="input5" placeholder="verbo en presente perfecto" /> (see) that movie already.</p>
+            <button onclick="checkInput('input5', 'have seen', 'result5', 'We have seen that movie already.')">Verificar</button>
+            <div class="result-container">
+                <p id="result5"></p>
+                <span id="sound5" class="sound-icon hidden" onclick="speakText('We have seen that movie already.')">🔊</span>
+            </div>
+            <p class="grammar-note">[Presente perfecto: "We" + have + participio pasado (see → seen)]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 6</h3>
+            <select id="select6">
+                <option>have meet</option>
+                <option>have met</option>
+                <option>has met</option>
+            </select>
+            <p>You _____ (meet) my brother before.</p>
+            <button onclick="checkSelect('select6', 'have met', 'result6', 'You have met my brother before.')">Verificar</button>
+            <div class="result-container">
+                <p id="result6"></p>
+                <span id="sound6" class="sound-icon hidden" onclick="speakText('You have met my brother before.')">🔊</span>
+            </div>
+            <p class="grammar-note">[Presente perfecto: "You" + have + participio pasado (meet → met)]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 7</h3>
+            <p>She <input type="text" id="input7" placeholder="verbo en presente perfecto" /> (read) that book recently.</p>
+            <button onclick="checkInput('input7', 'has read', 'result7', 'She has read that book recently.')">Verificar</button>
+            <div class="result-container">
+                <p id="result7"></p>
+                <span id="sound7" class="sound-icon hidden" onclick="speakText('She has read that book recently.')">🔊</span>
+            </div>
+            <p class="grammar-note">[Presente perfecto: "She" + has + participio pasado (read → read)]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 8</h3>
+            <select id="select8">
+                <option>have taken</option>
+                <option>has taken</option>
+                <option>has took</option>
+            </select>
+            <p>My sister _____ (take) Spanish lessons.</p>
+            <button onclick="checkSelect('select8', 'has taken', 'result8', 'My sister has taken Spanish lessons.')">Verificar</button>
+            <div class="result-container">
+                <p id="result8"></p>
+                <span id="sound8" class="sound-icon hidden" onclick="speakText('My sister has taken Spanish lessons.')">🔊</span>
+            </div>
+            <p class="grammar-note">[Presente perfecto: "My sister" + has + participio pasado (take → taken)]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 9</h3>
+            <p>I <input type="text" id="input9" placeholder="verbo en presente perfecto" /> (be) to Italy twice.</p>
+            <button onclick="checkInput('input9', 'have been', 'result9', 'I have been to Italy twice.')">Verificar</button>
+            <div class="result-container">
+                <p id="result9"></p>
+                <span id="sound9" class="sound-icon hidden" onclick="speakText('I have been to Italy twice.')">🔊</span>
+            </div>
+            <p class="grammar-note">[Presente perfecto: "I" + have + participio pasado (be → been)]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 10</h3>
+            <select id="select10">
+                <option>has lived</option>
+                <option>have lived</option>
+                <option>have live</option>
+            </select>
+            <p>They _____ (live) here since 2010.</p>
+            <button onclick="checkSelect('select10', 'have lived', 'result10', 'They have lived here since 2010.')">Verificar</button>
+            <div class="result-container">
+                <p id="result10"></p>
+                <span id="sound10" class="sound-icon hidden" onclick="speakText('They have lived here since 2010.')">🔊</span>
+            </div>
+            <p class="grammar-note">[Presente perfecto: "They" + have + participio pasado]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 11</h3>
+            <p>He <input type="text" id="input11" placeholder="verbo en presente perfecto" /> (work) at that company for five years.</p>
+            <button onclick="checkInput('input11', 'has worked', 'result11', 'He has worked at that company for five years.')">Verificar</button>
+            <div class="result-container">
+                <p id="result11"></p>
+                <span id="sound11" class="sound-icon hidden" onclick="speakText('He has worked at that company for five years.')">🔊</span>
+            </div>
+            <p class="grammar-note">[Presente perfecto: "He" + has + participio pasado]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 12</h3>
+            <select id="select12">
+                <option>have written</option>
+                <option>has written</option>
+                <option>has wrote</option>
+            </select>
+            <p>She _____ (write) three books.</p>
+            <button onclick="checkSelect('select12', 'has written', 'result12', 'She has written three books.')">Verificar</button>
+            <div class="result-container">
+                <p id="result12"></p>
+                <span id="sound12" class="sound-icon hidden" onclick="speakText('She has written three books.')">🔊</span>
+            </div>
+            <p class="grammar-note">[Presente perfecto: "She" + has + participio pasado (write → written)]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 13</h3>
+            <p>We <input type="text" id="input13" placeholder="verbo en presente perfecto" /> (never/visit) Australia.</p>
+            <button onclick="checkInput('input13', 'have never visited', 'result13', 'We have never visited Australia.')">Verificar</button>
+            <div class="result-container">
+                <p id="result13"></p>
+                <span id="sound13" class="sound-icon hidden" onclick="speakText('We have never visited Australia.')">🔊</span>
+            </div>
+            <p class="grammar-note">[Presente perfecto: "We" + have + never + participio pasado]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 14</h3>
+            <select id="select14">
+                <option>have lost</option>
+                <option>has lost</option>
+                <option>has lose</option>
+            </select>
+            <p>Tom _____ (lose) his keys again.</p>
+            <button onclick="checkSelect('select14', 'has lost', 'result14', 'Tom has lost his keys again.')">Verificar</button>
+            <div class="result-container">
+                <p id="result14"></p>
+                <span id="sound14" class="sound-icon hidden" onclick="speakText('Tom has lost his keys again.')">🔊</span>
+            </div>
+            <p class="grammar-note">[Presente perfecto: "Tom" + has + participio pasado (lose → lost)]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 15</h3>
+            <p>You <input type="text" id="input15" placeholder="verbo en presente perfecto" /> (change) a lot since last year.</p>
+            <button onclick="checkInput('input15', 'have changed', 'result15', 'You have changed a lot since last year.')">Verificar</button>
+            <div class="result-container">
+                <p id="result15"></p>
+                <span id="sound15" class="sound-icon hidden" onclick="speakText('You have changed a lot since last year.')">🔊</span>
+            </div>
+            <p class="grammar-note">[Presente perfecto: "You" + have + participio pasado]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 16</h3>
+            <select id="select16">
+                <option>has known</option>
+                <option>have known</option>
+                <option>have knew</option>
+            </select>
+            <p>I _____ (know) her since we were children.</p>
+            <button onclick="checkSelect('select16', 'have known', 'result16', 'I have known her since we were children.')">Verificar</button>
+            <div class="result-container">
+                <p id="result16"></p>
+                <span id="sound16" class="sound-icon hidden" onclick="speakText('I have known her since we were children.')">🔊</span>
+            </div>
+            <p class="grammar-note">[Presente perfecto: "I" + have + participio pasado (know → known)]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 17</h3>
+            <p>The train <input type="text" id="input17" placeholder="verbo en presente perfecto" /> (just/arrive).</p>
+            <button onclick="checkInput('input17', 'has just arrived', 'result17', 'The train has just arrived.')">Verificar</button>
+            <div class="result-container">
+                <p id="result17"></p>
+                <span id="sound17" class="sound-icon hidden" onclick="speakText('The train has just arrived.')">🔊</span>
+            </div>
+            <p class="grammar-note">[Presente perfecto: "The train" + has + just + participio pasado]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 18</h3>
+            <select id="select18">
+                <option>has forgotten</option>
+                <option>have forgotten</option>
+                <option>have forgot</option>
+            </select>
+            <p>They _____ (forget) their tickets at home.</p>
+            <button onclick="checkSelect('select18', 'have forgotten', 'result18', 'They have forgotten their tickets at home.')">Verificar</button>
+            <div class="result-container">
+                <p id="result18"></p>
+                <span id="sound18" class="sound-icon hidden" onclick="speakText('They have forgotten their tickets at home.')">🔊</span>
+            </div>
+            <p class="grammar-note">[Presente perfecto: "They" + have + participio pasado (forget → forgotten)]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 19</h3>
+            <p>My parents <input type="text" id="input19" placeholder="verbo en presente perfecto" /> (buy) a new car.</p>
+            <button onclick="checkInput('input19', 'have bought', 'result19', 'My parents have bought a new car.')">Verificar</button>
+            <div class="result-container">
+                <p id="result19"></p>
+                <span id="sound19" class="sound-icon hidden" onclick="speakText('My parents have bought a new car.')">🔊</span>
+            </div>
+            <p class="grammar-note">[Presente perfecto: "My parents" + have + participio pasado (buy → bought)]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 20</h3>
+            <select id="select20">
+                <option>have broken</option>
+                <option>has broken</option>
+                <option>has broke</option>
+            </select>
+            <p>Someone _____ (break) the window.</p>
+            <button onclick="checkSelect('select20', 'has broken', 'result20', 'Someone has broken the window.')">Verificar</button>
+            <div class="result-container">
+                <p id="result20"></p>
+                <span id="sound20" class="sound-icon hidden" onclick="speakText('Someone has broken the window.')">🔊</span>
+            </div>
+            <p class="grammar-note">[Presente perfecto: "Someone" + has + participio pasado (break → broken)]</p>
+        </div>
+    </section>
+
+    <!-- Nivel Medio (inicialmente bloqueado) -->
+    <section class="level locked" id="medio">
+        <div class="lock-overlay">
+            <div class="lock-icon">🔒</div>
+            <p>Completa el nivel Fácil para desbloquear</p>
+        </div>
+        <h2>Medio</h2>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 1</h3>
+            <p>I <input type="text" id="medio-input1" placeholder="haven't / hasn't"/> (not finish) my homework yet.</p>
+            <button onclick="checkInput('medio-input1', 'haven\'t finished', 'medio-result1', 'I haven\'t finished my homework yet.')">Verificar</button>
+            <div class="result-container">
+                <p id="medio-result1"></p>
+                <span id="medio-sound1" class="sound-icon hidden" onclick="speakText('I haven\'t finished my homework yet.')">🔊</span>
+            </div>
+            <p class="grammar-note">[Negativo presente perfecto: "I" + haven't + participio pasado]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 2</h3>
+            <p>She <input type="text" id="medio-input2" placeholder="haven't / hasn't"/> (not visit) Paris yet.</p>
+            <button onclick="checkInput('medio-input2', 'hasn\'t visited', 'medio-result2', 'She hasn\'t visited Paris yet.')">Verificar</button>
+            <div class="result-container">
+                <p id="medio-result2"></p>
+                <span id="medio-sound2" class="sound-icon hidden" onclick="speakText('She hasn\'t visited Paris yet.')">🔊</span>
+            </div>
+            <p class="grammar-note">[Negativo presente perfecto: "She" + hasn't + participio pasado]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 3</h3>
+            <p>Have you <input type="text" id="medio-input3" placeholder="participio pasado"/> (be) to Japan?</p>
+            <button onclick="checkInput('medio-input3', 'been', 'medio-result3', 'Have you been to Japan?')">Verificar</button>
+            <div class="result-container">
+                <p id="medio-result3"></p>
+                <span id="medio-sound3" class="sound-icon hidden" onclick="speakText('Have you been to Japan?')">🔊</span>
+            </div>
+            <p class="grammar-note">[Interrogativo presente perfecto: Have + "you" + participio pasado (be → been)]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 4</h3>
+            <p>Has he <input type="text" id="medio-input4" placeholder="participio pasado"/> (eat) sushi before?</p>
+            <button onclick="checkInput('medio-input4', 'eaten', 'medio-result4', 'Has he eaten sushi before?')">Verificar</button>
+            <div class="result-container">
+                <p id="medio-result4"></p>
+                <span id="medio-sound4" class="sound-icon hidden" onclick="speakText('Has he eaten sushi before?')">🔊</span>
+            </div>
+            <p class="grammar-note">[Interrogativo presente perfecto: Has + "he" + participio pasado (eat → eaten)]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 5</h3>
+            <p>We <input type="text" id="medio-input5" placeholder="haven't / hasn't"/> (not see) that movie yet.</p>
+            <button onclick="checkInput('medio-input5', 'haven\'t seen', 'medio-result5', 'We haven\'t seen that movie yet.')">Verificar</button>
+            <div class="result-container">
+                <p id="medio-result5"></p>
+                <span id="medio-sound5" class="sound-icon hidden" onclick="speakText('We haven\'t seen that movie yet.')">🔊</span>
+            </div>
+            <p class="grammar-note">[Negativo presente perfecto: "We" + haven't + participio pasado (see → seen)]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 6</h3>
+            <p>Have they <input type="text" id="medio-input6" placeholder="participio pasado"/> (meet) your brother?</p>
+            <button onclick="checkInput('medio-input6', 'met', 'medio-result6', 'Have they met your brother?')">Verificar</button>
+            <div class="result-container">
+                <p id="medio-result6"></p>
+                <span id="medio-sound6" class="sound-icon hidden" onclick="speakText('Have they met your brother?')">🔊</span>
+            </div>
+            <p class="grammar-note">[Interrogativo presente perfecto: Have + "they" + participio pasado (meet → met)]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 7</h3>
+            <p>It <input type="text" id="medio-input7" placeholder="haven't / hasn't"/> (not rain) this week.</p>
+            <button onclick="checkInput('medio-input7', 'hasn\'t rained', 'medio-result7', 'It hasn\'t rained this week.')">Verificar</button>
+            <div class="result-container">
+                <p id="medio-result7"></p>
+                <span id="medio-sound7" class="sound-icon hidden" onclick="speakText('It hasn\'t rained this week.')">🔊</span>
+            </div>
+            <p class="grammar-note">[Negativo presente perfecto: "It" + hasn't + participio pasado]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 8</h3>
+            <p>My friends <input type="text" id="medio-input8" placeholder="haven't / hasn't"/> (not arrive) yet.</p>
+            <button onclick="checkInput('medio-input8', 'haven\'t arrived', 'medio-result8', 'My friends haven\'t arrived yet.')">Verificar</button>
+            <div class="result-container">
+                <p id="medio-result8"></p>
+                <span id="medio-sound8" class="sound-icon hidden" onclick="speakText('My friends haven\'t arrived yet.')">🔊</span>
+            </div>
+            <p class="grammar-note">[Negativo presente perfecto: "My friends" + haven't + participio pasado]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 9</h3>
+            <p>Has she <input type="text" id="medio-input9" placeholder="participio pasado"/> (read) that book?</p>
+            <button onclick="checkInput('medio-input9', 'read', 'medio-result9', 'Has she read that book?')">Verificar</button>
+            <div class="result-container">
+                <p id="medio-result9"></p>
+                <span id="medio-sound9" class="sound-icon hidden" onclick="speakText('Has she read that book?')">🔊</span>
+            </div>
+            <p class="grammar-note">[Interrogativo presente perfecto: Has + "she" + participio pasado (read → read)]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 10</h3>
+            <p>You <input type="text" id="medio-input10" placeholder="haven't / hasn't"/> (not tell) me the truth.</p>
+            <button onclick="checkInput('medio-input10', 'haven\'t told', 'medio-result10', 'You haven\'t told me the truth.')">Verificar</button>
+            <div class="result-container">
+                <p id="medio-result10"></p>
+                <span id="medio-sound10" class="sound-icon hidden" onclick="speakText('You haven\'t told me the truth.')">🔊</span>
+            </div>
+            <p class="grammar-note">[Negativo presente perfecto: "You" + haven't + participio pasado (tell → told)]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 11</h3>
+            <p>Have we <input type="text" id="medio-input11" placeholder="participio pasado"/> (have) this conversation before?</p>
+            <button onclick="checkInput('medio-input11', 'had', 'medio-result11', 'Have we had this conversation before?')">Verificar</button>
+            <div class="result-container">
+                <p id="medio-result11"></p>
+                <span id="medio-sound11" class="sound-icon hidden" onclick="speakText('Have we had this conversation before?')">🔊</span>
+            </div>
+            <p class="grammar-note">[Interrogativo presente perfecto: Have + "we" + participio pasado (have → had)]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 12</h3>
+            <p>Has your brother <input type="text" id="medio-input12" placeholder="participio pasado"/> (take) Spanish lessons?</p>
+            <button onclick="checkInput('medio-input12', 'taken', 'medio-result12', 'Has your brother taken Spanish lessons?')">Verificar</button>
+            <div class="result-container">
+                <p id="medio-result12"></p>
+                <span id="medio-sound12" class="sound-icon hidden" onclick="speakText('Has your brother taken Spanish lessons?')">🔊</span>
+            </div>
+            <p class="grammar-note">[Interrogativo presente perfecto: Has + "your brother" + participio pasado (take → taken)]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 13</h3>
+            <p>The teacher <input type="text" id="medio-input13" placeholder="haven't / hasn't"/> (not explain) this yet.</p>
+            <button onclick="checkInput('medio-input13', 'hasn\'t explained', 'medio-result13', 'The teacher hasn\'t explained this yet.')">Verificar</button>
+            <div class="result-container">
+                <p id="medio-result13"></p>
+                <span id="medio-sound13" class="sound-icon hidden" onclick="speakText('The teacher hasn\'t explained this yet.')">🔊</span>
+            </div>
+            <p class="grammar-note">[Negativo presente perfecto: "The teacher" + hasn't + participio pasado]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 14</h3>
+            <p>Have the students <input type="text" id="medio-input14" placeholder="participio pasado"/> (do) their homework?</p>
+            <button onclick="checkInput('medio-input14', 'done', 'medio-result14', 'Have the students done their homework?')">Verificar</button>
+            <div class="result-container">
+                <p id="medio-result14"></p>
+                <span id="medio-sound14" class="sound-icon hidden" onclick="speakText('Have the students done their homework?')">🔊</span>
+            </div>
+            <p class="grammar-note">[Interrogativo presente perfecto: Have + "the students" + participio pasado (do → done)]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 15</h3>
+            <p>This computer <input type="text" id="medio-input15" placeholder="haven't / hasn't"/> (not work) properly since yesterday.</p>
+            <button onclick="checkInput('medio-input15', 'hasn\'t worked', 'medio-result15', 'This computer hasn\'t worked properly since yesterday.')">Verificar</button>
+            <div class="result-container">
+                <p id="medio-result15"></p>
+                <span id="medio-sound15" class="sound-icon hidden" onclick="speakText('This computer hasn\'t worked properly since yesterday.')">🔊</span>
+            </div>
+            <p class="grammar-note">[Negativo presente perfecto: "This computer" + hasn't + participio pasado]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 16</h3>
+            <p>Has your mother <input type="text" id="medio-input16" placeholder="participio pasado"/> (cook) dinner?</p>
+            <button onclick="checkInput('medio-input16', 'cooked', 'medio-result16', 'Has your mother cooked dinner?')">Verificar</button>
+            <div class="result-container">
+                <p id="medio-result16"></p>
+                <span id="medio-sound16" class="sound-icon hidden" onclick="speakText('Has your mother cooked dinner?')">🔊</span>
+            </div>
+            <p class="grammar-note">[Interrogativo presente perfecto: Has + "your mother" + participio pasado]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 17</h3>
+            <p>Those birds <input type="text" id="medio-input17" placeholder="haven't / hasn't"/> (not sing) this morning.</p>
+            <button onclick="checkInput('medio-input17', 'haven\'t sung', 'medio-result17', 'Those birds haven\'t sung this morning.')">Verificar</button>
+            <div class="result-container">
+                <p id="medio-result17"></p>
+                <span id="medio-sound17" class="sound-icon hidden" onclick="speakText('Those birds haven\'t sung this morning.')">🔊</span>
+            </div>
+            <p class="grammar-note">[Negativo presente perfecto: "Those birds" + haven't + participio pasado (sing → sung)]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 18</h3>
+            <p>Have you <input type="text" id="medio-input18" placeholder="participio pasado"/> (hear) the news?</p>
+            <button onclick="checkInput('medio-input18', 'heard', 'medio-result18', 'Have you heard the news?')">Verificar</button>
+            <div class="result-container">
+                <p id="medio-result18"></p>
+                <span id="medio-sound18" class="sound-icon hidden" onclick="speakText('Have you heard the news?')">🔊</span>
+            </div>
+            <p class="grammar-note">[Interrogativo presente perfecto: Have + "you" + participio pasado (hear → heard)]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 19</h3>
+            <p>His son <input type="text" id="medio-input19" placeholder="haven't / hasn't"/> (not eat) vegetables today.</p>
+            <button onclick="checkInput('medio-input19', 'hasn\'t eaten', 'medio-result19', 'His son hasn\'t eaten vegetables today.')">Verificar</button>
+            <div class="result-container">
+                <p id="medio-result19"></p>
+                <span id="medio-sound19" class="sound-icon hidden" onclick="speakText('His son hasn\'t eaten vegetables today.')">🔊</span>
+            </div>
+            <p class="grammar-note">[Negativo presente perfecto: "His son" + hasn't + participio pasado (eat → eaten)]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 20</h3>
+            <p>Has the store <input type="text" id="medio-input20" placeholder="participio pasado"/> (close) yet?</p>
+            <button onclick="checkInput('medio-input20', 'closed', 'medio-result20', 'Has the store closed yet?')">Verificar</button>
+            <div class="result-container">
+                <p id="medio-result20"></p>
+                <span id="medio-sound20" class="sound-icon hidden" onclick="speakText('Has the store closed yet?')">🔊</span>
+            </div>
+            <p class="grammar-note">[Interrogativo presente perfecto: Has + "the store" + participio pasado]</p>
+        </div>
+    </section>
+
+    <!-- Nivel Difícil (inicialmente bloqueado) -->
+    <section class="level locked" id="dificil">
+        <div class="lock-overlay">
+            <div class="lock-icon">🔒</div>
+            <p>Completa el nivel Medio para desbloquear</p>
+        </div>
+        <h2>Difícil</h2>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 1</h3>
+            <p>Where <input type="text" id="dificil-input1" placeholder="have/has"/> you (be) recently?</p>
+            <button onclick="checkInput('dificil-input1', 'have you been', 'dificil-result1', 'Where have you been recently?')">Verificar</button>
+            <div class="result-container">
+                <p id="dificil-result1"></p>
+                <span id="dificil-sound1" class="sound-icon hidden" onclick="speakText('Where have you been recently?')">🔊</span>
+            </div>
+            <p class="grammar-note">[Interrogativo con wh-: Where + have + "you" + participio pasado (be → been)]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 2</h3>
+            <p>How many times <input type="text" id="dificil-input2" placeholder="have/has"/> she (visit) New York?</p>
+            <button onclick="checkInput('dificil-input2', 'has she visited', 'dificil-result2', 'How many times has she visited New York?')">Verificar</button>
+            <div class="result-container">
+                <p id="dificil-result2"></p>
+                <span id="dificil-sound2" class="sound-icon hidden" onclick="speakText('How many times has she visited New York?')">🔊</span>
+            </div>
+            <p class="grammar-note">[Interrogativo con wh-: How many times + has + "she" + participio pasado]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 3</h3>
+            <p>Why <input type="text" id="dificil-input3" placeholder="haven't/hasn't"/> you (finish) your work yet?</p>
+            <button onclick="checkInput('dificil-input3', 'haven\'t you finished', 'dificil-result3', 'Why haven\'t you finished your work yet?')">Verificar</button>
+            <div class="result-container">
+                <p id="dificil-result3"></p>
+                <span id="dificil-sound3" class="sound-icon hidden" onclick="speakText('Why haven\'t you finished your work yet?')">🔊</span>
+            </div>
+            <p class="grammar-note">[Interrogativo negativo con wh-: Why + haven't + "you" + participio pasado]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 4</h3>
+            <p>How long <input type="text" id="dificil-input4" placeholder="have/has"/> they (live) here?</p>
+            <button onclick="checkInput('dificil-input4', 'have they lived', 'dificil-result4', 'How long have they lived here?')">Verificar</button>
+            <div class="result-container">
+                <p id="dificil-result4"></p>
+                <span id="dificil-sound4" class="sound-icon hidden" onclick="speakText('How long have they lived here?')">🔊</span>
+            </div>
+            <p class="grammar-note">[Interrogativo con wh-: How long + have + "they" + participio pasado]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 5</h3>
+            <select id="dificil-select5">
+                <option>What you have done today?</option>
+                <option>What have you done today?</option>
+                <option>What has you done today?</option>
+            </select>
+            <button onclick="checkSelect('dificil-select5', 'What have you done today?', 'dificil-result5', 'What have you done today?')">Verificar</button>
+            <div class="result-container">
+                <p id="dificil-result5"></p>
+                <span id="dificil-sound5" class="sound-icon hidden" onclick="speakText('What have you done today?')">🔊</span>
+            </div>
+            <p class="grammar-note">[Interrogativo con wh-: What + have + "you" + participio pasado (do → done)]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 6</h3>
+            <p>Who <input type="text" id="dificil-input6" placeholder="verbo en presente perfecto"/> (break) the window?</p>
+            <button onclick="checkInput('dificil-input6', 'has broken', 'dificil-result6', 'Who has broken the window?')">Verificar</button>
+            <div class="result-container">
+                <p id="dificil-result6"></p>
+                <span id="dificil-sound6" class="sound-icon hidden" onclick="speakText('Who has broken the window?')">🔊</span>
+            </div>
+            <p class="grammar-note">[Interrogativo con who como sujeto: Who + has + participio pasado (break → broken)]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 7</h3>
+            <p>Which countries <input type="text" id="dificil-input7" placeholder="have/has"/> you (visit)?</p>
+            <button onclick="checkInput('dificil-input7', 'have you visited', 'dificil-result7', 'Which countries have you visited?')">Verificar</button>
+            <div class="result-container">
+                <p id="dificil-result7"></p>
+                <span id="dificil-sound7" class="sound-icon hidden" onclick="speakText('Which countries have you visited?')">🔊</span>
+            </div>
+            <p class="grammar-note">[Interrogativo con wh-: Which countries + have + "you" + participio pasado]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 8</h3>
+            <p>Since when <input type="text" id="dificil-input8" placeholder="have/has"/> he (work) here?</p>
+            <button onclick="checkInput('dificil-input8', 'has he worked', 'dificil-result8', 'Since when has he worked here?')">Verificar</button>
+            <div class="result-container">
+                <p id="dificil-result8"></p>
+                <span id="dificil-sound8" class="sound-icon hidden" onclick="speakText('Since when has he worked here?')">🔊</span>
+            </div>
+            <p class="grammar-note">[Interrogativo con wh-: Since when + has + "he" + participio pasado]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 9</h3>
+            <p>How many books <input type="text" id="dificil-input9" placeholder="have/has"/> she (write)?</p>
+            <button onclick="checkInput('dificil-input9', 'has she written', 'dificil-result9', 'How many books has she written?')">Verificar</button>
+            <div class="result-container">
+                <p id="dificil-result9"></p>
+                <span id="dificil-sound9" class="sound-icon hidden" onclick="speakText('How many books has she written?')">🔊</span>
+            </div>
+            <p class="grammar-note">[Interrogativo con wh-: How many books + has + "she" + participio pasado (write → written)]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 10</h3>
+            <p>What <input type="text" id="dificil-input10" placeholder="have/has"/> this word (mean) in the past?</p>
+            <button onclick="checkInput('dificil-input10', 'has this word meant', 'dificil-result10', 'What has this word meant in the past?')">Verificar</button>
+            <div class="result-container">
+                <p id="dificil-result10"></p>
+                <span id="dificil-sound10" class="sound-icon hidden" onclick="speakText('What has this word meant in the past?')">🔊</span>
+            </div>
+            <p class="grammar-note">[Interrogativo con wh-: What + has + "this word" + participio pasado]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 11</h3>
+            <select id="dificil-select11">
+                <option>Where you have traveled this year?</option>
+                <option>Where have you traveled this year?</option>
+                <option>Where has you traveled this year?</option>
+            </select>
+            <button onclick="checkSelect('dificil-select11', 'Where have you traveled this year?', 'dificil-result11', 'Where have you traveled this year?')">Verificar</button>
+            <div class="result-container">
+                <p id="dificil-result11"></p>
+                <span id="dificil-sound11" class="sound-icon hidden" onclick="speakText('Where have you traveled this year?')">🔊</span>
+            </div>
+            <p class="grammar-note">[Interrogativo con wh-: Where + have + "you" + participio pasado]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 12</h3>
+            <p>Why <input type="text" id="dificil-input12" placeholder="haven't/hasn't"/> she (call) yet?</p>
+            <button onclick="checkInput('dificil-input12', 'hasn\'t she called', 'dificil-result12', 'Why hasn\'t she called yet?')">Verificar</button>
+            <div class="result-container">
+                <p id="dificil-result12"></p>
+                <span id="dificil-sound12" class="sound-icon hidden" onclick="speakText('Why hasn\'t she called yet?')">🔊</span>
+            </div>
+            <p class="grammar-note">[Interrogativo negativo con wh-: Why + hasn't + "she" + participio pasado]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 13</h3>
+            <p>How <input type="text" id="dificil-input13" placeholder="have/has"/> your parents (change) over the years?</p>
+            <button onclick="checkInput('dificil-input13', 'have your parents changed', 'dificil-result13', 'How have your parents changed over the years?')">Verificar</button>
+            <div class="result-container">
+                <p id="dificil-result13"></p>
+                <span id="dificil-sound13" class="sound-icon hidden" onclick="speakText('How have your parents changed over the years?')">🔊</span>
+            </div>
+            <p class="grammar-note">[Interrogativo con wh-: How + have + "your parents" + participio pasado]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 14</h3>
+            <select id="dificil-select14">
+                <option>What you have learned this week?</option>
+                <option>What have you learned this week?</option>
+                <option>What has you learned this week?</option>
+            </select>
+            <button onclick="checkSelect('dificil-select14', 'What have you learned this week?', 'dificil-result14', 'What have you learned this week?')">Verificar</button>
+            <div class="result-container">
+                <p id="dificil-result14"></p>
+                <span id="dificil-sound14" class="sound-icon hidden" onclick="speakText('What have you learned this week?')">🔊</span>
+            </div>
+            <p class="grammar-note">[Interrogativo con wh-: What + have + "you" + participio pasado (learn → learned)]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 15</h3>
+            <p>Who <input type="text" id="dificil-input15" placeholder="verbo en presente perfecto"/> (help) you with the project?</p>
+            <button onclick="checkInput('dificil-input15', 'has helped', 'dificil-result15', 'Who has helped you with the project?')">Verificar</button>
+            <div class="result-container">
+                <p id="dificil-result15"></p>
+                <span id="dificil-sound15" class="sound-icon hidden" onclick="speakText('Who has helped you with the project?')">🔊</span>
+            </div>
+            <p class="grammar-note">[Interrogativo con who como sujeto: Who + has + participio pasado]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 16</h3>
+            <p>What kind of music <input type="text" id="dificil-input16" placeholder="have/has"/> your brother (listen) to recently?</p>
+            <button onclick="checkInput('dificil-input16', 'has your brother listened', 'dificil-result16', 'What kind of music has your brother listened to recently?')">Verificar</button>
+            <div class="result-container">
+                <p id="dificil-result16"></p>
+                <span id="dificil-sound16" class="sound-icon hidden" onclick="speakText('What kind of music has your brother listened to recently?')">🔊</span>
+            </div>
+            <p class="grammar-note">[Interrogativo con wh-: What kind of music + has + "your brother" + participio pasado]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 17</h3>
+            <p>Where <input type="text" id="dificil-input17" placeholder="have/has"/> these buses (go) this week?</p>
+            <button onclick="checkInput('dificil-input17', 'have these buses gone', 'dificil-result17', 'Where have these buses gone this week?')">Verificar</button>
+            <div class="result-container">
+                <p id="dificil-result17"></p>
+                <span id="dificil-sound17" class="sound-icon hidden" onclick="speakText('Where have these buses gone this week?')">🔊</span>
+            </div>
+            <p class="grammar-note">[Interrogativo con wh-: Where + have + "these buses" + participio pasado (go → gone)]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 18</h3>
+            <select id="dificil-select18">
+                <option>How she has improved her English?</option>
+                <option>How has she improved her English?</option>
+                <option>How have she improved her English?</option>
+            </select>
+            <button onclick="checkSelect('dificil-select18', 'How has she improved her English?', 'dificil-result18', 'How has she improved her English?')">Verificar</button>
+            <div class="result-container">
+                <p id="dificil-result18"></p>
+                <span id="dificil-sound18" class="sound-icon hidden" onclick="speakText('How has she improved her English?')">🔊</span>
+            </div>
+            <p class="grammar-note">[Interrogativo con wh-: How + has + "she" + participio pasado]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 19</h3>
+            <p>Why <input type="text" id="dificil-input19" placeholder="haven't/hasn't"/> it (stop) raining yet?</p>
+            <button onclick="checkInput('dificil-input19', 'hasn\'t it stopped', 'dificil-result19', 'Why hasn\'t it stopped raining yet?')">Verificar</button>
+            <div class="result-container">
+                <p id="dificil-result19"></p>
+                <span id="dificil-sound19" class="sound-icon hidden" onclick="speakText('Why hasn\'t it stopped raining yet?')">🔊</span>
+            </div>
+            <p class="grammar-note">[Interrogativo negativo con wh-: Why + hasn't + "it" + participio pasado]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 20</h3>
+            <p>What <input type="text" id="dificil-input20" placeholder="have/has"/> the teacher (explain) so far?</p>
+            <button onclick="checkInput('dificil-input20', 'has the teacher explained', 'dificil-result20', 'What has the teacher explained so far?')">Verificar</button>
+            <div class="result-container">
+                <p id="dificil-result20"></p>
+                <span id="dificil-sound20" class="sound-icon hidden" onclick="speakText('What has the teacher explained so far?')">🔊</span>
+            </div>
+            <p class="grammar-note">[Interrogativo con wh-: What + has + "the teacher" + participio pasado]</p>
+        </div>
+    </section>
+
+</main>
+
+<!-- Chatbot modificado (sin campo de búsqueda) -->
+<div id="chat-toggle" onclick="toggleChatbot()">💬</div>
+<div id="chatbot-box" class="chatbot-container hidden">
+    <div class="chatbot-header">
+        <span>Chatbot - Aprende el Presente Perfecto</span>
+        <button class="close-btn" onclick="toggleChatbot()">×</button>
+    </div>
+
+    <div class="quick-questions">
+        <p class="questions-title">Preguntas frecuentes:</p>
+        <button class="question-btn" onclick="askQuestion('¿Qué es el presente perfecto?')">¿Qué es el presente perfecto?</button>
+        <button class="question-btn" onclick="askQuestion('¿Cómo se conjuga el presente perfecto?')">¿Cómo se conjuga?</button>
+        <button class="question-btn" onclick="askQuestion('¿Cuándo se usa el presente perfecto?')">¿Cuándo se usa?</button>
+        <button class="question-btn" onclick="askQuestion('¿Cuál es la estructura del presente perfecto?')">¿Cuál es la estructura?</button>
+    </div>
+
+    <div class="chatbot-body" id="chatbot-body">
+        <div class="bot-message welcome-message">
+            ¡Hola! 👋 Soy tu asistente para aprender el Presente Perfecto. Usa las preguntas sugeridas arriba.
+        </div>
+    </div>
+</div>
+
+<script>
+    // Variables para rastrear el progreso
+    let ejerciciosFacilesCompletados = 0;
+    const totalEjerciciosFaciles = 20; // Todos los ejercicios fáciles
+    let ejerciciosMediosCompletados = 0;
+    const totalEjerciciosMedios = 20; // Todos los ejercicios medios
+
+    // Función para mezclar opciones al cargar la página
+    function shuffleOptions() {
+        const selects = document.querySelectorAll('select');
+        selects.forEach(select => {
+            const options = Array.from(select.options);
+            // Mezclar las opciones excepto la primera (si es un placeholder)
+            const toShuffle = options.slice(0);
+            for (let i = toShuffle.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [toShuffle[i], toShuffle[j]] = [toShuffle[j], toShuffle[i]];
+            }
+            // Reemplazar las opciones
+            select.innerHTML = '';
+            toShuffle.forEach(option => {
+                select.add(option);
+            });
+        });
+    }
+
+    // Llamar a la función al cargar la página
+    window.onload = shuffleOptions;
+
+    // Función para reproducir el texto usando la API de síntesis de voz
+    function speakText(text) {
+        if ('speechSynthesis' in window) {
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'en-US'; // Configurar el idioma a inglés
+            utterance.rate = 0.9; // Velocidad de habla ligeramente más lenta
+            window.speechSynthesis.speak(utterance);
+        } else {
+            alert('Tu navegador no soporta la síntesis de voz. Prueba con Chrome o Edge.');
+        }
+    }
+
+    // Función genérica para verificar inputs (modificada para incluir el texto completo)
+    function checkInput(inputId, correctAnswer, resultId, fullSentence) {
+        const val = document.getElementById(inputId).value.toLowerCase().trim();
+        const resultElement = document.getElementById(resultId);
+        const soundIcon = document.getElementById('sound' + resultId.substring(6)) || 
+                         document.getElementById('medio-sound' + resultId.substring(12)) || 
+                         document.getElementById('dificil-sound' + resultId.substring(14));
+        
+        if (val === correctAnswer.toLowerCase()) {
+            resultElement.textContent = "✅ ¡Correcto!";
+            resultElement.style.color = "#48bb78";
+            
+            // Mostrar el icono de sonido
+            if (soundIcon) {
+                soundIcon.classList.remove('hidden');
+                soundIcon.setAttribute('data-text', fullSentence);
+            }
+            
+            // Verificar si es un ejercicio del nivel fácil
+            if (inputId.startsWith('input')) {
+                if (!resultElement.dataset.completed) {
+                    ejerciciosFacilesCompletados++;
+                    resultElement.dataset.completed = "true";
+                    checkUnlockMedium();
+                }
+            }
+            // Verificar si es un ejercicio del nivel medio
+            else if (inputId.startsWith('medio-input')) {
+                if (!resultElement.dataset.completed) {
+                    ejerciciosMediosCompletados++;
+                    resultElement.dataset.completed = "true";
+                    checkUnlockHard();
+                }
+            }
+        } else {
+            resultElement.textContent = "❌ Intenta de nuevo.";
+            resultElement.style.color = "#e53e3e";
+            // Ocultar el icono de sonido si la respuesta es incorrecta
+            if (soundIcon) {
+                soundIcon.classList.add('hidden');
+            }
+        }
+    }
+
+    // Función genérica para verificar selects (modificada para incluir el texto completo)
+    function checkSelect(selectId, correctAnswer, resultId, fullSentence) {
+        const val = document.getElementById(selectId).value;
+        const resultElement = document.getElementById(resultId);
+        const soundIcon = document.getElementById('sound' + resultId.substring(6)) || 
+                         document.getElementById('medio-sound' + resultId.substring(12)) || 
+                         document.getElementById('dificil-sound' + resultId.substring(14));
+        
+        if (val === correctAnswer) {
+            resultElement.textContent = "✅ ¡Correcto!";
+            resultElement.style.color = "#48bb78";
+            
+            // Mostrar el icono de sonido
+            if (soundIcon) {
+                soundIcon.classList.remove('hidden');
+                soundIcon.setAttribute('data-text', fullSentence);
+            }
+            
+            // Verificar si es un ejercicio del nivel fácil
+            if (selectId.startsWith('select')) {
+                if (!resultElement.dataset.completed) {
+                    ejerciciosFacilesCompletados++;
+                    resultElement.dataset.completed = "true";
+                    checkUnlockMedium();
+                }
+            }
+            // Verificar si es un ejercicio del nivel difícil
+            else if (selectId.startsWith('dificil-select')) {
+                if (!resultElement.dataset.completed) {
+                    resultElement.dataset.completed = "true";
+                }
+            }
+        } else {
+            resultElement.textContent = "❌ Esa no es la forma correcta.";
+            resultElement.style.color = "#e53e3e";
+            // Ocultar el icono de sonido si la respuesta es incorrecta
+            if (soundIcon) {
+                soundIcon.classList.add('hidden');
+            }
+        }
+    }
+
+    // Función para verificar si se debe desbloquear el nivel medio
+    function checkUnlockMedium() {
+        if (ejerciciosFacilesCompletados >= totalEjerciciosFaciles) {
+            const medioSection = document.getElementById('medio');
+            medioSection.classList.remove('locked');
+            medioSection.querySelector('.lock-overlay').style.display = 'none';
+            
+            // Mostrar notificación
+            alert('¡Felicidades! Has completado el nivel Fácil. El nivel Medio ha sido desbloqueado.');
+        }
+    }
+
+    // Función para verificar si se debe desbloquear el nivel difícil
+    function checkUnlockHard() {
+        if (ejerciciosMediosCompletados >= totalEjerciciosMedios) {
+            const dificilSection = document.getElementById('dificil');
+            dificilSection.classList.remove('locked');
+            dificilSection.querySelector('.lock-overlay').style.display = 'none';
+            
+            // Mostrar notificación
+            alert('¡Excelente! Has completado el nivel Medio. El nivel Difícil ha sido desbloqueado.');
+        }
+    }
+
+    // Chatbot básico
+    const chatbot = document.getElementById("chatbot-box");
+    const chatbotBody = document.getElementById("chatbot-body");
+
+    const answers = {
+        "¿Qué es el presente perfecto?": "✅ El presente perfecto se usa para acciones que ocurrieron en un tiempo no especificado antes del presente o que tienen relevancia en el presente. Ejemplo: I have visited Paris. She has finished her work.",
+        "¿Cómo se conjuga el presente perfecto?": "✅ Estructura: sujeto + have/has + participio pasado. Ejemplos: I have eaten. She has gone. We have studied. Para la forma negativa se añade 'not' después del auxiliar: He has not worked.",
+        "¿Cuándo se usa el presente perfecto?": "✅ Para: 1) Experiencias de vida (I've traveled to Japan). 2) Acciones recientes (She's just left). 3) Acciones que continúan hasta el presente (We've lived here for years). 4) Resultados presentes de acciones pasadas (They've broken the window).",
+        "¿Cuál es la estructura del presente perfecto?": "✅ Afirmativa: Sujeto + have/has + participio pasado. Negativa: Sujeto + have/has + not + participio pasado. Interrogativa: Have/Has + sujeto + participio pasado. Ej: She hasn't arrived. Have they finished?"
+    };
+
+    function askQuestion(question) {
+        addMessage(question, 'user');
+        setTimeout(() => {
+            addMessage(answers[question], 'bot');
+        }, 300);
+    }
+
+    function addMessage(message, sender) {
+        const messageDiv = document.createElement('div');
+        messageDiv.className = sender === 'user' ? 'user-message' : 'bot-message';
+        messageDiv.innerHTML = message.replace(/\n/g, '<br>');
+        chatbotBody.appendChild(messageDiv);
+        chatbotBody.scrollTop = chatbotBody.scrollHeight;
+    }
+
+    function toggleChatbot() {
+        chatbot.classList.toggle("hidden");
+    }
+</script>
+
+<div class="avatar-walking" id="avatarWalking">
+    <div class="sprite-avatar"></div>
+</div>
+
+<div class="avatar-static" id="avatarStatic">
+    <div class="bubble" id="bubble">¡Hola!</div>
+    <img src='img/gino.png' alt="Avatar" class="avatar-img">
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const avatarWalking = document.getElementById("avatarWalking");
+    const avatarStatic = document.getElementById("avatarStatic");
+    const bubble = document.getElementById("bubble");
+
+    const mensajesIniciales = [
+        "¡Bienvenido a este sitio web que te ayudará a aprender inglés de forma didáctica y divertida! 🇬🇧🎉",
+        "Empecemos con el Presente Perfecto... ¡vas a ver qué fácil es! 💡📚",
+        "Recuerda: el presente perfecto conecta el pasado con el presente. 🕰️➡️🔄",
+        "Estaré aquí para apoyarte y darte consejos siempre que lo necesites. 🤝👨‍🏫"
+    ];
+
+    const mensajesPermanentes = [
+        "¿Listo para practicar el presente perfecto? 📝",
+        "Sigue así, vas por buen camino. ✅",
+        "Estoy aquí si tienes dudas sobre el presente perfecto. 💬"
+    ];
+
+    let index = 0;
+
+    // Ocultar el avatar estático y la burbuja al cargar
+    avatarStatic.style.display = "none";
+    bubble.style.display = "none";
+
+    // Paso 1: animación camina al centro
+    avatarWalking.addEventListener("animationend", () => {
+        avatarWalking.style.display = "none";
+        avatarStatic.style.display = "flex";
+        bubble.style.display = "block";
+        mostrarMensajesIniciales();
+    });
+
+    // Paso 2: mostrar los mensajes uno por uno
+    function mostrarMensajesIniciales() {
+        if (index < mensajesIniciales.length) {
+            bubble.textContent = mensajesIniciales[index];
+            index++;
+            setTimeout(mostrarMensajesIniciales, 6000); // Cada 6 segundos
+        } else {
+            iniciarSalida();
+        }
+    }
+
+    // Paso 3: ocultar avatar del centro y caminar a la izquierda
+    function iniciarSalida() {
+        avatarStatic.style.display = "none";
+        avatarWalking.style.display = "flex";
+        avatarWalking.classList.add("walk-out");
+
+        avatarWalking.addEventListener("animationend", finalSalida);
+    }
+
+    // Paso 4: finalizar caminata y mostrar avatar en la izquierda
+    function finalSalida() {
+        avatarWalking.style.display = "none";
+        avatarWalking.removeEventListener("animationend", finalSalida);
+        mostrarAvatarIzquierda();
+    }
+
+    // Paso 5: Mostrar el avatar estático a la izquierda con mensajes permanentes
+    function mostrarAvatarIzquierda() {
+        avatarStatic.style.display = "flex";
+        avatarStatic.style.left = "20px"; // Cambia posición
+        avatarStatic.style.top = "50%";
+        avatarStatic.style.transform = "translateY(-50%)";
+        bubble.style.display = "block";
+
+        let i = 0;
+        bubble.textContent = mensajesPermanentes[i];
+        setInterval(() => {
+            i = (i + 1) % mensajesPermanentes.length;
+            bubble.textContent = mensajesPermanentes[i];
+        }, 10000);
+    }
+});
+</script>
+    
+</body>
+</html>

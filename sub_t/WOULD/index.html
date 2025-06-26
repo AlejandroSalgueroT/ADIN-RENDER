@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Inicio - Proyecto WOULD</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+<header>
+  <h1>Proyecto de Inglés - Verbo Modal <span class="highlight">"WOULD"</span></h1>
+</header>
+
+<div class="container">
+  <h2>Seleccione la lección:</h2>
+  <ul>
+    <li><a href="simple.html">Condicional Simple</a></li>
+    <li><a href="continuous.html">Condicional Continuo</a></li>
+    <li><a href="perfect.html">Condicional Perfecto</a></li>
+    <li><a href="perfect_continuous.html">Condicional Perfecto Continuo</a></li>
+    <li><a href="pronunciaciones.html">Pronunciaciones</a></li>
+  </ul>
+</div>
+
+<!-- Bot -->
+<div id="bot-container">
+  <div id="bot-avatar">
+    <img id="avatar-img" src="avatar.png" alt="Avatar César Bot" draggable="false" ondragstart="return false;">
+    <div id="boca-bot"></div>
+  </div>
+  <div id="bot-text-box">Hola, soy César Bot. ¿En qué puedo ayudarte hoy?</div>
+  <div id="bot-controls">
+    <button id="btn-es">ES</button>
+    <button id="btn-en">EN</button>
+    <button id="toggle-sound">🔊</button>
+    <button id="toggle-visibility">🔽</button>
+    <select id="voice-select"></select>
+  </div>
+</div>
+
+<!-- Script del bot -->
+<script src="bot.js"></script>
+
+</body>
+</html>

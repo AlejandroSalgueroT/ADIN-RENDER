@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mi Perfil - MAYBE</title>
+       <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="hud">
+        <div class="hud-logo" aria-label="Logo RTN">RTN</div>
+        <div class="hud-user">
+            <img src="img/avatar.jpg" alt="Avatar de usuario" class="avatar-img" loading="lazy">
+            <span id="hud-username">Jugador</span>
+        </div>
+    </nav>
+    <header class="header">
+        <div class="logo" aria-label="Logo RTN">RTN</div>
+        <h1 class="titulo">👤 Mi Perfil</h1>
+        <p class="subtitulo">Consulta y personaliza tu información</p>
+    </header>
+    <main>
+        <section class="perfil">
+            <div class="perfil-info">
+                <img src="img/avatar.jpg" alt="Avatar de usuario" class="avatar-img perfil-avatar" loading="lazy">
+                <h2 id="perfil-nombre">Jugador</h2>
+                <p>Puntos: <span id="perfil-puntos">0</span></p>
+                <p>Misiones completadas: <span id="perfil-misiones">0</span></p>
+            </div>
+            <div class="perfil-editar">
+                <h3>Personaliza tu perfil</h3>
+                <form>
+                    <label for="nuevo-nombre">Nombre:</label>
+                    <input type="text" id="nuevo-nombre" class="mision-input" placeholder="Escribe tu nombre">
+                    <button type="button" class="boton">Guardar</button>
+                </form>
+            </div>
+        </section>
+        <div class="intro-botones">
+            <a href="index.html" class="boton">Inicio</a>
+            <a href="misiones.html" class="boton">Misiones</a>
+            <a href="logros.html" class="boton">Logros</a>
+            <a href="teoria.html" class="boton">Teoría</a>
+        </div>
+    </main>
+    <footer>
+        <div class="pie-superior">
+            <p>Página realizada y preparada mediante prácticas educativas</p>
+            <div class="logo-footer" aria-label="Logo RTN">RTN</div>
+        </div>
+        <p class="derechos">© RTN 2025. All rights reserved.</p>
+    </footer>
+</body>
+</html>

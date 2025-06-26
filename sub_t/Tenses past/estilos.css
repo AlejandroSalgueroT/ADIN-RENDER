@@ -1,0 +1,250 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #fff;
+    color: #222;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 30px 0 30px;
+    background: #fff;
+}
+
+.logo {
+    width: 40px;
+    height: 40px;
+}
+
+.titulo {
+    font-size: 2.5em;
+    font-family: 'Arial', sans-serif;
+    color: #a084ee;
+    text-shadow: 0 4px 16px #a084ee, 0 2px 4px #fff;
+    letter-spacing: 2px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.perfil {
+    display: flex;
+    align-items: center;
+}
+
+.icono-perfil {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #f0f0f0;
+    padding: 4px;
+}
+
+main {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding-bottom: 40px;
+}
+
+.fila {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #232733;
+    border-radius: 18px;
+    margin: 32px 0;
+    padding: 24px 18px;
+    color: #fff;
+    gap: 18px;
+}
+
+.fila-invertida {
+    flex-direction: row-reverse;
+    background: #fff;
+    color: #232733;
+    border: 2px solid #232733;
+}
+
+.fila .texto, .fila-invertida .texto {
+    flex: 1 1 60%;
+    min-width: 0;
+}
+
+.fila .imagen, .fila-invertida .imagen {
+    flex: 1 1 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fila img, .fila-invertida img {
+    max-width: 140px;
+    max-height: 140px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(44,62,80,0.08);
+    background: #fff;
+}
+
+h2 {
+    margin-top: 0;
+    color: inherit;
+}
+
+.ejemplo {
+    background: #eaf2fb;
+    color: #232733;
+    padding: 7px 12px;
+    border-radius: 5px;
+    display: inline-block;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+ul {
+    margin-top: 0;
+    margin-bottom: 0.5em;
+    padding-left: 18px;
+}
+
+li {
+    margin-bottom: 7px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 10px 0;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+input[type="text"] {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.footer {
+    background: #fff;
+    border-top: 2px solid #eaeaea;
+    padding: 0 0 18px 0;
+    margin-top: 30px;
+}
+
+.boton-finished {
+    display: block;
+    margin: 0 auto 18px auto;
+    background: #3b4fff;
+    color: #fff;
+    border: none;
+    border-radius: 18px;
+    padding: 10px 38px;
+    font-size: 1.2em;
+    font-weight: bold;
+    box-shadow: 0 2px 8px #a084ee44;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.boton-finished:hover {
+    background: #232733;
+}
+
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 18px;
+}
+
+.footer-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-footer {
+    width: 36px;
+    height: 36px;
+}
+
+.footer-right ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-bottom {
+    text-align: center;
+    color: #888;
+    font-size: 0.95em;
+    margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+    .fila, .fila-invertida {
+        flex-direction: column;
+    }
+    
+    main {
+        padding: 0 15px 40px 15px;
+    }
+    
+    .fila img, .fila-invertida img {
+        margin-bottom: 15px;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .footer-left {
+        margin-bottom: 15px;
+        justify-content: center;
+    }
+}
+#bot-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+  width: 100px;
+}
+
+#bot-avatar {
+  width: 100%;
+  cursor: grab;
+}
+
+#bot-text-box {
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  margin-top: 5px;
+  font-family: sans-serif;
+  font-size: 14px;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+#bot-controls {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+}

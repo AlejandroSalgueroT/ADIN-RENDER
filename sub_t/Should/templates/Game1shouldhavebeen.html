@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Game 1: Complete the Sentence - Should Have Been</title>
+  <link rel="stylesheet" href="../static/juegos.css">
+</head>
+<body>
+
+  <header>
+    <h1>Game 1: Complete the Sentence</h1>
+    <p>Choose the correct form of “should have been + verb-ing”.</p>
+  </header>
+
+  <main class="container">
+
+    <div class="question-card dark">
+      <div class="content">
+        <div class="image">
+          <img src="https://cdn.pixabay.com/photo/2015/01/08/18/25/startup-593341_1280.jpg" alt="Image 1">
+        </div>
+        <div class="text">
+          <p>1. She ________ instead of watching TV all day.</p>
+          <label><input type="radio" name="q1" value="a"> should have been working</label><br>
+          <label><input type="radio" name="q1" value="b"> should be working</label><br>
+          <label><input type="radio" name="q1" value="c"> should working</label>
+          <div id="fb1" class="feedback"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="question-card light">
+      <div class="content">
+        
+        <div class="text">
+          <p>2. You ________ for the test yesterday.</p>
+          <label><input type="radio" name="q2" value="a"> should have studied</label><br>
+          <label><input type="radio" name="q2" value="b"> should have been studying</label><br>
+          <label><input type="radio" name="q2" value="c"> should had study</label>
+          <div id="fb2" class="feedback"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="question-card dark">
+      <div class="content">
+        
+        <div class="text">
+          <p>3. They ________ us clean the house.</p>
+          <label><input type="radio" name="q3" value="a"> should have helping</label><br>
+          <label><input type="radio" name="q3" value="b"> should have been help</label><br>
+          <label><input type="radio" name="q3" value="c"> should have been helping</label>
+          <div id="fb3" class="feedback"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="question-card light">
+      <div class="content">
+        
+        <div class="text">
+          <p>4. We ________ more attention to the instructions.</p>
+          <label><input type="radio" name="q4" value="a"> should have been paying</label><br>
+          <label><input type="radio" name="q4" value="b"> should paying</label><br>
+          <label><input type="radio" name="q4" value="c"> should have paid</label>
+          <div id="fb4" class="feedback"></div>
+        </div>
+      </div>
+    </div>
+
+    <button class="btn-check" onclick="checkAnswers()">Check Answers</button>
+    <div id="result" class="result"></div>
+
+  </main>
+
+  <footer>
+    <button class="btn-back" onclick="window.location.href='ShouldPC.html'">⬅ Back</button>
+  </footer>
+
+  <script>
+    function checkAnswers() {
+      const correctAnswers = {
+        q1: 'a',
+        q2: 'b',
+        q3: 'c',
+        q4: 'a'
+      };
+
+      let correct = 0;
+      let incorrect = 0;
+
+      for (let key in correctAnswers) {
+        const options = document.getElementsByName(key);
+        let selected = '';
+        for (const option of options) {
+          if (option.checked) {
+            selected = option.value;
+            break;
+          }
+        }
+
+        const feedback = document.getElementById("fb" + key.substring(1));
+        if (selected === correctAnswers[key]) {
+          correct++;
+          feedback.innerText = "Correct!";
+          feedback.className = "feedback correct";
+        } else {
+          incorrect++;
+          feedback.innerText = "Incorrect!";
+          feedback.className = "feedback incorrect";
+        }
+      }
+
+      const result = document.getElementById('result');
+      result.innerText = `You got ${correct} correct and ${incorrect} incorrect.`;
+    }
+  </script>
+
+</body>
+</html>

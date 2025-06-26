@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MAYBE - Misiones Interactivas</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- HUD de Videojuego -->
+    <nav class="hud">
+        <div class="hud-logo" aria-label="Logo RTN">RTN</div>
+        <div class="hud-user">
+            <img src="img/avatar.jpg" alt="Avatar de usuario" class="avatar-img" loading="lazy">
+            <span id="hud-username">Jugador</span>
+        </div>
+        <div class="hud-progress">
+            <label for="progress-bar" class="sr-only">Progreso de misiones</label>
+            <progress id="progress-bar" value="0" max="5"></progress>
+            <span id="progress-text">0/5</span>
+        </div>
+        <div class="hud-score">
+            <span>Puntos: <span id="score">0</span></span>
+        </div>
+    </nav>
+
+    <!-- Chatbox tipo NPC -->
+    <div id="avatar-chatbox" aria-live="polite">
+        <div id="thought-bubble" style="display:none;"></div>
+    </div>
+
+    <!-- ENCABEZADO -->
+    <header class="header">
+        <div class="logo" aria-label="Logo RTN">RTN</div>
+        <h1 class="titulo">MAYBE: Misiones Interactivas</h1>
+        <p class="subtitulo">¡Completa misiones, gana puntos y desbloquea logros!</p>
+    </header>
+
+    <!-- INTRODUCCIÓN PROFESIONAL -->
+    <section class="intro-may">
+        <h1>¿Qué es <span class="resalta">may</span> y por qué es tan importante?</h1>
+        <p>
+            <strong>May</strong> es uno de los verbos modales más versátiles y esenciales del inglés. Se utiliza para expresar <span class="resalta">posibilidad</span>, <span class="resalta">permiso</span> y <span class="resalta">probabilidad</span> en una amplia variedad de contextos, tanto formales como informales. Dominar su uso te permitirá comunicarte con mayor precisión, cortesía y naturalidad en situaciones cotidianas, académicas y profesionales.
+        </p>
+        <div class="intro-ejemplos">
+            <h2>¿Cómo se utiliza <span style="color:#00ffc8;">may</span>?</h2>
+            <ul>
+                <li>
+                    <strong>Posibilidad:</strong>
+                    <em>It may rain tomorrow.</em>
+                    <span class="traduccion">(Quizás llueva mañana.)</span>
+                </li>
+                <li>
+                    <strong>Permiso:</strong>
+                    <em>You may leave now.</em>
+                    <span class="traduccion">(Puedes irte ahora.)</span>
+                </li>
+                <li>
+                    <strong>Pregunta formal:</strong>
+                    <em>May I help you?</em>
+                    <span class="traduccion">(¿Puedo ayudarte?)</span>
+                </li>
+            </ul>
+        </div>
+        <p>
+            <span class="resalta">¿Por qué es importante aprender a usar “may”?</span><br>
+            Utilizar <strong>may</strong> correctamente te ayuda a sonar más educado y profesional, especialmente al pedir permiso, sugerir posibilidades o hacer preguntas de manera formal. Es una herramienta clave para mejorar tu fluidez y comprensión del inglés real.
+        </p>
+        <p>
+            <span class="resalta">¡Acepta el desafío!</span><br>
+            En este juego interactivo, pondrás a prueba tus conocimientos sobre <strong>may</strong> a través de misiones inspiradas en videojuegos. Responde, gana puntos y desbloquea logros mientras aprendes inglés de forma dinámica y entretenida. ¡Prepárate para avanzar de nivel en tu dominio del idioma!
+        </p>
+        <!-- Botones para navegar a otras vistas -->
+        <div class="intro-botones">
+            <a href="views/Simple/index_Simple.html" class="boton">Ir a Misiones</a>
+            <a href="views/Logros/logros.html" class="boton">Ver Logros</a>
+            <a href="teoria.html" class="boton">Teoría</a>
+        </div>
+    </section>
+
+    <!-- Aquí irían las misiones y el resto del contenido principal -->
+
+    <!-- PIE DE PÁGINA -->
+    <footer>
+        <div class="pie-superior">
+            <p>Página realizada y preparada mediante prácticas educativas</p>
+            <p>#RTN20</p>
+            <div class="logo-footer" aria-label="Logo RTN">RTN</div>
+            <button class="boton" aria-label="Finalizar" onclick="window.scrollTo(0,0)">Finalizar</button>
+            <address class="contacto">
+                <p>Contact us at:</p>
+                <p><a href="mailto:rtncontact@gmail.com">📧 rtncontact@gmail.com</a></p>
+                <p>📸 rtn_school</p>
+                <p>📍 Ciudad-Colegio</p>
+            </address>
+        </div>
+        <p class="derechos">© RTN 2025. All rights reserved.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/three.min.js"></script>
+    <script src="js/GLTFLoader.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/misiones.js"></script>
+</body>
+</html>

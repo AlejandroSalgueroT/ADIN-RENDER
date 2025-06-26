@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Game 1: Should or Shouldn't</title>
+ <link rel="stylesheet" href="../static/juegos.css">
+</head>
+<body>
+
+  <header>
+    <h1>Game 1: Choose "should" or "shouldn't"</h1>
+    <p>Select the best answer for each sentence.</p>
+  </header>
+
+  <main class="container">
+
+    <div class="question-card dark">
+      <div class="content">
+      
+        <div class="text">
+          <p>1. You ___ study for the test.</p>
+          <label><input type="radio" name="q1" value="a"> should</label><br>
+          <label><input type="radio" name="q1" value="b"> shouldn't</label>
+          <div id="fb1" class="feedback"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="question-card light">
+      <div class="content">
+       
+        <div class="text">
+          <p>2. We ___ be late.</p>
+          <label><input type="radio" name="q2" value="a"> should</label><br>
+          <label><input type="radio" name="q2" value="b"> shouldn't</label>
+          <div id="fb2" class="feedback"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="question-card dark">
+      <div class="content">
+        
+        <div class="text">
+          <p>3. He ___ eat too much candy.</p>
+          <label><input type="radio" name="q3" value="a"> should</label><br>
+          <label><input type="radio" name="q3" value="b"> shouldn't</label>
+          <div id="fb3" class="feedback"></div>
+        </div>
+      </div>
+    </div>
+
+    <button class="btn-check" onclick="checkAnswers()">Check Answers</button>
+    <div id="result" class="result"></div>
+
+  </main>
+
+  <footer>
+    <button class="btn-back" onclick="window.location.href='ShouldPS.html'">⬅ Back</button>
+  </footer>
+
+  <script>
+    function checkAnswers() {
+      const correctAnswers = { q1: 'a', q2: 'b', q3: 'b' };
+      let correct = 0;
+      let incorrect = 0;
+
+      for (let key in correctAnswers) {
+        const options = document.getElementsByName(key);
+        let selected = '';
+        for (const option of options) {
+          if (option.checked) {
+            selected = option.value;
+            break;
+          }
+        }
+        const feedback = document.getElementById("fb" + key.substring(1));
+        if (selected === correctAnswers[key]) {
+          correct++;
+          feedback.innerText = "Correct!";
+          feedback.className = "feedback correct";
+        } else {
+          incorrect++;
+          feedback.innerText = "Incorrect!";
+          feedback.className = "feedback incorrect";
+        }
+      }
+
+      const result = document.getElementById('result');
+      result.innerText = `You got ${correct} correct and ${incorrect} incorrect.`;
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Juego 4 - Might + Verb</title>
+  <link rel="stylesheet" href="../estilo.css">
+  <link rel="stylesheet" href="avatar.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      color: #121212;
+    }
+
+    .split-horizontal {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      z-index: -1;
+    }
+
+    .top-half {
+      height: 50%;
+      background-color: #ffffff;
+    }
+
+    .bottom-half {
+      height: 50%;
+      background-color: #1e1e2f;
+    }
+
+    main {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    h1 {
+      color: #121212;
+    }
+
+    p {
+      font-size: 1.1rem;
+    }
+
+    .opcion {
+      display: inline-block;
+      margin: 10px;
+      cursor: pointer;
+    }
+
+    .opcion img {
+      border-radius: 10px;
+      box-shadow: 0 0 8px #aaa;
+      transition: transform 0.2s;
+    }
+
+    .opcion img:hover {
+      transform: scale(1.05);
+    }
+
+    #resultado {
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin-top: 20px;
+    }
+
+    .btn {
+      display: inline-block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      background-color: #252934;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #3a3f50;
+    }
+
+    .speak-btn {
+      background-color: #00695c;
+    }
+
+    .avatar-container {
+      background-color: #f4f4f4;
+      border-radius: 16px;
+      padding: 20px;
+      margin: 40px auto;
+      text-align: center;
+      box-shadow: 0 0 12px #00000022;
+      max-width: 400px;
+    }
+
+    .avatar-sprite {
+      width: 64px;
+      height: 64px;
+      background-image: url("../avatar.png"); /* Tu sprite con 8 frames horizontales */
+      background-size: 512px 64px;
+      animation: walk 1s steps(8) infinite;
+      margin: 0 auto 15px;
+      cursor: pointer;
+    }
+
+    @keyframes walk {
+      from {
+        background-position: 0 0;
+      }
+      to {
+        background-position: -512px 0;
+      }
+    }
+
+    .talk-box {
+      background-color: #ffffff;
+      color: #121212;
+      padding: 15px;
+      border-radius: 10px;
+      font-size: 1rem;
+      margin: 10px auto;
+      border: 1px solid #ccc;
+      box-shadow: inset 0 0 5px #eeeeee;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Fondo dividido -->
+  <div class="split-horizontal">
+    <div class="top-half"></div>
+    <div class="bottom-half"></div>
+  </div>
+
+  <main>
+    <h1>¿Qué imagen representa la oración?</h1>
+
+    <p>He <strong>might play</strong> guitar.</p>
+
+    <div class="opcion" onclick="verificar(false)">
+      <img src="https://via.placeholder.com/100x100?text=Reading" alt="Reading">
+    </div>
+    <div class="opcion" onclick="verificar(true)">
+      <img src="https://via.placeholder.com/100x100?text=Playing+Guitar" alt="Playing Guitar">
+    </div>
+    <div class="opcion" onclick="verificar(false)">
+      <img src="https://via.placeholder.com/100x100?text=Running" alt="Running">
+    </div>
+
+    <p id="resultado"></p>
+
+    <!-- Botón volver -->
+    <a href="../index.html" class="btn">⬅ Volver</a>
+
+    <!-- Avatar animado -->
+    <div class="avatar-container">
+      <div class="avatar-sprite" onclick="speak()"></div>
+
+      <div class="talk-box" id="frase">
+        Click en una frase para que el avatar hable.
+      </div>
+
+      <button class="btn speak-btn" onclick="speak()">🔊 Hablar</button>
+      <button class="btn" onclick="setFrase('He might play guitar.')">Frase 1</button>
+      <button class="btn" onclick="setFrase('They might be doing homework.')">Frase 2</button>
+    </div>
+  </main>
+
+  <script>
+    function verificar(correcto) {
+      const r = document.getElementById("resultado");
+      if (correcto) {
+        r.textContent = "✅ ¡Muy bien!";
+        r.style.color = "green";
+      } else {
+        r.textContent = "❌ Intenta otra vez.";
+        r.style.color = "red";
+      }
+    }
+
+    let currentText = "Hello! I'm your English assistant.";
+
+    function setFrase(texto) {
+      currentText = texto;
+      document.getElementById("frase").innerText = texto;
+    }
+
+    function speak() {
+      const utterance = new SpeechSynthesisUtterance(currentText);
+      utterance.lang = "en-US";
+      utterance.pitch = 1;
+      utterance.rate = 1;
+      speechSynthesis.cancel();
+      speechSynthesis.speak(utterance);
+    }
+  </script>
+<div id="avatar-pixelado"></div>
+<div id="dialog-box"></div>
+<div id="cara">
+    <div class="ojo" id="ojo-izq"></div>
+    <div class="ojo" id="ojo-der"></div>
+    <div class="boca" id="boca"></div>
+  </div>
+</div>
+
+<div id="dialog-box">Hello!</div>
+<script src="avatar.js"></script>
+
+</body>
+</html>

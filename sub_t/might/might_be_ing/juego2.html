@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Juego 1: Might + Verb - Completa</title>
+  <link rel="stylesheet" href="../estilo.css">
+  <link rel="stylesheet" href="../avatar.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #ffffff 50%, #1e1e2f 50%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container {
+      background-color: #252934;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+      text-align: center;
+      max-width: 600px;
+      width: 90%;
+      color: white;
+    }
+
+    h1 {
+      color: #ffffff;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      font-size: 1rem;
+      width: 100%;
+      margin-top: 20px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    .btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #00695c;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn:hover {
+      background-color: #00897b;
+    }
+
+    #resultado {
+      margin-top: 20px;
+      font-size: 1.2rem;
+    }
+
+    .volver-container {
+      margin-top: 30px;
+    }
+
+    #avatar-container {
+      margin-top: 40px;
+      text-align: center;
+      position: relative;
+    }
+
+    #avatar-pixelado {
+      width: 128px;
+      height: 128px;
+      background-image: url('../avatar.png'); /* asegúrate de que existe este sprite */
+      background-size: 512px 128px;
+      image-rendering: pixelated;
+      background-position: 0 0;
+      animation: walk 0.5s steps(4) infinite;
+      margin: 0 auto;
+      cursor: pointer;
+    }
+
+    @keyframes walk {
+      from { background-position: 0 0; }
+      to { background-position: -512px 0; }
+    }
+
+    #dialog-box {
+      position: absolute;
+      top: -40px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #ffffff;
+      color: #000000;
+      padding: 8px 14px;
+      border-radius: 10px;
+      max-width: 260px;
+      box-shadow: 0 0 6px rgba(0,0,0,0.2);
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Completa la frase</h1>
+    <p>She ______ dance at the party.</p>
+    <input type="text" id="respuesta" placeholder="Escribe la palabra que falta">
+    <button class="btn" onclick="verificar()">Verificar</button>
+    <div id="resultado"></div>
+
+    <!-- Botón Volver -->
+    <div class="volver-container">
+      <a href="../index.html" class="btn">⬅ Volver</a>
+    </div>
+
+    <!-- Avatar con diálogo -->
+    <div id="avatar-container">
+      <div id="dialog-box">Click me to speak!</div>
+      <div id="avatar-pixelado" onclick="speakFrase('She might dance at the party.')"></div>
+      <button class="btn" onclick="speakFrase('She might dance at the party.')">🔊 Hablar</button>
+    </div>
+  </div>
+
+  <script>
+    function verificar() {
+      const r = document.getElementById("respuesta").value.trim().toLowerCase();
+      const resultado = document.getElementById("resultado");
+
+      if (r === "might") {
+        resultado.textContent = "✅ ¡Correcto!";
+        resultado.style.color = "lightgreen";
+        speakFrase('Correct! She might dance at the party.');
+      } else {
+        resultado.textContent = "❌ Intenta otra vez.";
+        resultado.style.color = "red";
+        speakFrase('Try again. Remember the modal verb!');
+      }
+    }
+
+    function speakFrase(texto) {
+      const dialog = document.getElementById("dialog-box");
+      dialog.textContent = texto;
+
+      const utterance = new SpeechSynthesisUtterance(texto);
+      utterance.lang = "en-US";
+      utterance.pitch = 1;
+      utterance.rate = 1;
+      speechSynthesis.cancel();
+      speechSynthesis.speak(utterance);
+    }
+  </script>
+
+  <!-- Si tienes un JS adicional para más animaciones -->
+  <!-- <script src="../avatar.js"></script> -->
+
+</body>
+</html>

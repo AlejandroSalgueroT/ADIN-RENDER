@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Game 3: Fix the Errors - Should Be</title>
+<link rel="stylesheet" href="../static/juegos.css">
+</head>
+
+<body>
+
+  <header>
+    <h1>Game 3: Fix the Errors</h1>
+  </header>
+
+  <main class="container">
+
+    <div class="question-card dark">
+      <div class="content">
+        <div class="text">
+          <p>1. You should be study right now.</p>
+          <label><input type="radio" name="q1" value="a"> You should be studying right now.</label><br>
+          <label><input type="radio" name="q1" value="b"> You should studying be right now.</label><br>
+          <label><input type="radio" name="q1" value="c"> You should be study right now.</label>
+          <div id="fb1" class="feedback"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="question-card light">
+        <div class="text">
+          <p>2. He be should working at the office.</p>
+          <label><input type="radio" name="q2" value="a"> He should be working at the office.</label><br>
+          <label><input type="radio" name="q2" value="b"> He working should be at the office.</label><br>
+          <label><input type="radio" name="q2" value="c"> He be working should at the office.</label>
+          <div id="fb2" class="feedback"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="question-card dark">
+      <div class="content">
+        <div class="text">
+          <p>3. They should being practicing soccer.</p>
+          <label><input type="radio" name="q3" value="a"> They should be practicing soccer.</label><br>
+          <label><input type="radio" name="q3" value="b"> They being should practicing soccer.</label><br>
+          <label><input type="radio" name="q3" value="c"> They practicing be should soccer.</label>
+          <div id="fb3" class="feedback"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="question-card light">
+     
+        <div class="text">
+          <p>4. We should to be studying English.</p>
+          <label><input type="radio" name="q4" value="a"> We should be studying English.</label><br>
+          <label><input type="radio" name="q4" value="b"> We to should be studying English.</label><br>
+          <label><input type="radio" name="q4" value="c"> We should studying English.</label>
+          <div id="fb4" class="feedback"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="question-card dark">
+      <div class="content">
+      
+        <div class="text">
+          <p>5. She should been learning French.</p>
+          <label><input type="radio" name="q5" value="a"> She should be learning French.</label><br>
+          <label><input type="radio" name="q5" value="b"> She should been learning French.</label><br>
+          <label><input type="radio" name="q5" value="c"> She been should learning French.</label>
+          <div id="fb5" class="feedback"></div>
+        </div>
+      </div>
+    </div>
+
+    <button class="btn-check" onclick="checkAnswers()">Check Answers</button>
+    <div id="result" class="result"></div>
+
+  </main>
+
+  
+
+  <script>
+    function checkAnswers() {
+      const correctAnswers = { q1: 'a', q2: 'a', q3: 'a', q4: 'a', q5: 'a' };
+      let correct = 0;
+      let incorrect = 0;
+
+      for (let key in correctAnswers) {
+        const options = document.getElementsByName(key);
+        let selected = '';
+        for (const option of options) {
+          if (option.checked) {
+            selected = option.value;
+            break;
+          }
+        }
+        const feedback = document.getElementById("fb" + key.substring(1));
+        if (selected === correctAnswers[key]) {
+          correct++;
+          feedback.innerText = "Correct!";
+          feedback.className = "feedback correct";
+        } else {
+          incorrect++;
+          feedback.innerText = "Incorrect!";
+          feedback.className = "feedback incorrect";
+        }
+      }
+
+      const result = document.getElementById('result');
+      result.innerText = `You got ${correct} correct and ${incorrect} incorrect.`;
+    }
+  </script>
+
+</body>
+
+<button onclick="window.location.href='index_should-be.html'" class="btn-back">⬅ Back</button>
+
+</html>

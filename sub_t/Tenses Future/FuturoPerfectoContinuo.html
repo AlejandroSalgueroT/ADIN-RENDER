@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Presente Perfecto Continuo</title>
+    <link rel="stylesheet" href="FuturoPerfectoContinuo.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+/* Avatar que camina desde la derecha hasta el centro */
+@keyframes walk-left {
+0% { left: 100%; }
+100% { left: 50%; transform: translate(-50%, -50%); }
+}
+
+/* Avatar que sale caminando hacia la izquierda y desaparece */
+@keyframes walk-left-out {
+0% {
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+100% {
+    left: 0;
+    transform: translateY(-50%);
+}
+}
+
+.avatar-walking {
+position: fixed;
+top: 50%;
+left: 100%;
+transform: translateY(-50%);
+animation: walk-left 5s linear forwards;
+z-index: 9999;
+display: flex;
+flex-direction: column;
+align-items: center;
+pointer-events: none;
+}
+
+.avatar-walking.walk-out {
+animation: walk-left-out 5s linear forwards;
+}
+
+.avatar-static {
+position: fixed;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+z-index: 9999;
+display: flex;
+flex-direction: column;
+align-items: center;
+pointer-events: none;
+}
+
+.bubble {
+background: #fff;
+color: #333;
+padding: 8px 12px;
+border-radius: 12px;
+font-size: 14px;
+font-family: sans-serif;
+margin-bottom: 4px;
+box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+max-width: 280px;          /* Limita el ancho máximo */
+white-space: normal;       /* Permite saltos de línea */
+word-wrap: break-word;     /* Asegura que las palabras largas se corten */
+text-align: center;
+}
+
+.sprite-avatar {
+width: 110px;
+height: 128px;
+background-image: url('img/JohannaCaminando.png');
+background-repeat: no-repeat;
+background-position: 0 0;
+background-size: 512px 128px;
+animation: sprite-walk 0.8s steps(4) infinite;
+image-rendering: pixelated;
+transform: scaleX(-1);
+}
+
+@keyframes sprite-walk {
+from { background-position: 0 0; }
+to { background-position: -512px 0; }
+}
+
+.avatar-img {
+width: 128px;
+height: 128px;
+image-rendering: pixelated;
+}
+
+/* Estilo para el icono de sonido */
+.sound-icon {
+    display: inline-block;
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    color: #4299e1;
+    transition: transform 0.2s;
+}
+
+.sound-icon:hover {
+    transform: scale(1.2);
+    color: #3182ce;
+}
+
+/* Estilo para el contenedor del resultado */
+.result-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+    </style>
+
+</head>
+<body>
+
+<header>
+    <i class="user-icon">👤</i>
+    <h1 class="title">Futuro Perfecto Continuo</h1>
+</header>
+
+<main class="exercise-container">
+
+    <!-- Nivel Fácil -->
+    <section class="level" id="facil">
+        <h2>Fácil - Futuro Perfecto Continuo</h2>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 1</h3>
+            <p>I <input type="text" id="input1" placeholder="will have been working" /> on this project for hours by noon.</p>
+            <button onclick="checkInput('input1', 'will have been working', 'result1', 'I will have been working on this project for hours by noon.')">Verificar</button>
+            <div class="result-container">
+            <p id="result1"></p>
+            <span id="sound1" class="sound-icon" style="display: none;">🔊</span>
+            </div>
+            <p class="grammar-note">[Futuro perfecto continuo: sujeto + will have been + verbo-ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 2</h3>
+            <p>
+            <select id="select2">
+                <option>She will have been studying</option>
+                <option>She will has been studying</option>
+                <option>She will be studying</option>
+            </select> English for two hours by noon.
+            </p>
+            <button onclick="checkSelect('select2', 'She will have been studying', 'result2', 'She will have been studying English for two hours by noon.')">Verificar</button>
+            <div class="result-container">
+            <p id="result2"></p>
+            <span id="sound2" class="sound-icon" style="display: none;">🔊</span>
+            </div>
+            <p class="grammar-note">[Futuro perfecto continuo: sujeto + will have been + verbo-ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 3</h3>
+            <p>They <input type="text" id="input3" placeholder="will have been waiting" /> for the bus for over an hour.</p>
+            <button onclick="checkInput('input3', 'will have been waiting', 'result3', 'They will have been waiting for the bus for over an hour.')">Verificar</button>
+            <div class="result-container">
+            <p id="result3"></p>
+            <span id="sound3" class="sound-icon" style="display: none;">🔊</span>
+            </div>
+            <p class="grammar-note">[Futuro perfecto continuo: sujeto + will have been + verbo-ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 4</h3>
+            <select id="select4">
+            <option>will have been raining</option>
+            <option>will has been raining</option>
+            <option>will be raining</option>
+            </select>
+            <p>It _____ (rain) for hours by the time we arrive.</p>
+            <button onclick="checkSelect('select4', 'will have been raining', 'result4', 'It will have been raining for hours by the time we arrive.')">Verificar</button>
+            <div class="result-container">
+            <p id="result4"></p>
+            <span id="sound4" class="sound-icon" style="display: none;">🔊</span>
+            </div>
+            <p class="grammar-note">[Futuro perfecto continuo: sujeto + will have been + verbo-ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 5</h3>
+            <p>We <input type="text" id="input5" placeholder="will have been living" /> in this city for ten years by December.</p>
+            <button onclick="checkInput('input5', 'will have been living', 'result5', 'We will have been living in this city for ten years by December.')">Verificar</button>
+            <div class="result-container">
+            <p id="result5"></p>
+            <span id="sound5" class="sound-icon" style="display: none;">🔊</span>
+            </div>
+            <p class="grammar-note">[Futuro perfecto continuo: sujeto + will have been + verbo-ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 6</h3>
+            <p>You <input type="text" id="input6" placeholder="will have been trying" /> to call her for hours.</p>
+            <button onclick="checkInput('input6', 'will have been trying', 'result6', 'You will have been trying to call her for hours.')">Verificar</button>
+            <div class="result-container">
+            <p id="result6"></p>
+            <span id="sound6" class="sound-icon" style="display: none;">🔊</span>
+            </div>
+            <p class="grammar-note">[Futuro perfecto continuo: sujeto + will have been + verbo-ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 7</h3>
+            <p>She <input type="text" id="input7" placeholder="will have been painting" /> her room for hours by the afternoon.</p>
+            <button onclick="checkInput('input7', 'will have been painting', 'result7', 'She will have been painting her room for hours by the afternoon.')">Verificar</button>
+            <div class="result-container">
+            <p id="result7"></p>
+            <span id="sound7" class="sound-icon" style="display: none;">🔊</span>
+            </div>
+            <p class="grammar-note">[Futuro perfecto continuo: sujeto + will have been + verbo-ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 8</h3>
+            <select id="select8">
+            <option>will have been teaching</option>
+            <option>will has been teaching</option>
+            <option>will be teaching</option>
+            </select>
+            <p>My father _____ (teach) at this school for 15 years by next month.</p>
+            <button onclick="checkSelect('select8', 'will have been teaching', 'result8', 'My father will have been teaching at this school for 15 years by next month.')">Verificar</button>
+            <div class="result-container">
+            <p id="result8"></p>
+            <span id="sound8" class="sound-icon" style="display: none;">🔊</span>
+            </div>
+            <p class="grammar-note">[Futuro perfecto continuo: sujeto + will have been + verbo-ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 9</h3>
+            <p>I <input type="text" id="input9" placeholder="will have been learning" /> to play the guitar for months.</p>
+            <button onclick="checkInput('input9', 'will have been learning', 'result9', 'I will have been learning to play the guitar for months.')">Verificar</button>
+            <div class="result-container">
+            <p id="result9"></p>
+            <span id="sound9" class="sound-icon" style="display: none;">🔊</span>
+            </div>
+            <p class="grammar-note">[Futuro perfecto continuo: sujeto + will have been + verbo-ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 10</h3>
+            <select id="select10">
+            <option>will have been working</option>
+            <option>will has been working</option>
+            <option>will be working</option>
+            </select>
+            <p>The engineers _____ (work) on this bridge for over six months by then.</p>
+            <button onclick="checkSelect('select10', 'will have been working', 'result10', 'The engineers will have been working on this bridge for over six months by then.')">Verificar</button>
+            <div class="result-container">
+            <p id="result10"></p>
+            <span id="sound10" class="sound-icon" style="display: none;">🔊</span>
+            </div>
+            <p class="grammar-note">[Futuro perfecto continuo: sujeto + will have been + verbo-ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 11</h3>
+            <p>He <input type="text" id="input11" placeholder="will have been exercising" /> at the gym for two hours.</p>
+            <button onclick="checkInput('input11', 'will have been exercising', 'result11', 'He will have been exercising at the gym for two hours.')">Verificar</button>
+            <div class="result-container">
+            <p id="result11"></p>
+            <span id="sound11" class="sound-icon" style="display: none;">🔊</span>
+            </div>
+            <p class="grammar-note">[Futuro perfecto continuo: sujeto + will have been + verbo-ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 12</h3>
+            <select id="select12">
+            <option>will have been improving</option>
+            <option>will has been improving</option>
+            <option>will be improving</option>
+            </select>
+            <p>Her English _____ (improve) a lot recently.</p>
+            <button onclick="checkSelect('select12', 'will have been improving', 'result12', 'Her English will have been improving a lot recently.')">Verificar</button>
+            <div class="result-container">
+            <p id="result12"></p>
+            <span id="sound12" class="sound-icon" style="display: none;">🔊</span>
+            </div>
+            <p class="grammar-note">[Futuro perfecto continuo: sujeto + will have been + verbo-ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 13</h3>
+            <p>We <input type="text" id="input13" placeholder="will not have been sleeping" /> well lately.</p>
+            <button onclick="checkInput('input13', 'will not have been sleeping', 'result13', 'We will not have been sleeping well lately.')">Verificar</button>
+            <div class="result-container">
+            <p id="result13"></p>
+            <span id="sound13" class="sound-icon" style="display: none;">🔊</span>
+            </div>
+            <p class="grammar-note">[Negativo futuro perfecto continuo: sujeto + will not have been + verbo-ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 14</h3>
+            <select id="select14">
+            <option>will have been watching</option>
+            <option>will has been watching</option>
+            <option>will be watching</option>
+            </select>
+            <p>Tom _____ (watch) TV all afternoon.</p>
+            <button onclick="checkSelect('select14', 'will have been watching', 'result14', 'Tom will have been watching TV all afternoon.')">Verificar</button>
+            <div class="result-container">
+            <p id="result14"></p>
+            <span id="sound14" class="sound-icon" style="display: none;">🔊</span>
+            </div>
+            <p class="grammar-note">[Futuro perfecto continuo: sujeto + will have been + verbo-ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 15</h3>
+            <p>You <input type="text" id="input15" placeholder="will have been changing" /> jobs frequently.</p>
+            <button onclick="checkInput('input15', 'will have been changing', 'result15', 'You will have been changing jobs frequently.')">Verificar</button>
+            <div class="result-container">
+            <p id="result15"></p>
+            <span id="sound15" class="sound-icon" style="display: none;">🔊</span>
+            </div>
+            <p class="grammar-note">[Futuro perfecto continuo: sujeto + will have been + verbo-ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 16</h3>
+            <select id="select16">
+            <option>will have been practicing</option>
+            <option>will has been practicing</option>
+            <option>will be practicing</option>
+            </select>
+            <p>I _____ (practice) the piano for my recital.</p>
+            <button onclick="checkSelect('select16', 'will have been practicing', 'result16', 'I will have been practicing the piano for my recital.')">Verificar</button>
+            <div class="result-container">
+            <p id="result16"></p>
+            <span id="sound16" class="sound-icon" style="display: none;">🔊</span>
+            </div>
+            <p class="grammar-note">[Futuro perfecto continuo: sujeto + will have been + verbo-ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 17</h3>
+            <p>The baby <input type="text" id="input17" placeholder="will have been crying" /> for half an hour.</p>
+            <button onclick="checkInput('input17', 'will have been crying', 'result17', 'The baby will have been crying for half an hour.')">Verificar</button>
+            <div class="result-container">
+            <p id="result17"></p>
+            <span id="sound17" class="sound-icon" style="display: none;">🔊</span>
+            </div>
+            <p class="grammar-note">[Futuro perfecto continuo: sujeto + will have been + verbo-ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 18</h3>
+            <select id="select18">
+            <option>will have been discussing</option>
+            <option>will has been discussing</option>
+            <option>will be discussing</option>
+            </select>
+            <p>The committee _____ (discuss) the proposal all morning.</p>
+            <button onclick="checkSelect('select18', 'will have been discussing', 'result18', 'The committee will have been discussing the proposal all morning.')">Verificar</button>
+            <div class="result-container">
+            <p id="result18"></p>
+            <span id="sound18" class="sound-icon" style="display: none;">🔊</span>
+            </div>
+            <p class="grammar-note">[Futuro perfecto continuo: sujeto + will have been + verbo-ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 19</h3>
+            <p>My neighbors <input type="text" id="input19" placeholder="will have been renovating" /> their house for months.</p>
+            <button onclick="checkInput('input19', 'will have been renovating', 'result19', 'My neighbors will have been renovating their house for months.')">Verificar</button>
+            <div class="result-container">
+            <p id="result19"></p>
+            <span id="sound19" class="sound-icon" style="display: none;">🔊</span>
+            </div>
+            <p class="grammar-note">[Futuro perfecto continuo: sujeto + will have been + verbo-ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 20</h3>
+            <select id="select20">
+            <option>will have been growing</option>
+            <option>will has been growing</option>
+            <option>will be growing</option>
+            </select>
+            <p>The economy _____ (grow) steadily this year.</p>
+            <button onclick="checkSelect('select20', 'will have been growing', 'result20', 'The economy will have been growing steadily this year.')">Verificar</button>
+            <div class="result-container">
+            <p id="result20"></p>
+            <span id="sound20" class="sound-icon" style="display: none;">🔊</span>
+            </div>
+            <p class="grammar-note">[Futuro perfecto continuo: sujeto + will have been + verbo-ing]</p>
+        </div>
+    </section>
+
+
+    <!-- Nivel Medio (inicialmente bloqueado) - Futuro Perfecto Continuo -->
+    <section class="level locked" id="medio">
+        <div class="lock-overlay">
+            <div class="lock-icon">🔒</div>
+            <p>Completa el nivel Fácil para desbloquear</p>
+        </div>
+        <h2>Medio - Futuro Perfecto Continuo</h2>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 1</h3>
+            <p>I <input type="text" id="medio-input1" placeholder="will not have been working"/> here very long.</p>
+            <button onclick="checkInput('medio-input1', 'will not have been working', 'medio-result1', 'I will not have been working here very long.')">Verificar</button>
+            <div class="result-container">
+            <p id="medio-result1"></p>
+            <span id="medio-sound1" class="sound-icon" style="display: none;">🔊</span>
+            </div>
+            <p class="grammar-note">[Negativo futuro perfecto continuo: I + will not have been + verbo-ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 2</h3>
+            <p>She <input type="text" id="medio-input2" placeholder="will not have been studying"/> lately.</p>
+            <button onclick="checkInput('medio-input2', 'will not have been studying', 'medio-result2', 'She will not have been studying lately.')">Verificar</button>
+            <div class="result-container">
+            <p id="medio-result2"></p>
+            <span id="medio-sound2" class="sound-icon" style="display: none;">🔊</span>
+            </div>
+            <p class="grammar-note">[Negativo futuro perfecto continuo: She + will not have been + verbo-ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 3</h3>
+            <p>Will you <input type="text" id="medio-input3" placeholder="have been waiting"/> long?</p>
+            <button onclick="checkInput('medio-input3', 'have been waiting', 'medio-result3', 'Will you have been waiting long?')">Verificar</button>
+            <div class="result-container">
+            <p id="medio-result3"></p>
+            <span id="medio-sound3" class="sound-icon" style="display: none;">🔊</span>
+            </div>
+            <p class="grammar-note">[Interrogativo futuro perfecto continuo: Will + sujeto + have been + verbo-ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 4</h3>
+            <p>Will it <input type="text" id="medio-input4" placeholder="have been raining"/> all day?</p>
+            <button onclick="checkInput('medio-input4', 'have been raining', 'medio-result4', 'Will it have been raining all day?')">Verificar</button>
+            <div class="result-container">
+            <p id="medio-result4"></p>
+            <span id="medio-sound4" class="sound-icon" style="display: none;">🔊</span>
+            </div>
+            <p class="grammar-note">[Interrogativo futuro perfecto continuo: Will + sujeto + have been + verbo-ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 5</h3>
+            <p>We <input type="text" id="medio-input5" placeholder="will not have been living"/> here very long.</p>
+            <button onclick="checkInput('medio-input5', 'will not have been living', 'medio-result5', 'We will not have been living here very long.')">Verificar</button>
+            <div class="result-container">
+            <p id="medio-result5"></p>
+            <span id="medio-sound5" class="sound-icon" style="display: none;">🔊</span>
+            </div>
+            <p class="grammar-note">[Negativo futuro perfecto continuo: We + will not have been + verbo-ing]</p>
+        </div>
+
+          <div class="exercise-card">
+            <h3>Ejercicio 6</h3>
+            <p>Will they <input type="text" id="medio-input6" placeholder="have been practicing"/> their presentation?</p>
+            <button onclick="checkInput('medio-input6', 'have been practicing', 'medio-result6', 'Will they have been practicing their presentation?')">Verificar</button>
+            <div class="result-container">
+            <p id="medio-result6"></p>
+            <span id="medio-sound6" class="sound-icon" style="display: none;">🔊</span>
+            </div>
+            <p class="grammar-note">[Interrogativo futuro perfecto continuo: Will + sujeto + have been + verbo-ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 7</h3>
+            <p>The students <input type="text" id="medio-input7" placeholder="will not have been paying"/> attention.</p>
+            <button onclick="checkInput('medio-input7', 'will not have been paying', 'medio-result7', 'The students will not have been paying attention.')">Verificar</button>
+            <div class="result-container">
+            <p id="medio-result7"></p>
+            <span id="medio-sound7" class="sound-icon" style="display: none;">🔊</span>
+            </div>
+            <p class="grammar-note">[Negativo futuro perfecto continuo: sujeto + will not have been + verbo-ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 8</h3>
+            <p>My computer <input type="text" id="medio-input8" placeholder="will not have been working"/> properly.</p>
+            <button onclick="checkInput('medio-input8', 'will not have been working', 'medio-result8', 'My computer will not have been working properly.')">Verificar</button>
+            <div class="result-container">
+            <p id="medio-result8"></p>
+            <span id="medio-sound8" class="sound-icon" style="display: none;">🔊</span>
+            </div>
+            <p class="grammar-note">[Negativo futuro perfecto continuo: sujeto + will not have been + verbo-ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 9</h3>
+            <p>Will she <input type="text" id="medio-input9" placeholder="have been exercising"/> regularly?</p>
+            <button onclick="checkInput('medio-input9', 'have been exercising', 'medio-result9', 'Will she have been exercising regularly?')">Verificar</button>
+            <div class="result-container">
+            <p id="medio-result9"></p>
+            <span id="medio-sound9" class="sound-icon" style="display: none;">🔊</span>
+            </div>
+            <p class="grammar-note">[Interrogativo futuro perfecto continuo: Will + sujeto + have been + verbo-ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 10</h3>
+            <p>You <input type="text" id="medio-input10" placeholder="will not have been listening"/> to me.</p>
+            <button onclick="checkInput('medio-input10', 'will not have been listening', 'medio-result10', 'You will not have been listening to me.')">Verificar</button>
+            <div class="result-container">
+            <p id="medio-result10"></p>
+            <span id="medio-sound10" class="sound-icon" style="display: none;">🔊</span>
+            </div>
+            <p class="grammar-note">[Negativo futuro perfecto continuo: sujeto + will not have been + verbo-ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 11</h3>
+            <p>Will we <input type="text" id="medio-input11" placeholder="have been making"/> progress?</p>
+            <button onclick="checkInput('medio-input11', 'have been making', 'medio-result11', 'Will we have been making progress?')">Verificar</button>
+            <div class="result-container">
+            <p id="medio-result11"></p>
+            <span id="medio-sound11" class="sound-icon" style="display: none;">🔊</span>
+            </div>
+            <p class="grammar-note">[Interrogativo futuro perfecto continuo: Will + sujeto + have been + verbo-ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 12</h3>
+            <p>Will your brother <input type="text" id="medio-input12" placeholder="have been looking"/> for a job?</p>
+            <button onclick="checkInput('medio-input12', 'have been looking', 'medio-result12', 'Will your brother have been looking for a job?')">Verificar</button>
+            <div class="result-container">
+            <p id="medio-result12"></p>
+            <span id="medio-sound12" class="sound-icon" style="display: none;">🔊</span>
+            </div>
+            <p class="grammar-note">[Interrogativo futuro perfecto continuo: Will + sujeto + have been + verbo-ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 13</h3>
+            <p>The team <input type="text" id="medio-input13" placeholder="will not have been performing"/> well.</p>
+            <button onclick="checkInput('medio-input13', 'will not have been performing', 'medio-result13', 'The team will not have been performing well.')">Verificar</button>
+            <div class="result-container">
+            <p id="medio-result13"></p>
+            <span id="medio-sound13" class="sound-icon" style="display: none;">🔊</span>
+            </div>
+            <p class="grammar-note">[Negativo futuro perfecto continuo: sujeto + will not have been + verbo-ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 14</h3>
+            <p>Will the children <input type="text" id="medio-input14" placeholder="have been playing"/> outside?</p>
+            <button onclick="checkInput('medio-input14', 'have been playing', 'medio-result14', 'Will the children have been playing outside?')">Verificar</button>
+            <div class="result-container">
+            <p id="medio-result14"></p>
+            <span id="medio-sound14" class="sound-icon" style="display: none;">🔊</span>
+            </div>
+            <p class="grammar-note">[Interrogativo futuro perfecto continuo: Will + sujeto + have been + verbo-ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 15</h3>
+            <p>This phone <input type="text" id="medio-input15" placeholder="will not have been charging"/> properly.</p>
+            <button onclick="checkInput('medio-input15', 'will not have been charging', 'medio-result15', 'This phone will not have been charging properly.')">Verificar</button>
+            <div class="result-container">
+            <p id="medio-result15"></p>
+            <span id="medio-sound15" class="sound-icon" style="display: none;">🔊</span>
+            </div>
+            <p class="grammar-note">[Negativo futuro perfecto continuo: sujeto + will not have been + verbo-ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 16</h3>
+            <p>Will your mother <input type="text" id="medio-input16" placeholder="have been cooking"/> all morning?</p>
+            <button onclick="checkInput('medio-input16', 'have been cooking', 'medio-result16', 'Will your mother have been cooking all morning?')">Verificar</button>
+            <div class="result-container">
+            <p id="medio-result16"></p>
+            <span id="medio-sound16" class="sound-icon" style="display: none;">🔊</span>
+            </div>
+            <p class="grammar-note">[Interrogativo futuro perfecto continuo: Will + sujeto + have been + verbo-ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 17</h3>
+            <p>The birds <input type="text" id="medio-input17" placeholder="will not have been singing"/> this morning.</p>
+            <button onclick="checkInput('medio-input17', 'will not have been singing', 'medio-result17', 'The birds will not have been singing this morning.')">Verificar</button>
+            <div class="result-container">
+            <p id="medio-result17"></p>
+            <span id="medio-sound17" class="sound-icon" style="display: none;">🔊</span>
+            </div>
+            <p class="grammar-note">[Negativo futuro perfecto continuo: sujeto + will not have been + verbo-ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 18</h3>
+            <p>Will you <input type="text" id="medio-input18" placeholder="have been thinking"/> about my proposal?</p>
+            <button onclick="checkInput('medio-input18', 'have been thinking', 'medio-result18', 'Will you have been thinking about my proposal?')">Verificar</button>
+            <div class="result-container">
+            <p id="medio-result18"></p>
+            <span id="medio-sound18" class="sound-icon" style="display: none;">🔊</span>
+            </div>
+            <p class="grammar-note">[Interrogativo futuro perfecto continuo: Will + sujeto + have been + verbo-ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 19</h3>
+            <p>His son <input type="text" id="medio-input19" placeholder="will not have been eating"/> well lately.</p>
+            <button onclick="checkInput('medio-input19', 'will not have been eating', 'medio-result19', 'His son will not have been eating well lately.')">Verificar</button>
+            <div class="result-container">
+            <p id="medio-result19"></p>
+            <span id="medio-sound19" class="sound-icon" style="display: none;">🔊</span>
+            </div>
+            <p class="grammar-note">[Negativo futuro perfecto continuo: sujeto + will not have been + verbo-ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 20</h3>
+            <p>Will the baby <input type="text" id="medio-input20" placeholder="have been sleeping"/> well?</p>
+            <button onclick="checkInput('medio-input20', 'have been sleeping', 'medio-result20', 'Will the baby have been sleeping well?')">Verificar</button>
+            <div class="result-container">
+            <p id="medio-result20"></p>
+            <span id="medio-sound20" class="sound-icon" style="display: none;">🔊</span>
+            </div>
+            <p class="grammar-note">[Interrogativo futuro perfecto continuo: Will + sujeto + have been + verbo-ing]</p>
+        </div>
+    </section>
+
+    <!-- Nivel Difícil (inicialmente bloqueado) - Futuro Perfecto Continuo -->
+    <section class="level locked" id="dificil">
+        <div class="lock-overlay">
+            <div class="lock-icon">🔒</div>
+            <p>Completa el nivel Medio para desbloquear</p>
+        </div>
+        <h2>Difícil - Futuro Perfecto Continuo</h2>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 1</h3>
+            <p>By next month, I <input type="text" id="dificil-input1" placeholder="will have been working"/> at this company for five years.</p>
+            <button onclick="checkInput('dificil-input1', 'will have been working', 'dificil-result1', 'By next month, I will have been working at this company for five years.')">Verificar</button>
+            <div class="result-container">
+            <p id="dificil-result1"></p>
+            <span id="dificil-sound1" class="sound-icon" style="display: none;">🔊</span>
+            </div>
+            <p class="grammar-note">[Afirmativo: sujeto + will have been + verbo-ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 2</h3>
+            <p>She <input type="text" id="dificil-input2" placeholder="will not have been studying"/> for the exam if she keeps skipping classes.</p>
+            <button onclick="checkInput('dificil-input2', 'will not have been studying', 'dificil-result2', 'She will not have been studying for the exam if she keeps skipping classes.')">Verificar</button>
+            <div class="result-container">
+            <p id="dificil-result2"></p>
+            <span id="dificil-sound2" class="sound-icon" style="display: none;">🔊</span>
+            </div>
+            <p class="grammar-note">[Negativo: sujeto + will not have been + verbo-ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 3</h3>
+            <p>Will they <input type="text" id="dificil-input3" placeholder="have been traveling"/> for two months by then?</p>
+            <button onclick="checkInput('dificil-input3', 'have been traveling', 'dificil-result3', 'Will they have been traveling for two months by then?')">Verificar</button>
+            <div class="result-container">
+            <p id="dificil-result3"></p>
+            <span id="dificil-sound3" class="sound-icon" style="display: none;">🔊</span>
+            </div>
+            <p class="grammar-note">[Interrogativo: Will + sujeto + have been + verbo-ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 4</h3>
+            <p>By the time you arrive, we <input type="text" id="dificil-input4" placeholder="will have been waiting"/> for over an hour.</p>
+            <button onclick="checkInput('dificil-input4', 'will have been waiting', 'dificil-result4', 'By the time you arrive, we will have been waiting for over an hour.')">Verificar</button>
+            <div class="result-container">
+            <p id="dificil-result4"></p>
+            <span id="dificil-sound4" class="sound-icon" style="display: none;">🔊</span>
+            </div>
+            <p class="grammar-note">[Afirmativo: sujeto + will have been + verbo-ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 5</h3>
+            <p>Will he <input type="text" id="dificil-input5" placeholder="have been living"/> abroad for a decade next year?</p>
+            <button onclick="checkInput('dificil-input5', 'have been living', 'dificil-result5', 'Will he have been living abroad for a decade next year?')">Verificar</button>
+            <div class="result-container">
+            <p id="dificil-result5"></p>
+            <span id="dificil-sound5" class="sound-icon" style="display: none;">🔊</span>
+            </div>
+            <p class="grammar-note">[Interrogativo: Will + sujeto + have been + verbo-ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 6</h3>
+            <p>They <input type="text" id="dificil-input6" placeholder="will have been studying"/> hard when the guests arrive.</p>
+            <button onclick="checkInput('dificil-input6', 'will have been studying', 'dificil-result6', 'They will have been studying hard when the guests arrive.')">Verificar</button>
+            <div class="result-container">
+            <p id="dificil-result6"></p>
+            <span id="dificil-sound6" class="sound-icon" style="display: none;">🔊</span>
+            </div>
+            <p class="grammar-note">[Afirmativo: sujeto + will have been + verbo-ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 7</h3>
+            <p>He <input type="text" id="dificil-input7" placeholder="won't have been sleeping"/> much due to the stress.</p>
+            <button onclick="checkInput('dificil-input7', 'won`t have been sleeping','dificil-result7','He won`t have been sleeping much due to the stress.')">Verificar</button>
+            <div class="result-container">
+            <p id="dificil-result7"></p>
+            <span id="dificil-sound7" class="sound-icon" style="display: none;">🔊</span>
+            </div>
+            <p class="grammar-note">[Negativo: sujeto + won`t have been + verbo-ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 8</h3>
+            <p>Will we <input type="text" id="dificil-input8" placeholder="have been working"/> on this task for more than a week?</p>
+            <button onclick="checkInput('dificil-input8', 'have been working', 'dificil-result8', 'Will we have been working on this task for more than a week?')">Verificar</button>
+            <div class="result-container">
+            <p id="dificil-result8"></p>
+            <span id="dificil-sound8" class="sound-icon" style="display: none;">🔊</span>
+            </div>
+            <p class="grammar-note">[Interrogativo: Will + sujeto + have been + verbo-ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 8</h3>
+            <p>By next month, they <input type="text" id="dificil-input8" placeholder="will have been traveling"/> across Europe for six weeks.</p>
+            <button onclick="checkInput('dificil-input8', 'will have been traveling', 'dificil-result8', 'By next month, they will have been traveling across Europe for six weeks.')">Verificar</button>
+            <div class="result-container">
+                <p id="dificil-result8"></p>
+                <span id="dificil-sound8" class="sound-icon" style="display: none;">🔊</span>
+            </div>
+            <p class="grammar-note">[Afirmativo: sujeto + will have been + verbo-ing]</p>
+        </div>
+
+
+        <div class="exercise-card">
+            <h3>Ejercicio 9</h3>
+            <p>By the time we meet again, you <input type="text" id="dificil-input9" placeholder="will have been working"/> at your new job for a month.</p>
+            <button onclick="checkInput('dificil-input9', 'will have been working', 'dificil-result9', 'By the time we meet again, you will have been working at your new job for a month.')">Verificar</button>
+            <div class="result-container">
+            <p id="dificil-result9"></p>
+            <span id="dificil-sound9" class="sound-icon" style="display: none;">🔊</span>
+            </div>
+            <p class="grammar-note">[Afirmativo: sujeto + will have been + verbo-ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 10</h3>
+            <p>Will she <input type="text" id="dificil-input10" placeholder="have been studying"/> for her degree for six years by 2026?</p>
+            <button onclick="checkInput('dificil-input10', 'have been studying', 'dificil-result10', 'Will she have been studying for her degree for six years by 2026?')">Verificar</button>
+            <div class="result-container">
+            <p id="dificil-result10"></p>
+            <span id="dificil-sound10" class="sound-icon" style="display: none;">🔊</span>
+            </div>
+            <p class="grammar-note">[Interrogativo: Will + sujeto + have been + verbo-ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 11</h3>
+            <p>They <input type="text" id="dificil-input11" placeholder="will not have been using"/> this software anymore next year.</p>
+            <button onclick="checkInput('dificil-input11', 'will not have been using', 'dificil-result11', 'They will not have been using this software anymore next year.')">Verificar</button>
+            <div class="result-container">
+            <p id="dificil-result11"></p>
+            <span id="dificil-sound11" class="sound-icon" style="display: none;">🔊</span>
+            </div>
+            <p class="grammar-note">[Negativo: sujeto + will not have been + verbo-ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 12</h3>
+            <p>Will your neighbors <input type="text" id="dificil-input12" placeholder="have been living"/> there for more than 20 years?</p>
+            <button onclick="checkInput('dificil-input12', 'have been living', 'dificil-result12', 'Will your neighbors have been living there for more than 20 years?')">Verificar</button>
+            <div class="result-container">
+            <p id="dificil-result12"></p>
+            <span id="dificil-sound12" class="sound-icon" style="display: none;">🔊</span>
+            </div>
+            <p class="grammar-note">[Interrogativo: Will + sujeto + have been + verbo-ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 13</h3>
+            <p>By next semester, he <input type="text" id="dificil-input13" placeholder="will have been teaching"/> at that university for fifteen years.</p>
+            <button onclick="checkInput('dificil-input13', 'will have been teaching', 'dificil-result13', 'By next semester, he will have been teaching at that university for fifteen years.')">Verificar</button>
+            <div class="result-container">
+            <p id="dificil-result13"></p>
+            <span id="dificil-sound13" class="sound-icon" style="display: none;">🔊</span>
+            </div>
+            <p class="grammar-note">[Afirmativo: sujeto + will have been + verbo-ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 14</h3>
+            <p>Will you <input type="text" id="dificil-input14" placeholder="have been living"/> in that city long enough to know all the streets?</p>
+            <button onclick="checkInput('dificil-input14', 'have been living', 'dificil-result14', 'Will you have been living in that city long enough to know all the streets?')">Verificar</button>
+            <div class="result-container">
+            <p id="dificil-result14"></p>
+            <span id="dificil-sound14" class="sound-icon" style="display: none;">🔊</span>
+            </div>
+            <p class="grammar-note">[Interrogativo: Will + sujeto + have been + verbo-ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 15</h3>
+            <p>She <input type="text" id="dificil-input15" placeholder="will have been practicing"/> yoga every morning for three years by this summer.</p>
+            <button onclick="checkInput('dificil-input15', 'will have been practicing', 'dificil-result15', 'She will have been practicing yoga every morning for three years by this summer.')">Verificar</button>
+            <div class="result-container">
+            <p id="dificil-result15"></p>
+            <span id="dificil-sound15" class="sound-icon" style="display: none;">🔊</span>
+            </div>
+            <p class="grammar-note">[Afirmativo: sujeto + will have been + verbo-ing]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 16</h3>
+            <p>By December, we <input type="text" id="dificil-input16" placeholder="will have been saving"/> for the trip for a full year.</p>
+            <button onclick="checkInput('dificil-input16', 'will have been saving', 'dificil-result16', 'By December, we will have been saving for the trip for a full year.')">Verificar</button>
+            <div class="result-container">
+                <p id="dificil-result16"></p>
+                <span id="dificil-sound16" class="sound-icon" style="display: none;">🔊</span>
+            </div>
+            <p class="grammar-note">[Afirmativo: sujeto + will have been + verbo-ing]</p>
+            </div>
+
+            <div class="exercise-card">
+            <h3>Ejercicio 17</h3>
+            <p>Will your dog <input type="text" id="dificil-input17" placeholder="have been waiting"/> at the door for hours?</p>
+            <button onclick="checkInput('dificil-input17', 'have been waiting', 'dificil-result17', 'Will your dog have been waiting at the door for hours?')">Verificar</button>
+            <div class="result-container">
+                <p id="dificil-result17"></p>
+                <span id="dificil-sound17" class="sound-icon" style="display: none;">🔊</span>
+            </div>
+            <p class="grammar-note">[Interrogativo: Will + sujeto + have been + verbo-ing]</p>
+            </div>
+
+            <div class="exercise-card">
+            <h3>Ejercicio 18</h3>
+            <p>He <input type="text" id="dificil-input18" placeholder="will not have been answering"/> his emails for days.</p>
+            <button onclick="checkInput('dificil-input18', 'will not have been answering', 'dificil-result18', 'He will not have been answering his emails for days.')">Verificar</button>
+            <div class="result-container">
+                <p id="dificil-result18"></p>
+                <span id="dificil-sound18" class="sound-icon" style="display: none;">🔊</span>
+            </div>
+            <p class="grammar-note">[Negativo: sujeto + will not have been + verbo-ing]</p>
+            </div>
+
+            <div class="exercise-card">
+            <h3>Ejercicio 19</h3>
+            <p>How long <input type="text" id="dificil-input19" placeholder="will they have been waiting"/> for the bus?</p>
+            <button onclick="checkInput('dificil-input19', 'will they have been waiting', 'dificil-result19', 'How long will they have been waiting for the bus?')">Verificar</button>
+            <div class="result-container">
+                <p id="dificil-result19"></p>
+                <span id="dificil-sound19" class="sound-icon" style="display: none;">🔊</span>
+            </div>
+            <p class="grammar-note">[Interrogativo con wh-: How long + will + sujeto + have been + verbo-ing]</p>
+            </div>
+
+            <div class="exercise-card">
+            <h3>Ejercicio 20</h3>
+            <p>By the time the guests arrive, she <input type="text" id="dificil-input20" placeholder="will have been cooking"/> for hours.</p>
+            <button onclick="checkInput('dificil-input20', 'will have been cooking', 'dificil-result20', 'By the time the guests arrive, she will have been cooking for hours.')">Verificar</button>
+            <div class="result-container">
+                <p id="dificil-result20"></p>
+                <span id="dificil-sound20" class="sound-icon" style="display: none;">🔊</span>
+            </div>
+            <p class="grammar-note">[Afirmativo: sujeto + will have been + verbo-ing]</p>
+            </div>
+
+
+    </section>
+
+</main>
+
+<!-- Chatbot modificado (sin campo de búsqueda) -->
+<div id="chat-toggle" onclick="toggleChatbot()">💬</div>
+<div id="chatbot-box" class="chatbot-container hidden">
+    <div class="chatbot-header">
+        <span>Chatbot - Aprende el Presente Perfecto Continuo</span>
+        <button class="close-btn" onclick="toggleChatbot()">×</button>
+    </div>
+
+    <div class="quick-questions">
+        <p class="questions-title">Preguntas frecuentes:</p>
+        <button class="question-btn" onclick="askQuestion('¿Qué es el futuro perfecto continuo?')">¿Qué es el futuro perfecto continuo?</button>
+        <button class="question-btn" onclick="askQuestion('¿Cómo se conjuga el futuro perfecto continuo?')">¿Cómo se conjuga?</button>
+        <button class="question-btn" onclick="askQuestion('¿Cuándo se usa el futuro perfecto continuo?')">¿Cuándo se usa?</button>
+        <button class="question-btn" onclick="askQuestion('¿Cuál es la estructura del futuro perfecto continuo?')">¿Cuál es la estructura?</button>
+    </div>
+
+
+    <div class="chatbot-body" id="chatbot-body">
+        <div class="bot-message welcome-message">
+            ¡Hola! 👋 Soy tu asistente para aprender el Futuro Perfecto Continuo. Usa las preguntas sugeridas arriba.
+        </div>
+    </div>
+</div>
+
+<script>
+    // Variables para rastrear el progreso
+    let ejerciciosFacilesCompletados = 0;
+    const totalEjerciciosFaciles = 20; // Todos los ejercicios fáciles
+    let ejerciciosMediosCompletados = 0;
+    const totalEjerciciosMedios = 20; // Todos los ejercicios medios
+
+    // Función para mezclar opciones al cargar la página
+    function shuffleOptions() {
+        const selects = document.querySelectorAll('select');
+        selects.forEach(select => {
+            const options = Array.from(select.options);
+            // Mezclar las opciones excepto la primera (si es un placeholder)
+            const toShuffle = options.slice(0);
+            for (let i = toShuffle.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [toShuffle[i], toShuffle[j]] = [toShuffle[j], toShuffle[i]];
+            }
+            // Reemplazar las opciones
+            select.innerHTML = '';
+            toShuffle.forEach(option => {
+                select.add(option);
+            });
+        });
+    }
+
+    // Llamar a la función al cargar la página
+    window.onload = shuffleOptions;
+
+    // Función para reproducir el texto usando la API de síntesis de voz
+    function speak(text) {
+        if ('speechSynthesis' in window) {
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'en-US'; // Configurar el idioma a inglés
+            utterance.rate = 0.9; // Velocidad de habla ligeramente más lenta
+            
+            // Configurar una voz en inglés si está disponible
+            const voices = window.speechSynthesis.getVoices();
+            const englishVoice = voices.find(voice => voice.lang.includes('en'));
+            if (englishVoice) {
+                utterance.voice = englishVoice;
+            }
+            
+            window.speechSynthesis.speak(utterance);
+        } else {
+            alert('Tu navegador no soporta la síntesis de voz. Prueba con Chrome o Edge.');
+        }
+    }
+
+    // Función genérica para verificar inputs
+    function checkInput(inputId, correctAnswer, resultId, fullSentence) {
+        const val = document.getElementById(inputId).value.toLowerCase().trim();
+        const resultElement = document.getElementById(resultId);
+        const soundIcon = document.getElementById('sound' + resultId.substring(6)) || 
+                          document.getElementById('medio-sound' + resultId.substring(12)) || 
+                          document.getElementById('dificil-sound' + resultId.substring(14));
+        
+        if (val === correctAnswer.toLowerCase()) {
+            resultElement.textContent = "✅ ¡Correcto!";
+            resultElement.style.color = "#48bb78";
+            
+            // Mostrar el icono de sonido
+            if (soundIcon) {
+                soundIcon.style.display = "inline-block";
+                soundIcon.onclick = function() {
+                    speak(fullSentence);
+                };
+            }
+            
+            // Verificar si es un ejercicio del nivel fácil
+            if (inputId.startsWith('input')) {
+                if (!resultElement.dataset.completed) {
+                    ejerciciosFacilesCompletados++;
+                    resultElement.dataset.completed = "true";
+                    checkUnlockMedium();
+                }
+            }
+            // Verificar si es un ejercicio del nivel medio
+            else if (inputId.startsWith('medio-input')) {
+                if (!resultElement.dataset.completed) {
+                    ejerciciosMediosCompletados++;
+                    resultElement.dataset.completed = "true";
+                    checkUnlockHard();
+                }
+            }
+        } else {
+            resultElement.textContent = "❌ Intenta de nuevo.";
+            resultElement.style.color = "#e53e3e";
+            // Ocultar el icono de sonido si la respuesta es incorrecta
+            if (soundIcon) {
+                soundIcon.style.display = "none";
+            }
+        }
+    }
+
+    // Función genérica para verificar selects
+    function checkSelect(selectId, correctAnswer, resultId, fullSentence) {
+        const val = document.getElementById(selectId).value;
+        const resultElement = document.getElementById(resultId);
+        const soundIcon = document.getElementById('sound' + resultId.substring(6)) || 
+                          document.getElementById('medio-sound' + resultId.substring(12)) || 
+                          document.getElementById('dificil-sound' + resultId.substring(14));
+        
+        if (val === correctAnswer) {
+            resultElement.textContent = "✅ ¡Correcto!";
+            resultElement.style.color = "#48bb78";
+            
+            // Mostrar el icono de sonido
+            if (soundIcon) {
+                soundIcon.style.display = "inline-block";
+                soundIcon.onclick = function() {
+                    speak(fullSentence);
+                };
+            }
+            
+            // Verificar si es un ejercicio del nivel fácil
+            if (selectId.startsWith('select')) {
+                if (!resultElement.dataset.completed) {
+                    ejerciciosFacilesCompletados++;
+                    resultElement.dataset.completed = "true";
+                    checkUnlockMedium();
+                }
+            }
+            // Verificar si es un ejercicio del nivel difícil
+            else if (selectId.startsWith('dificil-select')) {
+                if (!resultElement.dataset.completed) {
+                    resultElement.dataset.completed = "true";
+                }
+            }
+        } else {
+            resultElement.textContent = "❌ Esa no es la forma correcta.";
+            resultElement.style.color = "#e53e3e";
+            // Ocultar el icono de sonido si la respuesta es incorrecta
+            if (soundIcon) {
+                soundIcon.style.display = "none";
+            }
+        }
+    }
+
+    // Función para verificar si se debe desbloquear el nivel medio
+    function checkUnlockMedium() {
+        if (ejerciciosFacilesCompletados >= totalEjerciciosFaciles) {
+            const medioSection = document.getElementById('medio');
+            medioSection.classList.remove('locked');
+            medioSection.querySelector('.lock-overlay').style.display = 'none';
+            
+            // Mostrar notificación
+            alert('¡Felicidades! Has completado el nivel Fácil. El nivel Medio ha sido desbloqueado.');
+        }
+    }
+
+    // Función para verificar si se debe desbloquear el nivel difícil
+    function checkUnlockHard() {
+        if (ejerciciosMediosCompletados >= totalEjerciciosMedios) {
+            const dificilSection = document.getElementById('dificil');
+            dificilSection.classList.remove('locked');
+            dificilSection.querySelector('.lock-overlay').style.display = 'none';
+            
+            // Mostrar notificación
+            alert('¡Excelente! Has completado el nivel Medio. El nivel Difícil ha sido desbloqueado.');
+        }
+    }
+
+    // Chatbot básico
+    const chatbot = document.getElementById("chatbot-box");
+    const chatbotBody = document.getElementById("chatbot-body");
+
+    const answers = {
+        "¿Qué es el presente perfecto continuo?": "✅ El presente perfecto continuo se usa para acciones que comenzaron en el pasado y continúan en el presente, o para acciones recientes que tienen resultados visibles ahora. Ejemplo: I have been working here for 5 years. She has been studying all morning.",
+        "¿Cómo se conjuga el presente perfecto continuo?": "✅ Estructura: sujeto + have/has + been + verbo-ing. Ejemplos: I have been waiting. She has been working. We have been studying. Para la forma negativa se añade 'not' después del auxiliar: He has not been sleeping well.",
+        "¿Cuándo se usa el presente perfecto continuo?": "✅ Para: 1) Acciones que comenzaron en el pasado y continúan en el presente (I've been living here since 2010). 2) Acciones recientes con resultados visibles (You've been crying). 3) Énfasis en la duración de una acción (We've been driving for hours).",
+        "¿Cuál es la estructura del presente perfecto continuo?": "✅ Afirmativa: Sujeto + have/has + been + verbo-ing. Negativa: Sujeto + have/has + not + been + verbo-ing. Interrogativa: Have/Has + sujeto + been + verbo-ing. Ej: She hasn't been sleeping well. Have they been working hard?"
+    };
+
+    function askQuestion(question) {
+        addMessage(question, 'user');
+        setTimeout(() => {
+            addMessage(answers[question], 'bot');
+        }, 300);
+    }
+
+    function addMessage(message, sender) {
+        const messageDiv = document.createElement('div');
+        messageDiv.className = sender === 'user' ? 'user-message' : 'bot-message';
+        messageDiv.innerHTML = message.replace(/\n/g, '<br>');
+        chatbotBody.appendChild(messageDiv);
+        chatbotBody.scrollTop = chatbotBody.scrollHeight;
+    }
+
+    function toggleChatbot() {
+        chatbot.classList.toggle("hidden");
+    }
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const avatarWalking = document.getElementById("avatarWalking");
+    const avatarStatic = document.getElementById("avatarStatic");
+    const bubble = document.getElementById("bubble");
+
+    const mensajesIniciales = [
+    "¡Bienvenido a este sitio web que te ayudará a aprender inglés de forma didáctica y divertida! 🇬🇧🎉",
+    "Empecemos con el Presente Perfecto Continuo... ¡vas a ver qué fácil es! 💡📚",
+    "Recuerda: el presente perfecto continuo enfatiza la duración de una acción. ⏳➡️🔄",
+    "Estaré aquí para apoyarte y darte consejos siempre que lo necesites. 🤝👨‍🏫"
+    ];
+
+    const mensajesPermanentes = [
+    "¿Listo para practicar el presente perfecto continuo? 📝",
+    "Sigue así, vas por buen camino. ✅",
+    "Estoy aquí si tienes dudas sobre el presente perfecto continuo. 💬"
+    ];
+
+    let index = 0;
+
+    // Ocultar el avatar estático y la burbuja al cargar
+    avatarStatic.style.display = "none";
+    bubble.style.display = "none";
+
+    // Paso 1: animación camina al centro
+    avatarWalking.addEventListener("animationend", () => {
+    avatarWalking.style.display = "none";
+    avatarStatic.style.display = "flex";
+    bubble.style.display = "block";
+    mostrarMensajesIniciales();
+    });
+
+    // Paso 2: mostrar los mensajes uno por uno
+    function mostrarMensajesIniciales() {
+    if (index < mensajesIniciales.length) {
+        bubble.textContent = mensajesIniciales[index];
+        index++;
+        setTimeout(mostrarMensajesIniciales, 6000); // Cada 6 segundos
+    } else {
+        iniciarSalida();
+    }
+    }
+
+    // Paso 3: ocultar avatar del centro y caminar a la izquierda
+    function iniciarSalida() {
+    avatarStatic.style.display = "none";
+    avatarWalking.style.display = "flex";
+    avatarWalking.classList.add("walk-out");
+
+    avatarWalking.addEventListener("animationend", finalSalida);
+    }
+
+    // Paso 4: finalizar caminata y mostrar avatar en la izquierda
+    function finalSalida() {
+    avatarWalking.style.display = "none";
+    avatarWalking.removeEventListener("animationend", finalSalida);
+    mostrarAvatarIzquierda();
+    }
+
+    // Paso 5: Mostrar el avatar estático a la izquierda con mensajes permanentes
+    function mostrarAvatarIzquierda() {
+    avatarStatic.style.display = "flex";
+    avatarStatic.style.left = "0"; // Cambia posición
+    avatarStatic.style.top = "50%";
+    avatarStatic.style.transform = "translateY(-50%)";
+    bubble.style.display = "block";
+
+    let i = 0;
+    bubble.textContent = mensajesPermanentes[i];
+    setInterval(() => {
+        i = (i + 1) % mensajesPermanentes.length;
+        bubble.textContent = mensajesPermanentes[i];
+    }, 10000);
+    }
+});
+
+// Cargar las voces disponibles cuando estén listas
+window.speechSynthesis.onvoiceschanged = function() {
+    // Las voces están ahora disponibles
+};
+</script>
+
+<div class="avatar-walking" id="avatarWalking">
+    <div class="sprite-avatar"></div>
+</div>
+
+<div class="avatar-static" id="avatarStatic">
+    <div class="bubble" id="bubble">¡Hola!</div>
+    <img src='img/JohannaFrontal.png' alt="Avatar" class="avatar-img">
+</div>
+    
+</body>
+</html>

@@ -1,0 +1,540 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat+Brush&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #f4f4f4;
+    color: #333;
+    overflow-x: hidden;
+}
+
+header {
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    border-bottom: 1px solid #ddd;
+    position: relative;
+}
+
+.logo {
+    font-size: 3rem;
+    font-family: 'Caveat Brush', cursive;
+    color: #0052BD;
+}
+
+.logo-header {
+    width: 80px;
+    height: auto;
+}
+
+.header-buttons button {
+    font-size: 20px;
+    margin-left: 10px;
+    padding: 6px 16px;
+    border-radius: 4px;
+    border: 1px solid #1a1a1a;
+    cursor: pointer;
+    background-color: white;
+    transition: all 0.3s ease;
+}
+
+.header-buttons .register {
+    background-color: #0052BD;
+    color: white;
+    border-radius: 50%;
+    border: none;
+}
+
+.main-banner img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+}
+
+.menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: white;
+    padding: 10px;
+    gap: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.menu button {
+    padding: 8px 14px;
+    border-radius: 20px;
+    border: none;
+    background-color: #0052BD;
+    color: white;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    
+}
+
+.menu button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 10px rgba(0, 82, 189, 0.3);
+}
+
+.welcome-section {
+    text-align: center;
+    padding: 2rem 1rem;
+    background-color: #E2E2E2;
+}
+
+.welcome-section p {
+    font-size: 1.5rem;
+    color: #000000;
+    margin-top: 5px;
+}
+
+.welcome-section h2 {
+    font-size: 5rem;
+    font-family: 'Caveat Brush', cursive;
+    color: #0052BD;
+    margin-bottom: 10px;
+}
+
+.welcome h2 {
+    font-size: 5rem;
+    font-family: 'Caveat Brush', cursive;
+    color: #0052BD;
+    margin-bottom: 10px;
+}
+
+.info-section {
+    text-align: center;
+    padding: 2rem 1rem;
+    background-color: #252934;
+    color: rgb(255, 255, 255);
+}
+
+.info-section h2 {
+    font-size: 4rem;
+    color: white;
+    margin-bottom: 10px;
+    font-weight: normal;
+}
+
+/* CARDS QUE OCUPAN TODA LA PANTALLA */
+.cards {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    gap: 0;
+}
+
+.card {
+    width: 100%;
+    min-height: 50vh;
+    padding: 4rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-shadow: none;
+    border-radius: 0;
+}
+
+/* Alternar colores entre las cards */
+.card:nth-child(odd) {
+    background-color: #252934;
+    color: white;
+}
+
+.card:nth-child(even) {
+    background-color: #FFFFFF;
+    color: #252934;
+}
+
+.card h3 {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    font-weight: 300;
+    max-width: 800px;
+    line-height: 1.2;
+}
+
+.card p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    max-width: 600px;
+    margin-bottom: 2rem;
+}
+
+.menu-button {
+    padding: 12px 60px;
+    border: 2px;
+    border-radius: 35px;
+    font-size: 1.7rem;
+    font-weight: 400;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 1px;
+    text-decoration: none; /* Esta línea quita el subrayado */
+}
+
+/* Botón para cards oscuras */
+.card:nth-child(odd) .menu-button {
+    background-color: #0052BD;
+    color: white;
+}
+
+.card:nth-child(odd) .menu-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+}
+
+/* Botón para cards blancas */
+.card:nth-child(even) .menu-button {
+    background-color: #0052BD;
+    color: white;
+}
+
+.card:nth-child(even) .menu-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+}
+
+footer {
+    background-color: white;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+    font-size: 0.9rem;
+}
+
+.footer-left,
+.footer-right {
+    padding: 0.5rem;
+    text-align: center;
+    color: black;
+}
+
+.footer-left p {
+    font-size: 2rem;
+    font-family: 'Caveat Brush', cursive;
+    margin-bottom: 0.5rem;
+    color: #0052BD;
+}
+
+.footer-right {
+    text-align: left;
+    display: block;
+    margin-bottom: 4px;
+    text-decoration: none;
+    color: black;
+}
+
+.footer-center {
+    text-align: center;
+    width: 100%;
+    margin-top: 0.5rem;
+    color: black;
+}
+
+.p-footer {
+    font-size: 1.5rem;
+    color: black;
+    margin-top: 0.5rem;
+}
+
+.footer-line {
+    width: 90%;
+    border-top: 1px solid black;
+    margin: 1rem auto;
+}
+
+.footer-logo {
+    max-width: 120px;
+    height: auto;
+    margin-left: -20px;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+
+/* Tablets grandes y laptops pequeñas */
+@media (max-width: 1024px) {
+    .logo {
+        font-size: 2.5rem;
+    }
+    
+    .welcome-section h2,
+    .welcome h2 {
+        font-size: 4rem;
+    }
+    
+    .info-section h2 {
+        font-size: 3rem;
+    }
+    
+    .card h3 {
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .card p {
+        font-size: 1.1rem;
+        max-width: 500px;
+    }
+    
+    .menu-button {
+        padding: 10px 40px;
+        font-size: 1.4rem;
+    }
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+    header {
+        padding: 1rem;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .logo {
+        font-size: 2rem;
+    }
+    
+    .header-buttons {
+        display: flex;
+        gap: 10px;
+    }
+    
+    .header-buttons button {
+        font-size: 16px;
+        padding: 8px 12px;
+    }
+    
+    .menu {
+        padding: 15px 10px;
+    }
+    
+    .menu button {
+        padding: 10px 16px;
+        font-size: 0.85rem;
+        margin: 2px;
+    }
+    
+    .welcome-section {
+        padding: 1.5rem 1rem;
+    }
+    
+    .welcome-section h2,
+    .welcome h2 {
+        font-size: 3rem;
+        line-height: 1.1;
+    }
+    
+    .welcome-section p {
+        font-size: 1.2rem;
+    }
+    
+    .info-section {
+        padding: 1.5rem 1rem;
+    }
+    
+    .info-section h2 {
+        font-size: 2.5rem;
+        line-height: 1.2;
+    }
+    
+    .card {
+        padding: 3rem 1.5rem;
+        min-height: 40vh;
+    }
+    
+    .card h3 {
+        font-size: 2.2rem;
+        margin-bottom: 1.5rem;
+        line-height: 1.3;
+    }
+    
+    .card p {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+        max-width: 90%;
+    }
+    
+    .menu-button {
+        padding: 12px 30px;
+        font-size: 1.2rem;
+    }
+    
+    footer {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+    
+    .footer-left p {
+        font-size: 1.5rem;
+    }
+    
+    .footer-logo {
+        max-width: 100px;
+        margin-left: 0;
+    }
+}
+
+/* Móviles grandes */
+@media (max-width: 480px) {
+    header {
+        padding: 0.8rem;
+    }
+    
+    .logo {
+        font-size: 1.8rem;
+    }
+    
+    .header-buttons button {
+        font-size: 14px;
+        padding: 6px 10px;
+        margin-left: 5px;
+    }
+    
+    .menu {
+        padding: 10px 5px;
+        gap: 5px;
+    }
+    
+    .menu button {
+        padding: 8px 12px;
+        font-size: 0.8rem;
+        border-radius: 15px;
+    }
+    
+    .welcome-section {
+        padding: 1rem 0.5rem;
+    }
+    
+    .welcome-section h2,
+    .welcome h2 {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .welcome-section p {
+        font-size: 1rem;
+        margin-top: 0.5rem;
+    }
+    
+    .info-section {
+        padding: 1rem 0.5rem;
+    }
+    
+    .info-section h2 {
+        font-size: 2rem;
+    }
+    
+    .card {
+        padding: 2rem 1rem;
+        min-height: 30vh;
+    }
+    
+    .card h3 {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+        line-height: 1.4;
+    }
+    
+    .card p {
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+        line-height: 1.5;
+    }
+    
+    .menu-button {
+        padding: 10px 20px;
+        font-size: 1rem;
+        border-radius: 25px;
+    }
+    
+    .footer-left p {
+        font-size: 1.2rem;
+    }
+    
+    .p-footer {
+        font-size: 1.2rem;
+    }
+    
+    .footer-logo {
+        max-width: 80px;
+    }
+}
+
+/* Móviles pequeños */
+@media (max-width: 360px) {
+    .logo {
+        font-size: 1.5rem;
+    }
+    
+    .welcome-section h2,
+    .welcome h2 {
+        font-size: 2rem;
+    }
+    
+    .info-section h2 {
+        font-size: 1.8rem;
+    }
+    
+    .card h3 {
+        font-size: 1.5rem;
+    }
+    
+    .card p {
+        font-size: 0.85rem;
+    }
+    
+    .menu-button {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+    
+    .header-buttons button {
+        font-size: 12px;
+        padding: 4px 8px;
+    }
+}
+
+/* Mejoras adicionales para mejor UX */
+@media (hover: none) and (pointer: coarse) {
+    /* Estilos para dispositivos táctiles */
+    .menu button,
+    .menu-button,
+    .header-buttons button {
+        min-height: 44px; /* Tamaño mínimo recomendado para botones táctiles */
+    }
+}
+
+/* Modo paisaje en móviles */
+@media (max-width: 768px) and (orientation: landscape) {
+    .card {
+        min-height: 100vh;
+        padding: 2rem 1rem;
+    }
+    
+    .welcome-section {
+        padding: 1rem;
+    }
+    
+    .info-section {
+        padding: 1rem;
+    }
+}

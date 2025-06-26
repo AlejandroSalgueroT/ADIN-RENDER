@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es" data-vista="vista2">
+<head>
+  <meta charset="UTF-8">
+  <title>Would en Conditional Continuous</title>
+  <link rel="stylesheet" href="estilos.css">
+  <script defer src="bot.js"></script>
+  <style>
+    .content { display: none; }
+    .resultado { margin-top: 20px; font-weight: bold; color: green; }
+  </style>
+</head>
+<body data-vista="vista2">
+
+<header>
+  <h1>Verbo Modal <span class="highlight">"WOULD"</span> en Conditional Continuous</h1>
+</header>
+
+<div class="container">
+  <section class="explicacion">
+    <h2>Explicación</h2>
+    <p>El <b>Condicional Continuo</b> con <b>WOULD</b> se usa para describir acciones que estarían ocurriendo bajo ciertas condiciones.</p>
+    <p><b>Estructura:</b> Pronombre + WOULD + BE + verbo‑ing</p>
+
+    <h3>Ejemplos:</h3>
+    <ul class="ejemplos ejemplo">
+      <li data-en="I would be traveling to Japan." data-es="Yo estaría viajando a Japón.">
+        I would be traveling to Japan. — Yo estaría viajando a Japón. <button class="play-example">🔊</button>
+      </li>
+      <li data-en="She would be helping you." data-es="Ella estaría ayudándote.">
+        She would be helping you. — Ella estaría ayudándote. <button class="play-example">🔊</button>
+      </li>
+      <li data-en="We would be buying a house." data-es="Nosotros estaríamos comprando una casa.">
+        We would be buying a house. — Nosotros estaríamos comprando una casa. <button class="play-example">🔊</button>
+      </li>
+      <li data-en="They would be visiting us." data-es="Ellos estarían visitándonos.">
+        They would be visiting us. — Ellos estarían visitándonos. <button class="play-example">🔊</button>
+      </li>
+      <li data-en="He would be calling his friend." data-es="Él estaría llamando a su amigo.">
+        He would be calling his friend. — Él estaría llamando a su amigo. <button class="play-example">🔊</button>
+      </li>
+    </ul>
+  </section>
+
+  <form id="quiz-form" onsubmit="return false;">
+    <button type="button" class="toggle-btn" onclick="toggleContent('act1')">Actividad 1: Verdadero o Falso</button>
+    <div id="act1" class="content">
+      <div class="question">
+        1. "I would be travel to Japan" es correcto.<br>
+        <label><input type="radio" name="q1" value="Verdadero"> Verdadero</label>
+        <label><input type="radio" name="q1" value="Falso"> Falso</label>
+      </div>
+      <div class="question">
+        2. "She would be helping you" es correcto.<br>
+        <label><input type="radio" name="q2" value="Verdadero"> Verdadero</label>
+        <label><input type="radio" name="q2" value="Falso"> Falso</label>
+      </div>
+      <div class="question">
+        3. "They would be visiting us" es correcto.<br>
+        <label><input type="radio" name="q3" value="Verdadero"> Verdadero</label>
+        <label><input type="radio" name="q3" value="Falso"> Falso</label>
+      </div>
+    </div>
+
+    <button type="button" class="toggle-btn" onclick="toggleContent('act2')">Actividad 2: Completa los espacios</button>
+    <div id="act2" class="content">
+      <div class="question">1. I would be ________ to Spain. <input type="text" name="blank1"></div>
+      <div class="question">2. She would be ________ you. <input type="text" name="blank2"></div>
+      <div class="question">3. They would be ________ us. <input type="text" name="blank3"></div>
+      <div class="question">4. He would be ________ his friend. <input type="text" name="blank4"></div>
+      <div class="question">5. We would be ________ a house. <input type="text" name="blank5"></div>
+    </div>
+
+    <button type="button" class="toggle-btn" onclick="toggleContent('act3')">Actividad 3: Selección múltiple</button>
+    <div id="act3" class="content">
+      <div class="question">1. I would be <select name="mc1">
+        <option value="">Seleccione</option>
+        <option value="traveling">traveling</option>
+        <option value="traveled">traveled</option>
+        <option value="travel">travel</option>
+      </select> to Japan.</div>
+      <div class="question">2. She would be <select name="mc2">
+        <option value="">Seleccione</option>
+        <option value="helping">helping</option>
+        <option value="help">help</option>
+        <option value="helped">helped</option>
+      </select> you.</div>
+      <div class="question">3. They would be <select name="mc3">
+        <option value="">Seleccione</option>
+        <option value="visiting">visiting</option>
+        <option value="visit">visit</option>
+        <option value="visited">visited</option>
+      </select> us.</div>
+    </div>
+
+    <button type="button" class="submit-btn" onclick="calificar()">Enviar todas las respuestas</button>
+  </form>
+
+  <div id="resultado" class="resultado"></div>
+
+  <div class="nav-buttons">
+    <a href="simple.html">← Anterior</a>
+    <a href="perfect.html">Siguiente ➔</a>
+  </div>
+</div>
+
+<!-- Bot interactivo -->
+<div id="bot-container">
+  <div id="bot-avatar">
+    <img id="avatar-img" src="avatar.png" alt="Avatar César Bot" draggable="false">
+    <div id="boca-bot"></div>
+  </div>
+  <div id="bot-text-box">¡Hola! Estoy listo para ayudarte.</div>
+  <div id="bot-controls">
+    <button id="btn-es">ES</button>
+    <button id="btn-en">EN</button>
+    <select id="voice-select"><option value="">Voz predeterminada</option></select>
+    <button id="toggle-sound">🔊</button>
+    <button id="toggle-visibility">🔽</button>
+  </div>
+</div>
+
+<script>
+function toggleContent(id) {
+  const el = document.getElementById(id);
+  el.style.display = el.style.display === "block" ? "none" : "block";
+}
+
+function calificar() {
+  let score = 0;
+  let total = 11;
+
+  if (document.querySelector('input[name="q1"]:checked')?.value === "Falso") score++;
+  if (document.querySelector('input[name="q2"]:checked')?.value === "Verdadero") score++;
+  if (document.querySelector('input[name="q3"]:checked')?.value === "Verdadero") score++;
+
+  if (document.querySelector('input[name="blank1"]').value.trim().toLowerCase() === "traveling") score++;
+  if (document.querySelector('input[name="blank2"]').value.trim().toLowerCase() === "helping") score++;
+  if (document.querySelector('input[name="blank3"]').value.trim().toLowerCase() === "visiting") score++;
+  if (document.querySelector('input[name="blank4"]').value.trim().toLowerCase() === "calling") score++;
+  if (document.querySelector('input[name="blank5"]').value.trim().toLowerCase() === "buying") score++;
+
+  if (document.querySelector('select[name="mc1"]').value === "traveling") score++;
+  if (document.querySelector('select[name="mc2"]').value === "helping") score++;
+  if (document.querySelector('select[name="mc3"]').value === "visiting") score++;
+
+  document.getElementById("resultado").innerText = `Tu puntaje es: ${score} de ${total}`;
+}
+
+const buttons = document.querySelectorAll('.play-example');
+buttons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const li = btn.closest('li');
+    const lang = document.body.getAttribute('data-idioma') || 'es';
+    const text = li.getAttribute(lang === 'en' ? 'data-en' : 'data-es');
+    const utterance = new SpeechSynthesisUtterance(text);
+    speechSynthesis.speak(utterance);
+  });
+});
+</script>
+
+</body>
+</html>

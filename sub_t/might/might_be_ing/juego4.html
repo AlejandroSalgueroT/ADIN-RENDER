@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Juego 4 - Might be + verb-ing</title>
+  <link rel="stylesheet" href="../estilo.css">
+  <link rel="stylesheet" href="avatar.css">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      color: #121212;
+      position: relative;
+    }
+
+    .split-horizontal {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .top-half {
+      height: 50%;
+      background-color: #ffffff;
+    }
+
+    .bottom-half {
+      height: 50%;
+      background-color: #1e1e2f;
+    }
+
+    main {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    h1 {
+      color: #121212;
+    }
+
+    p {
+      font-size: 1.1rem;
+    }
+
+    .opcion {
+      display: inline-block;
+      margin: 10px;
+      padding: 10px;
+      background: #fff;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .opcion:hover {
+      transform: scale(1.05);
+      border-color: #007bff;
+    }
+
+    .btn {
+      display: inline-block;
+      margin: 20px 10px;
+      padding: 10px 20px;
+      background-color: #252934;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #3a3f50;
+    }
+
+    .speak-btn {
+      background-color: #00695c;
+    }
+
+    #resultado {
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin-top: 20px;
+    }
+
+    .avatar-container {
+      background-color: #f4f4f4;
+      border-radius: 16px;
+      padding: 20px;
+      margin: 40px auto;
+      text-align: center;
+      box-shadow: 0 0 12px #00000022;
+      max-width: 400px;
+    }
+
+    .avatar {
+      width: 120px;
+      height: auto;
+      border-radius: 50%;
+      margin-bottom: 10px;
+      box-shadow: 0 0 10px #00000033;
+      cursor: pointer;
+    }
+
+    .talk-box {
+      background-color: #ffffff;
+      color: #121212;
+      padding: 15px;
+      border-radius: 10px;
+      font-size: 1rem;
+      margin: 10px auto;
+      border: 1px solid #ccc;
+      box-shadow: inset 0 0 5px #eeeeee;
+    }
+
+    .volver-container {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Fondo dividido -->
+  <div class="split-horizontal">
+    <div class="top-half"></div>
+    <div class="bottom-half"></div>
+  </div>
+
+  <main>
+    <h1>¿Cuál imagen representa la acción?</h1>
+
+    <p>She <strong>might be sleeping</strong>.</p>
+
+    <div class="opcion" onclick="verificar(false)">
+      <img src="https://via.placeholder.com/100x100?text=Running" alt="Running">
+    </div>
+    <div class="opcion" onclick="verificar(true)">
+      <img src="https://via.placeholder.com/100x100?text=Sleeping" alt="Sleeping">
+    </div>
+    <div class="opcion" onclick="verificar(false)">
+      <img src="https://via.placeholder.com/100x100?text=Reading" alt="Reading">
+    </div>
+
+    <p id="resultado"></p>
+
+    <div class="volver-container">
+      <a href="../index.html" class="btn">⬅ Volver</a>
+    </div>
+
+    <!-- Avatar interactivo -->
+    <div class="avatar-container">
+      <img src="avatar.jpg" alt="Avatar" class="avatar" onclick="speak()">
+
+      <div class="talk-box" id="frase">
+        Click en una frase para que el avatar hable.
+      </div>
+
+      <button class="btn speak-btn" onclick="speak()">🔊 Hablar</button>
+      <button class="btn" onclick="setFrase('She might be reading a book.')">Frase 1</button>
+      <button class="btn" onclick="setFrase('They might be doing homework.')">Frase 2</button>
+    </div>
+  </main>
+
+  <script>
+    function verificar(correcto) {
+      const r = document.getElementById("resultado");
+      if (correcto) {
+        r.textContent = "✅ ¡Muy bien!";
+        r.style.color = "green";
+      } else {
+        r.textContent = "❌ Intenta otra vez.";
+        r.style.color = "red";
+      }
+    }
+
+    let currentText = "Hello! I'm your English assistant.";
+
+    function setFrase(texto) {
+      currentText = texto;
+      document.getElementById("frase").innerText = texto;
+    }
+
+    function speak() {
+      const utterance = new SpeechSynthesisUtterance(currentText);
+      utterance.lang = "en-US";
+      utterance.pitch = 1;
+      utterance.rate = 1;
+      speechSynthesis.cancel();
+      speechSynthesis.speak(utterance);
+    }
+  </script>
+  <div id="avatar-pixelado"></div>
+<div id="dialog-box"></div>
+<div id="cara">
+    <div class="ojo" id="ojo-izq"></div>
+    <div class="ojo" id="ojo-der"></div>
+    <div class="boca" id="boca"></div>
+  </div>
+</div>
+
+<div id="dialog-box">Hello!</div>
+<script src="avatar.js"></script>
+
+
+</body>
+</html>

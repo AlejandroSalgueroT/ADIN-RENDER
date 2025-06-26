@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Game 3: Fix the Errors</title>
+<link rel="stylesheet" href="../static/juegos.css">
+</head>
+<body>
+
+  <header>
+    <h1>Game 3: Fix the Errors</h1>
+    <p>Correct each sentence using “should” or “shouldn’t”.</p>
+  </header>
+
+  <main class="container">
+
+    <div class="question-card dark">
+      <div class="content">
+       
+        <div class="text">
+          <p>1. ❌ He shoulds eat more vegetables.</p>
+          <input type="text" id="fix1" placeholder="Correct sentence">
+          <div id="fb1" class="feedback"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="question-card light">
+      <div class="content">
+        
+        <div class="text">
+          <p>2. ❌ Shouldn't she to go now?</p>
+          <input type="text" id="fix2" placeholder="Correct sentence">
+          <div id="fb2" class="feedback"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="question-card dark">
+      <div class="content">
+        
+        <div class="text">
+          <p>3. ❌ We no should talk loudly here.</p>
+          <input type="text" id="fix3" placeholder="Correct sentence">
+          <div id="fb3" class="feedback"></div>
+        </div>
+      </div>
+    </div>
+
+    <button class="btn-check" onclick="checkFixes()">Check Answers</button>
+    <div id="result" class="result"></div>
+
+  </main>
+
+  <footer>
+    <button class="btn-back" onclick="window.location.href='ShouldPS.html'">⬅ Back</button>
+  </footer>
+
+  <script>
+    const answers = [
+      "He should eat more vegetables.",
+      "Shouldn't she go now?",
+      "We shouldn't talk loudly here."
+    ];
+
+    function checkFixes() {
+      const inputs = [
+        document.getElementById("fix1").value.trim(),
+        document.getElementById("fix2").value.trim(),
+        document.getElementById("fix3").value.trim()
+      ];
+
+      let correct = 0;
+      for (let i = 0; i < answers.length; i++) {
+        const fb = document.getElementById("fb" + (i + 1));
+        if (inputs[i].toLowerCase() === answers[i].toLowerCase()) {
+          fb.innerText = "Correct!";
+          fb.className = "feedback correct";
+          correct++;
+        } else {
+          fb.innerText = `Incorrect! Correct: ${answers[i]}`;
+          fb.className = "feedback incorrect";
+        }
+      }
+
+      document.getElementById("result").innerText = `You got ${correct}/3 correct.`;
+    }
+  </script>
+
+</body>
+</html>

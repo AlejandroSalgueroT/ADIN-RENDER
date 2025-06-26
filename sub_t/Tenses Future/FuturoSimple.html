@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Presente Simple</title>
+    <link rel="stylesheet" href="FuturoSimple.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+/* Avatar que camina desde la derecha hasta el centro */
+@keyframes walk-left {
+0% { left: 100%; }
+100% { left: 50%; transform: translate(-50%, -50%); }
+}
+
+/* Avatar que sale caminando hacia la izquierda y desaparece */
+@keyframes walk-left-out {
+0% {
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+100% {
+    left: 0;
+    transform: translateY(-50%);
+}
+}
+
+.avatar-walking {
+position: fixed;
+top: 50%;
+left: 100%;
+transform: translateY(-50%);
+animation: walk-left 5s linear forwards;
+z-index: 9999;
+display: flex;
+flex-direction: column;
+align-items: center;
+pointer-events: none;
+}
+
+.avatar-walking.walk-out {
+animation: walk-left-out 5s linear forwards;
+}
+
+.avatar-static {
+position: fixed;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+z-index: 9999;
+display: flex;
+flex-direction: column;
+align-items: center;
+pointer-events: none;
+}
+
+.bubble {
+background: #fff;
+color: #333;
+padding: 8px 12px;
+border-radius: 12px;
+font-size: 14px;
+font-family: sans-serif;
+margin-bottom: 4px;
+box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+max-width: 280px;          /* Limita el ancho máximo */
+white-space: normal;       /* Permite saltos de línea */
+word-wrap: break-word;     /* Asegura que las palabras largas se corten */
+text-align: center;
+}
+
+.sprite-avatar {
+width: 110px;
+height: 128px;
+background-image: url('img/EdinsonCaminando.png');
+background-repeat: no-repeat;
+background-position: 0 0;
+background-size: 512px 128px;
+animation: sprite-walk 0.8s steps(4) infinite;
+image-rendering: pixelated;
+transform: scaleX(-1);
+}
+
+@keyframes sprite-walk {
+from { background-position: 0 0; }
+to { background-position: -512px 0; }
+}
+
+.avatar-img {
+width: 128px;
+height: 128px;
+image-rendering: pixelated;
+}
+
+/* Estilo para el icono de audio */
+.audio-icon {
+    display: inline-block;
+    margin-left: 10px;
+    cursor: pointer;
+    color: #4299e1;
+    font-size: 20px;
+    vertical-align: middle;
+    transition: transform 0.2s;
+}
+
+.audio-icon:hover {
+    transform: scale(1.2);
+}
+
+    </style>
+
+</head>
+<body>
+
+<header>
+    <img src="logo.png" class="logo" alt="Logo" />
+    <i class="user-icon">👤</i>
+    <h1 class="title">Presente Simple</h1>
+</header>
+
+<main class="exercise-container">
+
+    <!-- Nivel Fácil - Futuro Simple -->
+    <section class="level" id="facil">
+    <h2>Fácil - Futuro Simple</h2>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 1</h3>
+            <p>I <input type="text" id="input1" placeholder="verbo en forma base" /> (go) to the market tomorrow.</p>
+            <button onclick="checkInput('input1', 'will go', 'result1')">Verificar</button>
+            <p id="result1"></p>
+            <p class="grammar-note">[Afirmativo: sujeto + will + verbo base]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 2</h3>
+            <p>
+            <select id="select2">
+                <option>Will she go</option>
+                <option>She will goes</option>
+                <option>She goes will</option>
+            </select> to the party tonight?
+            </p>
+            <button onclick="checkSelect('select2', 'Will she go', 'result2')">Verificar</button>
+            <p id="result2"></p>
+            <p class="grammar-note">[Interrogativo: Will + sujeto + verbo base]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 3</h3>
+            <p>They <input type="text" id="input3" placeholder="verbo en forma base" /> (travel) next summer.</p>
+            <button onclick="checkInput('input3', 'will travel', 'result3')">Verificar</button>
+            <p id="result3"></p>
+            <p class="grammar-note">[Afirmativo: sujeto + will + verbo base]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 4</h3>
+            <select id="select4">
+            <option>won't eat</option>
+            <option>will eats</option>
+            <option>will eat</option>
+            </select>
+            <p>She _____ (eat) vegetables tonight.</p>
+            <button onclick="checkSelect('select4', 'will eat', 'result4')">Verificar</button>
+            <p id="result4"></p>
+            <p class="grammar-note">[Afirmativo: sujeto + will + verbo base]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 5</h3>
+            <p>We <input type="text" id="input5" placeholder="verbo en forma base" /> (start) the project soon.</p>
+            <button onclick="checkInput('input5', 'will start', 'result5')">Verificar</button>
+            <p id="result5"></p>
+            <p class="grammar-note">[Afirmativo: sujeto + will + verbo base]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 6</h3>
+            <select id="select6">
+            <option>will calls</option>
+            <option>Will they call</option>
+            <option>They will calling</option>
+            </select>
+            <p>_____ you (call) me later?</p>
+            <button onclick="checkSelect('select6', 'Will they call', 'result6')">Verificar</button>
+            <p id="result6"></p>
+            <p class="grammar-note">[Interrogativo: Will + sujeto + verbo base]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 7</h3>
+            <p>He <input type="text" id="input7" placeholder="verbo en forma base" /> (fix) the car tomorrow.</p>
+            <button onclick="checkInput('input7', 'will fix', 'result7')">Verificar</button>
+            <p id="result7"></p>
+            <p class="grammar-note">[Afirmativo: sujeto + will + verbo base]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 8</h3>
+            <select id="select8">
+            <option>won't rain</option>
+            <option>will rains</option>
+            <option>will rain</option>
+            </select>
+            <p>It _____ (rain) tomorrow.</p>
+            <button onclick="checkSelect('select8', 'will rain', 'result8')">Verificar</button>
+            <p id="result8"></p>
+            <p class="grammar-note">[Afirmativo: sujeto + will + verbo base]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 9</h3>
+            <p>They <input type="text" id="input9" placeholder="verbo en forma base" /> (arrive) on time.</p>
+            <button onclick="checkInput('input9', 'will arrive', 'result9')">Verificar</button>
+            <p id="result9"></p>
+            <p class="grammar-note">[Afirmativo: sujeto + will + verbo base]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 10</h3>
+            <select id="select10">
+            <option>Will she help</option>
+            <option>Will helps she</option>
+            <option>She will helps</option>
+            </select>
+            <p>_____ her brother with homework?</p>
+            <button onclick="checkSelect('select10', 'Will she help', 'result10')">Verificar</button>
+            <p id="result10"></p>
+            <p class="grammar-note">[Interrogativo: Will + sujeto + verbo base]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 11</h3>
+            <p>He <input type="text" id="input11" placeholder="verbo en forma base" /> (call) his friend later.</p>
+            <button onclick="checkInput('input11', 'will call', 'result11')">Verificar</button>
+            <p id="result11"></p>
+            <p class="grammar-note">[Afirmativo: sujeto + will + verbo base]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 12</h3>
+            <select id="select12">
+            <option>Will she answer</option>
+            <option>She will answers</option>
+            <option>Will answers she</option>
+            </select>
+            <p>_____ the phone?</p>
+            <button onclick="checkSelect('select12', 'Will she answer', 'result12')">Verificar</button>
+            <p id="result12"></p>
+            <p class="grammar-note">[Interrogativo: Will + sujeto + verbo base]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 13</h3>
+            <p>They <input type="text" id="input13" placeholder="verbo en forma base" /> (build) a new house next year.</p>
+            <button onclick="checkInput('input13', 'will build', 'result13')">Verificar</button>
+            <p id="result13"></p>
+            <p class="grammar-note">[Afirmativo: sujeto + will + verbo base]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 14</h3>
+            <select id="select14">
+            <option>Will it start</option>
+            <option>It will starts</option>
+            <option>Starts it will</option>
+            </select>
+            <p>_____ raining soon?</p>
+            <button onclick="checkSelect('select14', 'Will it start', 'result14')">Verificar</button>
+            <p id="result14"></p>
+            <p class="grammar-note">[Interrogativo: Will + sujeto + verbo base]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 15</h3>
+            <p>We <input type="text" id="input15" placeholder="verbo en forma base" /> (meet) at the café.</p>
+            <button onclick="checkInput('input15', 'will meet', 'result15')">Verificar</button>
+            <p id="result15"></p>
+            <p class="grammar-note">[Afirmativo: sujeto + will + verbo base]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 16</h3>
+            <select id="select16">
+            <option>Will they play</option>
+            <option>They will plays</option>
+            <option>Plays they will</option>
+            </select>
+            <p>_____ football tomorrow?</p>
+            <button onclick="checkSelect('select16', 'Will they play', 'result16')">Verificar</button>
+            <p id="result16"></p>
+            <p class="grammar-note">[Interrogativo: Will + sujeto + verbo base]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 17</h3>
+            <p>She <input type="text" id="input17" placeholder="verbo en forma base" /> (cook) dinner tonight.</p>
+            <button onclick="checkInput('input17', 'will cook', 'result17')">Verificar</button>
+            <p id="result17"></p>
+            <p class="grammar-note">[Afirmativo: sujeto + will + verbo base]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 18</h3>
+            <select id="select18">
+            <option>Will you help</option>
+            <option>You will helps</option>
+            <option>Help will you</option>
+            </select>
+            <p>_____ me with my homework?</p>
+            <button onclick="checkSelect('select18', 'Will you help', 'result18')">Verificar</button>
+            <p id="result18"></p>
+            <p class="grammar-note">[Interrogativo: Will + sujeto + verbo base]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 19</h3>
+            <p>They <input type="text" id="input19" placeholder="verbo en forma base" /> (move) to a new house next week.</p>
+            <button onclick="checkInput('input19', 'will move', 'result19')">Verificar</button>
+            <p id="result19"></p>
+            <p class="grammar-note">[Afirmativo: sujeto + will + verbo base]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 20</h3>
+            <select id="select20">
+            <option>Will he finish</option>
+            <option>He will finishes</option>
+            <option>Finish will he</option>
+            </select>
+            <p>_____ his homework on time?</p>
+            <button onclick="checkSelect('select20', 'Will he finish', 'result20')">Verificar</button>
+            <p id="result20"></p>
+            <p class="grammar-note">[Interrogativo: Will + sujeto + verbo base]</p>
+        </div>
+    </section>
+
+    <!-- Nivel Medio (inicialmente bloqueado) -->
+    <section class="level locked" id="medio">
+        <div class="lock-overlay">
+            <div class="lock-icon">🔒</div>
+            <p>Completa el nivel Fácil para desbloquear</p>
+        </div>
+        <h2>Medio</h2>
+
+    <section class="level" id="medio">
+        <h2>Medio - Futuro Simple</h2>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 1</h3>
+            <p>She <input type="text" id="input1m" placeholder="verbo en forma base" /> (read) a book tonight.</p>
+            <button onclick="checkInput('input1m', 'will read', 'result1m')">Verificar</button>
+            <p id="result1m"></p>
+            <p class="grammar-note">[Afirmativo: sujeto + will + verbo base]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 2</h3>
+            <select id="select2m">
+            <option>Will they dance</option>
+            <option>They will dances</option>
+            <option>Will dances they</option>
+            </select>
+            <p>_____ at the party?</p>
+            <button onclick="checkSelect('select2m', 'Will they dance', 'result2m')">Verificar</button>
+            <p id="result2m"></p>
+            <p class="grammar-note">[Interrogativo: Will + sujeto + verbo base]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 3</h3>
+            <p>We <input type="text" id="input3m" placeholder="verbo en forma base" /> (paint) the house soon.</p>
+            <button onclick="checkInput('input3m', 'will paint', 'result3m')">Verificar</button>
+            <p id="result3m"></p>
+            <p class="grammar-note">[Afirmativo: sujeto + will + verbo base]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 4</h3>
+            <select id="select4m">
+            <option>Will he drive</option>
+            <option>Drives he will</option>
+            <option>He will drives</option>
+            </select>
+            <p>_____ to the airport?</p>
+            <button onclick="checkSelect('select4m', 'Will he drive', 'result4m')">Verificar</button>
+            <p id="result4m"></p>
+            <p class="grammar-note">[Interrogativo: Will + sujeto + verbo base]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 5</h3>
+            <p>I <input type="text" id="input5m" placeholder="verbo en forma base" /> (clean) the room later.</p>
+            <button onclick="checkInput('input5m', 'will clean', 'result5m')">Verificar</button>
+            <p id="result5m"></p>
+            <p class="grammar-note">[Afirmativo: sujeto + will + verbo base]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 6</h3>
+            <select id="select6m">
+            <option>Will she bake</option>
+            <option>She will bakes</option>
+            <option>Bakes she will</option>
+            </select>
+            <p>_____ a cake tomorrow?</p>
+            <button onclick="checkSelect('select6m', 'Will she bake', 'result6m')">Verificar</button>
+            <p id="result6m"></p>
+            <p class="grammar-note">[Interrogativo: Will + sujeto + verbo base]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 7</h3>
+            <p>They <input type="text" id="input7m" placeholder="verbo en forma base" /> (visit) their grandparents soon.</p>
+            <button onclick="checkInput('input7m', 'will visit', 'result7m')">Verificar</button>
+            <p id="result7m"></p>
+            <p class="grammar-note">[Afirmativo: sujeto + will + verbo base]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 8</h3>
+            <select id="select8m">
+            <option>Will it fly</option>
+            <option>It will flies</option>
+            <option>Flies it will</option>
+            </select>
+            <p>_____ across the sky?</p>
+            <button onclick="checkSelect('select8m', 'Will it fly', 'result8m')">Verificar</button>
+            <p id="result8m"></p>
+            <p class="grammar-note">[Interrogativo: Will + sujeto + verbo base]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 9</h3>
+            <p>He <input type="text" id="input9m" placeholder="verbo en forma base" /> (draw) a picture for you.</p>
+            <button onclick="checkInput('input9m', 'will draw', 'result9m')">Verificar</button>
+            <p id="result9m"></p>
+            <p class="grammar-note">[Afirmativo: sujeto + will + verbo base]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 10</h3>
+            <select id="select10m">
+            <option>Will we eat</option>
+            <option>We will eats</option>
+            <option>Eats we will</option>
+            </select>
+            <p>_____ lunch together?</p>
+            <button onclick="checkSelect('select10m', 'Will we eat', 'result10m')">Verificar</button>
+            <p id="result10m"></p>
+            <p class="grammar-note">[Interrogativo: Will + sujeto + verbo base]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 11</h3>
+            <p>He <input type="text" id="input11m" placeholder="verbo en forma base" /> (call) his friend later.</p>
+            <button onclick="checkInput('input11m', 'will call', 'result11m')">Verificar</button>
+            <p id="result11m"></p>
+            <p class="grammar-note">[Afirmativo: sujeto + will + verbo base]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 12</h3>
+            <select id="select12m">
+            <option>Will she answer</option>
+            <option>She will answers</option>
+            <option>Will answers she</option>
+            </select>
+            <p>_____ the phone?</p>
+            <button onclick="checkSelect('select12m', 'Will she answer', 'result12m')">Verificar</button>
+            <p id="result12m"></p>
+            <p class="grammar-note">[Interrogativo: Will + sujeto + verbo base]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 13</h3>
+            <p>They <input type="text" id="input13m" placeholder="verbo en forma base" /> (build) a new house next year.</p>
+            <button onclick="checkInput('input13m', 'will build', 'result13m')">Verificar</button>
+            <p id="result13m"></p>
+            <p class="grammar-note">[Afirmativo: sujeto + will + verbo base]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 14</h3>
+            <select id="select14m">
+            <option>Will it start</option>
+            <option>It will starts</option>
+            <option>Starts it will</option>
+            </select>
+            <p>_____ raining soon?</p>
+            <button onclick="checkSelect('select14m', 'Will it start', 'result14m')">Verificar</button>
+            <p id="result14m"></p>
+            <p class="grammar-note">[Interrogativo: Will + sujeto + verbo base]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 15</h3>
+            <p>We <input type="text" id="input15m" placeholder="verbo en forma base" /> (meet) at the café.</p>
+            <button onclick="checkInput('input15m', 'will meet', 'result15m')">Verificar</button>
+            <p id="result15m"></p>
+            <p class="grammar-note">[Afirmativo: sujeto + will + verbo base]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 16</h3>
+            <select id="select16m">
+            <option>Will they play</option>
+            <option>They will plays</option>
+            <option>Plays they will</option>
+            </select>
+            <p>_____ football tomorrow?</p>
+            <button onclick="checkSelect('select16m', 'Will they play', 'result16m')">Verificar</button>
+            <p id="result16m"></p>
+            <p class="grammar-note">[Interrogativo: Will + sujeto + verbo base]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 17</h3>
+            <p>She <input type="text" id="input17m" placeholder="verbo en forma base" /> (cook) dinner tonight.</p>
+            <button onclick="checkInput('input17m', 'will cook', 'result17m')">Verificar</button>
+            <p id="result17m"></p>
+            <p class="grammar-note">[Afirmativo: sujeto + will + verbo base]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 18</h3>
+            <select id="select18m">
+            <option>Will you help</option>
+            <option>You will helps</option>
+            <option>Help will you</option>
+            </select>
+            <p>_____ me with my homework?</p>
+            <button onclick="checkSelect('select18m', 'Will you help', 'result18m')">Verificar</button>
+            <p id="result18m"></p>
+            <p class="grammar-note">[Interrogativo: Will + sujeto + verbo base]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 19</h3>
+            <p>They <input type="text" id="input19m" placeholder="verbo en forma base" /> (move) to a new house next week.</p>
+            <button onclick="checkInput('input19m', 'will move', 'result19m')">Verificar</button>
+            <p id="result19m"></p>
+            <p class="grammar-note">[Afirmativo: sujeto + will + verbo base]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 20</h3>
+            <select id="select20m">
+            <option>Will he finish</option>
+            <option>He will finishes</option>
+            <option>Finish will he</option>
+            </select>
+            <p>_____ his homework on time?</p>
+            <button onclick="checkSelect('select20m', 'Will he finish', 'result20m')">Verificar</button>
+            <p id="result20m"></p>
+            <p class="grammar-note">[Interrogativo: Will + sujeto + verbo base]</p>
+        </div>
+    
+    </section>
+
+    <!-- Nivel Difícil (inicialmente bloqueado) -->
+    <section class="level locked" id="dificil">
+        <div class="lock-overlay">
+            <div class="lock-icon">🔒</div>
+            <p>Completa el nivel Medio para desbloquear</p>
+        </div>
+        <h2>Difícil</h2>
+
+          <div class="exercise-card">
+                <h3>Ejercicio 1</h3>
+                <p>Where <input type="text" id="dificil-input1" placeholder="will"/> you (go) on vacation?</p>
+                <button onclick="checkInput('dificil-input1', 'will', 'dificil-result1')">Verificar</button>
+                <p id="dificil-result1"></p>
+                <p class="grammar-note">[Interrogativo con wh-: Where + will + sujeto + verbo base]</p>
+            </div>
+
+            <div class="exercise-card">
+                <h3>Ejercicio 2</h3>
+                <p>What time <input type="text" id="dificil-input2" placeholder="will"/> the train (arrive)?</p>
+                <button onclick="checkInput('dificil-input2', 'will', 'dificil-result2')">Verificar</button>
+                <p id="dificil-result2"></p>
+                <p class="grammar-note">[Interrogativo con wh-: What time + will + sujeto + verbo base]</p>
+            </div>
+
+            <div class="exercise-card">
+                <h3>Ejercicio 3</h3>
+                <p>Why <input type="text" id="dificil-input3" placeholder="will"/> she (forget) her keys?</p>
+                <button onclick="checkInput('dificil-input3', 'will', 'dificil-result3')">Verificar</button>
+                <p id="dificil-result3"></p>
+                <p class="grammar-note">[Interrogativo con wh-: Why + will + sujeto + verbo base]</p>
+            </div>
+
+            <div class="exercise-card">
+                <h3>Ejercicio 4</h3>
+                <p>How often <input type="text" id="dificil-input4" placeholder="will"/> they (visit) their grandparents?</p>
+                <button onclick="checkInput('dificil-input4', 'will', 'dificil-result4')">Verificar</button>
+                <p id="dificil-result4"></p>
+                <p class="grammar-note">[Interrogativo con wh-: How often + will + sujeto + verbo base]</p>
+            </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 5</h3>
+            <select id="dificil-select5">
+            <option>What will your father do?</option>
+            <option>What your father will do?</option>
+            <option>What will do your father?</option>
+            </select>
+            <p>Selecciona la opción correcta.</p>
+            <button onclick="checkSelect('dificil-select5', 'What will your father do?', 'dificil-result5')">Verificar</button>
+            <p id="dificil-result5"></p>
+            <p class="grammar-note">[Interrogativo con wh-: What + will + sujeto + verbo base]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 6</h3>
+            <p>Who <input type="text" id="dificil-input6" placeholder="will"/> help us tomorrow?</p>
+            <button onclick="checkInput('dificil-input6', 'will', 'dificil-result6')">Verificar</button>
+            <p id="dificil-result6"></p>
+            <p class="grammar-note">[Interrogativo con who como sujeto: Who + will + verbo base]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 7</h3>
+            <p>Which movie <input type="text" id="dificil-input7" placeholder="will"/> you (watch) tonight?</p>
+            <button onclick="checkInput('dificil-input7', 'will', 'dificil-result7')">Verificar</button>
+            <p id="dificil-result7"></p>
+            <p class="grammar-note">[Interrogativo con wh-: Which + will + sujeto + verbo base]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 8</h3>
+            <p>When <input type="text" id="dificil-input8" placeholder="will"/> the shop (close)?</p>
+            <button onclick="checkInput('dificil-input8', 'will', 'dificil-result8')">Verificar</button>
+            <p id="dificil-result8"></p>
+            <p class="grammar-note">[Interrogativo con wh-: When + will + sujeto + verbo base]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 9</h3>
+            <p>How many people <input type="text" id="dificil-input9" placeholder="will"/> attend the meeting?</p>
+            <button onclick="checkInput('dificil-input9', 'will', 'dificil-result9')">Verificar</button>
+            <p id="dificil-result9"></p>
+            <p class="grammar-note">[Interrogativo con wh-: How many + will + sujeto + verbo base]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 10</h3>
+            <p>What <input type="text" id="dificil-input10" placeholder="will"/> the teacher (say) about this?</p>
+            <button onclick="checkInput('dificil-input10', 'will', 'dificil-result10')">Verificar</button>
+            <p id="dificil-result10"></p>
+            <p class="grammar-note">[Interrogativo con wh-: What + will + sujeto + verbo base]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 11</h3>
+            <select id="dificil-select11">
+            <option>Where will you go?</option>
+            <option>Where you will go?</option>
+            <option>Will where you go?</option>
+            </select>
+            <p>Selecciona la opción correcta.</p>
+            <button onclick="checkSelect('dificil-select11', 'Where will you go?', 'dificil-result11')">Verificar</button>
+            <p id="dificil-result11"></p>
+            <p class="grammar-note">[Interrogativo con wh-: Where + will + sujeto + verbo base]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 12</h3>
+            <p>Why <input type="text" id="dificil-input12" placeholder="won't"/> he (come) to the party?</p>
+            <button onclick="checkInput('dificil-input12', 'won\'t', 'dificil-result12')">Verificar</button>
+            <p id="dificil-result12"></p>
+            <p class="grammar-note">[Interrogativo negativo con wh-: Why + won't + sujeto + verbo base]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 13</h3>
+            <p>How <input type="text" id="dificil-input13" placeholder="will"/> your parents (travel) next summer?</p>
+            <button onclick="checkInput('dificil-input13', 'will', 'dificil-result13')">Verificar</button>
+            <p id="dificil-result13"></p>
+            <p class="grammar-note">[Interrogativo con wh-: How + will + sujeto + verbo base]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 14</h3>
+            <select id="dificil-select14">
+            <option>What will you do next weekend?</option>
+            <option>What you will do next weekend?</option>
+            <option>Will what you do next weekend?</option>
+            </select>
+            <p>Selecciona la opción correcta.</p>
+            <button onclick="checkSelect('dificil-select14', 'What will you do next weekend?', 'dificil-result14')">Verificar</button>
+            <p id="dificil-result14"></p>
+            <p class="grammar-note">[Interrogativo con wh-: What + will + sujeto + verbo base]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 15</h3>
+            <p>Who <input type="text" id="dificil-input15" placeholder="will"/> know the results first?</p>
+            <button onclick="checkInput('dificil-input15', 'will', 'dificil-result15')">Verificar</button>
+            <p id="dificil-result15"></p>
+            <p class="grammar-note">[Interrogativo con who como sujeto: Who + will + verbo base]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 16</h3>
+            <p>What <input type="text" id="dificil-input16" placeholder="will"/> happen if it rains?</p>
+            <button onclick="checkInput('dificil-input16', 'will', 'dificil-result16')">Verificar</button>
+            <p id="dificil-result16"></p>
+            <p class="grammar-note">[Interrogativo con wh-: What + will + verbo base]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 17</h3>
+            <p>When <input type="text" id="dificil-input17" placeholder="will"/> she (arrive) at the party?</p>
+            <button onclick="checkInput('dificil-input17', 'will', 'dificil-result17')">Verificar</button>
+            <p id="dificil-result17"></p>
+            <p class="grammar-note">[Interrogativo con wh-: When + will + sujeto + verbo base]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 18</h3>
+            <p>Why <input type="text" id="dificil-input18" placeholder="will"/> they (cancel) the event?</p>
+            <button onclick="checkInput('dificil-input18', 'will', 'dificil-result18')">Verificar</button>
+            <p id="dificil-result18"></p>
+            <p class="grammar-note">[Interrogativo con wh-: Why + will + sujeto + verbo base]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 19</h3>
+            <p>Who <input type="text" id="dificil-input19" placeholder="will"/> join us for dinner?</p>
+            <button onclick="checkInput('dificil-input19', 'will', 'dificil-result19')">Verificar</button>
+            <p id="dificil-result19"></p>
+            <p class="grammar-note">[Interrogativo con who como sujeto: Who + will + verbo base]</p>
+        </div>
+
+        <div class="exercise-card">
+            <h3>Ejercicio 20</h3>
+            <p>Where <input type="text" id="dificil-input20" placeholder="will"/> we (stay) during the trip?</p>
+            <button onclick="checkInput('dificil-input20', 'will', 'dificil-result20')">Verificar</button>
+            <p id="dificil-result20"></p>
+            <p class="grammar-note">[Interrogativo con wh-: Where + will + sujeto + verbo base]</p>
+        </div>
+    </section>
+</main>
+
+<!-- Chatbot modificado (sin campo de búsqueda) -->
+<div id="chat-toggle" onclick="toggleChatbot()">💬</div>
+<div id="chatbot-box" class="chatbot-container hidden">
+    <div class="chatbot-header">
+        <span>Chatbot - Aprende el Presente Simple</span>
+        <button class="close-btn" onclick="toggleChatbot()">×</button>
+    </div>
+
+    <div class="quick-questions">
+        <p class="questions-title">Preguntas frecuentes:</p>
+        <button class="question-btn" onclick="askQuestion('¿Qué es el presente simple?')">¿Qué es el presente simple?</button>
+        <button class="question-btn" onclick="askQuestion('¿Cómo se conjuga el presente simple?')">¿Cómo se conjuga?</button>
+        <button class="question-btn" onclick="askQuestion('¿Cuándo se usa el presente simple?')">¿Cuándo se usa?</button>
+        <button class="question-btn" onclick="askQuestion('¿Cuál es la estructura del presente simple?')">¿Cuál es la estructura?</button>
+    </div>
+
+    <div class="chatbot-body" id="chatbot-body">
+        <div class="bot-message welcome-message">
+            ¡Hola! 👋 Soy tu asistente para aprender el Presente Simple. Usa las preguntas sugeridas arriba.
+        </div>
+    </div>
+</div>
+
+<script>
+    // Variables para rastrear el progreso
+    let ejerciciosFacilesCompletados = 0;
+    const totalEjerciciosFaciles = 20; // Todos los ejercicios fáciles
+    let ejerciciosMediosCompletados = 0;
+    const totalEjerciciosMedios = 20; // Todos los ejercicios medios
+
+    // Función para mezclar opciones al cargar la página
+    function shuffleOptions() {
+        const selects = document.querySelectorAll('select');
+        selects.forEach(select => {
+            const options = Array.from(select.options);
+            // Mezclar las opciones excepto la primera (si es un placeholder)
+            const toShuffle = options.slice(0);
+            for (let i = toShuffle.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [toShuffle[i], toShuffle[j]] = [toShuffle[j], toShuffle[i]];
+            }
+            // Reemplazar las opciones
+            select.innerHTML = '';
+            toShuffle.forEach(option => {
+                select.add(option);
+            });
+        });
+    }
+
+    // Llamar a la función al cargar la página
+    window.onload = shuffleOptions;
+
+    // Función para reproducir audio usando la Web Speech API
+    function speak(text) {
+        if ('speechSynthesis' in window) {
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'en-US'; // Configurar el idioma a inglés
+            utterance.rate = 0.9; // Velocidad de habla (0.1 a 10)
+            speechSynthesis.speak(utterance);
+        } else {
+            alert('Tu navegador no soporta la función de texto a voz. Prueba con Chrome o Edge.');
+        }
+    }
+
+    // Función para agregar icono de audio a un elemento de resultado
+    function addAudioIcon(resultElement, textToSpeak) {
+        // Verificar si ya tiene un icono de audio
+        if (!resultElement.querySelector('.audio-icon')) {
+            const audioIcon = document.createElement('span');
+            audioIcon.className = 'audio-icon';
+            audioIcon.innerHTML = '🔊';
+            audioIcon.title = 'Escuchar pronunciación';
+            audioIcon.onclick = function(e) {
+                e.stopPropagation(); // Evitar que el evento se propague
+                speak(textToSpeak);
+            };
+            resultElement.appendChild(audioIcon);
+        }
+    }
+
+    // Función genérica para verificar inputs
+    function checkInput(inputId, correctAnswer, resultId) {
+        const inputElement = document.getElementById(inputId);
+        const val = inputElement.value.toLowerCase().trim();
+        const resultElement = document.getElementById(resultId);
+        
+        // Obtener la oración completa para el audio
+        let fullSentence = '';
+        if (inputElement.parentElement) {
+            fullSentence = inputElement.parentElement.textContent || '';
+            // Reemplazar el texto del input con la respuesta correcta
+            fullSentence = fullSentence.replace(inputElement.value, correctAnswer);
+            // Limpiar la oración (eliminar espacios extra, etc.)
+            fullSentence = fullSentence.replace(/\s+/g, ' ').trim();
+            // Eliminar el texto entre paréntesis (verbo en infinitivo)
+            fullSentence = fullSentence.replace(/\(.*?\)/g, '').trim();
+        }
+        
+        if (val === correctAnswer.toLowerCase()) {
+            resultElement.textContent = "✅ ¡Correcto!";
+            resultElement.style.color = "#48bb78";
+            
+            // Agregar icono de audio
+            addAudioIcon(resultElement, fullSentence);
+            
+            // Verificar si es un ejercicio del nivel fácil
+            if (inputId.startsWith('input')) {
+                if (!resultElement.dataset.completed) {
+                    ejerciciosFacilesCompletados++;
+                    resultElement.dataset.completed = "true";
+                    checkUnlockMedium();
+                }
+            }
+            // Verificar si es un ejercicio del nivel medio
+            else if (inputId.startsWith('medio-input')) {
+                if (!resultElement.dataset.completed) {
+                    ejerciciosMediosCompletados++;
+                    resultElement.dataset.completed = "true";
+                    checkUnlockHard();
+                }
+            }
+        } else {
+            resultElement.textContent = "❌ Intenta de nuevo.";
+            resultElement.style.color = "#e53e3e";
+        }
+    }
+
+    // Función genérica para verificar selects
+    function checkSelect(selectId, correctAnswer, resultId) {
+        const selectElement = document.getElementById(selectId);
+        const val = selectElement.value;
+        const resultElement = document.getElementById(resultId);
+        
+        // Obtener la oración completa para el audio
+        let fullSentence = '';
+        if (selectElement.parentElement) {
+            fullSentence = selectElement.parentElement.textContent || '';
+            // Reemplazar el select con la respuesta correcta
+            fullSentence = fullSentence.replace('_____', correctAnswer);
+            // Limpiar la oración (eliminar espacios extra, etc.)
+            fullSentence = fullSentence.replace(/\s+/g, ' ').trim();
+            // Eliminar el texto entre paréntesis (verbo en infinitivo)
+            fullSentence = fullSentence.replace(/\(.*?\)/g, '').trim();
+        }
+        
+        if (val === correctAnswer) {
+            resultElement.textContent = "✅ ¡Correcto!";
+            resultElement.style.color = "#48bb78";
+            
+            // Agregar icono de audio
+            addAudioIcon(resultElement, fullSentence);
+            
+            // Verificar si es un ejercicio del nivel fácil
+            if (selectId.startsWith('select')) {
+                if (!resultElement.dataset.completed) {
+                    ejerciciosFacilesCompletados++;
+                    resultElement.dataset.completed = "true";
+                    checkUnlockMedium();
+                }
+            }
+            // Verificar si es un ejercicio del nivel difícil
+            else if (selectId.startsWith('dificil-select')) {
+                if (!resultElement.dataset.completed) {
+                    resultElement.dataset.completed = "true";
+                }
+            }
+        } else {
+            resultElement.textContent = "❌ Esa no es la forma correcta.";
+            resultElement.style.color = "#e53e3e";
+        }
+    }
+
+    // Función para verificar si se debe desbloquear el nivel medio
+    function checkUnlockMedium() {
+        if (ejerciciosFacilesCompletados >= totalEjerciciosFaciles) {
+            const medioSection = document.getElementById('medio');
+            medioSection.classList.remove('locked');
+            medioSection.querySelector('.lock-overlay').style.display = 'none';
+            
+            // Mostrar notificación
+            alert('¡Felicidades! Has completado el nivel Fácil. El nivel Medio ha sido desbloqueado.');
+        }
+    }
+
+    // Función para verificar si se debe desbloquear el nivel difícil
+    function checkUnlockHard() {
+        if (ejerciciosMediosCompletados >= totalEjerciciosMedios) {
+            const dificilSection = document.getElementById('dificil');
+            dificilSection.classList.remove('locked');
+            dificilSection.querySelector('.lock-overlay').style.display = 'none';
+            
+            // Mostrar notificación
+            alert('¡Excelente! Has completado el nivel Medio. El nivel Difícil ha sido desbloqueado.');
+        }
+    }
+
+    // Chatbot básico
+    const chatbot = document.getElementById("chatbot-box");
+    const chatbotBody = document.getElementById("chatbot-body");
+
+    const answers = {
+        "¿Qué es el presente simple?": "✅ El presente simple se usa para describir hábitos, rutinas, hechos generales y estados permanentes. Ejemplo: I live in Spain. She works at a bank.",
+        "¿Cómo se conjuga el presente simple?": "✅ Para la mayoría de verbos: I/you/we/they + verbo base. He/she/it + verbo con -s. Ejemplos: I play, she plays. Verbos irregulares como 'have' cambian: She has.",
+        "¿Cuándo se usa el presente simple?": "✅ Para: 1) Hábitos y rutinas (I drink coffee every morning). 2) Hechos generales (Water boils at 100°C). 3) Estados permanentes (He works in a hospital). 4) Horarios (The train leaves at 8pm).",
+        "¿Cuál es la estructura del presente simple?": "✅ Afirmativa: Sujeto + verbo (con -s en 3ra persona singular). Negativa: Sujeto + don't/doesn't + verbo base. Interrogativa: Do/Does + sujeto + verbo base. Ej: She doesn't like tea. Do you speak English?"
+    };
+
+    function askQuestion(question) {
+        addMessage(question, 'user');
+        setTimeout(() => {
+            addMessage(answers[question], 'bot');
+        }, 300);
+    }
+
+    function addMessage(message, sender) {
+        const messageDiv = document.createElement('div');
+        messageDiv.className = sender === 'user' ? 'user-message' : 'bot-message';
+        messageDiv.innerHTML = message.replace(/\n/g, '<br>');
+        chatbotBody.appendChild(messageDiv);
+        chatbotBody.scrollTop = chatbotBody.scrollHeight;
+    }
+
+    function toggleChatbot() {
+        chatbot.classList.toggle("hidden");
+    }
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const avatarWalking = document.getElementById("avatarWalking");
+    const avatarStatic = document.getElementById("avatarStatic");
+    const bubble = document.getElementById("bubble");
+
+    const mensajesIniciales = [
+    "¡Bienvenido a este sitio web que te ayudará a aprender inglés de forma didáctica y divertida! 🇬🇧🎉",
+    "Empecemos con el Presente Simple... ¡vas a ver qué fácil es! 💡📚",
+    "¡Tú puedes! Disfruta los ejercicios, verás cuánto mejoras. 🚀💪",
+    "Estaré aquí para apoyarte y darte consejos siempre que lo necesites. 🤝👨‍🏫"
+    ];
+
+    const mensajesPermanentes = [
+    "¿Listo para tu próxima lección? 📝",
+    "Sigue así, vas por buen camino. ✅",
+    "Estoy aquí si tienes dudas. 💬"
+    ];
+
+    let index = 0;
+
+    // Ocultar el avatar estático y la burbuja al cargar
+    avatarStatic.style.display = "none";
+    bubble.style.display = "none";
+
+    // Paso 1: animación camina al centro
+    avatarWalking.addEventListener("animationend", () => {
+    avatarWalking.style.display = "none";
+    avatarStatic.style.display = "flex";
+    bubble.style.display = "block";
+    mostrarMensajesIniciales();
+    });
+
+    // Paso 2: mostrar los mensajes uno por uno
+    function mostrarMensajesIniciales() {
+    if (index < mensajesIniciales.length) {
+        bubble.textContent = mensajesIniciales[index];
+        index++;
+        setTimeout(mostrarMensajesIniciales, 6000); // Cada 10 segundos
+    } else {
+        iniciarSalida();
+    }
+    }
+
+    // Paso 3: ocultar avatar del centro y caminar a la izquierda
+    function iniciarSalida() {
+    avatarStatic.style.display = "none";
+    avatarWalking.style.display = "flex";
+    avatarWalking.classList.add("walk-out");
+
+    avatarWalking.addEventListener("animationend", finalSalida);
+    }
+
+    // Paso 4: finalizar caminata y mostrar avatar en la izquierda
+    function finalSalida() {
+    avatarWalking.style.display = "none";
+    avatarWalking.removeEventListener("animationend", finalSalida);
+    mostrarAvatarIzquierda();
+    }
+
+    // Paso 5: Mostrar el avatar estático a la izquierda con mensajes permanentes
+    function mostrarAvatarIzquierda() {
+    avatarStatic.style.display = "flex";
+    avatarStatic.style.left = "0"; // Cambia posición
+    avatarStatic.style.top = "50%";
+    avatarStatic.style.transform = "translateY(-50%)";
+    bubble.style.display = "block";
+
+    let i = 0;
+    bubble.textContent = mensajesPermanentes[i];
+    setInterval(() => {
+        i = (i + 1) % mensajesPermanentes.length;
+        bubble.textContent = mensajesPermanentes[i];
+    }, 10000);
+    }
+});
+</script>
+
+<div class="avatar-walking" id="avatarWalking">
+    <div class="sprite-avatar"></div>
+</div>
+
+<div class="avatar-static" id="avatarStatic">
+    <div class="bubble" id="bubble">¡Hola!</div>
+    <img src='img/EdinsonFrontal.png' alt="Avatar" class="avatar-img">
+</div>
+    
+</body>
+</html>

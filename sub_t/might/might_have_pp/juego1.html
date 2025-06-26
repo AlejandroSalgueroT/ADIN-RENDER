@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Juego 1 - Might + Verb</title>
+  <link rel="stylesheet" href="../estilo.css">
+  <link rel="stylesheet" href="avatar.css">
+  <style>
+    body {
+      background-color: #ffffff;
+      color: #121212;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    main {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #121212;
+    }
+
+    p {
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+    }
+
+    input[type="text"] {
+      width: 80%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+
+    .btn {
+      display: inline-block;
+      margin: 10px;
+      padding: 10px 20px;
+      background-color: #252934;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      background-color: #3a3f50;
+    }
+
+    .speak-btn {
+      background-color: #00695c;
+    }
+
+    #resultado {
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+
+    .avatar-container {
+      background-color: #f4f4f4;
+      border-radius: 16px;
+      padding: 20px;
+      margin: 30px auto;
+      text-align: center;
+      box-shadow: 0 0 12px #00000022;
+      max-width: 400px;
+    }
+
+    .avatar {
+      width: 120px;
+      height: auto;
+      border-radius: 50%;
+      margin-bottom: 10px;
+      box-shadow: 0 0 10px #00000033;
+      cursor: pointer;
+    }
+
+    .talk-box {
+      background-color: #ffffff;
+      color: #121212;
+      padding: 15px;
+      border-radius: 10px;
+      font-size: 1rem;
+      margin: 10px auto;
+      border: 1px solid #ccc;
+      box-shadow: inset 0 0 5px #eeeeee;
+    }
+
+    .volver-container {
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+
+  <main>
+    <h1>Completa la frase usando "might"</h1>
+
+    <p>1. He __________ (go) to the park.</p>
+    <input type="text" id="r1">
+
+    <p>2. They __________ (visit) us tomorrow.</p>
+    <input type="text" id="r2">
+
+    <p>3. I __________ (eat) salad tonight.</p>
+    <input type="text" id="r3">
+
+    <button class="btn" onclick="verificar()">✅ Verificar</button>
+    <p id="resultado"></p>
+
+    <div class="volver-container">
+      <a href="../index.html" class="btn">⬅ Volver</a>
+    </div>
+
+    <!-- AVATAR INTERACTIVO -->
+    <div class="avatar-container">
+      <img src="avatar.jpg" alt="Avatar" class="avatar" onclick="speak()">
+
+      <div class="talk-box" id="frase">
+        Click en una frase para que el avatar hable.
+      </div>
+
+      <button class="btn speak-btn" onclick="speak()">🔊 Hablar</button>
+      <button class="btn" onclick="setFrase('She might be reading a book.')">Frase 1</button>
+      <button class="btn" onclick="setFrase('They might be doing homework.')">Frase 2</button>
+    </div>
+  </main>
+
+  <!-- SCRIPTS -->
+  <script>
+    function verificar() {
+      const r1 = document.getElementById("r1").value.trim().toLowerCase();
+      const r2 = document.getElementById("r2").value.trim().toLowerCase();
+      const r3 = document.getElementById("r3").value.trim().toLowerCase();
+
+      const result = document.getElementById("resultado");
+
+      if (r1 === "might go" && r2 === "might visit" && r3 === "might eat") {
+        result.textContent = "✅ ¡Correcto!";
+        result.style.color = "green";
+      } else {
+        result.textContent = "❌ Intenta otra vez.";
+        result.style.color = "red";
+      }
+    }
+
+    let currentText = "Hello! I'm your English assistant.";
+
+    function setFrase(texto) {
+      currentText = texto;
+      document.getElementById("frase").innerText = texto;
+    }
+
+    function speak() {
+      const utterance = new SpeechSynthesisUtterance(currentText);
+      utterance.lang = "en-US";
+      utterance.pitch = 1;
+      utterance.rate = 1;
+
+      speechSynthesis.cancel(); // detener cualquier voz activa
+      speechSynthesis.speak(utterance);
+    }
+  </script>
+<div id="avatar-pixelado"></div>
+<div id="dialog-box"></div>
+<div id="cara">
+    <div class="ojo" id="ojo-izq"></div>
+    <div class="ojo" id="ojo-der"></div>
+    <div class="boca" id="boca"></div>
+  </div>
+</div>
+
+<div id="dialog-box">Hello!</div>
+<script src="../avatar.js"></script>
+
+</body>
+</html>

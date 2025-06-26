@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Perfecto Continuo - Misiones Interactivas</title>
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="icon" href="../../img/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+
+
+<body>
+    <!-- HUD de Videojuego -->
+    <nav class="hud">
+        <div class="hud-logo" aria-label="Logo RTN">RTN</div>
+        <div class="hud-user">
+            <img src="img/avatar.jpg" alt="Avatar de usuario" class="avatar-img" loading="lazy">
+            <span id="hud-username">Jugador</span>
+        </div>
+        <div class="hud-progress">
+            <label for="progress-bar" class="sr-only">Progreso de misiones</label>
+            <progress id="progress-bar" value="0" max="5"></progress>
+            <span id="progress-text">0/5</span>
+        </div>
+        <div class="hud-score">
+            <span>Puntos: <span id="score">0</span></span>
+        </div>
+    </nav>
+
+    <!-- Chatbox tipo NPC -->
+    <div id="avatar-chatbox" aria-live="polite">
+        <div id="thought-bubble" style="display:none;"></div>
+    </div>
+
+    <!-- ENCABEZADO -->
+    <header class="header">
+        <div class="logo" aria-label="Logo RTN">RTN</div>
+        <h1 class="titulo">Perfecto Continuo: Misiones Interactivas</h1>
+        <p class="subtitulo">¡Completa misiones, gana puntos y desbloquea logros!</p>
+    </header>
+
+
+<section class="intro-may">
+    <h1>¿Qué es el <span class="resalta">presente perfecto continuo</span> y por qué es tan importante?</h1>
+    <p>
+        El <strong>presente perfecto continuo</strong> (Present Perfect Continuous) es un tiempo verbal que se utiliza para hablar de <span class="resalta">acciones que comenzaron en el pasado y siguen ocurriendo en el presente</span> o que acaban de terminar y tienen un resultado visible. También se usa para enfatizar la duración de una actividad.
+    </p>
+    <div class="intro-ejemplos">
+        <h2>¿Cómo se utiliza el <span style="color:#00ffc8;">present perfect continuous</span>?</h2>
+        <ul>
+            <li>
+                <strong>Acción que aún continúa:</strong>
+                <em>She has been reading for two hours.</em>
+                <span class="traduccion">(Ella ha estado leyendo durante dos horas.)</span>
+            </li>
+            <li>
+                <strong>Resultado reciente:</strong>
+                <em>I’m tired because I have been working all day.</em>
+                <span class="traduccion">(Estoy cansado porque he estado trabajando todo el día.)</span>
+            </li>
+            <li>
+                <strong>Enfatizar duración:</strong>
+                <em>They have been living here since 2010.</em>
+                <span class="traduccion">(Han estado viviendo aquí desde 2010.)</span>
+            </li>
+        </ul>
+    </div>
+    <p>
+        <span class="resalta">¿Por qué aprender el presente perfecto continuo?</span><br>
+        Este tiempo verbal te ayuda a describir acciones en curso con mayor precisión, especialmente cuando quieres hablar del tiempo que ha durado una actividad. También te permite conectar emociones y resultados con acciones recientes. Es muy útil en descripciones, narraciones y conversaciones reales.
+    </p>
+    <p>
+        <span class="resalta">¡Sigue en movimiento!</span><br>
+        Únete a nuevas misiones donde el tiempo no se ha detenido. Enfrenta desafíos que pondrán a prueba tu habilidad para identificar y utilizar el <strong>presente perfecto continuo</strong>. ¡Demuestra cuánto tiempo has estado practicando... y sigue acumulando puntos!
+    </p>
+    <!-- Botón para ir a la misión -->
+    <div class="intro-botones">
+        <a href="index_PerfContinuo.html" class="boton">¡Iniciar Desafío!</a>
+    </div>
+</section>
+
+
+    <!-- Aquí irían las misiones y el resto del contenido principal -->
+
+    <!-- PIE DE PÁGINA -->
+    <footer>
+        <div class="pie-superior">
+            <p>Página realizada y preparada mediante prácticas educativas</p>
+            <p>#RTN20</p>
+            <div class="logo-footer" aria-label="Logo RTN">RTN</div>
+            
+            <address class="contacto">
+                <p>Contact us at:</p>
+                <p><a href="mailto:rtncontact@gmail.com">📧 rtncontact@gmail.com</a></p>
+                <p>📸 rtn_school</p>
+                <p>📍 Ciudad-Colegio</p>
+            </address>
+        </div>
+        <p class="derechos">© RTN 2025. All rights reserved.</p>
+    </footer>
+
+    <!-- Scripts -->
+   <script src="../../js/three.min.js"></script>
+    <script src="../../js/GLTFLoader.js"></script>
+    <script src="../../js/main.js"></script>
+    <script src="../../js/misiones.js"></script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Game 1: Complete the Sentence - Should Have</title>
+  <link rel="stylesheet" href="../static/juegos.css">
+</head>
+<body>
+
+  <header>
+    <h1>Game 1: Complete the Sentence</h1>
+  </header>
+
+  <main class="container">
+
+    <div class="question-card dark">
+      <div class="content">
+       
+        <div class="text">
+          <p>1. I ___ studied harder for the exam.</p>
+          <label><input type="radio" name="q1" value="a"> should have</label><br>
+          <label><input type="radio" name="q1" value="b"> should has</label><br>
+          <label><input type="radio" name="q1" value="c"> have should</label>
+          <div id="fb1" class="feedback"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="question-card light">
+      <div class="content">
+        
+        <div class="text">
+          <p>2. She ___ called her mother earlier.</p>
+          <label><input type="radio" name="q2" value="a"> should have</label><br>
+          <label><input type="radio" name="q2" value="b"> has should</label><br>
+          <label><input type="radio" name="q2" value="c"> should has</label>
+          <div id="fb2" class="feedback"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="question-card dark">
+      <div class="content">
+        
+        <div class="text">
+          <p>3. They ___ arrived on time to the meeting.</p>
+          <label><input type="radio" name="q3" value="a"> should have</label><br>
+          <label><input type="radio" name="q3" value="b"> should has</label><br>
+          <label><input type="radio" name="q3" value="c"> have should</label>
+          <div id="fb3" class="feedback"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="question-card light">
+      <div class="content">
+       
+        <div class="text">
+          <p>4. You ___ told me about the problem before.</p>
+          <label><input type="radio" name="q4" value="a"> should have</label><br>
+          <label><input type="radio" name="q4" value="b"> has should</label><br>
+          <label><input type="radio" name="q4" value="c"> should has</label>
+          <div id="fb4" class="feedback"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="question-card dark">
+      <div class="content">
+       
+        <div class="text">
+          <p>5. We ___ left earlier to avoid traffic.</p>
+          <label><input type="radio" name="q5" value="a"> should have</label><br>
+          <label><input type="radio" name="q5" value="b"> have should</label><br>
+          <label><input type="radio" name="q5" value="c"> should has</label>
+          <div id="fb5" class="feedback"></div>
+        </div>
+      </div>
+    </div>
+
+    <button class="btn-check" onclick="checkAnswers()">Check Answers</button>
+    <div id="result" class="result"></div>
+
+  </main>
+
+ 
+
+  <script>
+    function checkAnswers() {
+      const correctAnswers = { q1: 'a', q2: 'a', q3: 'a', q4: 'a', q5: 'a' };
+      let correct = 0;
+      let incorrect = 0;
+
+      for (let key in correctAnswers) {
+        const options = document.getElementsByName(key);
+        let selected = '';
+        for (const option of options) {
+          if (option.checked) {
+            selected = option.value;
+            break;
+          }
+        }
+        const feedback = document.getElementById("fb" + key.substring(1));
+        if (selected === correctAnswers[key]) {
+          correct++;
+          feedback.innerText = "Correct!";
+          feedback.className = "feedback correct";
+        } else {
+          incorrect++;
+          feedback.innerText = "Incorrect!";
+          feedback.className = "feedback incorrect";
+        }
+      }
+
+      const result = document.getElementById('result');
+      result.innerText = `You got ${correct} correct and ${incorrect} incorrect.`;
+    }
+  </script>
+
+</body>
+<button onclick="window.location.href='index_should-have.html'" class="btn-back">⬅ Back</button>
+</html>

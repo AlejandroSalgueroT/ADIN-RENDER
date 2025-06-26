@@ -1,0 +1,179 @@
+<<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Juego 3 - Might + Verb</title>
+  <link rel="stylesheet" href="../estilo.css">
+  <link rel="stylesheet" href="avatar.css">
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      color: #121212;
+      position: relative;
+    }
+
+    .split-horizontal {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+
+    .top-half {
+      height: 50%;
+      background-color: #ffffff;
+    }
+
+    .bottom-half {
+      height: 50%;
+      background-color: #1e1e2f;
+    }
+
+    main {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .btn {
+      margin: 10px;
+      padding: 10px 20px;
+      background-color: #252934;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .btn:hover { background-color: #3a3f50; }
+
+    .speak-btn { background-color: #00695c; }
+
+    .volver-container { margin-top: 30px; }
+
+    #resultado {
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin-top: 20px;
+    }
+
+    /* Avatar */
+    #avatar-container {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #dialog-box {
+      background-color: #fff;
+      border: 2px solid #333;
+      padding: 10px 16px;
+      border-radius: 12px;
+      font-size: 16px;
+      color: #000;
+      max-width: 300px;
+      margin-bottom: 12px;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+      text-align: center;
+    }
+
+    #avatar-pixelado {
+      width: 256px;
+      height: 256px;
+      background-image: url('../avatar.png');
+      background-size: 1024px 256px;
+      background-repeat: no-repeat;
+      background-position: 0 0;
+      image-rendering: pixelated;
+      cursor: pointer;
+    }
+
+    #avatar-pixelado.walking {
+      animation: walk 0.5s steps(4) infinite;
+    }
+
+    @keyframes walk {
+      from { background-position: 0 0; }
+      to { background-position: -1024px 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Fondo decorativo -->
+  <div class="split-horizontal">
+    <div class="top-half"></div>
+    <div class="bottom-half"></div>
+  </div>
+
+  <!-- Juego principal -->
+  <main>
+    <h1>Ordena la frase</h1>
+    <p>Palabras: <strong>might / travel / we</strong></p>
+    <input type="text" id="respuesta" placeholder="Escribe la frase completa">
+    <br><br>
+    <button class="btn" onclick="verificar()">Verificar</button>
+    <p id="resultado"></p>
+
+    <div class="volver-container">
+      <a href="../index.html" class="btn">⬅ Volver</a>
+    </div>
+
+    <!-- Botones para frases -->
+    <div>
+      <button class="btn speak-btn" onclick="speak()">🔊 Hablar</button>
+      <button class="btn" onclick="setFrase('She might be reading a book.')">Frase 1</button>
+      <button class="btn" onclick="setFrase('They might be doing homework.')">Frase 2</button>
+    </div>
+  </main>
+
+  <!-- Avatar interactivo -->
+  <div id="avatar-container">
+    <div id="dialog-box">Click a phrase or the avatar to hear it.</div>
+    <div id="avatar-pixelado" class="walking" onclick="speak()"></div>
+  </div>
+
+  <!-- Script funcional -->
+  <script>
+    function verificar() {
+      const r = document.getElementById("respuesta").value.trim().toLowerCase();
+      const resultado = document.getElementById("resultado");
+
+      if (r === "we might travel") {
+        resultado.textContent = "✅ ¡Correcto!";
+        resultado.style.color = "green";
+      } else {
+        resultado.textContent = "❌ Intenta otra vez.";
+        resultado.style.color = "red";
+      }
+    }
+
+    let currentText = "Hello! I'm your English assistant.";
+
+    function setFrase(texto) {
+      currentText = texto;
+      document.getElementById("dialog-box").innerText = texto;
+    }
+
+    function speak() {
+      const utterance = new SpeechSynthesisUtterance(currentText);
+      utterance.lang = "en-US";
+      utterance.pitch = 1;
+      utterance.rate = 1;
+      speechSynthesis.cancel();
+      speechSynthesis.speak(utterance);
+    }

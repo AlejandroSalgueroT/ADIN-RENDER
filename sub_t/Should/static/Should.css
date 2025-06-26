@@ -1,0 +1,218 @@
+/* ==================== RESET & GENERAL ==================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: radial-gradient(circle at center, #0d1117 0%, #1c1f26 100%);
+  color: #e5e5e5;
+  min-height: 100vh;
+  padding-bottom: 3rem;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+h1, h2, h3 {
+  text-align: center;
+  color: #66b2ff;
+  margin-bottom: 0.5em;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+h1 {
+  font-size: 2.2rem;
+  margin-top: 1.5rem;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+}
+
+h2 {
+  font-size: 1.8rem;
+  border-bottom: 2px solid #3388ff;
+  padding-bottom: 0.3em;
+  width: fit-content;
+  margin: 2rem auto 1rem auto;
+}
+
+h3 {
+  font-size: 1.3rem;
+  color: #d0d0d0;
+}
+
+/* ==================== CARDS ==================== */
+.card {
+  width: 90%;
+  max-width: 900px;
+  margin: 1.5rem auto;
+  padding: 1.8rem 2rem;
+  border-radius: 16px;
+  background: #1a1f26;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.35);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.45);
+}
+
+/* Alternancia visual entre tarjetas */
+.card:nth-child(even) {
+  background: #222831;
+}
+
+.card:nth-child(odd) {
+  background: #1a1f26;
+}
+
+/* ==================== BOTONES ==================== */
+.btn-go {
+  background-color: #3388ff;
+  color: white;
+  border: none;
+  padding: 0.7rem 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 1rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.btn-go:hover {
+  background-color: #1d6ddc;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+}
+
+.btn-back, .btn-finished {
+  background-color: #444c56;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+  transition: background-color 0.3s;
+}
+
+.btn-back:hover, .btn-finished:hover {
+  background-color: #5a616c;
+}
+
+/* ==================== FOOTER ==================== */
+.footer {
+  background-color: #13161b;
+  padding: 2rem 1rem;
+  color: #ccc;
+  border-top: 2px solid #3388ff;
+  box-shadow: 0 -6px 12px rgba(0,0,0,0.4);
+}
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.footer-left,
+.footer-center,
+.footer-right {
+  flex: 1 1 250px;
+}
+
+.footer-logo {
+  width: 60px;
+  height: auto;
+  margin-bottom: 0.5rem;
+  filter: drop-shadow(0 0 8px rgba(102,178,255,0.5));
+}
+
+/* ==================== BOT AVATAR ==================== */
+#bot-container {
+  position: fixed;
+  bottom: 90px;
+  left: 30px;
+  z-index: 1000;
+  cursor: grab;
+}
+
+#bot-avatar {
+  width: 100px;
+  height: auto;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  transition: transform 0.3s;
+}
+
+#bot-avatar:hover {
+  transform: scale(1.05);
+}
+
+#bot-text-box {
+  background: rgba(255, 255, 255, 0.9);
+  color: #111;
+  padding: 0.8rem 1rem;
+  border-radius: 10px;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  max-width: 260px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+#bot-controls {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  justify-content: center;
+}
+
+#bot-controls button {
+  background-color: #3388ff;
+  color: white;
+  border: none;
+  padding: 0.4rem 0.7rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  transition: background-color 0.3s;
+}
+
+#bot-controls button:hover {
+  background-color: #1d6ddc;
+}
+
+/* ==================== FEEDBACK (para quizzes) ==================== */
+.feedback {
+  font-size: 0.9rem;
+  margin-top: 0.3rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+  color: #fff;
+  opacity: 0.9;
+}
+
+.feedback.correct {
+  background-color: #2ecc71;
+}
+
+.feedback.incorrect {
+  background-color: #e74c3c;
+}
+
+.result {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 1.2rem;
+  color: #ffce54;
+}

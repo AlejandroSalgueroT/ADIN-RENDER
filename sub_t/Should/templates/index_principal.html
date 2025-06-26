@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Main Menu - Modal Verbs Practice</title>
+  <link rel="stylesheet" href="styles2.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f4f8;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #3388ff;
+    }
+    .menu {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 50px;
+    }
+    .menu-card {
+      background-color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      padding: 30px;
+      width: 300px;
+      text-align: center;
+      transition: transform 0.3s;
+    }
+    .menu-card:hover {
+      transform: translateY(-5px);
+    }
+    .menu-card h2 {
+      color: #444;
+    }
+    .btn-go {
+      background-color: #3388ff;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .btn-go:hover {
+      background-color: #2671cc;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Modal Verbs Practice Menu</h1>
+
+  <div class="menu">
+
+    <div class="menu-card">
+      <h2>Should (Simple)</h2>
+      <p>Advice and suggestions in the present.</p>
+      <button class="btn-go" onclick="window.location.href='ShouldPS.html'">Start</button>
+    </div>
+
+    <div class="menu-card">
+      <h2>Should Be</h2>
+      <p>Present continuous advice or expectations.</p>
+      <button class="btn-go" onclick="window.location.href='index_should-be.html'">Start</button>
+    </div>
+
+    <div class="menu-card">
+      <h2>Should Have</h2>
+      <p>Advice or criticism about past actions.</p>
+      <button class="btn-go" onclick="window.location.href='index_should-have.html'">Start</button>
+    </div>
+
+    <div class="menu-card">
+      <h2>Should Have Been</h2>
+      <p>Continuous actions that should have happened in the past.</p>
+      <button class="btn-go" onclick="window.location.href='ShouldPC.html'">Start</button>
+    </div>
+
+  </div>
+
+</body>
+</html>

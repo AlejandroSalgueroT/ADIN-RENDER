@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MAYBE - Misiones Interactivas</title>
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="icon" href="../../img/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- HUD de Videojuego -->
+    <nav class="hud">
+        <div class="hud-logo" aria-label="Logo RTN">RTN</div>
+        <div class="hud-user">
+            <img src="../../img/avatar.jpg" alt="Avatar de usuario" class="avatar-img" loading="lazy">
+            <span id="hud-username">Jugador</span>
+        </div>
+        <div class="hud-progress">
+            <label for="progress-bar" class="sr-only">Progreso de misiones</label>
+            <progress id="progress-bar" value="0" max="5"></progress>
+            <span id="progress-text">0/5</span>
+        </div>
+        <div class="hud-score">
+            <span>Puntos: <span id="score">0</span></span>
+        </div>
+    </nav>
+
+    <!-- Chatbox tipo NPC -->
+    <div id="avatar-chatbox" aria-live="polite">
+        <div id="thought-bubble" style="display:none;"></div>
+    </div>
+
+    <!-- ENCABEZADO -->
+    <header class="header">
+        <div class="logo" aria-label="Logo RTN">RTN</div>
+        <h1 class="titulo">MAYBE: Misiones Interactivas</h1>
+        <p class="subtitulo">¡Completa misiones, gana puntos y desbloquea logros!</p>
+    </header>
+
+    <!-- CUERPO PRINCIPAL -->
+    <!-- CUERPO PRINCIPAL -->
+    <!-- CUERPO PRINCIPAL -->
+    <main>
+        <section class="misiones" aria-label="Lista de misiones">
+
+            <!-- Misión 1 -->
+            <article class="mision-card" data-mision="1" tabindex="0" aria-label="Misión 1">
+                <div class="mision-header">
+                    <img src="../../img/1.png" alt="Imagen misión 1" class="mision-img" loading="lazy">
+                    <h2>🎮 Misión 1</h2>
+                </div>
+                <div class="mision-body">
+                    <p>Ella quizás ha olvidado las llaves. → <strong>She may have forgotten the keys.</strong></p>
+                    <div class="mision-interactiva">
+                        <label for="respuesta-1">¿La oración es gramaticalmente correcta?</label>
+                        <select id="respuesta-1" class="mision-input">
+                            <option value="">-- Elige una opción --</option>
+                            <option value="verdadero">Verdadero</option>
+                            <option value="falso">Falso</option>
+                        </select>
+                        <button class="btn-mision" data-mision="1">Enviar</button>
+                        <span class="mision-feedback" id="feedback-1"></span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Misión 2 -->
+            <article class="mision-card" data-mision="2" tabindex="0" aria-label="Misión 2">
+                <div class="mision-header">
+                    <img src="../../img/2.png" alt="Imagen misión 2" class="mision-img" loading="lazy">
+                    <h2>🎮 Misión 2</h2>
+                </div>
+                <div class="mision-body">
+                    <p>Ellos quizás han comido ya. → <strong>They may has eaten already.</strong></p>
+                    <div class="mision-interactiva">
+                        <label for="respuesta-2">¿La oración es gramaticalmente correcta?</label>
+                        <select id="respuesta-2" class="mision-input">
+                            <option value="">-- Elige una opción --</option>
+                            <option value="verdadero">Verdadero</option>
+                            <option value="falso">Falso</option>
+                        </select>
+                        <button class="btn-mision" data-mision="2">Enviar</button>
+                        <span class="mision-feedback" id="feedback-2"></span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Misión 3 -->
+            <article class="mision-card" data-mision="3" tabindex="0" aria-label="Misión 3">
+                <div class="mision-header">
+                    <img src="../../img/3.png" alt="Imagen misión 3" class="mision-img" loading="lazy">
+                    <h2>🎮 Misión 3</h2>
+                </div>
+                <div class="mision-body">
+                    <p>Tú quizás no hayas escuchado la noticia. → <strong>You may not have heard the news.</strong></p>
+                    <div class="mision-interactiva">
+                        <label for="respuesta-3">¿La oración es gramaticalmente correcta?</label>
+                        <select id="respuesta-3" class="mision-input">
+                            <option value="">-- Elige una opción --</option>
+                            <option value="verdadero">Verdadero</option>
+                            <option value="falso">Falso</option>
+                        </select>
+                        <button class="btn-mision" data-mision="3">Enviar</button>
+                        <span class="mision-feedback" id="feedback-3"></span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Misión 4 -->
+            <article class="mision-card" data-mision="4" tabindex="0" aria-label="Misión 4">
+                <div class="mision-header">
+                    <img src="../../img/4.png" alt="Imagen misión 4" class="mision-img" loading="lazy">
+                    <h2>🎮 Misión 4</h2>
+                </div>
+                <div class="mision-body">
+                    <p>Nosotros quizás hayamos terminado el proyecto. → <strong>We may have finished the
+                            project.</strong></p>
+                    <div class="mision-interactiva">
+                        <label for="respuesta-4">¿La oración es gramaticalmente correcta?</label>
+                        <select id="respuesta-4" class="mision-input">
+                            <option value="">-- Elige una opción --</option>
+                            <option value="verdadero">Verdadero</option>
+                            <option value="falso">Falso</option>
+                        </select>
+                        <button class="btn-mision" data-mision="4">Enviar</button>
+                        <span class="mision-feedback" id="feedback-4"></span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Misión 5 -->
+            <article class="mision-card" data-mision="5" tabindex="0" aria-label="Misión 5">
+                <div class="mision-header">
+                    <img src="../../img/5.png" alt="Imagen misión 5" class="mision-img" loading="lazy">
+                    <h2>🎮 Misión 5</h2>
+                </div>
+                <div class="mision-body">
+                    <p>Él quizás tener ido a casa. → <strong>He may to have gone home.</strong></p>
+                    <div class="mision-interactiva">
+                        <label for="respuesta-5">¿La oración es gramaticalmente correcta?</label>
+                        <select id="respuesta-5" class="mision-input">
+                            <option value="">-- Elige una opción --</option>
+                            <option value="verdadero">Verdadero</option>
+                            <option value="falso">Falso</option>
+                        </select>
+                        <button class="btn-mision" data-mision="5">Enviar</button>
+                        <span class="mision-feedback" id="feedback-5"></span>
+                    </div>
+                </div>
+            </article>
+
+            <section class="logros" aria-label="Logros desbloqueados">
+                <h2>🏆 Logros</h2>
+                <ul id="lista-logros">
+                    <li class="logro desbloqueado" id="logro-inicio">¡Bienvenido, aventurero!</li>
+                    <!-- Más logros se agregan dinámicamente -->
+                </ul>
+            </section>
+    </main>
+
+
+
+    <!-- PIE DE PÁGINA -->
+    <footer>
+        <div class="pie-superior">
+            <p>Página realizada y preparada mediante prácticas educativas</p>
+            <p>#RTN20</p>
+            <div class="logo-footer" aria-label="Logo RTN">RTN</div>
+            <button class="boton" aria-label="Finalizar"
+                onclick="window.location.href='../PerfectoContinuo/index_PerfContinuo.html'">Finalizar</button>
+            <button class="boton" aria-label="Volver" id="btn-volver" style="margin-left: 1rem;"
+                onclick="window.location.href='../Logros/logros.html';">
+                Volver
+            </button>
+            <address class="contacto">
+                <p>Contact us at:</p>
+                <p><a href="mailto:rtncontact@gmail.com">📧 rtncontact@gmail.com</a></p>
+                <p>📸 rtn_school</p>
+                <p>📍 Ciudad-Colegio</p>
+            </address>
+        </div>
+        <p class="derechos">© RTN 2025. All rights reserved.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../../js/three.min.js"></script>
+    <script src="../../js/GLTFLoader.js"></script>
+    <script src="../../js/main.js"></script>
+    <script src="../../js/misiones.js"></script>
+    <script>
+        // Ejemplo de lógica JS para misiones interactivas y gamificación
+        const respuestas = [
+            "verdadero",  // Misión 1 - correcta
+            "falso",      // Misión 2 - incorrecta
+            "verdadero",  // Misión 3 - correcta
+            "verdadero",  // Misión 4 - correcta
+            "falso"       // Misión 5 - incorrecta
+        ];
+
+        let score = 0;
+        let completadas = 0;
+        const total = 5;
+        const logros = [
+            { id: "logro-1", texto: "¡Primera misión completada!" },
+            { id: "logro-2", texto: "¡Mitad de misiones completadas!" },
+            { id: "logro-3", texto: "¡Todas las misiones completadas!" }
+        ];
+
+        // Deshabilitar el botón finalizar al inicio
+        const btnFinalizar = document.querySelector('button[aria-label="Finalizar"]');
+        if (btnFinalizar) {
+            btnFinalizar.disabled = true;
+            btnFinalizar.style.opacity = "0.6";
+            btnFinalizar.style.cursor = "not-allowed";
+        }
+
+        document.querySelectorAll('.btn-mision').forEach(btn => {
+            btn.addEventListener('click', function () {
+                const mision = parseInt(this.dataset.mision, 10) - 1;
+                const input = document.getElementById(`respuesta-${mision + 1}`);
+                const feedback = document.getElementById(`feedback-${mision + 1}`);
+                if (!input.value) {
+                    feedback.textContent = "¡Selecciona una opción!";
+                    feedback.className = "mision-feedback error";
+                    return;
+                }
+                // Permitir avanzar aunque la respuesta sea incorrecta
+                if (!btn.classList.contains('completada')) {
+                    completadas += 1;
+                    btn.classList.add('completada');
+                    let resultado = "incorrecta";
+                    if (input.value.trim().toLowerCase() === respuestas[mision]) {
+                        resultado = "correcta";
+                        score += 100;
+                        feedback.textContent = "¡Correcto! +100 puntos";
+                        feedback.className = "mision-feedback correcto";
+                    } else {
+                        feedback.textContent = "Incorrecto, pero puedes avanzar.";
+                        feedback.className = "mision-feedback error";
+                    }
+                    // Guardar resultado en localStorage
+                    let resultadosPerfecto = JSON.parse(localStorage.getItem('resultadosPerfecto') || '{}');
+                    resultadosPerfecto[`mision${mision+1}`] = resultado;
+                    localStorage.setItem('resultadosPerfecto', JSON.stringify(resultadosPerfecto));
+
+                    input.disabled = true;
+                    btn.disabled = true;
+                    document.getElementById('score').textContent = score;
+                    document.getElementById('progress-bar').value = completadas;
+                    document.getElementById('progress-text').textContent = `${completadas}/${total}`;
+                    // Logros
+                    if (completadas === 1) desbloquearLogro(logros[0]);
+                    if (completadas === 3) desbloquearLogro(logros[1]);
+                    if (completadas === total) {
+                        desbloquearLogro(logros[2]);
+                        // Habilitar botón finalizar
+                        if (btnFinalizar) {
+                            btnFinalizar.disabled = false;
+                            btnFinalizar.style.opacity = "1";
+                            btnFinalizar.style.cursor = "pointer";
+                        }
+                    }
+                }
+            });
+        });
+
+        // Cuando desbloqueas un logro
+        function desbloquearLogro(logro) {
+          if (!document.getElementById(logro.id)) {
+            const li = document.createElement('li');
+            li.className = "logro desbloqueado";
+            li.id = logro.id;
+            li.textContent = logro.texto;
+            document.getElementById('lista-logros')?.appendChild(li);
+
+            // Guarda el logro en localStorage
+            let logrosGuardados = JSON.parse(localStorage.getItem('logrosDesbloqueados') || '[]');
+            if (!logrosGuardados.includes(logro.id)) {
+              logrosGuardados.push(logro.id);
+              localStorage.setItem('logrosDesbloqueados', JSON.stringify(logrosGuardados));
+            }
+          }
+        }
+    </script>
+</body>
+
+</html>

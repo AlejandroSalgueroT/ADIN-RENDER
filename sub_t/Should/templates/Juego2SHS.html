@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Game 2: Choose the Correct Sentence</title>
+ <link rel="stylesheet" href="../static/juegos.css">
+</head>
+<body>
+
+  <header>
+    <h1>Game 2: Multiple Choice</h1>
+    <p>Choose the grammatically correct sentence in each case.</p>
+  </header>
+
+  <main class="container">
+
+    <div class="question-card dark">
+      <div class="content">
+     
+        <div class="text">
+          <p>1. Which is correct?</p>
+          <label><input type="radio" name="q1" value="a"> You should to sleep early.</label><br>
+          <label><input type="radio" name="q1" value="b"> You should sleep early.</label>
+          <div id="fb1" class="feedback"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="question-card light">
+      <div class="content">
+       
+        <div class="text">
+          <p>2. Which is correct?</p>
+          <label><input type="radio" name="q2" value="a"> He shouldn't eats fast food.</label><br>
+          <label><input type="radio" name="q2" value="b"> He shouldn't eat fast food.</label>
+          <div id="fb2" class="feedback"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="question-card dark">
+      <div class="content">
+        
+        <div class="text">
+          <p>3. Which is correct?</p>
+          <label><input type="radio" name="q3" value="a"> Should goes we now?</label><br>
+          <label><input type="radio" name="q3" value="b"> Should we go now?</label>
+          <div id="fb3" class="feedback"></div>
+        </div>
+      </div>
+    </div>
+
+    <button class="btn-check" onclick="checkAnswers()">Check Answers</button>
+    <div id="result" class="result"></div>
+
+  </main>
+
+  <footer>
+    <button class="btn-back" onclick="window.location.href='ShouldPS.html'">⬅ Back</button>
+  </footer>
+
+  <script>
+    function checkAnswers() {
+      const answers = {
+        q1: 'b',
+        q2: 'b',
+        q3: 'b'
+      };
+
+      let correct = 0;
+      let incorrect = 0;
+
+      for (let key in answers) {
+        const options = document.getElementsByName(key);
+        let selected = '';
+        for (const opt of options) {
+          if (opt.checked) {
+            selected = opt.value;
+            break;
+          }
+        }
+
+        const fb = document.getElementById("fb" + key.substring(1));
+        if (selected === answers[key]) {
+          correct++;
+          fb.innerText = "Correct!";
+          fb.className = "feedback correct";
+        } else {
+          incorrect++;
+          fb.innerText = "Incorrect!";
+          fb.className = "feedback incorrect";
+        }
+      }
+
+      document.getElementById("result").innerText = `You got ${correct} correct and ${incorrect} incorrect.`;
+    }
+  </script>
+
+</body>
+</html>

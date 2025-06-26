@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MAYBE - Misiones Interactivas</title>
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="icon" href="../../img/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- HUD de Videojuego -->
+    <nav class="hud">
+        <div class="hud-logo" aria-label="Logo RTN">RTN</div>
+        <div class="hud-user">
+            <img src="../../img/avatar.jpg" alt="Avatar de usuario" class="avatar-img" loading="lazy">
+            <span id="hud-username">Jugador</span>
+        </div>
+        <div class="hud-progress">
+            <label for="progress-bar" class="sr-only">Progreso de misiones</label>
+            <progress id="progress-bar" value="0" max="5"></progress>
+            <span id="progress-text">0/5</span>
+        </div>
+        <div class="hud-score">
+            <span>Puntos: <span id="score">0</span></span>
+        </div>
+    </nav>
+
+    <!-- Agrega esto para mostrar los logros -->
+
+
+    <!-- Chatbox tipo NPC -->
+    <div id="avatar-chatbox" aria-live="polite">
+        <div id="thought-bubble" style="display:none;"></div>
+    </div>
+
+    <!-- ENCABEZADO -->
+    <header class="header">
+        <div class="logo" aria-label="Logo RTN">RTN</div>
+        <h1 class="titulo">MAYBE: Misiones Interactivas</h1>
+        <p class="subtitulo">¡Completa misiones, gana puntos y desbloquea logros!</p>
+    </header>
+
+    <!-- CUERPO PRINCIPAL -->
+    <!-- CUERPO PRINCIPAL -->
+    <!-- CUERPO PRINCIPAL -->
+    <main>
+        <section class="misiones" aria-label="Lista de misiones">
+
+            <!-- Misión 1 -->
+            <article class="mision-card" data-mision="1" tabindex="0" aria-label="Misión 1">
+                <div class="mision-header">
+                    <img src="../../img/1.png" alt="Imagen misión 1" class="mision-img" loading="lazy">
+                    <h2>🎮 Misión 1</h2>
+                </div>
+                <div class="mision-body">
+                    <p>Ella quizás esté estudiando ahora.</p>
+                    <div class="ejemplo">Ejemplo: <span>She may be studying now.</span></div>
+                    <div class="mision-interactiva">
+                        <label for="respuesta-1">Selecciona la opción correcta:</label>
+                        <select id="respuesta-1" class="mision-input">
+                            <option value="">-- Elige una opción --</option>
+                            <option value="she may study now">She may study now</option>
+                            <option value="she may be studying now">She may be studying now</option>
+                            <option value="she is studying now">She is studying now</option>
+                        </select>
+                        <button class="btn-mision" data-mision="1">Enviar</button>
+                        <span class="mision-feedback" id="feedback-1"></span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Misión 2 -->
+            <article class="mision-card" data-mision="2" tabindex="0" aria-label="Misión 2">
+                <div class="mision-header">
+                    <img src="../../img/2.png" alt="Imagen misión 2" class="mision-img" loading="lazy">
+                    <h2>🎮 Misión 2</h2>
+                </div>
+                <div class="mision-body">
+                    <p>Ellos quizás estén jugando fútbol.</p>
+                    <div class="ejemplo">Ejemplo: <span>They may be playing football.</span></div>
+                    <div class="mision-interactiva">
+                        <label for="respuesta-2">Selecciona la opción correcta:</label>
+                        <select id="respuesta-2" class="mision-input">
+                            <option value="">-- Elige una opción --</option>
+                            <option value="they may be playing football">They may be playing football</option>
+                            <option value="they play football now">They play football now</option>
+                            <option value="they may play football">They may play football</option>
+                        </select>
+                        <button class="btn-mision" data-mision="2">Enviar</button>
+                        <span class="mision-feedback" id="feedback-2"></span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Misión 3 -->
+            <article class="mision-card" data-mision="3" tabindex="0" aria-label="Misión 3">
+                <div class="mision-header">
+                    <img src="../../img/3.png" alt="Imagen misión 3" class="mision-img" loading="lazy">
+                    <h2>🎮 Misión 3</h2>
+                </div>
+                <div class="mision-body">
+                    <p>Tú quizás estés leyendo un libro.</p>
+                    <div class="ejemplo">Ejemplo: <span>You may be reading a book.</span></div>
+                    <div class="mision-interactiva">
+                        <label for="respuesta-3">Selecciona la opción correcta:</label>
+                        <select id="respuesta-3" class="mision-input">
+                            <option value="">-- Elige una opción --</option>
+                            <option value="you may be reading a book">You may be reading a book</option>
+                            <option value="you may read a book">You may read a book</option>
+                            <option value="you are reading a book">You are reading a book</option>
+                        </select>
+                        <button class="btn-mision" data-mision="3">Enviar</button>
+                        <span class="mision-feedback" id="feedback-3"></span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Misión 4 -->
+            <article class="mision-card" data-mision="4" tabindex="0" aria-label="Misión 4">
+                <div class="mision-header">
+                    <img src="../../img/4.png" alt="Imagen misión 4" class="mision-img" loading="lazy">
+                    <h2>🎮 Misión 4</h2>
+                </div>
+                <div class="mision-body">
+                    <p>Nosotros quizás estemos cocinando la cena.</p>
+                    <div class="ejemplo">Ejemplo: <span>We may be cooking dinner.</span></div>
+                    <div class="mision-interactiva">
+                        <label for="respuesta-4">Selecciona la opción correcta:</label>
+                        <select id="respuesta-4" class="mision-input">
+                            <option value="">-- Elige una opción --</option>
+                            <option value="we may cook dinner">We may cook dinner</option>
+                            <option value="we may be cooking dinner">We may be cooking dinner</option>
+                            <option value="we are cooking dinner">We are cooking dinner</option>
+                        </select>
+                        <button class="btn-mision" data-mision="4">Enviar</button>
+                        <span class="mision-feedback" id="feedback-4"></span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Misión 5 -->
+            <article class="mision-card" data-mision="5" tabindex="0" aria-label="Misión 5">
+                <div class="mision-header">
+                    <img src="../../img/5.png" alt="Imagen misión 5" class="mision-img" loading="lazy">
+                    <h2>🎮 Misión 5</h2>
+                </div>
+                <div class="mision-body">
+                    <p>Ellos quizás estén jugando fútbol.</p>
+                    <div class="ejemplo">Ejemplo: <span>They may be playing football.</span></div>
+                    <div class="mision-interactiva">
+                        <label for="respuesta-5">Selecciona la opción correcta:</label>
+                        <select id="respuesta-5" class="mision-input">
+                            <option value="">-- Elige una opción --</option>
+                            <option value="they may be playing football">They may be playing football</option>
+                            <option value="they play football now">They play football now</option>
+                            <option value="they may play football">They may play football</option>
+                        </select>
+                        <button class="btn-mision" data-mision="5">Enviar</button>
+                        <span class="mision-feedback" id="feedback-5"></span>
+                    </div>
+                </div>
+            </article>
+            <section class="logros" aria-label="Logros desbloqueados">
+                <h2>🏆 Logros</h2>
+                <ul id="lista-logros">
+                    <li class="logro desbloqueado" id="logro-inicio">¡Bienvenido, aventurero!</li>
+                    <!-- Más logros se agregan dinámicamente -->
+                </ul>
+            </section>
+    </main>
+
+    <!-- PIE DE PÁGINA -->
+    <footer>
+        <div class="pie-superior">
+            <tr></tr>
+            <p>Página realizada y preparada mediante prácticas educativas</p>
+            <p>#RTN20</p>
+            <div class="logo-footer" aria-label="Logo RTN">RTN</div>
+            <button class="boton" aria-label="Finalizar" id="btn-finalizar" disabled
+                style="opacity:0.6;cursor:not-allowed;">
+                Finalizar
+            </button>
+            <button class="boton" aria-label="Volver" id="btn-volver" style="margin-left: 1rem;"
+                onclick="window.location.href='../Logros/logros.html';">
+                Volver
+            </button>
+            <address class="contacto">
+                <p>Contact us at:</p>
+                <p><a href="mailto:rtncontact@gmail.com">📧 rtncontact@gmail.com</a></p>
+                <p>📸 rtn_school</p>
+                <p>📍 Ciudad-Colegio</p>
+            </address>
+        </div>
+        <p class="derechos">© RTN 2025. All rights reserved.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../../js/three.min.js"></script>
+    <script src="../../js/GLTFLoader.js"></script>
+    <script src="../../js/main.js"></script>
+    <script src="../../js/misiones.js"></script>
+    <script>
+        // Ejemplo de lógica JS para misiones interactivas y gamificación
+        const respuestas = [
+            "she may be studying now",
+            "they may be playing football",
+            "you may be reading a book",
+            "we may be cooking dinner",
+            "they may be playing football"
+        ];
+
+        let score = 0;
+        let completadas = 0;
+        const total = 5;
+        const logros = [
+            { id: "logro-1", texto: "¡Primera misión completada!" },
+            { id: "logro-2", texto: "¡Mitad de misiones completadas!" },
+            { id: "logro-3", texto: "¡Todas las misiones completadas!" }
+        ];
+
+        document.querySelectorAll('.btn-mision').forEach(btn => {
+            btn.addEventListener('click', function () {
+                const mision = parseInt(this.dataset.mision, 10) - 1;
+                const input = document.getElementById(`respuesta-${mision + 1}`);
+                const feedback = document.getElementById(`feedback-${mision + 1}`);
+                if (!input.value) {
+                    feedback.textContent = "¡Selecciona una opción!";
+                    feedback.className = "mision-feedback error";
+                    return;
+                }
+                // Permitir avanzar aunque la respuesta sea incorrecta
+                if (!btn.classList.contains('completada')) {
+                    completadas += 1;
+                    btn.classList.add('completada');
+                    let resultado = "incorrecta";
+                    if (input.value.trim().toLowerCase() === respuestas[mision]) {
+                        score += 100;
+                        feedback.textContent = "¡Correcto! +100 puntos";
+                        feedback.className = "mision-feedback correcto";
+                        resultado = "correcta";
+                    } else {
+                        feedback.textContent = "Incorrecto, pero puedes avanzar.";
+                        feedback.className = "mision-feedback error";
+                    }
+                    // Guarda el resultado de la misión
+                    let resultados = JSON.parse(localStorage.getItem('resultadosMisiones') || '{}');
+                    resultados[`mision${mision+1}`] = resultado;
+                    localStorage.setItem('resultadosMisiones', JSON.stringify(resultados));
+
+                    input.disabled = true;
+                    btn.disabled = true;
+                    document.getElementById('score').textContent = score;
+                    document.getElementById('progress-bar').value = completadas;
+                    document.getElementById('progress-text').textContent = `${completadas}/${total}`;
+                    // Logros
+                    if (completadas === 1) desbloquearLogro(logros[0]);
+                    if (completadas === 3) desbloquearLogro(logros[1]);
+                    if (completadas === total) {
+                        desbloquearLogro(logros[2]);
+                        // Habilitar botón finalizar
+                        const btnFinalizar = document.getElementById('btn-finalizar');
+                        btnFinalizar.disabled = false;
+                        btnFinalizar.style.opacity = "1";
+                        btnFinalizar.style.cursor = "pointer";
+                        btnFinalizar.onclick = function () {
+                            window.location.href = '../Perfecto/index_Perfecto.html';
+                        };
+                    }
+                }
+            });
+        });
+
+        // Cuando desbloqueas un logro
+        function desbloquearLogro(logro) {
+          if (!document.getElementById(logro.id)) {
+            const li = document.createElement('li');
+            li.className = "logro desbloqueado";
+            li.id = logro.id;
+            li.textContent = logro.texto;
+            document.getElementById('lista-logros')?.appendChild(li);
+
+            // Guarda el logro en localStorage
+            let logrosGuardados = JSON.parse(localStorage.getItem('logrosDesbloqueados') || '[]');
+            if (!logrosGuardados.includes(logro.id)) {
+              logrosGuardados.push(logro.id);
+              localStorage.setItem('logrosDesbloqueados', JSON.stringify(logrosGuardados));
+            }
+          }
+        }
+    </script>
+</body>
+
+</html>

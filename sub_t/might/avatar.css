@@ -1,0 +1,48 @@
+#avatar-container {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#avatar-pixelado {
+  width: 128px;
+  height: 128px;
+  background-image: url('../avatar.png');
+  background-size: 512px 128px;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  image-rendering: pixelated;
+  position: relative; /* NECESARIO para que el dialog-box flote encima */
+}
+
+#avatar-pixelado.walking {
+  animation: walk 0.5s steps(4) infinite;
+}
+
+@keyframes walk {
+  from { background-position: 0 0; }
+  to { background-position: -512px 0; }
+}
+
+#dialog-box {
+  position: absolute;
+  bottom: 135px; /* Ajusta según el tamaño del avatar */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #fff;
+  border: 2px solid #333;
+  padding: 8px 14px;
+  border-radius: 12px;
+  font-size: 14px;
+  color: #000;
+  max-width: 260px;
+  display: none;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  z-index: 1001;
+}

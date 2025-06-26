@@ -1,0 +1,149 @@
+/* ===== Estilos Globales ===== */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to right, #ffffff 50%, #121212 50%);
+  color: #121212;
+      position: relative;
+      box-sizing: border-box;
+}
+
+
+    
+    /* Fondo mitad blanco, mitad oscuro */
+    .split-horizontal {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+
+    .top-half {
+      height: 50%;
+      background-color: #ffffff;
+    }
+
+    .bottom-half {
+      height: 50%;
+      background-color: #1e1e2f;
+    }
+
+    main {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    h1 {
+      color: #121212;
+    }
+
+    p {
+      font-size: 1.1rem;
+    }
+
+    select {
+      padding: 10px;
+      margin: 20px auto;
+      border-radius: 8px;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      display: block;
+    }
+
+    #resultado {
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      display: inline-block;
+      margin: 10px;
+      padding: 10px 20px;
+      background-color: #252934;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #3a3f50;
+    }
+
+    .speak-btn {
+      background-color: #00695c;
+    }
+
+
+
+
+#game-area {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #cceeff;
+}
+
+/* ===== Avatar Pixelado ===== */
+#avatar-pixelado {
+  position: absolute;
+  bottom: 20px;
+  left: 50px;
+  width: 32px;
+  height: 32px;
+  background-image: url('avatar.png');  /* Sprite: 4 frames en línea horizontal */
+  background-size: 128px 32px;          /* 4 frames x 32px */
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  image-rendering: pixelated;
+  z-index: 1000;
+  transition: left 0.1s linear;         /* Movimiento suave */
+}
+
+/* Animación de caminar */
+#avatar-pixelado.walking {
+  animation: walk 0.5s steps(4) infinite;
+}
+
+@keyframes walk {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -128px 0;  /* 4 frames x 32px */
+  }
+}
+
+
+/* Opcional: Direcciones si tienes más filas de sprites */
+.walk-down  { background-position: 0px 0px; }
+.walk-up    { background-position: -32px 0px; }
+.walk-left  { background-position: -64px 0px; }
+.walk-right { background-position: -96px 0px; }
+
+/* ===== Caja de Diálogo ===== */
+#dialog-box {
+  position: absolute;
+  bottom: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #ffffff;
+  border: 2px solid #333;
+  padding: 10px 20px;
+  font-size: 14px;
+  max-width: 300px;
+  border-radius: 10px;
+  display: none;
+  z-index: 999;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}

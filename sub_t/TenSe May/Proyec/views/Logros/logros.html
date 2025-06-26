@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Logros - MAYBE</title>
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="icon" href="../../img/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    
+    <nav class="hud">
+        <div class="hud-logo" aria-label="Logo RTN">RTN</div>
+        <div class="hud-user">
+            <img src="../../img/avatar.jpg" alt="Avatar de usuario" class="avatar-img" loading="lazy">
+            <span id="hud-username">Jugador</span>
+        </div>
+        <div class="hud-score">
+            <span>Puntos: <span id="score">0</span></span>
+        </div>
+    </nav>
+
+    <div id="avatar-chatbox" aria-live="polite">
+    <div id="thought-bubble" style="display:none;"></div>
+  </div>
+    <header class="header">
+        <div class="logo" aria-label="Logo RTN">RTN</div>
+        <h1 class="titulo">🏆 Logros Desbloqueados</h1>
+        <p class="subtitulo">¡Sigue aprendiendo y consigue todos los logros!</p>
+    </header>
+    <main>
+        <section class="logros">
+            <ul id="lista-logros">
+                <li class="logro" id="logro-inicio">¡Bienvenido, aventurero!</li>
+                <li class="logro" id="logro-1">¡Primera misión completada!</li>
+                <li class="logro" id="logro-2">¡Mitad de misiones completadas!</li>
+                <li class="logro" id="logro-3">¡Todas las misiones completadas!</li>
+                <li class="logro" id="logro-extra">Responde 5 misiones seguidas correctamente</li>
+                <li class="logro" id="logro-teoria">Explora la sección de teoría</li>
+            </ul>
+        </section>
+        <div class="intro-botones">
+            <a href="../Logros/logros.html" class="boton">Inicio</a>
+            <a href="../Simple/index_Simple.html" class="boton">Misiones</a>
+            <a href="../../teoria.html" class="boton">Teoría</a>
+        </div>
+        <div class="resumen-container">
+            <ul id="resumen-simple"></ul>
+            <ul id="resumen-continuo"></ul>
+            <ul id="resumen-perfecto"></ul>
+            <ul id="resumen-perfcontinuo"></ul>
+        </div>
+    </main>
+    <footer>
+        <div class="pie-superior">
+            <p>Página realizada y preparada mediante prácticas educativas</p>
+            <div class="logo-footer" aria-label="Logo RTN">RTN</div>
+        </div>
+        <p class="derechos">© RTN 2025. All rights reserved.</p>
+    </footer>
+
+
+
+    <script src="../../js/three.min.js"></script>
+    <script src="../../js/GLTFLoader.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        // Al cargar la página de logros
+        document.addEventListener('DOMContentLoaded', function () {
+            // Logros desbloqueados guardados
+            const logrosDesbloqueados = JSON.parse(localStorage.getItem('logrosDesbloqueados') || '[]');
+            // Siempre desbloqueado el de bienvenida
+            document.getElementById('logro-inicio').classList.add('desbloqueado');
+            // Marca los logros desbloqueados
+            logrosDesbloqueados.forEach(id => {
+                const li = document.getElementById(id);
+                if (li) li.classList.add('desbloqueado');
+            });
+        });
+
+        // En index_Perfecto.html o la página de resultados
+        document.addEventListener('DOMContentLoaded', function () {
+            const resultados = JSON.parse(localStorage.getItem('resultadosMisiones') || '{}');
+            const resumen = document.getElementById('resumen-misiones');
+            for (let i = 1; i <= 5; i++) {
+                const estado = resultados[`mision${i}`] === "correcta" ? "✅ Correcta" : "❌ Incorrecta";
+                const li = document.createElement('li');
+                li.textContent = `Misión ${i}: ${estado}`;
+                resumen.appendChild(li);
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            // Mostrar resumen de misiones de Continuo
+            const resultados = JSON.parse(localStorage.getItem('resultadosMisiones') || '{}');
+            const resumen = document.getElementById('resumen-continuo');
+            resumen.innerHTML = "<h3>Resultado de misiones (Continuo):</h3>";
+            let hayResultados = false;
+            for (let i = 1; i <= 5; i++) {
+                if (resultados[`mision${i}`]) {
+                    hayResultados = true;
+                    const estado = resultados[`mision${i}`] === "correcta" ? "✅ Correcta" : "❌ Incorrecta";
+                    const li = document.createElement('li');
+                    li.textContent = `Misión ${i}: ${estado}`;
+                    resumen.appendChild(li);
+                }
+            }
+            if (!hayResultados) {
+                resumen.innerHTML += "<li>No has completado misiones de Continuo aún.</li>";
+            }
+        });
+    </script>
+
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Mostrar resumen de misiones de Perfecto
+            const resultados = JSON.parse(localStorage.getItem('resultadosPerfecto') || '{}');
+            const resumen = document.getElementById('resumen-perfecto');
+            resumen.innerHTML = "<h3>Resultado Perfecto:</h3>";
+            let hayResultados = false;
+            for (let i = 1; i <= 5; i++) {
+                if (resultados[`mision${i}`]) {
+                    hayResultados = true;
+                    const estado = resultados[`mision${i}`] === "correcta" ? "✅ Correcta" : "❌ Incorrecta";
+                    const li = document.createElement('li');
+                    li.textContent = `Misión ${i}: ${estado}`;
+                    resumen.appendChild(li);
+                }
+            }
+            if (!hayResultados) {
+                resumen.innerHTML += "<li>No has completado misiones de Perfecto aún.</li>";
+            }
+        });
+    </script>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Mostrar resumen de misiones de Perfecto Continuo
+            const resultados = JSON.parse(localStorage.getItem('resultadosPerfContinuo') || '{}');
+            const resumen = document.getElementById('resumen-perfcontinuo');
+            resumen.innerHTML = "<h3>Resultado Perfecto Continuo:</h3>";
+            let hayResultados = false;
+            for (let i = 1; i <= 5; i++) {
+                if (resultados[`mision${i}`]) {
+                    hayResultados = true;
+                    const estado = resultados[`mision${i}`] === "correcta" ? "✅ Correcta" : "❌ Incorrecta";
+                    const li = document.createElement('li');
+                    li.textContent = `Misión ${i}: ${estado}`;
+                    resumen.appendChild(li);
+                }
+            }
+            if (!hayResultados) {
+                resumen.innerHTML += "<li>No has completado misiones de Perfecto Continuo aún.</li>";
+            }
+        });
+    </script>
+
+
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Mostrar resumen de misiones de Simple
+            const resultados = JSON.parse(localStorage.getItem('resultadosSimple') || '{}');
+            const resumen = document.getElementById('resumen-simple');
+            resumen.innerHTML = "<h3>Resumen Simple:</h3>";
+            let hayResultados = false;
+            for (let i = 1; i <= 5; i++) {
+                if (resultados[`mision${i}`]) {
+                    hayResultados = true;
+                    const estado = resultados[`mision${i}`] === "correcta" ? "✅ Correcta" : "❌ Incorrecta";
+                    const li = document.createElement('li');
+                    li.textContent = `Misión ${i}: ${estado}`;
+                    resumen.appendChild(li);
+                }
+            }
+            if (!hayResultados) {
+                resumen.innerHTML += "<li>No has completado misiones de Simple aún.</li>";
+            }
+        });
+    </script>
+</body>
+
+</html>

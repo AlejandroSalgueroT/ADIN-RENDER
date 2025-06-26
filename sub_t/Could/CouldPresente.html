@@ -1,0 +1,686 @@
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Could en el presente</title>
+        <link rel="stylesheet" href="PresenteSimple.css" />
+        <style>
+    /* Avatar que camina desde la derecha hasta el centro */
+    @keyframes walk-left {
+    0% { left: 100%; }
+    100% { left: 50%; transform: translate(-50%, -50%); }
+    }
+
+    /* Avatar que sale caminando hacia la izquierda y desaparece */
+    @keyframes walk-left-out {
+    0% {
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    100% {
+        left: 0;
+        transform: translateY(-50%);
+    }
+    }
+
+    .avatar-walking {
+    position: fixed;
+    top: 50%;
+    left: 100%;
+    transform: translateY(-50%);
+    animation: walk-left 5s linear forwards;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    pointer-events: none;
+    }
+
+    .avatar-walking.walk-out {
+    animation: walk-left-out 5s linear forwards;
+    }
+
+    .avatar-static {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    pointer-events: none;
+    }
+
+    .bubble {
+    background: #fff;
+    color: #333;
+    padding: 8px 12px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-family: sans-serif;
+    margin-bottom: 4px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    max-width: 280px;          /* Limita el ancho máximo */
+    white-space: normal;       /* Permite saltos de línea */
+    word-wrap: break-word;     /* Asegura que las palabras largas se corten */
+    text-align: center;
+    }
+
+    .sprite-avatar {
+    width: 110px;
+    height: 128px;
+    background-image: url('img/ginocaminando.png');
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: 512px 128px;
+    animation: sprite-walk 0.8s steps(4) infinite;
+    image-rendering: pixelated;
+    transform: scaleX(-1);
+    }
+
+    @keyframes sprite-walk {
+    from { background-position: 0 0; }
+    to { background-position: -512px 0; }
+    }
+
+    .avatar-img {
+    width: 128px;
+    height: 128px;
+    image-rendering: pixelated;
+    }
+
+        </style>
+
+    </head>
+    <body>
+
+    <header>
+        <img src="logo.png" class="logo" alt="Logo" />
+        <i class="user-icon">👤</i>
+        <h1 class="title">COULD</h1>
+    </header>
+
+    <main class="exercise-container">
+
+<section class="level" id="could-presente">
+  <h2>Uso de "Could" en Presente</h2>
+
+  <div class="exercise-card">
+    <h3>Ejercicio 1</h3>
+    <p>He <input type="text" id="could_input1" placeholder="completa con could + verbo" /> to school every day.</p>
+    <button onclick="checkInput('could_input1', 'could go', 'could_result1')">Verificar</button>
+    <p id="could_result1"></p>
+    <p class="grammar-note">[Estructura: sujeto + could + verbo base]</p>
+  </div>
+
+  <div class="exercise-card">
+    <h3>Ejercicio 2</h3>
+    <select id="could_select2">
+      <option>could goes</option>
+      <option>could go</option>
+      <option>went</option>
+    </select>
+    <p>She _____ to the gym every morning.</p>
+    <button onclick="checkSelect('could_select2', 'could go', 'could_result2')">Verificar</button>
+    <p id="could_result2"></p>
+  </div>
+
+  <div class="exercise-card">
+    <h3>Ejercicio 3</h3>
+    <p>They <input type="text" id="could_input3" placeholder="completa con could + verbo" /> pizza every Friday.</p>
+    <button onclick="checkInput('could_input3', 'could eat', 'could_result3')">Verificar</button>
+    <p id="could_result3"></p>
+  </div>
+
+  <div class="exercise-card">
+    <h3>Ejercicio 4</h3>
+    <select id="could_select4">
+      <option>could buys</option>
+      <option>could buy</option>
+      <option>bought</option>
+    </select>
+    <p>She _____ a new dress every month.</p>
+    <button onclick="checkSelect('could_select4', 'could buy', 'could_result4')">Verificar</button>
+    <p id="could_result4"></p>
+  </div>
+
+  <div class="exercise-card">
+    <h3>Ejercicio 5</h3>
+    <p>I <input type="text" id="could_input5" placeholder="completa con could + verbo" /> a movie every weekend.</p>
+    <button onclick="checkInput('could_input5', 'could watch', 'could_result5')">Verificar</button>
+    <p id="could_result5"></p>
+  </div>
+
+  <div class="exercise-card">
+    <h3>Ejercicio 6</h3>
+    <select id="could_select6">
+      <option>could sees</option>
+      <option>could saw</option>
+      <option>could see</option>
+    </select>
+    <p>We _____ a dog in the park every morning.</p>
+    <button onclick="checkSelect('could_select6', 'could see', 'could_result6')">Verificar</button>
+    <p id="could_result6"></p>
+  </div>
+
+  <div class="exercise-card">
+    <h3>Ejercicio 7</h3>
+    <p>My dad <input type="text" id="could_input7" placeholder="completa con could + verbo" /> a cake on Sundays.</p>
+    <button onclick="checkInput('could_input7', 'could bake', 'could_result7')">Verificar</button>
+    <p id="could_result7"></p>
+  </div>
+
+  <div class="exercise-card">
+    <h3>Ejercicio 8</h3>
+    <select id="could_select8">
+      <option>could run</option>
+      <option>could ran</option>
+      <option>runs</option>
+    </select>
+    <p>The dog _____ after the cat every day.</p>
+    <button onclick="checkSelect('could_select8', 'could run', 'could_result8')">Verificar</button>
+    <p id="could_result8"></p>
+  </div>
+
+  <div class="exercise-card">
+    <h3>Ejercicio 9</h3>
+    <p>He <input type="text" id="could_input9" placeholder="completa con could + verbo" /> a letter every week.</p>
+    <button onclick="checkInput('could_input9', 'could write', 'could_result9')">Verificar</button>
+    <p id="could_result9"></p>
+  </div>
+
+  <div class="exercise-card">
+    <h3>Ejercicio 10</h3>
+    <select id="could_select10">
+      <option>drink</option>
+      <option>could drinks</option>
+      <option>could drink</option>
+    </select>
+    <p>I _____ a glass of water after lunch.</p>
+    <button onclick="checkSelect('could_select10', 'could drink', 'could_result10')">Verificar</button>
+    <p id="could_result10"></p>
+  </div>
+
+  <!-- Puedes continuar duplicando esta estructura para los ejercicios 11 al 20 -->
+</section>
+
+
+        <!-- Nivel Medio (inicialmente bloqueado) -->
+        <section class="level locked" id="medio">
+            <div class="lock-overlay">
+                <div class="lock-icon">🔒</div>
+                <p>Completa el nivel Fácil para desbloquear</p>
+            </div>
+            <h2>intermedio</h2>
+
+
+  <div class="exercise-card">
+    <h3>Ejercicio 1</h3>
+    <p>If she studied more, she <input type="text" id="mid_input1" placeholder="verbo modal" /> better results.</p>
+    <button onclick="checkInput('mid_input1', 'could get', 'mid_result1')">Verificar</button>
+    <p id="mid_result1"></p>
+    <p class="grammar-note">[Condicional tipo 2: if + pasado, sujeto + could + verbo base]</p>
+  </div>
+
+  <div class="exercise-card">
+    <h3>Ejercicio 2</h3>
+    <select id="mid_select2">
+      <option>could speaks</option>
+      <option>could speak</option>
+      <option>can speaking</option>
+    </select>
+    <p>If I practiced more, I _____ English fluently.</p>
+    <button onclick="checkSelect('mid_select2', 'could speak', 'mid_result2')">Verificar</button>
+    <p id="mid_result2"></p>
+  </div>
+
+  <div class="exercise-card">
+    <h3>Ejercicio 3</h3>
+    <p>We <input type="text" id="mid_input3" placeholder="verbo modal" /> go hiking if the weather is nice.</p>
+    <button onclick="checkInput('mid_input3', 'could', 'mid_result3')">Verificar</button>
+    <p id="mid_result3"></p>
+    <p class="grammar-note">["Could" usado para expresar posibilidad]</p>
+  </div>
+
+  <div class="exercise-card">
+    <h3>Ejercicio 4</h3>
+    <select id="mid_select4">
+      <option>could cook</option>
+      <option>could cooked</option>
+      <option>can cooks</option>
+    </select>
+    <p>He _____ a great meal if he had the ingredients.</p>
+    <button onclick="checkSelect('mid_select4', 'could cook', 'mid_result4')">Verificar</button>
+    <p id="mid_result4"></p>
+  </div>
+
+  <div class="exercise-card">
+    <h3>Ejercicio 5</h3>
+    <p>With better internet, we <input type="text" id="mid_input5" placeholder="verbo modal" /> work from home easily.</p>
+    <button onclick="checkInput('mid_input5', 'could', 'mid_result5')">Verificar</button>
+    <p id="mid_result5"></p>
+  </div>
+
+  <div class="exercise-card">
+    <h3>Ejercicio 6</h3>
+    <select id="mid_select6">
+      <option>could completes</option>
+      <option>could complete</option>
+      <option>could completed</option>
+    </select>
+    <p>She _____ the project by tomorrow if she started now.</p>
+    <button onclick="checkSelect('mid_select6', 'could complete', 'mid_result6')">Verificar</button>
+    <p id="mid_result6"></p>
+  </div>
+
+  <div class="exercise-card">
+    <h3>Ejercicio 7</h3>
+    <p>They <input type="text" id="mid_input7" placeholder="verbo modal" /> join us if they finish early.</p>
+    <button onclick="checkInput('mid_input7', 'could', 'mid_result7')">Verificar</button>
+    <p id="mid_result7"></p>
+  </div>
+
+  <div class="exercise-card">
+    <h3>Ejercicio 8</h3>
+    <select id="mid_select8">
+      <option>could find</option>
+      <option>could found</option>
+      <option>can finding</option>
+    </select>
+    <p>I _____ a solution if I had more time.</p>
+    <button onclick="checkSelect('mid_select8', 'could find', 'mid_result8')">Verificar</button>
+    <p id="mid_result8"></p>
+  </div>
+
+  <div class="exercise-card">
+    <h3>Ejercicio 9</h3>
+    <p>If we asked her politely, she <input type="text" id="mid_input9" placeholder="verbo modal" /> help us.</p>
+    <button onclick="checkInput('mid_input9', 'could', 'mid_result9')">Verificar</button>
+    <p id="mid_result9"></p>
+  </div>
+
+  <div class="exercise-card">
+    <h3>Ejercicio 10</h3>
+    <select id="mid_select10">
+      <option>could explain</option>
+      <option>could explained</option>
+      <option>could explains</option>
+    </select>
+    <p>The teacher _____ the topic better using examples.</p>
+    <button onclick="checkSelect('mid_select10', 'could explain', 'mid_result10')">Verificar</button>
+    <p id="mid_result10"></p>
+    </div>
+
+
+</section>
+
+
+        <!-- Nivel Difícil (inicialmente bloqueado) -->
+        <section class="level locked" id="dificil">
+            <div class="lock-overlay">
+                <div class="lock-icon">🔒</div>
+                <p>Completa el nivel Medio para desbloquear</p>
+            </div>
+            <h2>Difícil</h2>
+
+  <div class="exercise-card">
+    <h3>Ejercicio 1</h3>
+    <p>If he weren't so shy, he <input type="text" id="adv_input1" placeholder="verbo modal" /> more friends.</p>
+    <button onclick="checkInput('adv_input1', 'could make', 'adv_result1')">Verificar</button>
+    <p id="adv_result1"></p>
+    <p class="grammar-note">[Condicional con negación: if + past simple negativo]</p>
+  </div>
+
+  <div class="exercise-card">
+    <h3>Ejercicio 2</h3>
+    <select id="adv_select2">
+      <option>could be</option>
+      <option>could been</option>
+      <option>could is</option>
+    </select>
+    <p>This situation _____ avoided with better planning.</p>
+    <button onclick="checkSelect('adv_select2', 'could be', 'adv_result2')">Verificar</button>
+    <p id="adv_result2"></p>
+  </div>
+
+  <div class="exercise-card">
+    <h3>Ejercicio 3</h3>
+    <p>We <input type="text" id="adv_input3" placeholder="verbo modal" /> taken a different route if we had known about the traffic.</p>
+    <button onclick="checkInput('adv_input3', 'could have', 'adv_result3')">Verificar</button>
+    <p id="adv_result3"></p>
+    <p class="grammar-note">[Tercera condicional: could have + participio pasado]</p>
+  </div>
+
+  <div class="exercise-card">
+    <h3>Ejercicio 4</h3>
+    <select id="adv_select4">
+      <option>could succeed</option>
+      <option>could succeeded</option>
+      <option>could succeeding</option>
+    </select>
+    <p>With the right mindset, you _____ in anything you try.</p>
+    <button onclick="checkSelect('adv_select4', 'could succeed', 'adv_result4')">Verificar</button>
+    <p id="adv_result4"></p>
+  </div>
+
+  <div class="exercise-card">
+    <h3>Ejercicio 5</h3>
+    <p>He <input type="text" id="adv_input5" placeholder="verbo modal" /> done more to help if he had wanted to.</p>
+    <button onclick="checkInput('adv_input5', 'could have', 'adv_result5')">Verificar</button>
+    <p id="adv_result5"></p>
+  </div>
+
+  <div class="exercise-card">
+    <h3>Ejercicio 6</h3>
+    <select id="adv_select6">
+      <option>could improve</option>
+      <option>could improving</option>
+      <option>could improved</option>
+    </select>
+    <p>Your writing _____ if you practiced every day.</p>
+    <button onclick="checkSelect('adv_select6', 'could improve', 'adv_result6')">Verificar</button>
+    <p id="adv_result6"></p>
+  </div>
+
+  <div class="exercise-card">
+    <h3>Ejercicio 7</h3>
+    <p>If they listened carefully, they <input type="text" id="adv_input7" placeholder="verbo modal" /> understand the message.</p>
+    <button onclick="checkInput('adv_input7', 'could', 'adv_result7')">Verificar</button>
+    <p id="adv_result7"></p>
+  </div>
+
+  <div class="exercise-card">
+    <h3>Ejercicio 8</h3>
+    <select id="adv_select8">
+      <option>could recognize</option>
+      <option>could recognized</option>
+      <option>could recognizing</option>
+    </select>
+    <p>Even from a distance, I _____ his voice.</p>
+    <button onclick="checkSelect('adv_select8', 'could recognize', 'adv_result8')">Verificar</button>
+    <p id="adv_result8"></p>
+  </div>
+
+  <div class="exercise-card">
+    <h3>Ejercicio 9</h3>
+    <p>They <input type="text" id="adv_input9" placeholder="verbo modal" /> reached the top if they had kept climbing.</p>
+    <button onclick="checkInput('adv_input9', 'could have', 'adv_result9')">Verificar</button>
+    <p id="adv_result9"></p>
+  </div>
+
+  <div class="exercise-card">
+    <h3>Ejercicio 10</h3>
+    <select id="adv_select10">
+      <option>could have been</option>
+      <option>could had been</option>
+      <option>could was</option>
+    </select>
+    <p>That performance _____ better with more rehearsal.</p>
+    <button onclick="checkSelect('adv_select10', 'could have been', 'adv_result10')">Verificar</button>
+    <p id="adv_result10"></p>
+  </div>
+</section>
+
+    
+    </main>
+
+    <!-- Chatbot modificado (sin campo de búsqueda) -->
+    <div id="chat-toggle" onclick="toggleChatbot()">💬</div>
+    <div id="chatbot-box" class="chatbot-container hidden">
+        <div class="chatbot-header">
+            <span>Chatbot - Aprende el Uso del could en el presente</span>
+            <button class="close-btn" onclick="toggleChatbot()">×</button>
+        </div>
+
+<div class="quick-questions">
+  <p class="questions-title">Preguntas frecuentes:</p>
+  <button class="question-btn" onclick="askQuestion('¿Qué significa could en presente?')">¿Qué significa "could" en presente?</button>
+  <button class="question-btn" onclick="askQuestion('¿Cómo se usa could en el presente?')">¿Cómo se usa "could"?</button>
+  <button class="question-btn" onclick="askQuestion('¿Cuándo se usa could en el presente?')">¿Cuándo se usa "could"?</button>
+  <button class="question-btn" onclick="askQuestion('¿Cuál es la estructura con could en presente?')">¿Cuál es la estructura?</button>
+</div>
+
+        <div class="chatbot-body" id="chatbot-body">
+            <div class="bot-message welcome-message">
+                ¡Hola! 👋 Soy tu asistente para aprender el Uso del could en el presente. Usa las preguntas sugeridas arriba.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Variables para rastrear el progreso
+        let ejerciciosFacilesCompletados = 0;
+        const totalEjerciciosFaciles = 20; // Todos los ejercicios fáciles
+        let ejerciciosMediosCompletados = 0;
+        const totalEjerciciosMedios = 20; // Todos los ejercicios medios
+
+        // Función para mezclar opciones al cargar la página
+        function shuffleOptions() {
+            const selects = document.querySelectorAll('select');
+            selects.forEach(select => {
+                const options = Array.from(select.options);
+                // Mezclar las opciones excepto la primera (si es un placeholder)
+                const toShuffle = options.slice(0);
+                for (let i = toShuffle.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [toShuffle[i], toShuffle[j]] = [toShuffle[j], toShuffle[i]];
+                }
+                // Reemplazar las opciones
+                select.innerHTML = '';
+                toShuffle.forEach(option => {
+                    select.add(option);
+                });
+            });
+        }
+
+        // Llamar a la función al cargar la página
+        window.onload = shuffleOptions;
+
+        // Función genérica para verificar inputs
+        function checkInput(inputId, correctAnswer, resultId) {
+            const val = document.getElementById(inputId).value.toLowerCase().trim();
+            const resultElement = document.getElementById(resultId);
+            
+            if (val === correctAnswer.toLowerCase()) {
+                resultElement.textContent = "✅ ¡Correcto!";
+                resultElement.style.color = "#48bb78";
+                
+                // Verificar si es un ejercicio del nivel fácil
+                if (inputId.startsWith('input')) {
+                    if (!resultElement.dataset.completed) {
+                        ejerciciosFacilesCompletados++;
+                        resultElement.dataset.completed = "true";
+                        checkUnlockMedium();
+                    }
+                }
+                // Verificar si es un ejercicio del nivel medio
+                else if (inputId.startsWith('medio-input')) {
+                    if (!resultElement.dataset.completed) {
+                        ejerciciosMediosCompletados++;
+                        resultElement.dataset.completed = "true";
+                        checkUnlockHard();
+                    }
+                }
+            } else {
+                resultElement.textContent = "❌ Intenta de nuevo.";
+                resultElement.style.color = "#e53e3e";
+            }
+        }
+
+        // Función genérica para verificar selects
+        function checkSelect(selectId, correctAnswer, resultId) {
+            const val = document.getElementById(selectId).value;
+            const resultElement = document.getElementById(resultId);
+            
+            if (val === correctAnswer) {
+                resultElement.textContent = "✅ ¡Correcto!";
+                resultElement.style.color = "#48bb78";
+                
+                // Verificar si es un ejercicio del nivel fácil
+                if (selectId.startsWith('select')) {
+                    if (!resultElement.dataset.completed) {
+                        ejerciciosFacilesCompletados++;
+                        resultElement.dataset.completed = "true";
+                        checkUnlockMedium();
+                    }
+                }
+                // Verificar si es un ejercicio del nivel difícil
+                else if (selectId.startsWith('dificil-select')) {
+                    if (!resultElement.dataset.completed) {
+                        resultElement.dataset.completed = "true";
+                    }
+                }
+            } else {
+                resultElement.textContent = "❌ Esa no es la forma correcta.";
+                resultElement.style.color = "#e53e3e";
+            }
+        }
+
+        // Función para verificar si se debe desbloquear el nivel medio
+        function checkUnlockMedium() {
+            if (ejerciciosFacilesCompletados >= totalEjerciciosFaciles) {
+                const medioSection = document.getElementById('medio');
+                medioSection.classList.remove('locked');
+                medioSection.querySelector('.lock-overlay').style.display = 'none';
+                
+                // Mostrar notificación
+                alert('¡Felicidades! Has completado el nivel Fácil. El nivel Medio ha sido desbloqueado.');
+            }
+        }
+
+        // Función para verificar si se debe desbloquear el nivel difícil
+        function checkUnlockHard() {
+            if (ejerciciosMediosCompletados >= totalEjerciciosMedios) {
+                const dificilSection = document.getElementById('dificil');
+                dificilSection.classList.remove('locked');
+                dificilSection.querySelector('.lock-overlay').style.display = 'none';
+                
+                // Mostrar notificación
+                alert('¡Excelente! Has completado el nivel Medio. El nivel Difícil ha sido desbloqueado.');
+            }
+        }
+
+        // Chatbot básico
+        const chatbot = document.getElementById("chatbot-box");
+        const chatbotBody = document.getElementById("chatbot-body");
+
+const answers = {
+  "¿Qué significa could en presente?": "✅ 'Could' en presente se usa como una forma más educada o hipotética de 'can'. Expresa posibilidad, permiso o habilidad en contextos formales o menos directos. Ej: Could you help me?",
+  
+  "¿Cómo se usa could en el presente?": "✅ 'Could' se coloca antes del verbo en su forma base. Ejemplo: I could go now. She could speak to him. No se conjuga según el sujeto, es igual para todos.",
+
+  "¿Cuándo se usa could en el presente?": "✅ 1) Para hacer sugerencias educadas (You could try again). 2) Para expresar posibilidad (It could rain later). 3) Para pedir permiso formalmente (Could I borrow your pen?).",
+
+  "¿Cuál es la estructura con could en presente?": "✅ Afirmativa: Sujeto + could + verbo base. Negativa: Sujeto + could not (couldn't) + verbo base. Interrogativa: Could + sujeto + verbo base? Ej: Could you help me?"
+};
+
+        function askQuestion(question) {
+            addMessage(question, 'user');
+            setTimeout(() => {
+                addMessage(answers[question], 'bot');
+            }, 300);
+        }
+
+        function addMessage(message, sender) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = sender === 'user' ? 'user-message' : 'bot-message';
+            messageDiv.innerHTML = message.replace(/\n/g, '<br>');
+            chatbotBody.appendChild(messageDiv);
+            chatbotBody.scrollTop = chatbotBody.scrollHeight;
+        }
+
+        function toggleChatbot() {
+            chatbot.classList.toggle("hidden");
+        }
+    </script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const avatarWalking = document.getElementById("avatarWalking");
+        const avatarStatic = document.getElementById("avatarStatic");
+        const bubble = document.getElementById("bubble");
+
+        const mensajesIniciales = [
+        "¡Bienvenido a este sitio web que te ayudará a aprender inglés de forma didáctica y divertida! 🇬🇧🎉",
+        "Empecemos Uso del modal could en el presente... ¡vas a ver qué fácil es! 💡📚",
+        "¡Tú puedes! Disfruta los ejercicios, verás cuánto mejoras. 🚀💪",
+        "Estaré aquí para apoyarte y darte consejos siempre que lo necesites. 🤝👨‍🏫"
+        ];
+
+        const mensajesPermanentes = [
+        "¿Listo para tu próxima lección? 📝",
+        "Sigue así, vas por buen camino. ✅",
+        "Estoy aquí si tienes dudas. 💬"
+        ];
+
+        let index = 0;
+
+        // Ocultar el avatar estático y la burbuja al cargar
+        avatarStatic.style.display = "none";
+        bubble.style.display = "none";
+
+        // Paso 1: animación camina al centro
+        avatarWalking.addEventListener("animationend", () => {
+        avatarWalking.style.display = "none";
+        avatarStatic.style.display = "flex";
+        bubble.style.display = "block";
+        mostrarMensajesIniciales();
+        });
+
+        // Paso 2: mostrar los mensajes uno por uno
+        function mostrarMensajesIniciales() {
+        if (index < mensajesIniciales.length) {
+            bubble.textContent = mensajesIniciales[index];
+            index++;
+            setTimeout(mostrarMensajesIniciales, 6000); // Cada 10 segundos
+        } else {
+            iniciarSalida();
+        }
+        }
+
+        // Paso 3: ocultar avatar del centro y caminar a la izquierda
+        function iniciarSalida() {
+        avatarStatic.style.display = "none";
+        avatarWalking.style.display = "flex";
+        avatarWalking.classList.add("walk-out");
+
+        avatarWalking.addEventListener("animationend", finalSalida);
+        }
+
+        // Paso 4: finalizar caminata y mostrar avatar en la izquierda
+        function finalSalida() {
+        avatarWalking.style.display = "none";
+        avatarWalking.removeEventListener("animationend", finalSalida);
+        mostrarAvatarIzquierda();
+        }
+
+        // Paso 5: Mostrar el avatar estático a la izquierda con mensajes permanentes
+        function mostrarAvatarIzquierda() {
+        avatarStatic.style.display = "flex";
+        avatarStatic.style.left = "0"; // Cambia posición
+        avatarStatic.style.top = "50%";
+        avatarStatic.style.transform = "translateY(-50%)";
+        bubble.style.display = "block";
+
+        let i = 0;
+        bubble.textContent = mensajesPermanentes[i];
+        setInterval(() => {
+            i = (i + 1) % mensajesPermanentes.length;
+            bubble.textContent = mensajesPermanentes[i];
+        }, 10000);
+        }
+    });
+    </script>
+
+    <div class="avatar-walking" id="avatarWalking">
+        <div class="sprite-avatar"></div>
+    </div>
+
+    <div class="avatar-static" id="avatarStatic">
+        <div class="bubble" id="bubble">¡Hola!</div>
+        <img src='img/gino.png' alt="Avatar" class="avatar-img">
+    </div>
+        
+    </body>
+    </html>
