@@ -58,6 +58,19 @@ def perfect_continuous_tenses_html():
 def serve_image(filename):
     return send_from_directory('img', filename)
 
+# Serve MUST static files (CSS, JS, etc.)
+@app.route('/sub_t/MUST/index-styles.css')
+def must_index_styles():
+    return send_from_directory('sub_t/MUST', 'index-styles.css')
+
+@app.route('/sub_t/MUST/styles.css')
+def must_styles():
+    return send_from_directory('sub_t/MUST', 'styles.css')
+
+@app.route('/sub_t/MUST/scripts/<path:filename>')
+def must_scripts(filename):
+    return send_from_directory('sub_t/MUST/scripts', filename)
+
 # Serve sub_t content
 @app.route('/sub_t/<path:filename>')
 def serve_sub_t(filename):
@@ -79,6 +92,14 @@ def might_files(filename):
 @app.route('/sub_t/MUST/<path:filename>')
 def must_files(filename):
     return send_from_directory('sub_t/MUST', filename)
+
+@app.route('/sub_t/MUST/index.html')
+def must_index():
+    return send_from_directory('sub_t/MUST', 'index.html')
+
+@app.route('/sub_t/MUST/')
+def must_index_root():
+    return send_from_directory('sub_t/MUST', 'index.html')
 
 @app.route('/sub_t/MUST/avatar/avatar.html')
 def must_avatar_correct():
