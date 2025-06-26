@@ -17,6 +17,10 @@ def modules():
 def landing_page():
     return render_template('landing-page.html')
 
+@app.route('/index.html')
+def index_html():
+    return render_template('index.html')
+
 @app.route('/simple-tenses')
 def simple_tenses():
     return render_template('simple-tenses.html')
@@ -76,6 +80,10 @@ def might_files(filename):
 def must_files(filename):
     return send_from_directory('sub_t/MUST', filename)
 
+@app.route('/sub_t/MUST/avatar/avatar.html')
+def must_avatar_correct():
+    return send_from_directory('sub_t/MUST/avatar', 'avatar.html')
+
 @app.route('/sub_t/Should/<path:filename>')
 def should_files(filename):
     return send_from_directory('sub_t/Should', filename)
@@ -95,6 +103,16 @@ def tenses_past_files(filename):
 @app.route('/sub_t/Tenses Future/<path:filename>')
 def tenses_future_files(filename):
     return send_from_directory('sub_t/Tenses Future', filename)
+
+# Serve any static HTML file from templates (this should be last)
+@app.route('/<path:filename>')
+def serve_template(filename):
+    if filename.endswith('.html'):
+        try:
+            return render_template(filename)
+        except:
+            return send_from_directory('.', filename)
+    return send_from_directory('.', filename)
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
