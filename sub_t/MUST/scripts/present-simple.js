@@ -208,18 +208,62 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             
             setTimeout(() => {
-                window.location.href = '../avatar/avatar.html';
+                // Detectar si estamos en la raíz de MUST o en una subcarpeta (views)
+                const currentPath = window.location.pathname;
+                let avatarPath;
+                
+                if (currentPath.includes('/views/')) {
+                    // Estamos en la carpeta views, usar ruta relativa hacia arriba
+                    avatarPath = '../avatar/avatar.html';
+                } else {
+                    // Estamos en la raíz de MUST, usar ruta directa
+                    avatarPath = 'avatar/avatar.html';
+                }
+                
+                console.log('Current path:', currentPath);
+                console.log('Avatar path:', avatarPath);
+                
+                window.location.href = avatarPath;
             }, 1000);
         }
+
+        // Hacer la función global para que sea accesible desde onclick
+        window.goToAvatarSelection = goToAvatarSelection;
 
         function loadSavedAvatar() {
             const avatarContainer = document.getElementById('character-display');
             const savedAvatarSvg = localStorage.getItem('mustQuestAvatarSvg');
+            const savedAdvancedAvatar = localStorage.getItem('mustQuestAdvancedAvatar');
             const savedAvatar = localStorage.getItem('mustQuestAvatar');
             
-            if (savedAvatarSvg && avatarContainer) {
-                // Cargar el SVG completo del avatar
+            // Prioridad 1: Avatar avanzado
+            if (savedAdvancedAvatar && avatarContainer) {
+                try {
+                    const avatarData = JSON.parse(savedAdvancedAvatar);
+                    avatarContainer.innerHTML = avatarData.svg;
+                    
+                    // Ocultar imagen por defecto
+                    const defaultImg = avatarContainer.querySelector('img');
+                    if (defaultImg) {
+                        defaultImg.style.display = 'none';
+                    }
+                    
+                    // Mensaje de avatar avanzado
+                    updateCharacterSpeech('¡Hola! Soy tu avatar personalizado avanzado. ¡Estoy listo para la aventura!');
+                } catch (e) {
+                    console.error('Error loading advanced avatar:', e);
+                    loadDefaultAvatar();
+                }
+            }
+            // Prioridad 2: Avatar SVG simple
+            else if (savedAvatarSvg && avatarContainer) {
                 avatarContainer.innerHTML = savedAvatarSvg.replace('class="avatar-svg"', 'style="width: 100%; height: 100%;"');
+                
+                // Ocultar imagen por defecto
+                const defaultImg = avatarContainer.querySelector('img');
+                if (defaultImg) {
+                    defaultImg.style.display = 'none';
+                }
                 
                 // Agregar clase para indicar que es un avatar personalizado
                 const avatarButton = document.getElementById('character-avatar-button');
@@ -227,23 +271,31 @@ document.addEventListener('DOMContentLoaded', function() {
                     avatarButton.classList.add('custom-avatar');
                 }
                 
-                // Actualizar mensaje de bienvenida
-                const characterSpeech = document.getElementById('character-speech');
-                if (characterSpeech) {
-                    characterSpeech.textContent = '¡Hola! Soy tu avatar personalizado. ¡Vamos a conquistar el Reino del Presente Simple!';
-                }
-            } else if (avatarContainer) {
-                // Mostrar avatar por defecto
+                updateCharacterSpeech('¡Hola! Soy tu avatar personalizado. ¡Vamos a conquistar el Reino del Presente Simple!');
+            } 
+            // Prioridad 3: Avatar por defecto
+            else {
+                loadDefaultAvatar();
+            }
+        }
+
+        function loadDefaultAvatar() {
+            const avatarContainer = document.getElementById('character-display');
+            if (avatarContainer) {
+                // Mostrar imagen por defecto
                 const defaultImg = avatarContainer.querySelector('img');
                 if (defaultImg) {
                     defaultImg.style.display = 'block';
                 }
                 
-                // Mensaje para invitar a personalizar
-                const characterSpeech = document.getElementById('character-speech');
-                if (characterSpeech) {
-                    characterSpeech.textContent = '¡Bienvenido al Reino del Presente Simple! Aquí aprenderás todo sobre MUST. ¡Haz clic en mí para personalizarme!';
-                }
+                updateCharacterSpeech('¡Bienvenido al Reino del Presente Simple! Aquí aprenderás todo sobre MUST. ¡Haz clic en mí para personalizarme!');
+            }
+        }
+
+        function updateCharacterSpeech(message) {
+            const characterSpeech = document.getElementById('character-speech');
+            if (characterSpeech) {
+                characterSpeech.textContent = message;
             }
         }
 
@@ -560,21 +612,60 @@ document.addEventListener('DOMContentLoaded', function() {
             loadSavedAvatar();
             
             // Control de sonido
-            document.getElementById('sound-toggle').addEventListener('click', function() {
-                const icon = this.querySelector('i');
-                const backgroundMusic = document.getElementById('backgroundMusic');
-                
-                if (icon.classList.contains('fa-volume-up')) {
-                    icon.classList.remove('fa-volume-up');
-                    icon.classList.add('fa-volume-mute');
-                    backgroundMusic.pause();
-                } else {
-                    icon.classList.remove('fa-volume-mute');
-                    icon.classList.add('fa-volume-up');
-                    backgroundMusic.play().catch(e => console.log('Audio play failed:', e));
-                }
-            });
+            const soundToggle = document.getElementById('sound-toggle');
+            if (soundToggle) {
+                soundToggle.addEventListener('click', function() {
+                    const icon = this.querySelector('i');
+                    const backgroundMusic = document.getElementById('backgroundMusic');
+                    
+                    if (icon.classList.contains('fa-volume-up')) {
+                        icon.classList.remove('fa-volume-up');
+                        icon.classList.add('fa-volume-mute');
+                        if (backgroundMusic) backgroundMusic.pause();
+                    } else {
+                        icon.classList.remove('fa-volume-mute');
+                        icon.classList.add('fa-volume-up');
+                        if (backgroundMusic) backgroundMusic.play().catch(e => console.log('Audio play failed:', e));
+                    }
+                });
+            }
         });
+
+        // Funciones de navegación adicionales
+        function navigateToSection(sectionId) {
+            playClickSound();
+            
+            // Ocultar todas las secciones
+            document.querySelectorAll('.level-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Mostrar la sección objetivo
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.classList.add('active');
+            }
+            
+            // Actualizar navegación del sidebar
+            document.querySelectorAll('.sidebar-nav a').forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            const targetLink = document.querySelector(`.sidebar-nav a[href="#${sectionId}"]`);
+            if (targetLink) {
+                targetLink.classList.add('active');
+            }
+        }
+
+        function goToMap() {
+            playClickSound();
+            window.location.href = '../index.html';
+        }
+
+        function checkProgress() {
+            playClickSound();
+            alert('Funcionalidad de progreso próximamente disponible');
+        }
 
         // Reproducir música de fondo automáticamente
         document.addEventListener('click', function() {
