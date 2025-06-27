@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Game 4 - Might Have Been + Verb-ing</title>
+  <link rel="stylesheet" href="../estilo.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f7f9fb;
+      text-align: center;
+      padding: 20px;
+    }
+
+    h1 {
+      color: #2c3e50;
+    }
+
+    .instruction {
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+    }
+
+    .options {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .option-img {
+      border: 3px solid transparent;
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: pointer;
+      width: 180px;
+      transition: transform 0.2s, border-color 0.3s;
+    }
+
+    .option-img img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .option-img:hover {
+      transform: scale(1.05);
+    }
+
+    .correct {
+      border-color: #2ecc71;
+    }
+
+    .incorrect {
+      border-color: #e74c3c;
+    }
+
+    .btn {
+      margin-top: 30px;
+      padding: 10px 16px;
+      background: #2c3e50;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+    }
+
+    .btn:hover {
+      background: #1a242f;
+    }
+
+    .feedback {
+      font-weight: bold;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🖼️ Game 4: Match with the Image</h1>
+  <p class="instruction">Which image best matches the sentence: <strong>"They might have been dancing."</strong></p>
+
+  <div class="options">
+    <div class="option-img" onclick="checkAnswer(this, false)">
+      <img src="../img/sleeping.jpg" alt="Sleeping">
+    </div>
+    <div class="option-img" onclick="checkAnswer(this, true)">
+      <img src="../img/dancing.jpg" alt="Dancing">
+    </div>
+    <div class="option-img" onclick="checkAnswer(this, false)">
+      <img src="../img/running.jpg" alt="Running">
+    </div>
+    <div class="option-img" onclick="checkAnswer(this, false)">
+      <img src="../img/cooking.jpg" alt="Cooking">
+    </div>
+  </div>
+
+  <div id="feedback" class="feedback"></div>
+
+  <a href="../might_have_been.html" class="btn">⬅️ Back</a>
+
+  <script>
+    let answered = false;
+
+    function checkAnswer(el, isCorrect) {
+      if (answered) return;
+      answered = true;
+
+      if (isCorrect) {
+        el.classList.add("correct");
+        document.getElementById("feedback").textContent = "✅ Correct! They might have been dancing.";
+        document.getElementById("feedback").style.color = "green";
+        speak("Correct! They might have been dancing.");
+      } else {
+        el.classList.add("incorrect");
+        document.getElementById("feedback").textContent = "❌ Try again.";
+        document.getElementById("feedback").style.color = "red";
+        speak("Not quite. Try again.");
+      }
+    }
+
+    function speak(text) {
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = "en-US";
+      speechSynthesis.speak(utterance);
+    }
+  </script>
+
+</body>
+</html>

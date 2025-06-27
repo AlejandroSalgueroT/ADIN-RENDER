@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Game 2 - Might Have Been + Verb-ing</title>
+  <link rel="stylesheet" href="../estilo.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f8f9fa;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #2c3e50;
+    }
+
+    .question-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 30px;
+      max-width: 600px;
+      margin: 30px auto;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .question {
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      font-size: 1rem;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+      width: 80%;
+      max-width: 300px;
+      text-align: center;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 16px;
+      background: #34495e;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background: #2c3e50;
+    }
+
+    .feedback {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+
+    .correct {
+      color: green;
+    }
+
+    .incorrect {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>✍️ Game 2: Fill in the Blank</h1>
+
+  <div class="question-card">
+    <div class="question">
+      They __________________________ (argue) before the teacher arrived.
+    </div>
+    <input type="text" id="answerInput" placeholder="Write your answer here">
+    <div>
+      <button class="btn" onclick="checkAnswer()">Check</button>
+    </div>
+    <div id="feedback" class="feedback"></div>
+  </div>
+
+  <a href="juego3.html" class="btn">➡️ Next Game</a>
+  <a href="../might_have_been.html" class="btn">⬅️ Back</a>
+
+  <script>
+    function checkAnswer() {
+      const userAnswer = document.getElementById("answerInput").value.trim().toLowerCase();
+      const correctAnswer = "might have been arguing";
+      const feedback = document.getElementById("feedback");
+
+      if (userAnswer === correctAnswer) {
+        feedback.textContent = "✅ Correct!";
+        feedback.className = "feedback correct";
+        speak("Correct! Great job.");
+      } else {
+        feedback.textContent = "❌ Try again. The correct answer is: " + correctAnswer;
+        feedback.className = "feedback incorrect";
+        speak("Not quite. The correct answer is: might have been arguing.");
+      }
+    }
+
+    function speak(text) {
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = "en-US";
+      speechSynthesis.speak(utterance);
+    }
+  </script>
+
+</body>
+</html>

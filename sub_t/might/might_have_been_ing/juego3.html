@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Game 3 - Might Have Been + Verb-ing</title>
+  <link rel="stylesheet" href="../estilo.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #eef2f5;
+      text-align: center;
+      padding: 20px;
+    }
+
+    h1 {
+      color: #2c3e50;
+    }
+
+    .instruction {
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+    }
+
+    .drop-zone {
+      border: 2px dashed #aaa;
+      min-height: 60px;
+      padding: 10px;
+      border-radius: 12px;
+      background-color: #fff;
+      margin: 20px auto;
+      max-width: 600px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .word {
+      background-color: #34495e;
+      color: #fff;
+      padding: 10px 14px;
+      border-radius: 10px;
+      cursor: grab;
+      font-size: 1rem;
+    }
+
+    .btn {
+      margin-top: 20px;
+      padding: 10px 16px;
+      background: #2c3e50;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+    }
+
+    .btn:hover {
+      background: #1a242f;
+    }
+
+    .feedback {
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
+    .correct {
+      color: green;
+    }
+
+    .incorrect {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🔠 Game 3: Drag & Drop</h1>
+  <p class="instruction">Form the sentence: <strong>He might have been running in the park.</strong></p>
+
+  <div class="drop-zone" id="sentence-zone"></div>
+
+  <div class="drop-zone" id="words-zone">
+    <div class="word" draggable="true">running</div>
+    <div class="word" draggable="true">might</div>
+    <div class="word" draggable="true">been</div>
+    <div class="word" draggable="true">He</div>
+    <div class="word" draggable="true">have</div>
+    <div class="word" draggable="true">in</div>
+    <div class="word" draggable="true">the</div>
+    <div class="word" draggable="true">park</div>
+  </div>
+
+  <button class="btn" onclick="checkSentence()">Check</button>
+  <div class="feedback" id="feedback"></div>
+
+  <a href="juego4.html" class="btn">➡️ Next Game</a>
+  <a href="../might_have_been.html" class="btn">⬅️ Back</a>
+
+  <script>
+    const sentenceZone = document.getElementById("sentence-zone");
+    const wordsZone = document.getElementById("words-zone");
+
+    // Drag & Drop Logic
+    document.querySelectorAll('.word').forEach(word => {
+      word.addEventListener('dragstart', (e) => {
+        e.dataTransfer.setData('text/plain', word.textContent);
+      });
+    });
+
+    sentenceZone.addEventListener('dragover', (e) => e.preventDefault());
+
+    sentenceZone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      const text = e.dataTransfer.getData('text/plain');
+      const wordEl = document.createElement('div');
+      wordEl.textContent = text;
+      wordEl.className = 'word';
+      sentenceZone.appendChild(wordEl);
+    });
+
+    function checkSentence() {
+      const words = Array.from(sentenceZone.children).map(el => el.textContent.trim().toLowerCase());
+      const correct = ['he', 'might', 'have', 'been', 'running', 'in', 'the', 'park'];
+      const feedback = document.getElementById('feedback');
+
+      if (JSON.stringify(words) === JSON.stringify(correct)) {
+        feedback.textContent = "✅ Perfect! That's correct.";
+        feedback.className = "feedback correct";
+        speak("Perfect! That's correct.");
+      } else {
+        feedback.textContent = "❌ Try again. Make sure the words are in the right order.";
+        feedback.className = "feedback incorrect";
+        speak("Not quite. Try again.");
+      }
+    }
+
+    function speak(text) {
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = "en-US";
+      speechSynthesis.speak(utterance);
+    }
+  </script>
+
+</body>
+</html>
