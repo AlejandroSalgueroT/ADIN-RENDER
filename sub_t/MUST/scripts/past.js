@@ -4,106 +4,106 @@
 function getQuizQuestions() {
     return [
         {
-            question: "¿Cuál es la forma correcta de expresar una obligación pasada?",
+            question: "¿Cuál es la estructura correcta del presente perfecto continuo?",
             options: [
-                "must + verbo (forma base)",
-                "had to + verbo (forma base)",
-                "must had + verbo (forma base)",
-                "had must + verbo (forma base)"
-            ],
-            correctAnswer: 1
-        },
-        {
-            question: "¿Por qué no usamos MUST para hablar de obligaciones pasadas?",
-            options: [
-                "Porque MUST es un verbo irregular",
-                "Porque MUST no tiene forma pasada propia",
-                "Porque MUST solo se usa en preguntas pasadas",
-                "Porque MUST es formal y HAD TO es informal"
-            ],
-            correctAnswer: 1
-        },
-        {
-            question: "Completa la oración: 'When I was a student, I __________ wear a uniform.'",
-            options: [
-                "must",
-                "musted",
-                "had to",
-                "must had"
-            ],
-            correctAnswer: 2
-        },
-        {
-            question: "Completa la oración: 'She __________ very hungry to eat all that food.'",
-            options: [
-                "had to be",
-                "must have been",
-                "must was",
-                "had must be"
-            ],
-            correctAnswer: 1
-        },
-        {
-            question: "¿Cuál de las siguientes oraciones expresa una deducción lógica sobre el pasado?",
-            options: [
-                "We had to leave early yesterday.",
-                "She had to work overtime last week.",
-                "He must have forgotten his keys at home.",
-                "Did they have to pay for the tickets?"
-            ],
-            correctAnswer: 2
-        },
-        {
-            question: "¿Cuál es la forma interrogativa correcta para obligaciones pasadas?",
-            options: [
-                "Must you study last night?",
-                "Did you must study last night?",
-                "Did you have to study last night?",
-                "Had you to study last night?"
-            ],
-            correctAnswer: 2
-        },
-        {
-            question: "Traduce: 'Tuve que trabajar todo el fin de semana.'",
-            options: [
-                "I must work all weekend.",
-                "I must worked all weekend.",
-                "I had to work all weekend.",
-                "I must have worked all weekend."
-            ],
-            correctAnswer: 2
-        },
-        {
-            question: "Traduce: 'No tuvimos que pagar la entrada.'",
-            options: [
-                "We didn't have to pay for the ticket.",
-                "We must not pay for the ticket.",
-                "We must not have paid for the ticket.",
-                "We had not to pay for the ticket."
+                "have/has + been + verbo-ing",
+                "had to + verbo base",
+                "must + verbo base",
+                "have + verbo en pasado participio"
             ],
             correctAnswer: 0
         },
         {
-            question: "¿Cuál de estas oraciones NO es correcta?",
+            question: "¿Para qué usamos el presente perfecto continuo?",
             options: [
-                "I had to finish my homework yesterday.",
-                "Must I have finished my homework yesterday?",
-                "She must have left early.",
-                "Did they have to attend the meeting?"
+                "Para hablar de acciones que ocurrieron en un tiempo específico del pasado",
+                "Para expresar acciones en progreso en el futuro",
+                "Para describir acciones que empezaron en el pasado y siguen ocurriendo",
+                "Para deducir información sobre el pasado"
+            ],
+            correctAnswer: 2
+        },
+        {
+            question: "Completa la oración: 'She __________ studying for the exam all day.'",
+            options: [
+                "has been",
+                "had been",
+                "have being",
+                "must have been"
+            ],
+            correctAnswer: 0
+        },
+        {
+            question: "Completa la oración: 'We __________ working on this project since Monday.'",
+            options: [
+                "have been",
+                "had to be",
+                "must be",
+                "has being"
+            ],
+            correctAnswer: 0
+        },
+        {
+            question: "¿Cuál de las siguientes oraciones expresa correctamente una acción continua hasta el presente?",
+            options: [
+                "I have finished my homework.",
+                "She was working all night.",
+                "They have been living here for two years.",
+                "We will have lunch soon."
+            ],
+            correctAnswer: 2
+        },
+        {
+            question: "¿Cuál es la forma interrogativa correcta en presente perfecto continuo?",
+            options: [
+                "Did you have to study?",
+                "Were you studying?",
+                "Have you been studying?",
+                "Have you study?"
+            ],
+            correctAnswer: 2
+        },
+        {
+            question: "Traduce: 'He estado trabajando todo el día.'",
+            options: [
+                "I have worked all day.",
+                "I have been working all day.",
+                "I worked all day.",
+                "I must have worked all day."
             ],
             correctAnswer: 1
         },
         {
-            question: "¿Cuál es la diferencia principal entre HAD TO y MUST HAVE?",
+            question: "Traduce: 'Ella ha estado estudiando para el examen.'",
             options: [
-                "HAD TO es más formal que MUST HAVE",
-                "HAD TO expresa una obligación real en el pasado, mientras que MUST HAVE expresa una deducción sobre el pasado",
-                "HAD TO es negativo y MUST HAVE es positivo",
-                "No hay diferencia, son intercambiables"
+                "She studied for the exam.",
+                "She has been studying for the exam.",
+                "She was studying for the exam.",
+                "She has study for the exam."
             ],
             correctAnswer: 1
-        }
-    ];
+        },
+        {
+            question: "¿Cuál de estas oraciones NO es correcta?",
+            options: [
+                "I have been reading a new book.",
+                "Has she been working today?",
+                "We has been traveling lately.",
+                "They have been living here for years."
+            ],
+            correctAnswer: 2
+        },
+        {
+            question: "¿Cuál es la principal función del presente perfecto continuo?",
+            options: [
+                "Hablar de acciones terminadas en un momento exacto del pasado",
+                "Hablar de acciones que empezaron en el pasado y siguen en el presente",
+                "Describir hábitos en el pasado",
+                "Expresar intenciones futuras"
+            ],
+            correctAnswer: 1
+        }
+    ];
 }
 
 // Inicializar elementos específicos del nivel cuando la página esté cargada

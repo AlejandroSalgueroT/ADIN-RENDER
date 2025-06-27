@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Presente Simple</title>
+    <title>Future Simple</title>
     <link rel="stylesheet" href="FuturoSimple.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -115,7 +115,7 @@ image-rendering: pixelated;
 <header>
     <img src="logo.png" class="logo" alt="Logo" />
     <i class="user-icon">👤</i>
-    <h1 class="title">Presente Simple</h1>
+    <h1 class="title">Future Simple</h1>
 </header>
 
 <main class="exercise-container">
@@ -748,21 +748,22 @@ image-rendering: pixelated;
 <div id="chat-toggle" onclick="toggleChatbot()">💬</div>
 <div id="chatbot-box" class="chatbot-container hidden">
     <div class="chatbot-header">
-        <span>Chatbot - Aprende el Presente Simple</span>
+        <span>Chatbot - Aprende el Futuro Simple</span>
         <button class="close-btn" onclick="toggleChatbot()">×</button>
     </div>
 
-    <div class="quick-questions">
-        <p class="questions-title">Preguntas frecuentes:</p>
-        <button class="question-btn" onclick="askQuestion('¿Qué es el presente simple?')">¿Qué es el presente simple?</button>
-        <button class="question-btn" onclick="askQuestion('¿Cómo se conjuga el presente simple?')">¿Cómo se conjuga?</button>
-        <button class="question-btn" onclick="askQuestion('¿Cuándo se usa el presente simple?')">¿Cuándo se usa?</button>
-        <button class="question-btn" onclick="askQuestion('¿Cuál es la estructura del presente simple?')">¿Cuál es la estructura?</button>
-    </div>
+<div class="quick-questions">
+  <p class="questions-title">Preguntas frecuentes:</p>
+  <button class="question-btn" onclick="askQuestion('¿Qué es el futuro simple?')">¿Qué es el futuro simple?</button>
+  <button class="question-btn" onclick="askQuestion('¿Cómo se conjuga el futuro simple?')">¿Cómo se conjuga?</button>
+  <button class="question-btn" onclick="askQuestion('¿Cuándo se usa el futuro simple?')">¿Cuándo se usa?</button>
+  <button class="question-btn" onclick="askQuestion('¿Cuál es la estructura del futuro simple?')">¿Cuál es la estructura?</button>
+</div>
+
 
     <div class="chatbot-body" id="chatbot-body">
         <div class="bot-message welcome-message">
-            ¡Hola! 👋 Soy tu asistente para aprender el Presente Simple. Usa las preguntas sugeridas arriba.
+            ¡Hola! 👋 Soy tu asistente para aprender el futuro Simple. Usa las preguntas sugeridas arriba.
         </div>
     </div>
 </div>
@@ -945,11 +946,12 @@ image-rendering: pixelated;
     const chatbotBody = document.getElementById("chatbot-body");
 
     const answers = {
-        "¿Qué es el presente simple?": "✅ El presente simple se usa para describir hábitos, rutinas, hechos generales y estados permanentes. Ejemplo: I live in Spain. She works at a bank.",
-        "¿Cómo se conjuga el presente simple?": "✅ Para la mayoría de verbos: I/you/we/they + verbo base. He/she/it + verbo con -s. Ejemplos: I play, she plays. Verbos irregulares como 'have' cambian: She has.",
-        "¿Cuándo se usa el presente simple?": "✅ Para: 1) Hábitos y rutinas (I drink coffee every morning). 2) Hechos generales (Water boils at 100°C). 3) Estados permanentes (He works in a hospital). 4) Horarios (The train leaves at 8pm).",
-        "¿Cuál es la estructura del presente simple?": "✅ Afirmativa: Sujeto + verbo (con -s en 3ra persona singular). Negativa: Sujeto + don't/doesn't + verbo base. Interrogativa: Do/Does + sujeto + verbo base. Ej: She doesn't like tea. Do you speak English?"
-    };
+    "¿Qué es el futuro simple?": "✅ El futuro simple se usa para hablar de decisiones espontáneas, predicciones y promesas. Ejemplo: I will help you. She will travel tomorrow.",
+    "¿Cómo se conjuga el futuro simple?": "✅ Se forma con: sujeto + will + verbo base. Ejemplos: I will go, He will study, We will eat. En la forma negativa se usa won't (will not): She won't come.",
+    "¿Cuándo se usa el futuro simple?": "✅ Para: 1) Decisiones en el momento (I'll open the door). 2) Promesas u ofertas (I will help you). 3) Predicciones (It will rain tomorrow). 4) Acciones futuras sin plan previo (They will call you).",
+    "¿Cuál es la estructura del futuro simple?": "✅ Afirmativa: Sujeto + will + verbo base. Negativa: Sujeto + will not (won’t) + verbo base. Interrogativa: Will + sujeto + verbo base. Ej: Will you come? She won't leave."
+};
+
 
     function askQuestion(question) {
         addMessage(question, 'user');
@@ -978,7 +980,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const mensajesIniciales = [
     "¡Bienvenido a este sitio web que te ayudará a aprender inglés de forma didáctica y divertida! 🇬🇧🎉",
-    "Empecemos con el Presente Simple... ¡vas a ver qué fácil es! 💡📚",
+    "Empecemos con el futuro Simple... ¡vas a ver qué fácil es! 💡📚",
     "¡Tú puedes! Disfruta los ejercicios, verás cuánto mejoras. 🚀💪",
     "Estaré aquí para apoyarte y darte consejos siempre que lo necesites. 🤝👨‍🏫"
     ];

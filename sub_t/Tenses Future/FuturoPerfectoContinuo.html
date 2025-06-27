@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Presente Perfecto Continuo</title>
+    <title>Futuro Perfecto Continuo</title>
     <link rel="stylesheet" href="FuturoPerfectoContinuo.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -876,7 +876,7 @@ image-rendering: pixelated;
 <div id="chat-toggle" onclick="toggleChatbot()">💬</div>
 <div id="chatbot-box" class="chatbot-container hidden">
     <div class="chatbot-header">
-        <span>Chatbot - Aprende el Presente Perfecto Continuo</span>
+        <span>Chatbot - Aprende el Futuro Perfecto Continuo</span>
         <button class="close-btn" onclick="toggleChatbot()">×</button>
     </div>
 
@@ -1064,11 +1064,11 @@ image-rendering: pixelated;
     const chatbotBody = document.getElementById("chatbot-body");
 
     const answers = {
-        "¿Qué es el presente perfecto continuo?": "✅ El presente perfecto continuo se usa para acciones que comenzaron en el pasado y continúan en el presente, o para acciones recientes que tienen resultados visibles ahora. Ejemplo: I have been working here for 5 years. She has been studying all morning.",
-        "¿Cómo se conjuga el presente perfecto continuo?": "✅ Estructura: sujeto + have/has + been + verbo-ing. Ejemplos: I have been waiting. She has been working. We have been studying. Para la forma negativa se añade 'not' después del auxiliar: He has not been sleeping well.",
-        "¿Cuándo se usa el presente perfecto continuo?": "✅ Para: 1) Acciones que comenzaron en el pasado y continúan en el presente (I've been living here since 2010). 2) Acciones recientes con resultados visibles (You've been crying). 3) Énfasis en la duración de una acción (We've been driving for hours).",
-        "¿Cuál es la estructura del presente perfecto continuo?": "✅ Afirmativa: Sujeto + have/has + been + verbo-ing. Negativa: Sujeto + have/has + not + been + verbo-ing. Interrogativa: Have/Has + sujeto + been + verbo-ing. Ej: She hasn't been sleeping well. Have they been working hard?"
-    };
+    "¿Qué es el futuro perfecto continuo?": "✅ El futuro perfecto continuo se usa para hablar de acciones que estarán ocurriendo durante un periodo de tiempo y que terminarán justo antes de un momento específico en el futuro. Ejemplo: By next month, I will have been working here for 5 years.",
+    "¿Cómo se conjuga el futuro perfecto continuo?": "✅ Estructura: sujeto + will + have been + verbo-ing. Ejemplos: I will have been studying. They will have been working. Para la forma negativa se añade 'not' después de 'will': She will not have been waiting.",
+    "¿Cuándo se usa el futuro perfecto continuo?": "✅ Se usa para: 1) Mostrar la duración de una acción hasta un punto específico en el futuro (By 2025, she will have been living here for 10 years). 2) Enfatizar cuánto tiempo ha estado ocurriendo algo antes de otro evento.",
+    "¿Cuál es la estructura del futuro perfecto continuo?": "✅ Afirmativa: Sujeto + will + have been + verbo-ing. Negativa: Sujeto + will not have been + verbo-ing. Interrogativa: Will + sujeto + have been + verbo-ing. Ej: Will they have been working long?"
+};
 
     function askQuestion(question) {
         addMessage(question, 'user');
@@ -1094,19 +1094,18 @@ document.addEventListener("DOMContentLoaded", function () {
     const avatarWalking = document.getElementById("avatarWalking");
     const avatarStatic = document.getElementById("avatarStatic");
     const bubble = document.getElementById("bubble");
+const mensajesIniciales = [
+  "¡Bienvenido a este sitio web que te ayudará a aprender inglés de forma didáctica y divertida! 🇬🇧🎉",
+  "Empecemos con el Futuro Perfecto Continuo... ¡verás lo útil que es! 🔮📚",
+  "Recuerda: el futuro perfecto continuo muestra cuánto tiempo habrá durado una acción hasta cierto punto en el futuro. ⏳➡️📅",
+  "Estaré aquí para apoyarte y darte consejos siempre que lo necesites. 🤝👨‍🏫"
+];
 
-    const mensajesIniciales = [
-    "¡Bienvenido a este sitio web que te ayudará a aprender inglés de forma didáctica y divertida! 🇬🇧🎉",
-    "Empecemos con el Presente Perfecto Continuo... ¡vas a ver qué fácil es! 💡📚",
-    "Recuerda: el presente perfecto continuo enfatiza la duración de una acción. ⏳➡️🔄",
-    "Estaré aquí para apoyarte y darte consejos siempre que lo necesites. 🤝👨‍🏫"
-    ];
-
-    const mensajesPermanentes = [
-    "¿Listo para practicar el presente perfecto continuo? 📝",
-    "Sigue así, vas por buen camino. ✅",
-    "Estoy aquí si tienes dudas sobre el presente perfecto continuo. 💬"
-    ];
+const mensajesPermanentes = [
+  "¿Listo para practicar el futuro perfecto continuo? 📝",
+  "Sigue así, vas por muy buen camino. ✅",
+  "Estoy aquí si tienes dudas sobre el futuro perfecto continuo. 💬"
+];
 
     let index = 0;
 
