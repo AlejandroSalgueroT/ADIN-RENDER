@@ -89,9 +89,33 @@ def could_files(filename):
 def might_files(filename):
     return send_from_directory('sub_t/might', filename)
 
+@app.route('/sub_t/might/might_base/<path:filename>')
+def might_base_files(filename):
+    return send_from_directory('sub_t/might/might_base', filename)
+
+@app.route('/sub_t/might/might_be_ing/<path:filename>')
+def might_be_ing_files(filename):
+    return send_from_directory('sub_t/might/might_be_ing', filename)
+
+@app.route('/sub_t/might/might_have_pp/<path:filename>')
+def might_have_pp_files(filename):
+    return send_from_directory('sub_t/might/might_have_pp', filename)
+
 @app.route('/sub_t/MUST/<path:filename>')
 def must_files(filename):
     return send_from_directory('sub_t/MUST', filename)
+
+@app.route('/sub_t/MUST/views/<path:filename>')
+def must_views(filename):
+    return send_from_directory('sub_t/MUST/views', filename)
+
+@app.route('/sub_t/MUST/css/<path:filename>')
+def must_css(filename):
+    return send_from_directory('sub_t/MUST/css', filename)
+
+@app.route('/sub_t/MUST/avatar/<path:filename>')
+def must_avatar_files(filename):
+    return send_from_directory('sub_t/MUST/avatar', filename)
 
 @app.route('/sub_t/MUST/index.html')
 def must_index():
@@ -101,13 +125,21 @@ def must_index():
 def must_index_root():
     return send_from_directory('sub_t/MUST', 'index.html')
 
-@app.route('/sub_t/MUST/avatar/avatar.html')
-def must_avatar_correct():
-    return send_from_directory('sub_t/MUST/avatar', 'avatar.html')
-
 @app.route('/sub_t/Should/<path:filename>')
 def should_files(filename):
     return send_from_directory('sub_t/Should', filename)
+
+@app.route('/sub_t/Should/templates/<path:filename>')
+def should_templates(filename):
+    return send_from_directory('sub_t/Should/templates', filename)
+
+@app.route('/sub_t/Should/static/<path:filename>')
+def should_static(filename):
+    return send_from_directory('sub_t/Should/static', filename)
+
+@app.route('/sub_t/Should/bots/<path:filename>')
+def should_bots(filename):
+    return send_from_directory('sub_t/Should/bots', filename)
 
 @app.route('/sub_t/WOULD/<path:filename>')
 def would_files(filename):
